@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
-"""O4SDLC regression runner v1.0.1 (BP-D26). Exits non-zero on any FAIL.
-Usage: python3 o4sdlc_regression_runner_v1_0_1.py <pkg-root>"""
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2026 Yusuf Altunel. Licensed under the Apache License, Version 2.0
+# (https://www.apache.org/licenses/LICENSE-2.0). See LICENSE.md at the repository root.
+"""O4SDLC regression runner v1.0.2 (BP-D26). Exits non-zero on any FAIL.
+Usage: python3 o4sdlc_regression_runner_v1_0_2.py <pkg-root>"""
 import sys, rdflib
 from rdflib import RDF, RDFS, Namespace
 KB=Namespace("http://example.org/knowledge-base#")

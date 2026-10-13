@@ -1,7 +1,10 @@
+# Ontology4UsecaseModeling SHACL v1.0.2 (licence statement added, 2026-10-13; shapes unchanged from v1.0.1)
 # Ontology4UsecaseModeling SHACL v1.0.1 (SHAPE-1 fix, 2026-06-05)
 # FIX: class rdfs:label constraint changed from sh:languageIn ("en") [rejected every @tr label]
 #      to sh:qualifiedValueShape requiring >=1 @en label while permitting @tr (bilingual ontology).
-# priorVersion: Ontology4UsecaseModeling_shacl_v1_0_0.ttl
+# priorVersion: Ontology4UsecaseModeling_shacl_v1_0_1.ttl
+# License: Copyright (c) 2026 Yusuf Altunel. Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+# (v1.0.1 priorVersion: Ontology4UsecaseModeling_shacl_v1_0_0.ttl)
 # =============================================================================
 # SHACL SHAPES — Ontology4UsecaseModeling_shacl_v1_0_0.ttl
 # =============================================================================

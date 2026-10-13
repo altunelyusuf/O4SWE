@@ -20,7 +20,7 @@ python3 -c "import rdflib,glob; from pyshacl import validate; g=rdflib.Graph(); 
 # Own SHACL
 pyshacl -s 02-shacl-safeguards/o4sdlc_shacl_v1_0_0.ttl  (merged 01-ontologies)
 # Regression suite (BP-D26)
-python3 03-tooling/o4sdlc_regression_runner_v1_0_1.py .
+python3 03-tooling/o4sdlc_regression_runner_v1_0_2.py .
 # HermiT (BP-D3/D4): canonical OWLAPI/HermiT on the merged 4 domain ontologies
 ```
 

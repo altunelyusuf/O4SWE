@@ -22,6 +22,8 @@ o4reg:Submission a owl:NamedIndividual , prov:Entity ;
     rdfs:label "O4SDLC OEE registration submission v1.0.0"@en ;
     dcterms:creator <http://www.zt4swe.io/agent/YusufAltunel> ;
     dcterms:created "2026-06-08"^^xsd:date ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed under CC BY 4.0."@en ;
     rdfs:comment "Registrant submission bundle for OEE Phase-C gating. Covers core (conformance) + oepack_release_history, configuration, knowledge_base, quality (registration). risk/performance/testing/measurement/reliability: no genuine data to register (see fit-gap note); not fabricated (invariant 4 / L-57 / L-65)."@en .
 
 #################################################################

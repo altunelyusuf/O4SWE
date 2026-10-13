@@ -1,33 +1,33 @@
 path	bytes	sha256	turtle_check	detail
-o4sdlc-pack-v1.1.2/MANIFEST_SHA256.txt	3409	4b8ad799cbe84787e8073284c329b9b94adad41dcb1a7b3c049d93a0b216573b		
-o4sdlc-pack-v1.1.2/VERSION.txt	6	77123b8e4bdbd54505bf6e8021527ac60281602a06fe307564532c4dba39dbca		
-o4sdlc-pack-v1.1.2/05-prov-records/o4sdlc_prov_v1_0_1.ttl	2644	ed049e0111388683b1e524f006430bddf94bd9494d90e448b15eef831a0a2261	parses	0 classes, 45 triples
-o4sdlc-pack-v1.1.2/04-documentation/DEPENDENCIES.md	1029	3a439bbfaef23c485c1ed8274f8f351602ffe019b06ed5bbc78742e0e4ec629b		
-o4sdlc-pack-v1.1.2/04-documentation/O4SDLC_HermiT_consistency_proof_v2_0_0.txt	2253	e4f38544aad3deb91c82a08e00e1b491be9a993b2ad32c3209d43a9841e86357		
-o4sdlc-pack-v1.1.2/04-documentation/O4SDLC_TRUST_REPORT_v1_0_0.md	12287	6b034352122c67424168b8684a48832b155605ccb45947530e65ddd8e1f7be91		
-o4sdlc-pack-v1.1.2/04-documentation/O4SE_Tier2_Sourcing_Map_v1_0_0.md	2995	9cab0d62ad2ae9b1fe702729d48e86dfb1b5170b984c37063415cac42b47c591		
-o4sdlc-pack-v1.1.2/04-documentation/OEE_COMPLIANCE_RECHECK_v20_14_1.md	2216	b411754b1fe92713c49cd2e7706a0b37bc21de4c8babe2d610f31563f7a45f01		
-o4sdlc-pack-v1.1.2/04-documentation/OE_ENHANCEMENT_PROPOSAL_v1_0_0.md	3541	cb934227a9dadd5d721449b31549def928864b27dd502d90fb80184b7c046e0c		
-o4sdlc-pack-v1.1.2/04-documentation/OWNERSHIP_RULING_v1_0_0.md	1655	b5960c9eb8bb02b430a8cf2cd4fce192ec153aeb6e8a8a52a05c2f9992580310		
-o4sdlc-pack-v1.1.2/04-documentation/R4_FINDINGS_v1_0_0.md	2921	ff0726d4b5bb604f47d3bba826ad4f129652c879327256cca66eeb57e8781c5a		
-o4sdlc-pack-v1.1.2/04-documentation/README.md	4013	7218620408d989fc5d3231b7b9dcc6effe54d7fb7a7b6bad005cd67189546d12		
-o4sdlc-pack-v1.1.2/04-documentation/REALIZATION_RECORD_v1_0_0.md	2646	d2414850cdf14404d7f92740caae36efb804da95913dbfb941b8bac8339e11b7		
-o4sdlc-pack-v1.1.2/04-documentation/VALIDATION_REPORT.md	3330	28fa62d5cfd74bde0b2da50789da68a5e1e5b476d6f610e65156be4878bd118d		
-o4sdlc-pack-v1.1.2/04-documentation/defect_register_v2_3_0.json	14643	4a49f4402d13dfc4d28af8148d6f1c2d0314da4b17d23517109bb98d0067dc25		
-o4sdlc-pack-v1.1.2/01-ontologies/o4df_v1_0_2.ttl	115306	97ad58cadf44d92a54abba568b84e09ef2dbee5c093f9db716e070472e8f2ac2	parses	114 classes, 1246 triples
-o4sdlc-pack-v1.1.2/01-ontologies/o4sdlc_knowledge_base_abox_v1_0_1.ttl	16746	a32854006a52dac24ddd89d6a18247ececd7410d83efa125a35fd3d0d3488918	parses	0 classes, 173 triples
-o4sdlc-pack-v1.1.2/01-ontologies/o4sdlc_v1_0_1.ttl	8539	261fb1b2be070dfef7013e3f13393280ca273370c1e1073cccaf729979d33a3b	parses	0 classes, 91 triples
-o4sdlc-pack-v1.1.2/01-ontologies/o4se_merged_v1_0_9.ttl	229880	308247af1917c075a8c4e118a93a51290026621b243d919047df88cfdb4d6980	parses	507 classes, 3402 triples
-o4sdlc-pack-v1.1.2/01-ontologies/o4ucm_v1_0_4.ttl	90739	9a15734218ee5a338fcd96e7d2f38c6a563132c498331e8a64d3035bad4162d2	parses	69 classes, 1065 triples
-o4sdlc-pack-v1.1.2/07-oee-registration/FIT_GAP_NOTE_v1_0_0.md	7362	71c831621dc2a4005b65d9926c6f6d9c63969ce48d3466dc26f90cdd930a5085		
-o4sdlc-pack-v1.1.2/07-oee-registration/O4SDLC_to_OEE_closure_note_v1_0_0.md	3233	164edb5a8736f66e98282cfd2d6966e4e03a3b9bbfe073a557323b7d989b2e16		
-o4sdlc-pack-v1.1.2/07-oee-registration/OEE_to_O4SDLC_registration_contract_v1_0_0.md	4047	047682115be08039248bbbe08896869549212231d465565c08f2b439dd551bf4		
-o4sdlc-pack-v1.1.2/07-oee-registration/REGISTRATION_RECORD_v1_0_0.md	1923	b9974605b29e50e916b82630f66fd9c572ac9ea863210f744d364aeb66a6941b		
-o4sdlc-pack-v1.1.2/07-oee-registration/o4sdlc_oee_registration_v1_0_0.ttl	7346	2c0846a4a38441623785412cad0ddac0d9df0b2af307874aba30de4540f7811c	parses	0 classes, 94 triples
-o4sdlc-pack-v1.1.2/07-oee-registration/validate_submission_v1_0_0.py	1621	4ee38497265c53377d994888d80e06e06572e066ee7575bf5eab13ec83aedb29		
-o4sdlc-pack-v1.1.2/02-shacl-safeguards/Ontology4UsecaseModeling_shacl_v1_0_1.ttl	9940	a7fa35a91d9ea9111d6f8229ba51f09b5f966f82b9ceaed923c84f21759050b9	parses	0 classes, 146 triples
-o4sdlc-pack-v1.1.2/02-shacl-safeguards/o4sdlc_shacl_v1_0_0.ttl	3944	ceb96f71d935ae2e71d1309e6838bf23e8d936ad2c012c13e7c8a7a10cdb0235	parses	0 classes, 65 triples
-o4sdlc-pack-v1.1.2/03-tooling/o4sdlc_regression_runner_v1_0_1.py	1199	52db6f5f3e439fa2e8714a8ca8c81e01197b8dac68dbd84e6b295a26610c69ff		
+o4sdlc-pack-v1.1.3/MANIFEST_SHA256.txt	3527	c7b8daabb783fd681ce7493c31c85456d8e476f40dc528e0ff0d531f71c42902		
+o4sdlc-pack-v1.1.3/VERSION.txt	6	5dae0c0a5ed3cdaa78704e25bb38d72c31018311e933283d06ed4f93360bfc6c		
+o4sdlc-pack-v1.1.3/05-prov-records/o4sdlc_prov_v1_0_1.ttl	2644	ed049e0111388683b1e524f006430bddf94bd9494d90e448b15eef831a0a2261	parses	0 classes, 45 triples
+o4sdlc-pack-v1.1.3/04-documentation/DEPENDENCIES.md	1029	3a439bbfaef23c485c1ed8274f8f351602ffe019b06ed5bbc78742e0e4ec629b		
+o4sdlc-pack-v1.1.3/04-documentation/O4SDLC_HermiT_consistency_proof_v2_0_0.txt	2253	e4f38544aad3deb91c82a08e00e1b491be9a993b2ad32c3209d43a9841e86357		
+o4sdlc-pack-v1.1.3/04-documentation/O4SDLC_TRUST_REPORT_v1_0_0.md	12287	6b034352122c67424168b8684a48832b155605ccb45947530e65ddd8e1f7be91		
+o4sdlc-pack-v1.1.3/04-documentation/O4SE_Tier2_Sourcing_Map_v1_0_0.md	2995	9cab0d62ad2ae9b1fe702729d48e86dfb1b5170b984c37063415cac42b47c591		
+o4sdlc-pack-v1.1.3/04-documentation/OEE_COMPLIANCE_RECHECK_v20_14_1.md	2216	b411754b1fe92713c49cd2e7706a0b37bc21de4c8babe2d610f31563f7a45f01		
+o4sdlc-pack-v1.1.3/04-documentation/OE_ENHANCEMENT_PROPOSAL_v1_0_0.md	3541	cb934227a9dadd5d721449b31549def928864b27dd502d90fb80184b7c046e0c		
+o4sdlc-pack-v1.1.3/04-documentation/OWNERSHIP_RULING_v1_0_0.md	1655	b5960c9eb8bb02b430a8cf2cd4fce192ec153aeb6e8a8a52a05c2f9992580310		
+o4sdlc-pack-v1.1.3/04-documentation/R4_FINDINGS_v1_0_0.md	2921	ff0726d4b5bb604f47d3bba826ad4f129652c879327256cca66eeb57e8781c5a		
+o4sdlc-pack-v1.1.3/04-documentation/README.md	4013	9fb306b1a0a2f5753fcc131a4e4acb0bac43dca5607a5e41be6c3267c0b57af5		
+o4sdlc-pack-v1.1.3/04-documentation/REALIZATION_RECORD_v1_0_0.md	2646	d2414850cdf14404d7f92740caae36efb804da95913dbfb941b8bac8339e11b7		
+o4sdlc-pack-v1.1.3/04-documentation/VALIDATION_REPORT.md	3330	28fa62d5cfd74bde0b2da50789da68a5e1e5b476d6f610e65156be4878bd118d		
+o4sdlc-pack-v1.1.3/04-documentation/defect_register_v2_3_0.json	14643	4a49f4402d13dfc4d28af8148d6f1c2d0314da4b17d23517109bb98d0067dc25		
+o4sdlc-pack-v1.1.3/01-ontologies/o4df_v1_0_2.ttl	115306	97ad58cadf44d92a54abba568b84e09ef2dbee5c093f9db716e070472e8f2ac2	parses	114 classes, 1246 triples
+o4sdlc-pack-v1.1.3/01-ontologies/o4sdlc_knowledge_base_abox_v1_0_1.ttl	16746	a32854006a52dac24ddd89d6a18247ececd7410d83efa125a35fd3d0d3488918	parses	0 classes, 173 triples
+o4sdlc-pack-v1.1.3/01-ontologies/o4sdlc_v1_0_1.ttl	8539	261fb1b2be070dfef7013e3f13393280ca273370c1e1073cccaf729979d33a3b	parses	0 classes, 91 triples
+o4sdlc-pack-v1.1.3/01-ontologies/o4se_merged_v1_0_9.ttl	229880	308247af1917c075a8c4e118a93a51290026621b243d919047df88cfdb4d6980	parses	507 classes, 3402 triples
+o4sdlc-pack-v1.1.3/01-ontologies/o4ucm_v1_0_4.ttl	90739	9a15734218ee5a338fcd96e7d2f38c6a563132c498331e8a64d3035bad4162d2	parses	69 classes, 1065 triples
+o4sdlc-pack-v1.1.3/07-oee-registration/FIT_GAP_NOTE_v1_0_0.md	7362	71c831621dc2a4005b65d9926c6f6d9c63969ce48d3466dc26f90cdd930a5085		
+o4sdlc-pack-v1.1.3/07-oee-registration/O4SDLC_to_OEE_closure_note_v1_0_0.md	3233	164edb5a8736f66e98282cfd2d6966e4e03a3b9bbfe073a557323b7d989b2e16		
+o4sdlc-pack-v1.1.3/07-oee-registration/OEE_to_O4SDLC_registration_contract_v1_0_0.md	4047	047682115be08039248bbbe08896869549212231d465565c08f2b439dd551bf4		
+o4sdlc-pack-v1.1.3/07-oee-registration/REGISTRATION_RECORD_v1_0_0.md	1923	b9974605b29e50e916b82630f66fd9c572ac9ea863210f744d364aeb66a6941b		
+o4sdlc-pack-v1.1.3/07-oee-registration/o4sdlc_oee_registration_v1_0_1.ttl	7501	d357ff3cd181d94b0bbda4c893a422a84fb032e885a3f06a81414d8e1ef14830	parses	0 classes, 96 triples
+o4sdlc-pack-v1.1.3/07-oee-registration/validate_submission_v1_0_1.py	1830	a10d83e6cd9a35eee5cc5c5a1365ad7c160e26a71e6063102923d7fe05bf4466		
+o4sdlc-pack-v1.1.3/02-shacl-safeguards/Ontology4UsecaseModeling_shacl_v1_0_2.ttl	10233	1784fdee53f0cbb70f1d83aa9a8020091df341fc1d01f91baa0fa2ff6bb72e1c	parses	0 classes, 146 triples
+o4sdlc-pack-v1.1.3/02-shacl-safeguards/o4sdlc_shacl_v1_0_0.ttl	3944	ceb96f71d935ae2e71d1309e6838bf23e8d936ad2c012c13e7c8a7a10cdb0235	parses	0 classes, 65 triples
+o4sdlc-pack-v1.1.3/03-tooling/o4sdlc_regression_runner_v1_0_2.py	1408	be982a268e30d40404bc0583abc2c7c6b63666982f08aae5a1743c3f018b9fc7		
 o4se-draft-modules/O4SE_Architectures.ttl	14980	22a907cb52f13d53ed4d4dc9a765bfe1236d21612450716966d786a8586f48a2	parses	62 classes, 297 triples
 o4se-draft-modules/O4SE_CMMI_Integration.ttl	14221	a77663cf15f12c2985276b155d5f864db88666997cbfe93dfd539902a800445f	parses	40 classes, 257 triples
 o4se-draft-modules/O4SE_Core_Structure.ttl	13519	45505967d5a18225db32c88b42fb13084932426083ebd64dee536e663ea2137b	parses	57 classes, 302 triples
@@ -54,3 +54,10 @@ practice-concept-corpus/README.md	1721	b058a253c19072fc1e559904c3fa6aa20df66bfbb
 practice-concept-corpus/REUSE_NOTES.md	3423	7c67945ac6c9e5fe9c4ca3ca12e66f7af9adbe5fe80666367f5c93cda2179323		
 practice-concept-corpus/practice_concept_corpus_alignment_v1_0_0.ttl	3443	bfce523059717dcc7a6c603095e4fe8ad3740daa2a877eedeb722e5c4e3ecd87	parses	0 classes, 39 triples
 practice-concept-corpus/practice_concept_corpus_v1_0_0.ttl	162046	04438bb7511015dd5df6edf2af1f69d5c309c4a2d3478be4ff3ce9b5c76d2c41	parses	0 classes, 2053 triples
+07-handover-inbox/HANDOVER_LOG.md	1757	ed582d84120a8bc05f856a218e96c4a4d3fe5f5abb0e7236a9f0a64ee3a6bded		
+07-handover-inbox/accepted/HANDOVER_licence-alignment_to_O4SWE_licence-file-and-statements_v1_0_0.md	2664	bdc1e73b27598b8debf92114ff43a297780949c08a399d4b1e9bf5dd767e58d8		
+LICENSE.md	1754	b0610c79afd4acac73a8529d310007fb0b8c414ce8aa08f4b3be057f50e51e82		
+README.md	3258	f35e9bad00be388ecf6f4b145e690c73bf1f82ca21d055d6ec17dc3b9f3dc818		
+o4sdlc-pack-v1.1.3/04-documentation/LICENCE_ALIGNMENT_NOTE_v1_0_0.md	2310	e1a81d7769e00f5a13ab83641baf85383f61ca6b01604c5e5f87c3ee8393ee45		
+standards-records/README.md	2282	97b5aae8f1868bf2f6c7a3f774594fb0377122b3bfca6b49ca55c86bc0cadd0c		
+standards-records/STANDARDS_RECORDS.tsv	1969	1a30541342be05a69768567a3f6070e748b8ca41fcdc93ad0ab70780f3bc2638		
