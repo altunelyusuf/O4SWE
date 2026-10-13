@@ -1,0 +1,63 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tax: <http://example.org/agentic-sdlc-taxonomy#> .
+
+tax:D25_T11_C3 skos:closeMatch <http://domainengineering.org/ontology#Deployment>,
+        <http://www.semanticweb.org/ontologies/2025/O4SE#Deployment> .
+
+tax:D25_T11_C7 skos:closeMatch <http://domainengineering.org/ontology#DataMigration>,
+        <http://www.semanticweb.org/ontologies/2025/O4SE/DataManagement#DataMigration>,
+        <http://www.semanticweb.org/ontologies/2025/O4SE/DataManagement#Migration> .
+
+tax:D25_T16_C4 skos:closeMatch <http://domainengineering.org/ontology#UseCase> .
+
+tax:D25_T1_C3 skos:closeMatch <http://domainengineering.org/ontology#Stakeholder>,
+        <http://example.org/domain-engineering#Stakeholder>,
+        <http://www.semanticweb.org/ontologies/2025/O4SE#Stakeholder> .
+
+tax:D25_T2_C3 skos:closeMatch <http://domainengineering.org/ontology#BusinessRule>,
+        <http://example.org/domain-engineering#BusinessRule> .
+
+tax:D25_T2_C4 skos:closeMatch <http://example.org/domain-engineering#DomainModel> .
+
+tax:D25_T2_C5 skos:closeMatch <http://domainengineering.org/ontology#DomainBoundary> .
+
+tax:D25_T2_C7 skos:relatedMatch <http://example.org/domain-engineering#BusinessProcess>,
+        <http://example.org/domain-engineering#CoreBusinessProcess> .
+
+tax:D25_T3_C3 skos:closeMatch <http://domainengineering.org/ontology#Feature>,
+        <http://example.org/domain-engineering#Feature> .
+
+tax:D25_T3_C4 skos:closeMatch <http://domainengineering.org/ontology#VariationPoint>,
+        <http://example.org/domain-engineering#VariationPoint> .
+
+tax:D25_T5_C1 skos:closeMatch <http://domainengineering.org/ontology#ProductConfiguration> .
+
+tax:D25_T6_C2 skos:closeMatch <http://domainengineering.org/ontology#Requirement>,
+        <http://www.semanticweb.org/ontologies/2025/O4SE#Requirement> .
+
+tax:D25_T6_C5 skos:closeMatch <http://domainengineering.org/ontology#RequirementConflict> .
+
+tax:D25_T6_C8 skos:closeMatch <http://domainengineering.org/ontology#RequirementPriority> .
+
+tax:D25_T6_C9 skos:closeMatch <http://domainengineering.org/ontology#QualityAttribute>,
+        <http://example.org/domain-engineering#QualityAttribute>,
+        <http://www.semanticweb.org/ontologies/2025/O4SE#QualityAttribute> .
+
+tax:D25_T8_C19 skos:relatedMatch <http://www.semanticweb.org/ontologies/2025/O4SE/SWEBOK#ChangeControl> .
+
+tax:D25_T9_C13 skos:relatedMatch <http://www.semanticweb.org/ontologies/2025/O4SE/ProgrammingLanguages#IDE> .
+
+tax:D25_T9_C6 skos:closeMatch <http://domainengineering.org/ontology#Dependency> .
+
+<http://example.org/practice-concept-corpus-alignment> a owl:Ontology ;
+    dcterms:creator "Yusuf Altunel" ;
+    dcterms:description "Candidate mappings by label only, for review. skos:closeMatch = same words after normalisation; skos:relatedMatch = at least two shared words. Nothing here is a confirmed equivalence, and the stored O4SWE files are unchanged."@en ;
+    dcterms:identifier "practice_concept_corpus_alignment_v1_0_0" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights "© 2026 Yusuf Altunel, CC BY 4.0"@en ;
+    dcterms:title "Practice Concept Corpus: candidate label alignment with the O4SWE ontologies"@en ;
+    owl:versionIRI <http://example.org/practice-concept-corpus-alignment/1.0.0> ;
+    owl:versionInfo "1.0.0" .
+

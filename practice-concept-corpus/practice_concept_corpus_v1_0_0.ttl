@@ -1,0 +1,2274 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tax: <http://example.org/agentic-sdlc-taxonomy#> .
+
+tax:D25_T10_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T10 ;
+    skos:definition "An ordered, automated sequence of stages that carries a change from source toward a deliverable and records what happened."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.10.1" ;
+    skos:prefLabel "Delivery pipeline"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T10_C10 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T10 ;
+    skos:definition "Working practice in which those who build and those who run software share responsibility for its whole life."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.10.10" ;
+    skos:prefLabel "Operations collaboration"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T10_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T10 ;
+    skos:definition "A point in a pipeline at which a change must meet stated conditions before it moves on."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.10.2" ;
+    skos:prefLabel "Stage gate"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T10_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T10 ;
+    skos:definition "Keeping the description of a pipeline in versioned, reviewable files like any other source."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.10.3" ;
+    skos:prefLabel "Pipeline definition as code"@en ;
+    skos:related tax:Area_IntegrationAndBuild .
+
+tax:D25_T10_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T10 ;
+    skos:definition "The delay between making a change and learning whether it broke anything; the shorter it is, the cheaper a mistake."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.10.4" ;
+    skos:prefLabel "Feedback time"@en ;
+    skos:related tax:Area_IntegrationAndBuild .
+
+tax:D25_T10_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T10 ;
+    skos:definition "The habit of merging small changes into a shared line of work often, with automatic checks on each."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.10.5" ;
+    skos:prefLabel "Frequent integration"@en ;
+    skos:related tax:Area_IntegrationAndBuild .
+
+tax:D25_T10_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T10 ;
+    skos:definition "The discipline of keeping the main line of work in a condition from which a release could be made at any time."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.10.6" ;
+    skos:prefLabel "Always-releasable state"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T10_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T10 ;
+    skos:definition "The practice of releasing every change that passes its checks without a separate manual step."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.10.7" ;
+    skos:prefLabel "Automatic release"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T10_C8 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T10 ;
+    skos:definition "Assurance that the inputs, tools and steps that produce an artifact have not been altered or substituted."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.10.8" ;
+    skos:prefLabel "Supply chain integrity"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T10_C9 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T10 ;
+    skos:definition "The ability to see what a pipeline did and why, from its records, without re-running it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.10.9" ;
+    skos:prefLabel "Pipeline observability"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "A version proposed for release, frozen so that the evidence gathered about it applies to what is released."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.1" ;
+    skos:prefLabel "Release candidate"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C10 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "The transfer of responsibility for a running result from those who built it to those who will run it, with what they need to do so."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.10" ;
+    skos:prefLabel "Operational handover"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C11 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "The stakeholder's confirmation that the result meets what was agreed and may be taken into use."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.11" ;
+    skos:prefLabel "Customer acceptance"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C12 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "Observation after release to confirm that the result behaves as intended in real use."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.12" ;
+    skos:prefLabel "Post-release check"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C13 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "The plan for moving a product into use: the kind of move, how success is judged, how often it recurs, how disruption and risk are limited and what is done if it fails."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.13" ;
+    skos:prefLabel "Transition strategy"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C14 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "Making the place the product will run in ready for it: sites, networks, enabling services and the people who will operate it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.14" ;
+    skos:prefLabel "Target environment preparation"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C15 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "A release made outside the normal rhythm to remove a harmful fault or a security weakness, with a lighter path that still leaves a record."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.15" ;
+    skos:prefLabel "Emergency change"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C16 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "The prepared way back to the last working state when a move into use fails, tested before it is needed."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.16" ;
+    skos:prefLabel "Return path"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C17 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "A limit on how a product can be moved into use that must be given back to requirements, architecture and design, because the design decides it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.17" ;
+    skos:prefLabel "Transition constraint"@en ;
+    skos:related tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C18 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "An unexpected result observed while moving a product into use, recorded so that the next move starts from it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.18" ;
+    skos:prefLabel "Transition anomaly"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "The state in which stated conditions for releasing, such as evidence, approvals and preparedness, have been met."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.2" ;
+    skos:prefLabel "Release readiness"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "The placing of software into an environment where it will run and making it ready to do so."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.3" ;
+    skos:prefLabel "Deployment"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "The way a release reaches its users, for example all at once, in stages or to a small group first, chosen to limit harm."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.4" ;
+    skos:prefLabel "Exposure strategy"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "The prepared means of returning to a known good state if a release goes wrong."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.5" ;
+    skos:prefLabel "Recovery path"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "The point at which work moves from the old way of working, or the old system, to the new one."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.6" ;
+    skos:prefLabel "Cutover"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "The movement and conversion of existing data into the form the new system needs, with checks that nothing is lost or changed."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.7" ;
+    skos:prefLabel "Data migration"@en ;
+    skos:related tax:Area_Disposal,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C8 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "The preparedness of the people who will use and run the result, through training, guidance and support."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.8" ;
+    skos:prefLabel "User and operator readiness"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T11_C9 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T11 ;
+    skos:definition "The record of what was released, when, to where, on what evidence and by whose decision."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11.9" ;
+    skos:prefLabel "Release record"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T12_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T12 ;
+    skos:definition "The reasoned decision to stop providing a product, a variant or a capability, with who decided and why."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.12.1" ;
+    skos:prefLabel "Retirement decision"@en ;
+    skos:related tax:Area_Disposal .
+
+tax:D25_T12_C10 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T12 ;
+    skos:definition "A limit on how a product may be ended, such as data ownership, legal retention or security, that must be given to requirements, architecture and design while the product is still being made."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.12.10" ;
+    skos:prefLabel "Disposal constraint"@en ;
+    skos:related tax:Area_Disposal,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T12_C11 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T12 ;
+    skos:definition "A tool, facility or service needed only to end the product, such as an archive or a secure erasure service, planned and checked before the ending begins."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.12.11" ;
+    skos:prefLabel "Disposal enabling service"@en ;
+    skos:related tax:Area_Disposal .
+
+tax:D25_T12_C12 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T12 ;
+    skos:definition "Telling everyone who depends on the product, in good time, what will end, when, and what replaces it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.12.12" ;
+    skos:prefLabel "Retirement notification"@en ;
+    skos:related tax:Area_Disposal,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T12_C13 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T12 ;
+    skos:definition "The ways an element can leave service: reuse elsewhere, archiving, reconditioning, recycling or destruction, chosen by the value it still has and the risk of keeping it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.12.13" ;
+    skos:prefLabel "Disposition option"@en ;
+    skos:related tax:Area_Disposal .
+
+tax:D25_T12_C14 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T12 ;
+    skos:definition "Making sure that what was retired cannot return to use by accident, for example by removing keys, licences, access and copies."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.12.14" ;
+    skos:prefLabel "Re-entry prevention"@en ;
+    skos:related tax:Area_Disposal .
+
+tax:D25_T12_C15 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T12 ;
+    skos:definition "Retiring only the elements affected by a change while the rest continues in use, which needs the boundary between them to be known."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.12.15" ;
+    skos:prefLabel "Partial retirement"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_Disposal .
+
+tax:D25_T12_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T12 ;
+    skos:definition "The prepared sequence of steps, owners and dates by which something is withdrawn."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.12.2" ;
+    skos:prefLabel "Retirement plan"@en ;
+    skos:related tax:Area_Disposal .
+
+tax:D25_T12_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T12 ;
+    skos:definition "The decision and action for each body of data at retirement: keep, move, archive or destroy, within legal and contractual duties."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.12.3" ;
+    skos:prefLabel "Data disposition"@en ;
+    skos:related tax:Area_Disposal .
+
+tax:D25_T12_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T12 ;
+    skos:definition "Finding and resolving everything that relies on the thing being retired, so that its removal does not break others."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.12.4" ;
+    skos:prefLabel "Dependency unwinding"@en ;
+    skos:related tax:Area_Disposal .
+
+tax:D25_T12_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T12 ;
+    skos:definition "Keeping what is worth knowing about a retired product, such as decisions, designs and lessons, in a form others can find."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.12.5" ;
+    skos:prefLabel "Knowledge preservation"@en ;
+    skos:related tax:Area_Disposal .
+
+tax:D25_T12_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T12 ;
+    skos:definition "Safe removal of the infrastructure, access and configuration that served a retired product."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.12.6" ;
+    skos:prefLabel "Environment decommissioning"@en ;
+    skos:related tax:Area_Disposal .
+
+tax:D25_T12_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T12 ;
+    skos:definition "A duty that outlives a product, such as legal retention, support commitments or warranty."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.12.7" ;
+    skos:prefLabel "Residual obligation"@en ;
+    skos:related tax:Area_Disposal .
+
+tax:D25_T12_C8 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T12 ;
+    skos:definition "Moving users and data from a retired product to its replacement, if there is one."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.12.8" ;
+    skos:prefLabel "Successor transition"@en ;
+    skos:related tax:Area_Disposal,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T12_C9 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T12 ;
+    skos:definition "The retirement of one variant of a family while the family and its other variants continue."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.12.9" ;
+    skos:prefLabel "Variant withdrawal"@en ;
+    skos:related tax:Area_Disposal,
+        tax:Area_DomainEngineering .
+
+tax:D25_T13_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T13 ;
+    skos:definition "A recorded observation or result that supports a claim about the work or the product."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.13.1" ;
+    skos:prefLabel "Evidence"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_BusinessAnalysis,
+        tax:Area_Disposal,
+        tax:Area_DomainEngineering,
+        tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T13_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T13 ;
+    skos:definition "Confirmation, by examination or test, that a work product meets what was specified for it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.13.2" ;
+    skos:prefLabel "Verification"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T13_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T13 ;
+    skos:definition "Confirmation that a result fulfils its intended use in its real or realistic setting, which may differ from what was specified."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.13.3" ;
+    skos:prefLabel "Validation"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T13_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T13 ;
+    skos:definition "The ability to follow a link from one work product to those it came from or led to, in both directions."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.13.4" ;
+    skos:prefLabel "Traceability"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_BusinessAnalysis,
+        tax:Area_Disposal,
+        tax:Area_DomainEngineering,
+        tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T13_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T13 ;
+    skos:definition "A structured argument, backed by evidence, that a stated property such as safety or security holds."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.13.5" ;
+    skos:prefLabel "Assurance argument"@en ;
+    skos:related tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T13_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T13 ;
+    skos:definition "A note of a significant decision with its context, alternatives considered and reasons."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.13.6" ;
+    skos:prefLabel "Decision record"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_BusinessAnalysis,
+        tax:Area_Disposal,
+        tax:Area_DomainEngineering,
+        tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T13_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T13 ;
+    skos:definition "A checkpoint with explicit criteria that must be met before work continues or is accepted."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.13.7" ;
+    skos:prefLabel "Quality gate"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T13_C8 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T13 ;
+    skos:definition "Examination of a work product by people other than its author in order to find problems and improve it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.13.8" ;
+    skos:prefLabel "Review"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_BusinessAnalysis,
+        tax:Area_Disposal,
+        tax:Area_DomainEngineering,
+        tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T14_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T14 ;
+    skos:definition "Adapting a general way of working to the needs, size and risks of a particular project or product."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.14.1" ;
+    skos:prefLabel "Process tailoring"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_BusinessAnalysis,
+        tax:Area_Disposal,
+        tax:Area_DomainEngineering,
+        tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T14_C10 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T14 ;
+    skos:definition "A place in the work at which a person, not an agent, must review or decide before work continues."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.14.10" ;
+    skos:prefLabel "Oversight point"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_BusinessAnalysis,
+        tax:Area_Disposal,
+        tax:Area_DomainEngineering,
+        tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T14_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T14 ;
+    skos:definition "The chosen way of carrying out a piece of work, including methods, roles and amount of ceremony."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.14.2" ;
+    skos:prefLabel "Work approach"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_DomainEngineering,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T14_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T14 ;
+    skos:definition "The rules for how analysis results are stored, shared, changed and kept."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.14.3" ;
+    skos:prefLabel "Information governance for analysis"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T14_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T14 ;
+    skos:definition "A recorded result of work with a stated purpose, audience and content, as opposed to the activity that produced it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.14.4" ;
+    skos:prefLabel "Information item"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_BusinessAnalysis,
+        tax:Area_Disposal,
+        tax:Area_DomainEngineering,
+        tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T14_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T14 ;
+    skos:definition "A description of the stages a product passes through from first idea to withdrawal, used to plan and govern the work."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.14.5" ;
+    skos:prefLabel "Life cycle model"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_BusinessAnalysis,
+        tax:Area_Disposal,
+        tax:Area_DomainEngineering,
+        tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T14_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T14 ;
+    skos:definition "A defined set of responsibilities together with the abilities needed to carry them out."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.14.6" ;
+    skos:prefLabel "Role and competence"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_BusinessAnalysis,
+        tax:Area_Disposal,
+        tax:Area_DomainEngineering,
+        tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T14_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T14 ;
+    skos:definition "The deliberate use of what was learned to change how the work is done next time."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.14.7" ;
+    skos:prefLabel "Practice improvement"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T14_C8 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T14 ;
+    skos:definition "The planned involvement of stakeholders in the work, matched to their interest and influence."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.14.8" ;
+    skos:prefLabel "Stakeholder engagement"@en ;
+    skos:related tax:Area_BusinessAnalysis .
+
+tax:D25_T14_C9 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T14 ;
+    skos:definition "A task carried out wholly or partly by an artificial agent, whose output is treated as a proposal until a responsible person or check accepts it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.14.9" ;
+    skos:prefLabel "Agent-performed task"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_BusinessAnalysis,
+        tax:Area_Disposal,
+        tax:Area_DomainEngineering,
+        tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T15_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T15 ;
+    skos:definition "The level at which a requirement is stated: the organization's wish, the stakeholder's need, the system's obligation or an element's obligation; each level is derived from the one above."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.15.1" ;
+    skos:prefLabel "Requirement level"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T15_C10 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T15 ;
+    skos:definition "A quantity that tells whether the solution does the stakeholder's job (effectiveness) or how well the solution itself does what it does (performance)."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.15.10" ;
+    skos:prefLabel "Measure of effectiveness and performance"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T15_C11 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T15 ;
+    skos:definition "Counting what happens to requirements over time, such as volatility, coverage and progress, to steer the work."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.15.11" ;
+    skos:prefLabel "Requirement measurement"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T15_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T15 ;
+    skos:definition "Turning a requirement at one level into requirements at the level below, repeatedly, as the structure of the solution becomes known; new stakeholders may appear at each step."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.15.2" ;
+    skos:prefLabel "Requirement refinement"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T15_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T15 ;
+    skos:definition "Assigning a requirement to the part of the solution that will satisfy it, and noting what is left over."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.15.3" ;
+    skos:prefLabel "Requirement allocation"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T15_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T15 ;
+    skos:definition "The sort of thing a requirement asks for, for instance what the product does, how well it does it, how it is used, how it connects to others, what it is made of or what it must protect; the kinds matter because each is checked differently."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.15.4" ;
+    skos:prefLabel "Requirement kind"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T15_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T15 ;
+    skos:definition "A requirement on what crosses the boundary between the solution and something outside it, or between two parts of it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.15.5" ;
+    skos:prefLabel "Interface requirement"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T15_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T15 ;
+    skos:definition "A fact kept about a requirement besides its statement, such as its identity, owner, reason, source, priority, risk, state and how it will be verified."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.15.6" ;
+    skos:prefLabel "Requirement attribute"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T15_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T15 ;
+    skos:definition "A property that a whole collection of requirements has or lacks, and that no single requirement can show, such as whether together they leave nothing out, contradict nothing and can be met."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.15.7" ;
+    skos:prefLabel "Requirement set property"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T15_C8 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T15 ;
+    skos:definition "A rule for writing a requirement so that it is unambiguous, singular, measurable and testable, so that two readers cannot understand it differently."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.15.8" ;
+    skos:prefLabel "Requirement wording rule"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T15_C9 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T15 ;
+    skos:definition "The decision, made when the requirement is written, of how it will later be shown to be met, by inspection, analysis, demonstration or test."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.15.9" ;
+    skos:prefLabel "Requirement verification approach"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T16_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T16 ;
+    skos:definition "A description, from the point of view of the user and operator, of how the product is expected to be used, in what surroundings and by whom."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.16.1" ;
+    skos:prefLabel "Operational concept"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T16_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T16 ;
+    skos:definition "A description of the organization's intended way of working with the solution, used to understand stakeholder intentions before they are formal requirements."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.16.2" ;
+    skos:prefLabel "Concept at organization level"@en ;
+    skos:related tax:Area_BusinessAnalysis .
+
+tax:D25_T16_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T16 ;
+    skos:definition "A story of use stepping through who does what with the product to reach a goal, including the unhappy paths; it is both a source of requirements and a way to validate them."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.16.3" ;
+    skos:prefLabel "Operational scenario"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T16_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T16 ;
+    skos:definition "A named goal that a user can achieve with the product, with the main way and the variations by which it is achieved."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.16.4" ;
+    skos:prefLabel "Use case"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T16_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T16 ;
+    skos:definition "A distinct way the product is in use, such as normal, degraded, maintenance or training, each with its own behaviour and constraints."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.16.5" ;
+    skos:prefLabel "Operational mode"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T16_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T16 ;
+    skos:definition "The line between the product and everything it deals with, and the description of what is on the other side."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.16.6" ;
+    skos:prefLabel "System boundary and context"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_DomainEngineering,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T16_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T16 ;
+    skos:definition "The recognition that the product has different stakeholders and demands at different stages of its life, from idea to retirement."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.16.7" ;
+    skos:prefLabel "Life cycle stage view"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_Disposal .
+
+tax:D25_T17_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T17 ;
+    skos:definition "Breaking the required behaviour into smaller functions that together do the whole, so that each can be assigned, analysed and checked."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.17.1" ;
+    skos:prefLabel "Functional decomposition"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T17_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T17 ;
+    skos:definition "How functions follow one another and which states the product passes through, described so that gaps and conflicts show up."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.17.2" ;
+    skos:prefLabel "Functional flow and state"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T17_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T17 ;
+    skos:definition "A way in which a function can fail or be misused, found early by asking what could go wrong with each function."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.17.3" ;
+    skos:prefLabel "Dysfunction"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T17_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T17 ;
+    skos:definition "The arrangement of the solution by what its parts are for, independent of how they will be realized."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.17.4" ;
+    skos:prefLabel "Logical structure"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T17_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T17 ;
+    skos:definition "The arrangement of the solution by what its parts are made of and where they run, derived from and traced to the logical structure."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.17.5" ;
+    skos:prefLabel "Physical structure"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T17_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T17 ;
+    skos:definition "Studying safety, reliability, security or resilience as properties of the entire solution, since they cannot be read off any single part."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.17.6" ;
+    skos:prefLabel "Whole-system property analysis"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T17_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T17 ;
+    skos:definition "Bringing the designs of different disciplines into one consistent solution, and preparing the later combination of their parts."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.17.7" ;
+    skos:prefLabel "Design integration across disciplines"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T1_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T1 ;
+    skos:definition "A gap, problem or opportunity in an organization's situation that is serious enough to justify effort on a change."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.1.1" ;
+    skos:prefLabel "Business need"@en ;
+    skos:related tax:Area_BusinessAnalysis .
+
+tax:D25_T1_C10 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T1 ;
+    skos:definition "A sequenced view of the abilities an organization intends to gain, used to place single changes in a larger direction and to see which change enables which."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.1.10" ;
+    skos:prefLabel "Capability roadmap"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T1_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T1 ;
+    skos:definition "The benefit, in terms the organization itself cares about, that a change is expected to bring and against which it is judged afterwards."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.1.2" ;
+    skos:prefLabel "Intended value"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T1_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T1 ;
+    skos:definition "Any person, group or system whose interests are touched by the work or its result, or who can influence either."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.1.3" ;
+    skos:prefLabel "Stakeholder"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T1_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T1 ;
+    skos:definition "Something a stakeholder cares about that the result must respect, recorded before it has been turned into any requirement."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.1.4" ;
+    skos:prefLabel "Stakeholder concern"@en ;
+    skos:related tax:Area_BusinessAnalysis .
+
+tax:D25_T1_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T1 ;
+    skos:definition "The part of the organization and its environment in which a change will happen; it limits what an analysis has to take into account."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.1.5" ;
+    skos:prefLabel "Change context"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_DomainEngineering .
+
+tax:D25_T1_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T1 ;
+    skos:definition "One candidate way of meeting a need, kept beside the others until a choice has been made and its reasons recorded."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.1.6" ;
+    skos:prefLabel "Solution option"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T1_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T1 ;
+    skos:definition "A belief taken as true for the purposes of the work without having been confirmed, which must be revisited if it turns out false."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.1.7" ;
+    skos:prefLabel "Assumption"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T1_C8 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T1 ;
+    skos:definition "A limit on the solution or the work, set by someone with authority or by the environment, that is not open to negotiation within the effort."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.1.8" ;
+    skos:prefLabel "Constraint"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T1_C9 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T1 ;
+    skos:definition "The pair of descriptions, how the organization works now and how it is meant to work after the change, whose difference defines the change."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.1.9" ;
+    skos:prefLabel "Current and future situation"@en ;
+    skos:related tax:Area_BusinessAnalysis .
+
+tax:D25_T2_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T2 ;
+    skos:definition "The field of activity whose concepts, rules and vocabulary are shared by a family of systems."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.2.1" ;
+    skos:prefLabel "Problem domain"@en ;
+    skos:related tax:Area_DomainEngineering .
+
+tax:D25_T2_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T2 ;
+    skos:definition "The agreed terms of a field and their meanings, kept so that models, requirements and conversations about the field do not drift apart."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.2.2" ;
+    skos:prefLabel "Domain vocabulary"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_DomainEngineering .
+
+tax:D25_T2_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T2 ;
+    skos:definition "A statement that constrains or derives something in how an organization operates, held independently of the software that will enforce it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.2.3" ;
+    skos:prefLabel "Business rule"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_DomainEngineering .
+
+tax:D25_T2_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T2 ;
+    skos:definition "A representation of the concepts of a field and how they relate, independent of any one product built in it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.2.4" ;
+    skos:prefLabel "Domain model"@en ;
+    skos:related tax:Area_DomainEngineering,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T2_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T2 ;
+    skos:definition "The line that decides which concerns belong to the shared assets of a field and which are left to individual products."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.2.5" ;
+    skos:prefLabel "Domain boundary"@en ;
+    skos:related tax:Area_DomainEngineering .
+
+tax:D25_T2_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T2 ;
+    skos:definition "The deliberate work of drawing out what experienced people know implicitly and recording it so others can use and check it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.2.6" ;
+    skos:prefLabel "Expert knowledge capture"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_DomainEngineering .
+
+tax:D25_T2_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T2 ;
+    skos:definition "A statement of how an organization carries out a sequence of work to reach a result, used to find where a change is needed."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.2.7" ;
+    skos:prefLabel "Business process description"@en ;
+    skos:related tax:Area_BusinessAnalysis .
+
+tax:D25_T2_C8 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T2 ;
+    skos:definition "The organization of the things an enterprise needs to remember about, with their attributes and relationships, described apart from storage technology."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.2.8" ;
+    skos:prefLabel "Information structure"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_DomainEngineering,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T3_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T3 ;
+    skos:definition "What every member of a family of products has in common, and which can therefore be built once."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.3.1" ;
+    skos:prefLabel "Commonality"@en ;
+    skos:related tax:Area_DomainEngineering .
+
+tax:D25_T3_C10 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T3 ;
+    skos:definition "The deliberate making of a product different from its siblings in a way that stakeholders can notice."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.3.10" ;
+    skos:prefLabel "Differentiation"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_DomainEngineering .
+
+tax:D25_T3_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T3 ;
+    skos:definition "The decision about which products a family is meant to cover and which it deliberately leaves out."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.3.2" ;
+    skos:prefLabel "Family scope"@en ;
+    skos:related tax:Area_DomainEngineering .
+
+tax:D25_T3_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T3 ;
+    skos:definition "A characteristic of a product that matters to a stakeholder and that tells products of a family apart; the unit in which choices are discussed."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.3.3" ;
+    skos:prefLabel "Feature"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_BusinessAnalysis,
+        tax:Area_DomainEngineering .
+
+tax:D25_T3_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T3 ;
+    skos:definition "A place in a shared asset where members of the family differ and a choice has to be made."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.3.4" ;
+    skos:prefLabel "Variation point"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_DomainEngineering .
+
+tax:D25_T3_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T3 ;
+    skos:definition "One of the ways in which a variation point can be resolved."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.3.5" ;
+    skos:prefLabel "Alternative"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_DomainEngineering .
+
+tax:D25_T3_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T3 ;
+    skos:definition "The moment in the life of a product at which a choice at a variation point becomes fixed, from design to run time."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.3.6" ;
+    skos:prefLabel "Binding time"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_DomainEngineering,
+        tax:Area_IntegrationAndBuild .
+
+tax:D25_T3_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T3 ;
+    skos:definition "A rule that forbids or demands certain combinations of choices, so that only workable products can be specified."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.3.7" ;
+    skos:prefLabel "Choice constraint"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_DomainEngineering .
+
+tax:D25_T3_C8 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T3 ;
+    skos:definition "The way a variation point is made to work inside an asset, for example by parameters, substitution, extension or selection."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.3.8" ;
+    skos:prefLabel "Realization technique"@en ;
+    skos:related tax:Area_DomainEngineering,
+        tax:Area_IntegrationAndBuild .
+
+tax:D25_T3_C9 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T3 ;
+    skos:definition "An explicit description of the variation points, alternatives and constraints of a family, used to guide and check configuration."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.3.9" ;
+    skos:prefLabel "Variability model"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_DomainEngineering .
+
+tax:D25_T4_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T4 ;
+    skos:definition "Any work product built so that more than one product can use it, whether a requirement, a model, a component or a test."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.4.1" ;
+    skos:prefLabel "Reusable asset"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_DomainEngineering .
+
+tax:D25_T4_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T4 ;
+    skos:definition "What is known about an asset's origin, quality evidence and intended context, so that someone can judge whether it suits a new use."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.4.2" ;
+    skos:prefLabel "Asset fitness record"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_DomainEngineering .
+
+tax:D25_T4_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T4 ;
+    skos:definition "Choosing, from the available assets, those that meet the needs of a particular product."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.4.3" ;
+    skos:prefLabel "Asset selection"@en ;
+    skos:related tax:Area_ApplicationEngineering .
+
+tax:D25_T4_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T4 ;
+    skos:definition "Changing a selected asset, within what its variation points allow, so that it fits the product at hand."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.4.4" ;
+    skos:prefLabel "Asset adaptation"@en ;
+    skos:related tax:Area_ApplicationEngineering .
+
+tax:D25_T4_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T4 ;
+    skos:definition "Change to a reusable asset over time, together with its effect on the products that already depend on it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.4.5" ;
+    skos:prefLabel "Asset evolution"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_DomainEngineering .
+
+tax:D25_T4_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T4 ;
+    skos:definition "The organized, searchable listing of assets with enough description to find and compare them."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.4.6" ;
+    skos:prefLabel "Asset catalogue"@en ;
+    skos:related tax:Area_DomainEngineering .
+
+tax:D25_T4_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T4 ;
+    skos:definition "Information that flows from product work back to the shared assets: defects found, options missing, uses that were not foreseen."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.4.7" ;
+    skos:prefLabel "Reuse feedback"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_DomainEngineering .
+
+tax:D25_T4_C8 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T4 ;
+    skos:definition "The extra up-front effort spent making something general, justified only by the use it is expected to get in several products."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.4.8" ;
+    skos:prefLabel "Reuse investment"@en ;
+    skos:related tax:Area_DomainEngineering .
+
+tax:D25_T5_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T5 ;
+    skos:definition "The complete set of choices that defines one product of a family."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.5.1" ;
+    skos:prefLabel "Product configuration"@en ;
+    skos:related tax:Area_ApplicationEngineering .
+
+tax:D25_T5_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T5 ;
+    skos:definition "The work of producing a specific product from shared assets according to a configuration."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.5.2" ;
+    skos:prefLabel "Product derivation"@en ;
+    skos:related tax:Area_ApplicationEngineering .
+
+tax:D25_T5_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T5 ;
+    skos:definition "The part of a product's needs that the shared assets do not cover and which therefore needs product-specific work."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.5.3" ;
+    skos:prefLabel "Coverage gap"@en ;
+    skos:related tax:Area_ApplicationEngineering .
+
+tax:D25_T5_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T5 ;
+    skos:definition "Work done for one product only, beyond what the shared assets offer, kept separate so it does not erode them."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.5.4" ;
+    skos:prefLabel "Product-specific extension"@en ;
+    skos:related tax:Area_ApplicationEngineering .
+
+tax:D25_T5_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T5 ;
+    skos:definition "Verification, before building, that a configuration respects all constraints of the variability model."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.5.5" ;
+    skos:prefLabel "Configuration check"@en ;
+    skos:related tax:Area_ApplicationEngineering .
+
+tax:D25_T5_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T5 ;
+    skos:definition "The record of which assets and choices went into which product, so that later changes can be traced to the products they affect."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.5.6" ;
+    skos:prefLabel "Derivation record"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_IntegrationAndBuild .
+
+tax:D25_T5_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T5 ;
+    skos:definition "A need of one customer that the family does not yet address and that may be absorbed into the shared assets or kept apart."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.5.7" ;
+    skos:prefLabel "Customer-specific requirement"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_BusinessAnalysis .
+
+tax:D25_T6_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T6 ;
+    skos:definition "An expression, in the stakeholder's own terms, of something they want to achieve."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.6.1" ;
+    skos:prefLabel "Need statement"@en ;
+    skos:related tax:Area_BusinessAnalysis .
+
+tax:D25_T6_C10 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T6 ;
+    skos:definition "The agreed set of requirements at a point in time, against which later changes are measured."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.6.10" ;
+    skos:prefLabel "Requirement baseline"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T6_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T6 ;
+    skos:definition "A condition or capability that a solution must have, worded so that it can be agreed and checked."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.6.2" ;
+    skos:prefLabel "Requirement"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T6_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T6 ;
+    skos:definition "The set of qualities that make a requirement usable, such as being clear, single-minded, feasible and checkable."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.6.3" ;
+    skos:prefLabel "Requirement quality"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T6_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T6 ;
+    skos:definition "The person, document or situation from which a requirement comes, kept so that it can be questioned and defended."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.6.4" ;
+    skos:prefLabel "Requirement origin"@en ;
+    skos:related tax:Area_BusinessAnalysis .
+
+tax:D25_T6_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T6 ;
+    skos:definition "A situation in which two requirements cannot both be satisfied as written, calling for negotiation or a decision."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.6.5" ;
+    skos:prefLabel "Requirement conflict"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T6_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T6 ;
+    skos:definition "The observable condition under which a stakeholder will agree that a requirement has been met."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.6.6" ;
+    skos:prefLabel "Acceptance condition"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T6_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T6 ;
+    skos:definition "A modification to an agreed requirement, assessed for its effects before it is accepted."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.6.7" ;
+    skos:prefLabel "Requirement change"@en ;
+    skos:related tax:Area_BusinessAnalysis .
+
+tax:D25_T6_C8 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T6 ;
+    skos:definition "The relative importance given to a requirement, with the reasons, used when not everything can be done."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.6.8" ;
+    skos:prefLabel "Requirement priority"@en ;
+    skos:related tax:Area_BusinessAnalysis .
+
+tax:D25_T6_C9 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T6 ;
+    skos:definition "A property such as speed, safety or usability that describes how well a solution behaves rather than what it does."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.6.9" ;
+    skos:prefLabel "Quality attribute"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T7_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T7 ;
+    skos:definition "A decision that has to be made, framed so that evidence can answer it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.7.1" ;
+    skos:prefLabel "Analysis question"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T7_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T7 ;
+    skos:definition "A situation in which improving one desirable property costs another, requiring a reasoned balance."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.7.2" ;
+    skos:prefLabel "Trade-off"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T7_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T7 ;
+    skos:definition "An assessment of whether a proposed solution can be achieved within the limits of technology, time, cost and organization."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.7.3" ;
+    skos:prefLabel "Feasibility judgement"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T7_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T7 ;
+    skos:definition "A reasoned expectation of an uncertain quantity such as effort, cost or performance, stated with its basis and its uncertainty."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.7.4" ;
+    skos:prefLabel "Estimate"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T7_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T7 ;
+    skos:definition "The possibility that uncertainty will affect an objective, described by what could happen, how likely it is and how much it would matter."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.7.5" ;
+    skos:prefLabel "Risk"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T7_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T7 ;
+    skos:definition "How much a result changes when an assumption or input changes, used to see which uncertainties matter."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.7.6" ;
+    skos:prefLabel "Sensitivity"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T7_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T7 ;
+    skos:definition "The recorded reasons that connect evidence to a decision, so that it can be reviewed or reopened."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.7.7" ;
+    skos:prefLabel "Analysis rationale"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T7_C8 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T7 ;
+    skos:definition "The structured weighing of alternatives against agreed criteria."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.7.8" ;
+    skos:prefLabel "Candidate comparison"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "A deliberately simplified description of something, made for a purpose and judged by how well it serves that purpose."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.1" ;
+    skos:prefLabel "Model"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C10 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "A model that states what a thing is, how it is arranged and how its parts relate, without computing anything about it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.10" ;
+    skos:prefLabel "Descriptive model"@en ;
+    skos:related tax:Area_DomainEngineering,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C11 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "A model that can be evaluated to give numbers or verdicts about a property of the thing, such as load, delay, cost or failure likelihood."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.11" ;
+    skos:prefLabel "Analytical model"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C12 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "A model kept in the notation and tools of one engineering discipline, which must be related to the whole-system model without being absorbed by it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.12" ;
+    skos:prefLabel "Discipline-specific model"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C13 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "The agreed way in which information moves between the whole-system model and a discipline model, so that a change on one side can be seen and absorbed on the other."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.13" ;
+    skos:prefLabel "Model interface between disciplines"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C14 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "Running a model, with prepared data and a prepared environment, to observe behaviour that cannot be reached by inspection, and judging the results against what is expected."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.14" ;
+    skos:prefLabel "Simulation"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C15 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "Holding the criteria, the evaluated alternatives and the reasons for the choice in or next to the model, so that a decision can be reproduced and challenged later."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.15" ;
+    skos:prefLabel "Model-based decision support"@en ;
+    skos:related tax:Area_BusinessAnalysis,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C16 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "Checking a design or a product against its requirements by means of models, so that the checks can be prepared early and repeated when the design changes."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.16" ;
+    skos:prefLabel "Model-based verification"@en ;
+    skos:related tax:Area_TechnicalAnalysis,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T8_C17 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "The managed store in which models, their patterns and their versions are kept so that they can be found, compared and reused."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.17" ;
+    skos:prefLabel "Model repository"@en ;
+    skos:related tax:Area_DomainEngineering,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C18 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "A recurring, proven way of building a part of a model, together with the rule that says what it may and may not be used for."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.18" ;
+    skos:prefLabel "Model pattern"@en ;
+    skos:related tax:Area_DomainEngineering,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C19 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "Treating a change to a model like a change to any other controlled item: identified, assessed, approved and recorded against the version it alters."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.19" ;
+    skos:prefLabel "Model change control"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "The reason a model is made, which decides what it must show and what it may leave out."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.2" ;
+    skos:prefLabel "Modelling purpose"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C20 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "An agreement on who may author, change and share which part of a model, and on how consistency is kept while several people work on it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.20" ;
+    skos:prefLabel "Collaborative modelling rule"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C21 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "The chosen combination of purpose, method, notation, tools and flow of work by which an organization models, written down so that it can be deployed and improved."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.21" ;
+    skos:prefLabel "Modelling approach"@en ;
+    skos:related tax:Area_DomainEngineering,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C22 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "A stated reason for modelling together with a way to tell whether the modelling is delivering it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.22" ;
+    skos:prefLabel "Modelling goal and measure"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C23 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "Anything that makes modelling possible and can be reused, such as a library, a template, a method or a tool extension, managed with its own life cycle."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.23" ;
+    skos:prefLabel "Modelling asset"@en ;
+    skos:related tax:Area_DomainEngineering,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C24 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "Keeping the ways of working and the tool customizations that proved useful as shared knowledge, instead of letting each team rebuild them."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.24" ;
+    skos:prefLabel "Method and tool reuse"@en ;
+    skos:related tax:Area_DomainEngineering,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C25 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "The climb from raw engineering data, to organized information, to knowledge about the system, to judgement about what to do; a model is useful when it supports each step."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.25" ;
+    skos:prefLabel "From data to understanding"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "The degree of detail a model carries, chosen to suit its purpose and its readers."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.3" ;
+    skos:prefLabel "Abstraction level"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "A particular way of looking at a system that brings some concerns to the front and sets others aside."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.4" ;
+    skos:prefLabel "Viewpoint"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "The absence of contradiction between the parts or views of a model, or between a model and the things it refers to."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.5" ;
+    skos:prefLabel "Model consistency"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "The degree to which a model gives answers that hold for the real situation it stands for."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.6" ;
+    skos:prefLabel "Model validity"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "A depiction of the parts of a system and how they are related."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.7" ;
+    skos:prefLabel "Structural view"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C8 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "A depiction of how a system acts over time or in response to stimuli."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.8" ;
+    skos:prefLabel "Behavioural view"@en ;
+    skos:related tax:Area_TechnicalAnalysis .
+
+tax:D25_T8_C9 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T8 ;
+    skos:definition "The use of a model as the agreed reference from which other work products are produced or checked."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8.9" ;
+    skos:prefLabel "Model as shared record"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T9_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T9 ;
+    skos:definition "A deliberately chosen set of parts brought together at one time, small enough that a failure can be traced."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9.1" ;
+    skos:prefLabel "Integration increment"@en ;
+    skos:related tax:Area_IntegrationAndBuild .
+
+tax:D25_T9_C10 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T9 ;
+    skos:definition "The closeness of the environments in which software is built, tested and run, which limits surprises when it moves between them."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9.10" ;
+    skos:prefLabel "Environment parity"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T9_C11 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T9 ;
+    skos:definition "A named, fixed state of the sources from which a build can always be produced again."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9.11" ;
+    skos:prefLabel "Source baseline"@en ;
+    skos:related tax:Area_DomainEngineering,
+        tax:Area_IntegrationAndBuild .
+
+tax:D25_T9_C12 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T9 ;
+    skos:definition "The decision on how and in what sequence parts will be combined, chosen to expose interface problems early and to isolate the cause of a fault."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9.12" ;
+    skos:prefLabel "Integration strategy"@en ;
+    skos:related tax:Area_IntegrationAndBuild .
+
+tax:D25_T9_C13 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T9 ;
+    skos:definition "The tools, services and test surroundings that must exist before parts can be combined and checked, planned and obtained like any other need."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9.13" ;
+    skos:prefLabel "Integration environment"@en ;
+    skos:related tax:Area_IntegrationAndBuild .
+
+tax:D25_T9_C14 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T9 ;
+    skos:definition "A simulator, stub or prototype used in place of a part that does not yet exist or cannot be reached, so that the rest can be combined and checked."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9.14" ;
+    skos:prefLabel "Stand-in element"@en ;
+    skos:related tax:Area_IntegrationAndBuild .
+
+tax:D25_T9_C15 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T9 ;
+    skos:definition "The rule for which earlier checks are repeated when a part changes, so that a new combination does not silently break an old one."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9.15" ;
+    skos:prefLabel "Regression strategy"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T9_C16 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T9 ;
+    skos:definition "A limit found while combining parts that must be passed back to requirements, architecture and design, because only the design can remove it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9.16" ;
+    skos:prefLabel "Integration constraint"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TechnicalAnalysis .
+
+tax:D25_T9_C17 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T9 ;
+    skos:definition "An unexpected result observed while combining parts, recorded with its context so that it can be traced to a cause and not rediscovered."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9.17" ;
+    skos:prefLabel "Integration anomaly"@en ;
+    skos:related tax:Area_IntegrationAndBuild .
+
+tax:D25_T9_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T9 ;
+    skos:definition "The shared statement of what one part offers and another may rely on, so they can be built apart and still fit."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9.2" ;
+    skos:prefLabel "Interface agreement"@en ;
+    skos:related tax:Area_IntegrationAndBuild .
+
+tax:D25_T9_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T9 ;
+    skos:definition "The planned sequence in which parts are combined, chosen to find risky mismatches early."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9.3" ;
+    skos:prefLabel "Integration order"@en ;
+    skos:related tax:Area_IntegrationAndBuild .
+
+tax:D25_T9_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T9 ;
+    skos:definition "The transformation of sources and dependencies into runnable artifacts by a defined, repeatable procedure."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9.4" ;
+    skos:prefLabel "Build"@en ;
+    skos:related tax:Area_IntegrationAndBuild .
+
+tax:D25_T9_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T9 ;
+    skos:definition "A build that gives the same result from the same inputs, wherever and whenever it is run."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9.5" ;
+    skos:prefLabel "Repeatable build"@en ;
+    skos:related tax:Area_IntegrationAndBuild .
+
+tax:D25_T9_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T9 ;
+    skos:definition "A part that another part needs in order to be built or to run, whether made in-house or obtained elsewhere."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9.6" ;
+    skos:prefLabel "Dependency"@en ;
+    skos:related tax:Area_IntegrationAndBuild .
+
+tax:D25_T9_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T9 ;
+    skos:definition "A product of a build, such as a package or image, that is stored and can be tested or deployed."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9.7" ;
+    skos:prefLabel "Build artifact"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T9_C8 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T9 ;
+    skos:definition "The unambiguous naming and version of an artifact, so that what was tested is what is released."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9.8" ;
+    skos:prefLabel "Artifact identity"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T9_C9 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
+    skos:broader tax:D25_T9 ;
+    skos:definition "A defect in which two parts that each work alone fail together because they hold different understandings of their boundary."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9.9" ;
+    skos:prefLabel "Interface mismatch"@en ;
+    skos:related tax:Area_IntegrationAndBuild .
+
+<http://example.org/practice-concept-corpus> a owl:Ontology ;
+    dcterms:created "2026-10-13" ;
+    dcterms:creator "Yusuf Altunel" ;
+    dcterms:description "An own, original formulation of practice concepts for seven areas of the software life cycle (domain engineering, application engineering, business analysis, technical analysis, integration and build, transition and release, disposal), grouped by meaning into themes. Exported from the domain 25 of the agentic-sdlc ontology, release 0.99.0 (A-Box 2.11.0). It reproduces no text, title or structure of any copyrighted work."@en ;
+    dcterms:identifier "practice_concept_corpus_v1_0_0" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights "© 2026 Yusuf Altunel, CC BY 4.0"@en ;
+    dcterms:title "Practice Concept Corpus"@en ;
+    owl:versionIRI <http://example.org/practice-concept-corpus/1.0.0> ;
+    owl:versionInfo "1.0.0" .
+
+tax:D25_T16 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.16" ;
+    skos:prefLabel "Operating context: how the product is meant to be used"@en ;
+    skos:scopeNote "The picture of use from which requirements are drawn and against which they are validated."@en .
+
+tax:D25_T17 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.17" ;
+    skos:prefLabel "Shaping the solution: function and structure"@en ;
+    skos:scopeNote "How a need becomes a described solution before it is built."@en .
+
+tax:D25_T5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.5" ;
+    skos:prefLabel "Making a product from assets"@en ;
+    skos:scopeNote "Concepts for turning shared assets and a set of choices into one specific product."@en .
+
+tax:D25_T13 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.13" ;
+    skos:prefLabel "Evidence and trust"@en ;
+    skos:scopeNote "Concepts for showing, to others and to ourselves, that the work was done properly and the result can be relied on."@en .
+
+tax:D25_T2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.2" ;
+    skos:prefLabel "Knowing the field: domain knowledge and its limits"@en ;
+    skos:scopeNote "Concepts about the shared knowledge of a field of activity that several systems or products rely on."@en .
+
+tax:D25_T4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.4" ;
+    skos:prefLabel "Reusable assets and how they live"@en ;
+    skos:scopeNote "Concepts about work products built to serve more than one product, and about keeping them fit over time."@en .
+
+tax:D25_T7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.7" ;
+    skos:prefLabel "Analysing to decide"@en ;
+    skos:scopeNote "Concepts for investigating a question so that a decision can be made on evidence, with the reasoning kept."@en .
+
+tax:D25_T1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.1" ;
+    skos:prefLabel "Why the work exists: need, value and the people concerned"@en ;
+    skos:scopeNote "Concepts that explain why a change is worth making and who is affected by it, before any solution is described."@en .
+
+tax:D25_T10 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.10" ;
+    skos:prefLabel "Automated flow of change"@en ;
+    skos:scopeNote "Concepts about moving change from source to a deliverable through automated, observable steps."@en .
+
+tax:D25_T14 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.14" ;
+    skos:prefLabel "Steering the work"@en ;
+    skos:scopeNote "Concepts for deciding how the work is organized, adapted and recorded."@en .
+
+tax:D25_T3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.3" ;
+    skos:prefLabel "Sameness and difference: commonality and variability"@en ;
+    skos:scopeNote "Concepts for deciding what a family of products shares and where its members are allowed to differ."@en .
+
+tax:D25_T6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.6" ;
+    skos:prefLabel "From needs to requirements"@en ;
+    skos:scopeNote "Concepts for stating what a solution must do or be, in a form that can be agreed and checked."@en .
+
+tax:D25_T15 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.15" ;
+    skos:prefLabel "Requirements at every level and of every kind"@en ;
+    skos:scopeNote "How requirements differ by level and kind, what makes a whole set of them sound, and how they are kept in step with each other."@en .
+
+tax:D25_T12 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.12" ;
+    skos:prefLabel "Ending a product's life"@en ;
+    skos:scopeNote "Concepts for withdrawing a product or a variant responsibly, so that nothing needed is lost and nothing harmful is left."@en .
+
+tax:D25_T9 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.9" ;
+    skos:prefLabel "Putting the parts together"@en ;
+    skos:scopeNote "Concepts about assembling separately made parts into a working whole and making the result repeatable."@en .
+
+tax:D25 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package, written on 2026-10-13 under the Owner's decision of the same day to build an own semantic corpus from the works read, copying neither their text nor their structure. Informed by: the Owner's own works (the O4SDLC pack, the domain engineering files, the AI4SE material, the 2013 thesis, the UAISE draft); ISO/IEC/IEEE 12207:2026, ISO/IEC/IEEE 29148:2018, ISO/IEC/IEEE 24641:2023 and a preview of ISO/IEC 26550:2015, as read by the Owner under a licence the Owner confirmed on 2026-10-13; the IIBA BABOK Guide v3 (a member copy); SWEBOK Guide v4.0; the SEBoK; the NASA Systems Engineering Handbook; the SEI Framework for Software Product Line Practice."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25" ;
+    skos:prefLabel "Practice Concept Corpus (own formulation for the seven areas)"@en ;
+    skos:scopeNote "Concepts for the seven areas that lack a public standard text (domain engineering, application engineering, business analysis, technical analysis, integration and build, transition and release, disposal), stated in this package's own words and grouped by the question each group answers, not by the chapters or clauses of any source. Each concept links, by skos:related, to the areas it serves. No sentence, heading, ordering, numbering or count of the informing works is reproduced; where a concept has a familiar name, the definition is this package's own and may differ from any source's. The corpus is a statement of this package's understanding, written with AI assistance, and has not been reviewed by a domain specialist."@en ;
+    skos:topConceptOf tax:PracticeConceptCorpusScheme .
+
+tax:D25_T11 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.11" ;
+    skos:prefLabel "Getting into use"@en ;
+    skos:scopeNote "Concepts for handing a result to the people and systems that will rely on it."@en .
+
+tax:D25_T8 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.8" ;
+    skos:prefLabel "Models and modelling"@en ;
+    skos:scopeNote "Concepts about deliberately simplified descriptions made to think, communicate and check."@en .
+
+tax:Area_Disposal a skos:Concept ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:note "Practice area of the software development life cycle, named here only so that the relations of the corpus resolve; its own definition lives with the ontology it comes from."@en ;
+    skos:prefLabel "Disposal"@en .
+
+tax:Area_ApplicationEngineering a skos:Concept ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:note "Practice area of the software development life cycle, named here only so that the relations of the corpus resolve; its own definition lives with the ontology it comes from."@en ;
+    skos:prefLabel "Application engineering (product line)"@en .
+
+tax:Area_DomainEngineering a skos:Concept ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:note "Practice area of the software development life cycle, named here only so that the relations of the corpus resolve; its own definition lives with the ontology it comes from."@en ;
+    skos:prefLabel "Domain engineering"@en .
+
+tax:Area_IntegrationAndBuild a skos:Concept ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:note "Practice area of the software development life cycle, named here only so that the relations of the corpus resolve; its own definition lives with the ontology it comes from."@en ;
+    skos:prefLabel "Integration and build"@en .
+
+tax:Area_TransitionAndRelease a skos:Concept ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:note "Practice area of the software development life cycle, named here only so that the relations of the corpus resolve; its own definition lives with the ontology it comes from."@en ;
+    skos:prefLabel "Transition, deployment and release"@en .
+
+tax:Area_BusinessAnalysis a skos:Concept ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:note "Practice area of the software development life cycle, named here only so that the relations of the corpus resolve; its own definition lives with the ontology it comes from."@en ;
+    skos:prefLabel "Business analysis"@en .
+
+tax:Area_TechnicalAnalysis a skos:Concept ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:note "Practice area of the software development life cycle, named here only so that the relations of the corpus resolve; its own definition lives with the ontology it comes from."@en ;
+    skos:prefLabel "Technical (system) analysis"@en .
+
+tax:PracticeConceptCorpusScheme a skos:ConceptScheme ;
+    skos:hasTopConcept tax:D25 ;
+    skos:prefLabel "Practice Concept Corpus (own formulation for seven software life cycle practice areas)"@en .
+
