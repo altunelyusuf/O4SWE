@@ -1,0 +1,128 @@
+@prefix o4reg:   <http://www.zt4swe.io/o4sdlc/registration#> .
+@prefix core:    <http://example.org/core#> .
+@prefix orh:     <http://example.org/oepack-release-history#> .
+@prefix cfg:     <http://example.org/configuration#> .
+@prefix q:       <http://example.org/quality#> .
+@prefix kb:      <http://example.org/knowledge-base#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+
+#################################################################
+#  O4SDLC → OEE Registration & Conformance submission  v1.0.0
+#  Registrant: O4SDLC (consolidated A&D/SDLC domain ontology pack v1.1.1)
+#  Protocol:  ORCP v1.0.0 ; Pack v20.23.0 ; Strategy v1.1.0 (12 facets)
+#  Registrant emits instances ONLY, against EXISTING OEE central IRIs.
+#  No OEE vocabulary minted; no OEE artifact edited (B1 / L-64).
+#################################################################
+
+o4reg:Submission a owl:NamedIndividual , prov:Entity ;
+    rdfs:label "O4SDLC OEE registration submission v1.0.0"@en ;
+    dcterms:creator <http://www.zt4swe.io/agent/YusufAltunel> ;
+    dcterms:created "2026-06-08"^^xsd:date ;
+    rdfs:comment "Registrant submission bundle for OEE Phase-C gating. Covers core (conformance) + oepack_release_history, configuration, knowledge_base, quality (registration). risk/performance/testing/measurement/reliability: no genuine data to register (see fit-gap note); not fabricated (invariant 4 / L-57 / L-65)."@en .
+
+#################################################################
+#  FACET: core  — CONFORMANCE (mandatory: every component IS a core:Artifact)
+#  Each O4SDLC ontology + the pack are core:Artifact individuals.
+#  Criticality profile = Standard (domain documentation ontology; not safety-critical)
+#  => the High/Critical-only conformance gates (risk/perf/testing/config) do NOT fire.
+#  core_shacl: every owl:NamedIndividual carries rdfs:label.
+#################################################################
+
+o4reg:art_O4SDLC_pack a owl:NamedIndividual , core:Artifact ;
+    rdfs:label "O4SDLC-Pack v1.1.1 (consolidated A&D/SDLC ontology pack)"@en ;
+    core:hasCriticalityProfile core:Profile_Standard ;
+    dcterms:hasVersion "1.1.1" .
+
+o4reg:art_o4ucm a owl:NamedIndividual , core:Artifact ;
+    rdfs:label "o4ucm v1.0.4 — use-case modeling ontology"@en ;
+    core:hasCriticalityProfile core:Profile_Standard .
+
+o4reg:art_o4df a owl:NamedIndividual , core:Artifact ;
+    rdfs:label "o4df v1.0.2 — design-foundations ontology"@en ;
+    core:hasCriticalityProfile core:Profile_Standard .
+
+o4reg:art_o4se a owl:NamedIndividual , core:Artifact ;
+    rdfs:label "o4se v1.0.9 — software-engineering/architecture ontology"@en ;
+    core:hasCriticalityProfile core:Profile_Standard .
+
+o4reg:art_o4sdlc a owl:NamedIndividual , core:Artifact ;
+    rdfs:label "o4sdlc v1.0.1 — SDLC consolidation upper layer"@en ;
+    core:hasCriticalityProfile core:Profile_Standard .
+
+o4reg:art_o4sdlc_kb a owl:NamedIndividual , core:Artifact ;
+    rdfs:label "o4sdlc knowledge_base ABox v1.0.1"@en ;
+    core:hasCriticalityProfile core:Profile_Standard .
+
+#################################################################
+#  FACET: oepack_release_history  — REGISTRATION
+#  SubjectOntology (lifecycleStatus required) + OntologyFile (belongsToSubject)
+#  + Supersession (supersededFile + supersedes) for the real lineage.
+#################################################################
+
+o4reg:subj_O4SDLC a owl:NamedIndividual , orh:SubjectOntology ;
+    rdfs:label "O4SDLC subject ontology (A&D/SDLC consolidation)"@en ;
+    orh:lifecycleStatus "active" .
+
+o4reg:File_o4ucm_v1_0_4 a owl:NamedIndividual , orh:OntologyFile ;
+    rdfs:label "o4ucm_v1_0_4.ttl"@en ; orh:belongsToSubject o4reg:subj_O4SDLC .
+o4reg:File_o4ucm_v1_0_3 a owl:NamedIndividual , orh:OntologyFile ;
+    rdfs:label "o4ucm_v1_0_3.ttl (superseded)"@en ; orh:belongsToSubject o4reg:subj_O4SDLC .
+o4reg:File_o4df_v1_0_2 a owl:NamedIndividual , orh:OntologyFile ;
+    rdfs:label "o4df_v1_0_2.ttl"@en ; orh:belongsToSubject o4reg:subj_O4SDLC .
+o4reg:File_o4se_v1_0_9 a owl:NamedIndividual , orh:OntologyFile ;
+    rdfs:label "o4se_merged_v1_0_9.ttl"@en ; orh:belongsToSubject o4reg:subj_O4SDLC .
+o4reg:File_o4sdlc_v1_0_1 a owl:NamedIndividual , orh:OntologyFile ;
+    rdfs:label "o4sdlc_v1_0_1.ttl"@en ; orh:belongsToSubject o4reg:subj_O4SDLC .
+o4reg:File_o4sdlc_v1_0_0 a owl:NamedIndividual , orh:OntologyFile ;
+    rdfs:label "o4sdlc_v1_0_0.ttl (superseded)"@en ; orh:belongsToSubject o4reg:subj_O4SDLC .
+
+o4reg:Sup_o4ucm_103_104 a owl:NamedIndividual , orh:Supersession ;
+    rdfs:label "o4ucm v1.0.3 superseded by v1.0.4 (E-4: removed stale amod:VersionToken)"@en ;
+    orh:supersededFile o4reg:File_o4ucm_v1_0_3 ;
+    orh:supersedes o4reg:File_o4ucm_v1_0_4 .
+o4reg:Sup_o4sdlc_100_101 a owl:NamedIndividual , orh:Supersession ;
+    rdfs:label "o4sdlc v1.0.0 superseded by v1.0.1 (E-CRUD + E-3 realization)"@en ;
+    orh:supersededFile o4reg:File_o4sdlc_v1_0_0 ;
+    orh:supersedes o4reg:File_o4sdlc_v1_0_1 .
+
+#################################################################
+#  FACET: configuration  — REGISTRATION
+#  ChangeOperation per real O4SDLC change ; appliesToArtifact → artifact.
+#################################################################
+
+o4reg:chg_E_CRUD a owl:NamedIndividual , cfg:ChangeOperation ;
+    rdfs:label "E-CRUD: add O4UCM Create/Read/Update/DeleteOperation exactMatch to O4SE DataManagement ops"@en ;
+    cfg:appliesToArtifact o4reg:art_o4ucm .
+o4reg:chg_E3 a owl:NamedIndividual , cfg:ChangeOperation ;
+    rdfs:label "E-3: o4sdlc:refinesInto ⊑ o4df:isInputTo + sourced class-diagram evolution chain"@en ;
+    cfg:appliesToArtifact o4reg:art_o4sdlc .
+o4reg:chg_E4 a owl:NamedIndividual , cfg:ChangeOperation ;
+    rdfs:label "E-4: remove stale amod:VersionToken (o4ucm v1.0.4) clearing REDO C7+"@en ;
+    cfg:appliesToArtifact o4reg:art_o4ucm .
+o4reg:chg_v111_deprefresh a owl:NamedIndividual , cfg:ChangeOperation ;
+    rdfs:label "v1.1.1 PATCH: DEPENDENCIES refresh to OE Pack v20.14.1 (administrative; no ontology change)"@en ;
+    cfg:appliesToArtifact o4reg:art_O4SDLC_pack .
+
+#################################################################
+#  FACET: knowledge_base  — REGISTRATION
+#  Bind O4SDLC's existing KB (10 RegressionTests, 6 Lessons, 2 BestPractices,
+#  already kb_shacl-conformant: label+definition+source) to its artifact.
+#################################################################
+
+o4reg:O4SDLC_KB_Deposit a owl:NamedIndividual , prov:Activity ;
+    rdfs:label "O4SDLC knowledge-base deposit (lessons + regression results)"@en ;
+    kb:transforms o4reg:art_O4SDLC_pack ;
+    kb:hasResult o4reg:art_o4sdlc_kb .
+
+#################################################################
+#  FACET: quality  — REGISTRATION
+#  QualityAssessment of O4SDLC (REDO v4.1.0: O4SE 0 violations) ; assessesArtifact.
+#################################################################
+
+o4reg:O4SDLC_Quality a owl:NamedIndividual , q:QualityAssessment ;
+    rdfs:label "O4SDLC quality assessment — REDO v4.1.0 clean (O4SE 0 violations; HermiT consistent)"@en ;
+    q:assessesArtifact o4reg:art_O4SDLC_pack .

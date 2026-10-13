@@ -1,0 +1,50 @@
+path	bytes	sha256	turtle_check	detail
+o4sdlc-pack-v1.1.2/MANIFEST_SHA256.txt	3409	4b8ad799cbe84787e8073284c329b9b94adad41dcb1a7b3c049d93a0b216573b		
+o4sdlc-pack-v1.1.2/VERSION.txt	6	77123b8e4bdbd54505bf6e8021527ac60281602a06fe307564532c4dba39dbca		
+o4sdlc-pack-v1.1.2/05-prov-records/o4sdlc_prov_v1_0_1.ttl	2644	ed049e0111388683b1e524f006430bddf94bd9494d90e448b15eef831a0a2261	parses	0 classes, 45 triples
+o4sdlc-pack-v1.1.2/04-documentation/DEPENDENCIES.md	1029	3a439bbfaef23c485c1ed8274f8f351602ffe019b06ed5bbc78742e0e4ec629b		
+o4sdlc-pack-v1.1.2/04-documentation/O4SDLC_HermiT_consistency_proof_v2_0_0.txt	2253	e4f38544aad3deb91c82a08e00e1b491be9a993b2ad32c3209d43a9841e86357		
+o4sdlc-pack-v1.1.2/04-documentation/O4SDLC_TRUST_REPORT_v1_0_0.md	12287	6b034352122c67424168b8684a48832b155605ccb45947530e65ddd8e1f7be91		
+o4sdlc-pack-v1.1.2/04-documentation/O4SE_Tier2_Sourcing_Map_v1_0_0.md	2995	9cab0d62ad2ae9b1fe702729d48e86dfb1b5170b984c37063415cac42b47c591		
+o4sdlc-pack-v1.1.2/04-documentation/OEE_COMPLIANCE_RECHECK_v20_14_1.md	2216	b411754b1fe92713c49cd2e7706a0b37bc21de4c8babe2d610f31563f7a45f01		
+o4sdlc-pack-v1.1.2/04-documentation/OE_ENHANCEMENT_PROPOSAL_v1_0_0.md	3541	cb934227a9dadd5d721449b31549def928864b27dd502d90fb80184b7c046e0c		
+o4sdlc-pack-v1.1.2/04-documentation/OWNERSHIP_RULING_v1_0_0.md	1655	b5960c9eb8bb02b430a8cf2cd4fce192ec153aeb6e8a8a52a05c2f9992580310		
+o4sdlc-pack-v1.1.2/04-documentation/R4_FINDINGS_v1_0_0.md	2921	ff0726d4b5bb604f47d3bba826ad4f129652c879327256cca66eeb57e8781c5a		
+o4sdlc-pack-v1.1.2/04-documentation/README.md	4013	7218620408d989fc5d3231b7b9dcc6effe54d7fb7a7b6bad005cd67189546d12		
+o4sdlc-pack-v1.1.2/04-documentation/REALIZATION_RECORD_v1_0_0.md	2646	d2414850cdf14404d7f92740caae36efb804da95913dbfb941b8bac8339e11b7		
+o4sdlc-pack-v1.1.2/04-documentation/VALIDATION_REPORT.md	3330	28fa62d5cfd74bde0b2da50789da68a5e1e5b476d6f610e65156be4878bd118d		
+o4sdlc-pack-v1.1.2/04-documentation/defect_register_v2_3_0.json	14643	4a49f4402d13dfc4d28af8148d6f1c2d0314da4b17d23517109bb98d0067dc25		
+o4sdlc-pack-v1.1.2/01-ontologies/o4df_v1_0_2.ttl	115306	97ad58cadf44d92a54abba568b84e09ef2dbee5c093f9db716e070472e8f2ac2	parses	114 classes, 1246 triples
+o4sdlc-pack-v1.1.2/01-ontologies/o4sdlc_knowledge_base_abox_v1_0_1.ttl	16746	a32854006a52dac24ddd89d6a18247ececd7410d83efa125a35fd3d0d3488918	parses	0 classes, 173 triples
+o4sdlc-pack-v1.1.2/01-ontologies/o4sdlc_v1_0_1.ttl	8539	261fb1b2be070dfef7013e3f13393280ca273370c1e1073cccaf729979d33a3b	parses	0 classes, 91 triples
+o4sdlc-pack-v1.1.2/01-ontologies/o4se_merged_v1_0_9.ttl	229880	308247af1917c075a8c4e118a93a51290026621b243d919047df88cfdb4d6980	parses	507 classes, 3402 triples
+o4sdlc-pack-v1.1.2/01-ontologies/o4ucm_v1_0_4.ttl	90739	9a15734218ee5a338fcd96e7d2f38c6a563132c498331e8a64d3035bad4162d2	parses	69 classes, 1065 triples
+o4sdlc-pack-v1.1.2/07-oee-registration/FIT_GAP_NOTE_v1_0_0.md	7362	71c831621dc2a4005b65d9926c6f6d9c63969ce48d3466dc26f90cdd930a5085		
+o4sdlc-pack-v1.1.2/07-oee-registration/O4SDLC_to_OEE_closure_note_v1_0_0.md	3233	164edb5a8736f66e98282cfd2d6966e4e03a3b9bbfe073a557323b7d989b2e16		
+o4sdlc-pack-v1.1.2/07-oee-registration/OEE_to_O4SDLC_registration_contract_v1_0_0.md	4047	047682115be08039248bbbe08896869549212231d465565c08f2b439dd551bf4		
+o4sdlc-pack-v1.1.2/07-oee-registration/REGISTRATION_RECORD_v1_0_0.md	1923	b9974605b29e50e916b82630f66fd9c572ac9ea863210f744d364aeb66a6941b		
+o4sdlc-pack-v1.1.2/07-oee-registration/o4sdlc_oee_registration_v1_0_0.ttl	7346	2c0846a4a38441623785412cad0ddac0d9df0b2af307874aba30de4540f7811c	parses	0 classes, 94 triples
+o4sdlc-pack-v1.1.2/07-oee-registration/validate_submission_v1_0_0.py	1621	4ee38497265c53377d994888d80e06e06572e066ee7575bf5eab13ec83aedb29		
+o4sdlc-pack-v1.1.2/02-shacl-safeguards/Ontology4UsecaseModeling_shacl_v1_0_1.ttl	9940	a7fa35a91d9ea9111d6f8229ba51f09b5f966f82b9ceaed923c84f21759050b9	parses	0 classes, 146 triples
+o4sdlc-pack-v1.1.2/02-shacl-safeguards/o4sdlc_shacl_v1_0_0.ttl	3944	ceb96f71d935ae2e71d1309e6838bf23e8d936ad2c012c13e7c8a7a10cdb0235	parses	0 classes, 65 triples
+o4sdlc-pack-v1.1.2/03-tooling/o4sdlc_regression_runner_v1_0_1.py	1199	52db6f5f3e439fa2e8714a8ca8c81e01197b8dac68dbd84e6b295a26610c69ff		
+o4se-draft-modules/O4SE_Architectures.ttl	14980	22a907cb52f13d53ed4d4dc9a765bfe1236d21612450716966d786a8586f48a2	parses	62 classes, 297 triples
+o4se-draft-modules/O4SE_CMMI_Integration.ttl	14221	a77663cf15f12c2985276b155d5f864db88666997cbfe93dfd539902a800445f	parses	40 classes, 257 triples
+o4se-draft-modules/O4SE_Core_Structure.ttl	13519	45505967d5a18225db32c88b42fb13084932426083ebd64dee536e663ea2137b	parses	57 classes, 302 triples
+o4se-draft-modules/O4SE_Coverage_Analysis_Updated.md	6545	e268bf0ca936a2ab55596300661090b366b8dc413899f85daa16313c39196978		
+o4se-draft-modules/O4SE_DataManagement.ttl	17528	286f1597ee3cc95b8d89ede1463fa96a01cb268ba7bf99f213057b6c082ae249	parses	93 classes, 403 triples
+o4se-draft-modules/O4SE_Final_Report.md	8958	54caa5ad536666926f2571dbcf06a1b1d9a0bfacdc97edeb779711933587b183		
+o4se-draft-modules/O4SE_Methodologies.ttl	14078	9896559aaa90e72818bf404eed607dbd0f031157d8f6753488e5b7c81dd5fc58	parses	49 classes, 282 triples
+o4se-draft-modules/O4SE_Organizations.ttl	17170	5a98c6a16ac133d064bb2a30bafd1a82d97a27afa5307af266346f1500113114	parses	95 classes, 396 triples
+o4se-draft-modules/O4SE_ProgrammingLanguages.ttl	14791	1cf2ec33302eb85941e6639ed4a57ed417f91fabc4114ddb6246b0c1002f6c6c	parses	50 classes, 304 triples
+o4se-draft-modules/O4SE_SWEBOK_Integration.ttl	15354	911b36670f39643ebe87fa3020c6676feb14a456faa61b2e591a21d8836b1072	parses	61 classes, 281 triples
+domain-engineering-ontology-v5.2/Deliverables_Summary_v5_2.md	15992	1aadf2165b94472345be108675db603f136bbe4049cf27297567057b636ecc78		
+domain-engineering-ontology-v5.2/Domain_Engineering_Ontology_v5_2_Enhanced.ttl	296476	3f948308a8d534c55bd03ece7e1ca1e78e7f5a088e0cc950da34d72505142786	parses	206 classes, 6678 triples
+domain-engineering-ontology-v5.2/Enhancement_Summary_v5_2.md	25642	126b5126172637e8fc5dde98408bcb0841f337117e0574e5fa60c4ce71eff239		
+domain-engineering-ontology-v5.2/SUCCESS_CONFIRMATION.md	11521	73102108bcacc4d88fc7acea8e4cfb11b4cb56aba9eccfd2fcb8536e65a0a05b		
+domain-engineering-ontology-v5.2/Validation_Checklist_v5_2.md	15374	03a87a47b87288a1f54ce65409cf6dc23938531c9094fe3616949ed90253aac8		
+domain-engineering-framework-and-documentation/01_Domain_Engineering_Documentation_Template.md	56033	38b69845ce7153798c2acc7b0e4cb4b25386dbfee02b8ca4e27da9bf518e268b		
+domain-engineering-framework-and-documentation/02_Domain_Engineering_Ontology.ttl	137842	54df79fd2a819c38934d5d8781481f4b87d935b46606d3599dcdc81a3cec1bb0	parses	137 classes, 3380 triples
+domain-engineering-framework-and-documentation/03_Competency_Questions.md	6193	0037db0ef138d165f6d943eeacf8712fd7f59222dad7711608886cd101df9197		
+domain-engineering-framework-and-documentation/README.md	3384	047b7b6196c8eed5c9434588d5560dc0b2eafd8d41fcbae211e46ad63a328736		
+domain-engineering-framework-and-documentation/reference/Metadefinition_of_Ontology_and_Taxonomy_ClaudeSonnet_Extended_docx.txt	18121	5ebd423b810098d9f3c9d6b8512895bc84a826296eb13025f6360533dc54f908		

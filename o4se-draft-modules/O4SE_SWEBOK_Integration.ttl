@@ -1,0 +1,404 @@
+@prefix o4se: <http://www.semanticweb.org/ontologies/2025/O4SE#> .
+@prefix swebok: <http://www.semanticweb.org/ontologies/2025/O4SE/SWEBOK#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+# ===========================
+# SWEBOK Knowledge Areas Integration
+# ===========================
+
+<http://www.semanticweb.org/ontologies/2025/O4SE/SWEBOK> a owl:Ontology ;
+    owl:versionInfo "1.0.0"^^xsd:string ;
+    dcterms:title "O4SE SWEBOK Integration Module"@en ;
+    dcterms:description "Integration of IEEE SWEBOK Knowledge Areas into O4SE"@en ;
+    owl:imports <http://www.semanticweb.org/ontologies/2025/O4SE> .
+
+# ===========================
+# SWEBOK Knowledge Area Classes
+# ===========================
+
+swebok:KnowledgeArea a owl:Class ;
+    rdfs:label "SWEBOK Knowledge Area"@en ;
+    rdfs:comment "A major area of software engineering knowledge as defined by IEEE SWEBOK"@en ;
+    rdfs:subClassOf o4se:SoftwareEngineering .
+
+# --- Software Requirements ---
+
+swebok:SoftwareRequirements a owl:Class ;
+    rdfs:label "Software Requirements KA"@en ;
+    rdfs:comment "Knowledge area covering the elicitation, analysis, specification, and validation of software requirements"@en ;
+    rdfs:subClassOf swebok:KnowledgeArea .
+
+swebok:RequirementsElicitation a owl:Class ;
+    rdfs:label "Requirements Elicitation"@en ;
+    rdfs:subClassOf o4se:Activity ;
+    skos:definition "Process of gathering requirements from stakeholders"@en .
+
+swebok:RequirementsAnalysis a owl:Class ;
+    rdfs:label "Requirements Analysis"@en ;
+    rdfs:subClassOf o4se:Activity ;
+    skos:definition "Process of analyzing and refining requirements"@en .
+
+swebok:RequirementsSpecification a owl:Class ;
+    rdfs:label "Requirements Specification"@en ;
+    rdfs:subClassOf o4se:Activity ;
+    skos:definition "Process of documenting requirements in a clear and precise manner"@en .
+
+swebok:RequirementsValidation a owl:Class ;
+    rdfs:label "Requirements Validation"@en ;
+    rdfs:subClassOf o4se:Activity ;
+    skos:definition "Process of ensuring requirements meet stakeholder needs"@en .
+
+swebok:RequirementsManagement a owl:Class ;
+    rdfs:label "Requirements Management"@en ;
+    rdfs:subClassOf o4se:ManagementProcess ;
+    skos:definition "Process of managing changes to requirements throughout the project lifecycle"@en .
+
+# --- Software Design ---
+
+swebok:SoftwareDesign a owl:Class ;
+    rdfs:label "Software Design KA"@en ;
+    rdfs:comment "Knowledge area covering software architecture and detailed design"@en ;
+    rdfs:subClassOf swebok:KnowledgeArea .
+
+swebok:ArchitecturalDesign a owl:Class ;
+    rdfs:label "Architectural Design"@en ;
+    rdfs:subClassOf o4se:Design ;
+    skos:definition "High-level design of software system structure"@en .
+
+swebok:DetailedDesign a owl:Class ;
+    rdfs:label "Detailed Design"@en ;
+    rdfs:subClassOf o4se:Design ;
+    skos:definition "Low-level design of software components and modules"@en .
+
+swebok:DesignPattern a owl:Class ;
+    rdfs:label "Design Pattern"@en ;
+    rdfs:comment "Reusable solution to commonly occurring design problems"@en ;
+    rdfs:subClassOf o4se:Artifact .
+
+swebok:DesignPrinciple a owl:Class ;
+    rdfs:label "Design Principle"@en ;
+    rdfs:comment "Fundamental guideline for software design"@en .
+
+# --- Software Construction ---
+
+swebok:SoftwareConstruction a owl:Class ;
+    rdfs:label "Software Construction KA"@en ;
+    rdfs:comment "Knowledge area covering coding, debugging, and integration"@en ;
+    rdfs:subClassOf swebok:KnowledgeArea .
+
+swebok:CodingStandard a owl:Class ;
+    rdfs:label "Coding Standard"@en ;
+    rdfs:subClassOf o4se:Artifact ;
+    skos:definition "Set of guidelines for writing code"@en .
+
+swebok:CodeReview a owl:Class ;
+    rdfs:label "Code Review"@en ;
+    rdfs:subClassOf o4se:Activity ;
+    skos:definition "Systematic examination of source code"@en .
+
+swebok:Refactoring a owl:Class ;
+    rdfs:label "Refactoring"@en ;
+    rdfs:subClassOf o4se:Activity ;
+    skos:definition "Restructuring code without changing external behavior"@en .
+
+swebok:UnitConstruction a owl:Class ;
+    rdfs:label "Unit Construction"@en ;
+    rdfs:subClassOf o4se:Implementation ;
+    skos:definition "Building individual software units or components"@en .
+
+# --- Software Testing ---
+
+swebok:SoftwareTesting a owl:Class ;
+    rdfs:label "Software Testing KA"@en ;
+    rdfs:comment "Knowledge area covering test levels, techniques, and management"@en ;
+    rdfs:subClassOf swebok:KnowledgeArea .
+
+swebok:TestLevel a owl:Class ;
+    rdfs:label "Test Level"@en ;
+    rdfs:comment "Scope of testing activity"@en .
+
+swebok:UnitTesting a owl:Class ;
+    rdfs:label "Unit Testing"@en ;
+    rdfs:subClassOf swebok:TestLevel .
+
+swebok:IntegrationTesting a owl:Class ;
+    rdfs:label "Integration Testing"@en ;
+    rdfs:subClassOf swebok:TestLevel .
+
+swebok:SystemTesting a owl:Class ;
+    rdfs:label "System Testing"@en ;
+    rdfs:subClassOf swebok:TestLevel .
+
+swebok:AcceptanceTesting a owl:Class ;
+    rdfs:label "Acceptance Testing"@en ;
+    rdfs:subClassOf swebok:TestLevel .
+
+swebok:TestTechnique a owl:Class ;
+    rdfs:label "Test Technique"@en ;
+    rdfs:comment "Method for designing or executing tests"@en .
+
+swebok:BlackBoxTesting a owl:Class ;
+    rdfs:label "Black Box Testing"@en ;
+    rdfs:subClassOf swebok:TestTechnique .
+
+swebok:WhiteBoxTesting a owl:Class ;
+    rdfs:label "White Box Testing"@en ;
+    rdfs:subClassOf swebok:TestTechnique .
+
+# --- Software Maintenance ---
+
+swebok:SoftwareMaintenance a owl:Class ;
+    rdfs:label "Software Maintenance KA"@en ;
+    rdfs:comment "Knowledge area covering software evolution and maintenance"@en ;
+    rdfs:subClassOf swebok:KnowledgeArea .
+
+swebok:CorrectiveMaintenance a owl:Class ;
+    rdfs:label "Corrective Maintenance"@en ;
+    rdfs:subClassOf o4se:Maintenance ;
+    skos:definition "Fixing defects in software"@en .
+
+swebok:AdaptiveMaintenance a owl:Class ;
+    rdfs:label "Adaptive Maintenance"@en ;
+    rdfs:subClassOf o4se:Maintenance ;
+    skos:definition "Adapting software to environmental changes"@en .
+
+swebok:PerfectiveMaintenance a owl:Class ;
+    rdfs:label "Perfective Maintenance"@en ;
+    rdfs:subClassOf o4se:Maintenance ;
+    skos:definition "Improving software functionality or performance"@en .
+
+swebok:PreventiveMaintenance a owl:Class ;
+    rdfs:label "Preventive Maintenance"@en ;
+    rdfs:subClassOf o4se:Maintenance ;
+    skos:definition "Preventing future problems in software"@en .
+
+# --- Software Configuration Management ---
+
+swebok:SoftwareConfigurationManagement a owl:Class ;
+    rdfs:label "Software Configuration Management KA"@en ;
+    rdfs:comment "Knowledge area covering version control, change management, and release management"@en ;
+    rdfs:subClassOf swebok:KnowledgeArea .
+
+swebok:VersionControl a owl:Class ;
+    rdfs:label "Version Control"@en ;
+    rdfs:subClassOf o4se:SupportProcess ;
+    skos:definition "Managing changes to documents, code, and other artifacts"@en .
+
+swebok:ChangeControl a owl:Class ;
+    rdfs:label "Change Control"@en ;
+    rdfs:subClassOf o4se:SupportProcess ;
+    skos:definition "Process for managing changes to software"@en .
+
+swebok:ConfigurationIdentification a owl:Class ;
+    rdfs:label "Configuration Identification"@en ;
+    rdfs:subClassOf o4se:Activity ;
+    skos:definition "Identifying and documenting configuration items"@en .
+
+swebok:ConfigurationAudit a owl:Class ;
+    rdfs:label "Configuration Audit"@en ;
+    rdfs:subClassOf o4se:Activity ;
+    skos:definition "Verifying configuration status and compliance"@en .
+
+# --- Software Engineering Management ---
+
+swebok:SoftwareEngineeringManagement a owl:Class ;
+    rdfs:label "Software Engineering Management KA"@en ;
+    rdfs:comment "Knowledge area covering project planning, tracking, and control"@en ;
+    rdfs:subClassOf swebok:KnowledgeArea .
+
+swebok:ProjectPlanning a owl:Class ;
+    rdfs:label "Project Planning"@en ;
+    rdfs:subClassOf o4se:Planning ;
+    skos:definition "Defining project scope, schedule, and resources"@en .
+
+swebok:RiskManagement a owl:Class ;
+    rdfs:label "Risk Management"@en ;
+    rdfs:subClassOf o4se:ManagementProcess ;
+    skos:definition "Identifying and mitigating project risks"@en .
+
+swebok:ProjectMonitoring a owl:Class ;
+    rdfs:label "Project Monitoring"@en ;
+    rdfs:subClassOf o4se:ManagementProcess ;
+    skos:definition "Tracking project progress and performance"@en .
+
+swebok:TeamManagement a owl:Class ;
+    rdfs:label "Team Management"@en ;
+    rdfs:subClassOf o4se:ManagementProcess ;
+    skos:definition "Managing and coordinating development teams"@en .
+
+# --- Software Engineering Process ---
+
+swebok:SoftwareEngineeringProcess a owl:Class ;
+    rdfs:label "Software Engineering Process KA"@en ;
+    rdfs:comment "Knowledge area covering process implementation and improvement"@en ;
+    rdfs:subClassOf swebok:KnowledgeArea .
+
+swebok:ProcessImplementation a owl:Class ;
+    rdfs:label "Process Implementation"@en ;
+    rdfs:subClassOf o4se:Process ;
+    skos:definition "Establishing and deploying software processes"@en .
+
+swebok:ProcessAssessment a owl:Class ;
+    rdfs:label "Process Assessment"@en ;
+    rdfs:subClassOf o4se:Activity ;
+    skos:definition "Evaluating process capability and maturity"@en .
+
+swebok:ProcessImprovement a owl:Class ;
+    rdfs:label "Process Improvement"@en ;
+    rdfs:subClassOf o4se:Process ;
+    skos:definition "Enhancing process effectiveness and efficiency"@en .
+
+# --- Software Engineering Models and Methods ---
+
+swebok:SoftwareEngineeringModelsAndMethods a owl:Class ;
+    rdfs:label "Software Engineering Models and Methods KA"@en ;
+    rdfs:comment "Knowledge area covering modeling and development methods"@en ;
+    rdfs:subClassOf swebok:KnowledgeArea .
+
+swebok:ModelingLanguage a owl:Class ;
+    rdfs:label "Modeling Language"@en ;
+    rdfs:comment "Formal or semi-formal language for creating models"@en .
+
+swebok:DevelopmentMethod a owl:Class ;
+    rdfs:label "Development Method"@en ;
+    rdfs:comment "Systematic approach to software development"@en ;
+    rdfs:subClassOf o4se:Methodology .
+
+swebok:FormalMethod a owl:Class ;
+    rdfs:label "Formal Method"@en ;
+    rdfs:subClassOf swebok:DevelopmentMethod ;
+    skos:definition "Mathematically rigorous techniques for software development"@en .
+
+# --- Software Quality ---
+
+swebok:SoftwareQuality a owl:Class ;
+    rdfs:label "Software Quality KA"@en ;
+    rdfs:comment "Knowledge area covering quality characteristics and assurance"@en ;
+    rdfs:subClassOf swebok:KnowledgeArea .
+
+swebok:QualityCharacteristic a owl:Class ;
+    rdfs:label "Quality Characteristic"@en ;
+    rdfs:subClassOf o4se:QualityAttribute ;
+    skos:definition "Property of software that contributes to its quality"@en .
+
+swebok:QualityAssurance a owl:Class ;
+    rdfs:label "Quality Assurance"@en ;
+    rdfs:subClassOf o4se:SupportProcess ;
+    skos:definition "Systematic activities to ensure quality standards are met"@en .
+
+swebok:QualityControl a owl:Class ;
+    rdfs:label "Quality Control"@en ;
+    rdfs:subClassOf o4se:Activity ;
+    skos:definition "Activities to verify quality requirements are satisfied"@en .
+
+# --- Software Security ---
+
+swebok:SoftwareSecurity a owl:Class ;
+    rdfs:label "Software Security KA"@en ;
+    rdfs:comment "Knowledge area covering security throughout the software lifecycle"@en ;
+    rdfs:subClassOf swebok:KnowledgeArea .
+
+swebok:SecurityRequirement a owl:Class ;
+    rdfs:label "Security Requirement"@en ;
+    rdfs:subClassOf o4se:NonFunctionalRequirement ;
+    skos:definition "Requirement related to system security"@en .
+
+swebok:SecureCoding a owl:Class ;
+    rdfs:label "Secure Coding"@en ;
+    rdfs:subClassOf o4se:Implementation ;
+    skos:definition "Coding practices that prevent security vulnerabilities"@en .
+
+swebok:SecurityTesting a owl:Class ;
+    rdfs:label "Security Testing"@en ;
+    rdfs:subClassOf o4se:Testing ;
+    skos:definition "Testing to identify security vulnerabilities"@en .
+
+# --- Software Engineering Professional Practice ---
+
+swebok:SoftwareEngineeringProfessionalPractice a owl:Class ;
+    rdfs:label "Software Engineering Professional Practice KA"@en ;
+    rdfs:comment "Knowledge area covering ethics, legal issues, and professional development"@en ;
+    rdfs:subClassOf swebok:KnowledgeArea .
+
+swebok:ProfessionalEthics a owl:Class ;
+    rdfs:label "Professional Ethics"@en ;
+    rdfs:comment "Ethical principles and codes for software engineers"@en .
+
+swebok:LegalCompliance a owl:Class ;
+    rdfs:label "Legal Compliance"@en ;
+    rdfs:comment "Adherence to laws and regulations"@en .
+
+swebok:ProfessionalDevelopment a owl:Class ;
+    rdfs:label "Professional Development"@en ;
+    rdfs:comment "Continuous learning and skill improvement"@en .
+
+# ===========================
+# SWEBOK-specific Properties
+# ===========================
+
+swebok:belongsToKnowledgeArea a owl:ObjectProperty ;
+    rdfs:label "belongs to knowledge area"@en ;
+    rdfs:domain o4se:Activity ;
+    rdfs:range swebok:KnowledgeArea .
+
+swebok:relatedToKnowledgeArea a owl:ObjectProperty ;
+    rdfs:label "related to knowledge area"@en ;
+    rdfs:range swebok:KnowledgeArea .
+
+swebok:hasTestLevel a owl:ObjectProperty ;
+    rdfs:label "has test level"@en ;
+    rdfs:domain o4se:TestCase ;
+    rdfs:range swebok:TestLevel .
+
+swebok:usesTestTechnique a owl:ObjectProperty ;
+    rdfs:label "uses test technique"@en ;
+    rdfs:domain o4se:Testing ;
+    rdfs:range swebok:TestTechnique .
+
+swebok:hasQualityCharacteristic a owl:ObjectProperty ;
+    rdfs:label "has quality characteristic"@en ;
+    rdfs:domain o4se:SoftwareSystem ;
+    rdfs:range swebok:QualityCharacteristic .
+
+swebok:followsDesignPrinciple a owl:ObjectProperty ;
+    rdfs:label "follows design principle"@en ;
+    rdfs:domain swebok:ArchitecturalDesign ;
+    rdfs:range swebok:DesignPrinciple .
+
+swebok:implementsPattern a owl:ObjectProperty ;
+    rdfs:label "implements pattern"@en ;
+    rdfs:domain o4se:SourceCode ;
+    rdfs:range swebok:DesignPattern .
+
+# ===========================
+# SWEBOK Individuals
+# ===========================
+
+swebok:SOLID a swebok:DesignPrinciple ;
+    rdfs:label "SOLID Principles"@en ;
+    o4se:hasDescription "Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, Dependency Inversion"@en .
+
+swebok:DRY a swebok:DesignPrinciple ;
+    rdfs:label "DRY Principle"@en ;
+    o4se:hasDescription "Don't Repeat Yourself - avoid duplication of logic"@en .
+
+swebok:KISS a swebok:DesignPrinciple ;
+    rdfs:label "KISS Principle"@en ;
+    o4se:hasDescription "Keep It Simple, Stupid - favor simplicity in design"@en .
+
+swebok:SingletonPattern a swebok:DesignPattern ;
+    rdfs:label "Singleton Pattern"@en ;
+    o4se:hasDescription "Ensures a class has only one instance"@en .
+
+swebok:ObserverPattern a swebok:DesignPattern ;
+    rdfs:label "Observer Pattern"@en ;
+    o4se:hasDescription "Defines one-to-many dependency between objects"@en .
+
+swebok:FactoryPattern a swebok:DesignPattern ;
+    rdfs:label "Factory Pattern"@en ;
+    o4se:hasDescription "Creates objects without specifying exact classes"@en .

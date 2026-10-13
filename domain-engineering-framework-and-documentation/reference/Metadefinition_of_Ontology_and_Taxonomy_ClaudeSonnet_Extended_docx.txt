@@ -1,0 +1,820 @@
+\@prefix : \<http://example.org/meta-ontology#\> .
+
+\@prefix owl: \<http://www.w3.org/2002/07/owl#\> .
+
+\@prefix rdf: \<http://www.w3.org/1999/02/22-rdf-syntax-ns#\> .
+
+\@prefix xml: \<http://www.w3.org/XML/1998/namespace\> .
+
+\@prefix xsd: \<http://www.w3.org/2001/XMLSchema#\> .
+
+\@prefix rdfs: \<http://www.w3.org/2000/01/rdf-schema#\> .
+
+\@prefix dc: \<http://purl.org/dc/elements/1.1/\> .
+
+\@prefix dcterms: \<http://purl.org/dc/terms/\> .
+
+\@prefix skos: \<http://www.w3.org/2004/02/skos/core#\> .
+
+\@prefix foaf: \<http://xmlns.com/foaf/0.1/\> .
+
+\@base \<http://example.org/meta-ontology#\> .
+
+\<http://example.org/meta-ontology\> rdf:type owl:Ontology ;
+
+dc:title \"Meta-Ontology: Comprehensive Ontological Description of
+Ontology and Taxonomy Concepts\"@en ;
+
+dc:description \"A formal ontology describing the concepts of
+\'Ontology\' and \'Taxonomy\' themselves with complete coverage of all
+aspects\"@en ;
+
+dcterms:created \"2025-01-27\"\^\^xsd:date ;
+
+dcterms:modified \"2025-01-27\"\^\^xsd:date ;
+
+owl:versionInfo \"2.0.0\" ;
+
+dc:creator \"Meta-Ontology Working Group\" ;
+
+dcterms:license \<http://creativecommons.org/licenses/by/4.0/\> .
+
+\#################################################################
+
+\# Classes - Core Knowledge Organization Systems
+
+\#################################################################
+
+:KnowledgeOrganizationSystem rdf:type owl:Class ;
+
+rdfs:label \"Knowledge Organization System\"@en ;
+
+rdfs:comment \"An abstract class representing systems for organizing and
+structuring knowledge\"@en ;
+
+skos:definition \"A system for organizing information and knowledge that
+may range from simple lists to complex formal ontologies\"@en .
+
+:Ontology rdf:type owl:Class ;
+
+rdfs:subClassOf :KnowledgeOrganizationSystem ;
+
+rdfs:label \"Ontology\"@en ;
+
+rdfs:comment \"A formal, explicit specification of a shared
+conceptualization\"@en ;
+
+skos:definition \"A formal representation of knowledge as a set of
+concepts within a domain, with explicit specification of meaning,
+machine-interpretable semantics, and shared consensus of a
+community\"@en ;
+
+skos:scopeNote \"Key characteristics: Formal, Explicit, Shared,
+Machine-interpretable, Reasoning-enabled\"@en .
+
+:Taxonomy rdf:type owl:Class ;
+
+rdfs:subClassOf :KnowledgeOrganizationSystem ;
+
+rdfs:label \"Taxonomy\"@en ;
+
+rdfs:comment \"A hierarchical classification system that organizes
+concepts or entities into groups based on shared characteristics\"@en ;
+
+skos:definition \"A scheme of classification, especially a hierarchical
+classification, in which things are organized into groups or types\"@en
+;
+
+owl:disjointWith :Ontology .
+
+\#################################################################
+
+\# Classes - Ontology Components
+
+\#################################################################
+
+:Concept rdf:type owl:Class ;
+
+rdfs:label \"Concept\"@en ;
+
+rdfs:comment \"An abstract idea or mental representation of a class of
+objects, events, or relationships\"@en ;
+
+skos:altLabel \"Class\"@en ;
+
+skos:definition \"The central ideas, categories, or types of objects
+within a domain\"@en .
+
+:Instance rdf:type owl:Class ;
+
+rdfs:label \"Instance\"@en ;
+
+rdfs:comment \"A specific, concrete example or occurrence of a
+concept\"@en ;
+
+skos:altLabel \"Individual\"@en ;
+
+skos:example \"Albert_Einstein as an instance of Scientist\"@en .
+
+:Property rdf:type owl:Class ;
+
+rdfs:label \"Property\"@en ;
+
+rdfs:comment \"A characteristic or relationship that can be asserted
+about concepts or instances\"@en .
+
+:ObjectProperty rdf:type owl:Class ;
+
+rdfs:subClassOf :Property ;
+
+rdfs:label \"Object Property\"@en ;
+
+rdfs:comment \"A property that links an instance to another
+instance\"@en ;
+
+skos:example \"employedBy, hasPart, locatedIn\"@en .
+
+:DatatypeProperty rdf:type owl:Class ;
+
+rdfs:subClassOf :Property ;
+
+rdfs:label \"Datatype Property\"@en ;
+
+rdfs:comment \"A property that links an instance to a literal data
+value\"@en ;
+
+skos:example \"hasName, hasAge, hasEmail\"@en ;
+
+owl:disjointWith :ObjectProperty .
+
+\#################################################################
+
+\# Classes - Relationships and Constraints
+
+\#################################################################
+
+:Relationship rdf:type owl:Class ;
+
+rdfs:label \"Relationship\"@en ;
+
+rdfs:comment \"A connection or association between concepts\"@en .
+
+:HierarchicalRelationship rdf:type owl:Class ;
+
+rdfs:subClassOf :Relationship ;
+
+rdfs:label \"Hierarchical Relationship\"@en ;
+
+rdfs:comment \"A relationship establishing hierarchy (is-a,
+part-of)\"@en .
+
+:SemanticRelationship rdf:type owl:Class ;
+
+rdfs:subClassOf :Relationship ;
+
+rdfs:label \"Semantic Relationship\"@en ;
+
+rdfs:comment \"A relationship expressing meaning beyond hierarchy\"@en .
+
+:PropertyCharacteristic rdf:type owl:Class ;
+
+rdfs:label \"Property Characteristic\"@en ;
+
+rdfs:comment \"A logical characteristic that can be assigned to a
+property\"@en .
+
+:Transitivity rdf:type owl:Class ;
+
+rdfs:subClassOf :PropertyCharacteristic ;
+
+rdfs:label \"Transitivity\"@en ;
+
+skos:example \"If A locatedIn B and B locatedIn C, then A locatedIn
+C\"@en .
+
+:Symmetry rdf:type owl:Class ;
+
+rdfs:subClassOf :PropertyCharacteristic ;
+
+rdfs:label \"Symmetry\"@en ;
+
+skos:example \"If A marriedTo B, then B marriedTo A\"@en .
+
+:Functionality rdf:type owl:Class ;
+
+rdfs:subClassOf :PropertyCharacteristic ;
+
+rdfs:label \"Functionality\"@en ;
+
+skos:example \"A person can have only one biological mother\"@en .
+
+:Reflexivity rdf:type owl:Class ;
+
+rdfs:subClassOf :PropertyCharacteristic ;
+
+rdfs:label \"Reflexivity\"@en .
+
+:Asymmetry rdf:type owl:Class ;
+
+rdfs:subClassOf :PropertyCharacteristic ;
+
+rdfs:label \"Asymmetry\"@en .
+
+\#################################################################
+
+\# Classes - Axioms and Constraints
+
+\#################################################################
+
+:Axiom rdf:type owl:Class ;
+
+rdfs:label \"Axiom\"@en ;
+
+rdfs:comment \"A logical statement or rule that defines the ontology\'s
+semantics\"@en .
+
+:CardinalityConstraint rdf:type owl:Class ;
+
+rdfs:subClassOf :Axiom ;
+
+rdfs:label \"Cardinality Constraint\"@en ;
+
+skos:example \"A Person has exactly one biologicalMother\"@en .
+
+:ValueConstraint rdf:type owl:Class ;
+
+rdfs:subClassOf :Axiom ;
+
+rdfs:label \"Value Constraint\"@en ;
+
+skos:example \"The capitalOf a Country must be a City\"@en .
+
+:DisjointnessAxiom rdf:type owl:Class ;
+
+rdfs:subClassOf :Axiom ;
+
+rdfs:label \"Disjointness Axiom\"@en ;
+
+skos:example \"Person and Organization are disjoint\"@en .
+
+:DomainRangeConstraint rdf:type owl:Class ;
+
+rdfs:subClassOf :Axiom ;
+
+rdfs:label \"Domain Range Constraint\"@en ;
+
+rdfs:comment \"Specifies the source and target classes for a
+property\"@en .
+
+\#################################################################
+
+\# Classes - Formal Semantics and Reasoning
+
+\#################################################################
+
+:FormalSemantics rdf:type owl:Class ;
+
+rdfs:label \"Formal Semantics\"@en ;
+
+rdfs:comment \"Machine-interpretable definitions using formal logic\"@en
+.
+
+:InferenceRule rdf:type owl:Class ;
+
+rdfs:label \"Inference Rule\"@en ;
+
+rdfs:comment \"A logical rule for deriving new knowledge\"@en .
+
+:ReasoningCapability rdf:type owl:Class ;
+
+rdfs:label \"Reasoning Capability\"@en ;
+
+rdfs:comment \"A type of automated reasoning supported by the
+ontology\"@en .
+
+:ConsistencyChecking rdf:type owl:Class ;
+
+rdfs:subClassOf :ReasoningCapability ;
+
+rdfs:label \"Consistency Checking\"@en ;
+
+rdfs:comment \"Ensuring no contradictory definitions exist\"@en .
+
+:AutomaticClassification rdf:type owl:Class ;
+
+rdfs:subClassOf :ReasoningCapability ;
+
+rdfs:label \"Automatic Classification\"@en ;
+
+rdfs:comment \"Inferring new hierarchical relationships\"@en .
+
+:QueryAnswering rdf:type owl:Class ;
+
+rdfs:subClassOf :ReasoningCapability ;
+
+rdfs:label \"Query Answering\"@en ;
+
+rdfs:comment \"Answering complex queries through inference\"@en .
+
+\#################################################################
+
+\# Classes - Metadata Components
+
+\#################################################################
+
+:OntologyMetadata rdf:type owl:Class ;
+
+rdfs:label \"Ontology Metadata\"@en ;
+
+rdfs:comment \"Information about the ontology itself\"@en .
+
+:Provenance rdf:type owl:Class ;
+
+rdfs:subClassOf :OntologyMetadata ;
+
+rdfs:label \"Provenance\"@en ;
+
+rdfs:comment \"Information about origin, authorship, and purpose\"@en .
+
+:Versioning rdf:type owl:Class ;
+
+rdfs:subClassOf :OntologyMetadata ;
+
+rdfs:label \"Versioning\"@en ;
+
+rdfs:comment \"Version control and change tracking information\"@en .
+
+:Documentation rdf:type owl:Class ;
+
+rdfs:subClassOf :OntologyMetadata ;
+
+rdfs:label \"Documentation\"@en ;
+
+rdfs:comment \"Human-readable descriptions and annotations\"@en .
+
+\#################################################################
+
+\# Object Properties - Core Relationships
+
+\#################################################################
+
+:definesConcept rdf:type owl:ObjectProperty ;
+
+rdfs:domain :KnowledgeOrganizationSystem ;
+
+rdfs:range :Concept ;
+
+rdfs:label \"defines concept\"@en .
+
+:hasInstance rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Concept ;
+
+rdfs:range :Instance ;
+
+rdfs:label \"has instance\"@en ;
+
+owl:inverseOf :instanceOf .
+
+:instanceOf rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Instance ;
+
+rdfs:range :Concept ;
+
+rdfs:label \"instance of\"@en .
+
+:definesProperty rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Ontology ;
+
+rdfs:range :Property ;
+
+rdfs:label \"defines property\"@en .
+
+:hasObjectProperty rdf:type owl:ObjectProperty ;
+
+rdfs:subPropertyOf :definesProperty ;
+
+rdfs:domain :Ontology ;
+
+rdfs:range :ObjectProperty ;
+
+rdfs:label \"has object property\"@en .
+
+:hasDatatypeProperty rdf:type owl:ObjectProperty ;
+
+rdfs:subPropertyOf :definesProperty ;
+
+rdfs:domain :Ontology ;
+
+rdfs:range :DatatypeProperty ;
+
+rdfs:label \"has datatype property\"@en .
+
+:hasPropertyCharacteristic rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Property ;
+
+rdfs:range :PropertyCharacteristic ;
+
+rdfs:label \"has property characteristic\"@en .
+
+:hasDomain rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Property ;
+
+rdfs:range :Concept ;
+
+rdfs:label \"has domain\"@en .
+
+:hasRange rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Property ;
+
+rdfs:range :Concept ;
+
+rdfs:label \"has range\"@en .
+
+\#################################################################
+
+\# Object Properties - Ontology Characteristics
+
+\#################################################################
+
+:hasFormalSemantics rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Ontology ;
+
+rdfs:range :FormalSemantics ;
+
+rdfs:label \"has formal semantics\"@en .
+
+:includesAxiom rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Ontology ;
+
+rdfs:range :Axiom ;
+
+rdfs:label \"includes axiom\"@en .
+
+:supportsReasoning rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Ontology ;
+
+rdfs:range :ReasoningCapability ;
+
+rdfs:label \"supports reasoning\"@en .
+
+:hasMetadata rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Ontology ;
+
+rdfs:range :OntologyMetadata ;
+
+rdfs:label \"has metadata\"@en .
+
+:sharedBy rdf:type owl:ObjectProperty ;
+
+rdfs:domain :Ontology ;
+
+rdfs:range foaf:Group ;
+
+rdfs:label \"shared by\"@en ;
+
+rdfs:comment \"The community that shares this conceptualization\"@en .
+
+\#################################################################
+
+\# Data Properties - Characteristics
+
+\#################################################################
+
+:hasExpressivity rdf:type owl:DatatypeProperty ;
+
+rdfs:domain :Ontology ;
+
+rdfs:range xsd:string ;
+
+rdfs:label \"has expressivity\"@en ;
+
+rdfs:comment \"The expressivity level (e.g., OWL DL, OWL Full)\"@en .
+
+:isExplicit rdf:type owl:DatatypeProperty ;
+
+rdfs:domain :Ontology ;
+
+rdfs:range xsd:boolean ;
+
+rdfs:label \"is explicit\"@en ;
+
+rdfs:comment \"Whether all assumptions are explicitly stated\"@en .
+
+:isFormal rdf:type owl:DatatypeProperty ;
+
+rdfs:domain :KnowledgeOrganizationSystem ;
+
+rdfs:range xsd:boolean ;
+
+rdfs:label \"is formal\"@en ;
+
+rdfs:comment \"Whether formally specified in a logical language\"@en .
+
+:isMachineReadable rdf:type owl:DatatypeProperty ;
+
+rdfs:domain :KnowledgeOrganizationSystem ;
+
+rdfs:range xsd:boolean ;
+
+rdfs:label \"is machine readable\"@en .
+
+:isReusable rdf:type owl:DatatypeProperty ;
+
+rdfs:domain :Ontology ;
+
+rdfs:range xsd:boolean ;
+
+rdfs:label \"is reusable\"@en ;
+
+rdfs:comment \"Whether designed for reuse across applications\"@en .
+
+:isShareable rdf:type owl:DatatypeProperty ;
+
+rdfs:domain :Ontology ;
+
+rdfs:range xsd:boolean ;
+
+rdfs:label \"is shareable\"@en ;
+
+rdfs:comment \"Whether designed to be shared across communities\"@en .
+
+:hasFormalizationLevel rdf:type owl:DatatypeProperty ;
+
+rdfs:domain :KnowledgeOrganizationSystem ;
+
+rdfs:range xsd:string ;
+
+rdfs:label \"has formalization level\"@en ;
+
+rdfs:comment \"Level: informal, semi-formal, or formal\"@en .
+
+\#################################################################
+
+\# Data Properties - Metadata
+
+\#################################################################
+
+:hasVersion rdf:type owl:DatatypeProperty ;
+
+rdfs:domain :OntologyMetadata ;
+
+rdfs:range xsd:string ;
+
+rdfs:label \"has version\"@en .
+
+:hasCreator rdf:type owl:DatatypeProperty ;
+
+rdfs:domain :OntologyMetadata ;
+
+rdfs:range xsd:string ;
+
+rdfs:label \"has creator\"@en .
+
+:hasCreationDate rdf:type owl:DatatypeProperty ;
+
+rdfs:domain :OntologyMetadata ;
+
+rdfs:range xsd:date ;
+
+rdfs:label \"has creation date\"@en .
+
+:hasLicense rdf:type owl:DatatypeProperty ;
+
+rdfs:domain :OntologyMetadata ;
+
+rdfs:range xsd:string ;
+
+rdfs:label \"has license\"@en .
+
+:hasPurpose rdf:type owl:DatatypeProperty ;
+
+rdfs:domain :OntologyMetadata ;
+
+rdfs:range xsd:string ;
+
+rdfs:label \"has purpose\"@en .
+
+\#################################################################
+
+\# Axioms and Restrictions
+
+\#################################################################
+
+\# Every Ontology must be formal
+
+:Ontology rdfs:subClassOf \[
+
+rdf:type owl:Restriction ;
+
+owl:onProperty :isFormal ;
+
+owl:hasValue \"true\"\^\^xsd:boolean
+
+\] .
+
+\# Every Ontology must be explicit
+
+:Ontology rdfs:subClassOf \[
+
+rdf:type owl:Restriction ;
+
+owl:onProperty :isExplicit ;
+
+owl:hasValue \"true\"\^\^xsd:boolean
+
+\] .
+
+\# Every Ontology must define at least one Concept
+
+:Ontology rdfs:subClassOf \[
+
+rdf:type owl:Restriction ;
+
+owl:onProperty :definesConcept ;
+
+owl:minCardinality \"1\"\^\^xsd:nonNegativeInteger
+
+\] .
+
+\# Every Ontology must have formal semantics
+
+:Ontology rdfs:subClassOf \[
+
+rdf:type owl:Restriction ;
+
+owl:onProperty :hasFormalSemantics ;
+
+owl:someValuesFrom :FormalSemantics
+
+\] .
+
+\# Every Ontology must support at least one reasoning capability
+
+:Ontology rdfs:subClassOf \[
+
+rdf:type owl:Restriction ;
+
+owl:onProperty :supportsReasoning ;
+
+owl:minCardinality \"1\"\^\^xsd:nonNegativeInteger
+
+\] .
+
+\# Every Ontology must have metadata
+
+:Ontology rdfs:subClassOf \[
+
+rdf:type owl:Restriction ;
+
+owl:onProperty :hasMetadata ;
+
+owl:someValuesFrom :OntologyMetadata
+
+\] .
+
+\# Every Property must have a domain
+
+:Property rdfs:subClassOf \[
+
+rdf:type owl:Restriction ;
+
+owl:onProperty :hasDomain ;
+
+owl:minCardinality \"1\"\^\^xsd:nonNegativeInteger
+
+\] .
+
+\# Every Property must have a range
+
+:Property rdfs:subClassOf \[
+
+rdf:type owl:Restriction ;
+
+owl:onProperty :hasRange ;
+
+owl:minCardinality \"1\"\^\^xsd:nonNegativeInteger
+
+\] .
+
+\# Taxonomy must have hierarchical structure
+
+:Taxonomy rdfs:subClassOf \[
+
+rdf:type owl:Restriction ;
+
+owl:onProperty :hasHierarchicalStructure ;
+
+owl:minCardinality \"1\"\^\^xsd:nonNegativeInteger
+
+\] .
+
+\# Property characteristics are disjoint
+
+\[\] rdf:type owl:AllDisjointClasses ;
+
+owl:members ( :Transitivity :Symmetry :Functionality :Reflexivity
+:Asymmetry ) .
+
+\# Axiom types are distinct
+
+\[\] rdf:type owl:AllDisjointClasses ;
+
+owl:members ( :CardinalityConstraint :ValueConstraint :DisjointnessAxiom
+:DomainRangeConstraint ) .
+
+\#################################################################
+
+\# Individuals (Examples)
+
+\#################################################################
+
+:OWL2DLOntology rdf:type owl:NamedIndividual ,
+
+:Ontology ;
+
+rdfs:label \"OWL 2 DL Ontology\"@en ;
+
+:hasExpressivity \"OWL 2 DL\"\^\^xsd:string ;
+
+:isFormal \"true\"\^\^xsd:boolean ;
+
+:isExplicit \"true\"\^\^xsd:boolean ;
+
+:isMachineReadable \"true\"\^\^xsd:boolean ;
+
+:isReusable \"true\"\^\^xsd:boolean ;
+
+:isShareable \"true\"\^\^xsd:boolean ;
+
+:hasFormalizationLevel \"formal\"\^\^xsd:string .
+
+:TransitiveProperty rdf:type owl:NamedIndividual ,
+
+:Transitivity ;
+
+rdfs:label \"Transitive Property Characteristic\"@en .
+
+:ConsistencyChecker rdf:type owl:NamedIndividual ,
+
+:ConsistencyChecking ;
+
+rdfs:label \"Consistency Checking Capability\"@en .
+
+\#################################################################
+
+\# Comprehensive Annotations
+
+\#################################################################
+
+:Ontology skos:definition \"\"\"A formal, explicit specification of a
+shared conceptualization where:
+
+\- Formal: machine-readable and interpretable
+
+\- Explicit: concepts, properties, and constraints clearly defined
+
+\- Specification: description of concepts and relationships
+
+\- Shared: consensus of a community
+
+\- Conceptualization: abstract model of some phenomenon\"\"\"@en ;
+
+skos:example \"FOAF, Dublin Core, Gene Ontology, DBpedia Ontology,
+FIBO\"@en ;
+
+skos:scopeNote \"Enables automated reasoning, knowledge sharing, and
+semantic interoperability\"@en ;
+
+skos:note \"Competency Question: What formal structures distinguish an
+ontology from other KOS?\"@en ;
+
+skos:note \"Competency Question: How does an ontology enable automated
+reasoning?\"@en ;
+
+skos:note \"Competency Question: What makes an ontology \'shared\'
+versus individual?\"@en .
+
+:Taxonomy skos:definition \"A hierarchical classification focusing
+primarily on is-a relationships\"@en ;
+
+skos:example \"Linnaean taxonomy, Dewey Decimal, NAICS codes, Amazon
+product categories\"@en ;
+
+skos:scopeNote \"Primarily hierarchical without formal logical
+constraints\"@en ;
+
+skos:note \"Competency Question: Can a taxonomy support
+polyhierarchy?\"@en ;
+
+skos:note \"Competency Question: What distinguishes a taxonomy from an
+ontology?\"@en .

@@ -1,0 +1,234 @@
+{
+ "_meta": {
+  "title": "O4SDLC systematic defect register",
+  "version": "2.3.0",
+  "supersedes": "defect_register_v2_2_0.json",
+  "ontology_name": "O4SDLC — Ontology for Systems Development Life Cycle",
+  "date": "2026-06-05",
+  "method": "REDO redo_shacl_v4_0_0.ttl (51 NodeShapes) + O4UCM native Ontology4UsecaseModeling_shacl_v1_0_0.ttl; pyshacl 0.31.0; rdflib 7.6.0; inference=none; corpus=per-file; imports stripped; warnings+infos counted. BP-D24 metadata check + label/definition quality scan run programmatically.",
+  "scope": "Sources O4UCM/O4DF/O4SE are book/course-owned (B1/L-64): authoritative repairs are FIX-FORWARD PROPOSALS; working-copy fixes are session-local only.",
+  "status": "validation step 1 complete; remediation NOT performed (bootstrap fail-stop pending examiner sign-off)",
+  "note_r4": "SD-14 RESOLVED via O4SE v1.0.8 (hasDescription range -> rdfs:Literal). Consistency re-proven with canonical HermiT (OWLAPI), not the owlready2 bridge."
+ },
+ "findings": [
+  {
+   "id": "SD-1",
+   "ontology": "O4DF",
+   "severity": "HIGH",
+   "verified": true,
+   "defect": "o4df:precedes is Transitive+Asymmetric+Irreflexive — illegal OWL2-DL (non-simple property cannot be asymmetric/irreflexive)",
+   "evidence": "HermiT proof preprocessing note + _O4DF_DL_FIX_NOTE.txt; original SHA 83e7462e",
+   "disposition": "Enabling-fix in working copy (kept Transitive, dropped Asym+Irrefl). SOURCE still defective. → FIX-FORWARD PROPOSAL to owner (open).",
+   "remediation_2026_06_05": "RESOLVED (owner-edit). o4df_v1_0_1.ttl: precedes kept Transitive, dropped Asymmetric+Irreflexive. REDO conforms; BP-D7 bump + priorVersion; book retained as dcterms:source."
+  },
+  {
+   "id": "SD-2",
+   "ontology": "O4DF",
+   "severity": "HIGH",
+   "verified": true,
+   "defect": "owl:imports <http://example.org/core> — placeholder, does not resolve, blocks load",
+   "evidence": "original O4DF header",
+   "disposition": "Removed in working copy. → FIX-FORWARD PROPOSAL (open).",
+   "remediation_2026_06_05": "RESOLVED (owner-edit). o4df_v1_0_1.ttl: placeholder owl:imports <example.org/core> removed; no unresolved import. SD-1/SD-2 formalized without broken import."
+  },
+  {
+   "id": "SD-3",
+   "ontology": "O4DF",
+   "severity": "MEDIUM",
+   "verified": true,
+   "defect": "Refinement props isInputTo/hasInputModel/producesArtifact declared but 0 instance triples — artifact-evolution chain unasserted",
+   "disposition": "OPEN — asserting the chain extends owned corpus → PROPOSAL not edit (B1).",
+   "remediation_2026_06_05": "RESOLVED-EXEMPLAR. o4df_v1_0_1.ttl instantiates one refinement chain: DomainModelClassDiagram_Exemplar -> DesignSoftwareClassesActivity -> DesignClassModel_Exemplar (Satzinger Ch.6)."
+  },
+  {
+   "id": "SD-4",
+   "ontology": "O4UCM/O4DF/O4SE",
+   "severity": "LOW-MED",
+   "verified": true,
+   "defect": "3 inconsistent namespace schemes (zt4swe.io/sad/ch5; zt4swe.io/ontology/sa-and-d/...; semanticweb.org/.../O4SE)",
+   "disposition": "Handled by O4SDLC upper-layer alignment; sources unchanged. CLOSED for integration.",
+   "remediation_2026_06_05": "CLOSED (prior). Namespaces are owner-owned per ownership ruling; documented, not auto-rewritten (L-52 import-risk avoided)."
+  },
+  {
+   "id": "SD-5",
+   "ontology": "O4DF",
+   "severity": "MEDIUM",
+   "verified": true,
+   "defect": "Analysis/design boundary overlap — O4DF re-states analysis concepts O4UCM owns",
+   "disposition": "RESOLVED by alignment — O4UCM canonical, O4DF copies skos:exactMatch O4UCM (11 links in pamg_sdlc_alignment_v1_1_0). CLOSED.",
+   "remediation_2026_06_05": "CLOSED (prior). Analysis/design boundary formalized via precedes; O4DF refines, O4UCM owns analysis concepts."
+  },
+  {
+   "id": "SD-6",
+   "ontology": "all",
+   "severity": "LOW",
+   "verified": true,
+   "defect": "Annotation datatypes outside HermiT OWL2 map (xsd:date, rdf:langString) coerced for reasoning",
+   "disposition": "Reasoning work-around only; not a logic defect. CLOSED (note carried).",
+   "remediation_2026_06_05": "CLOSED (preprocessing). Non-DL annotation datatypes coerced for reasoning only. NOTE: this same coercion (xsd:date/xsd:duration -> xsd:string) is part of the SD-14 reasoning pipeline; see SD-14 anomaly note."
+  },
+  {
+   "id": "SD-7",
+   "ontology": "O4SE",
+   "severity": "INVESTIGATE",
+   "verified": true,
+   "defect": "Protege-default namespace (semanticweb.org/.../2025/O4SE) — draft-maturity signal; provenance/authority unverified",
+   "disposition": "OPEN — establish authorship/peer-review status BEFORE any O4SE remediation (L-77: publication status would not credit quality regardless).",
+   "remediation_2026_06_05": "CLEARED. Ownership ruling (book-SOURCED, owner-OWNED) establishes authority; semanticweb.org/2025/O4SE namespace accepted as owner's IRI. Authority gate cleared."
+  },
+  {
+   "id": "SD-8",
+   "ontology": "O4SE",
+   "severity": "HIGH",
+   "verified": true,
+   "defect": "376 of 615 named terms lack skos:definition (definition coverage 38%): 268 classes + 70 object props + 38 datatype props",
+   "evidence": "redo_shacl_v4_0_0 C2/D3+ (268 Violation class-defn) + programmatic scan",
+   "disposition": "OPEN — dominant trust gap. Author definitions (R-1). PROPOSAL to owner.",
+   "remediation_2026_06_05": "RESOLVED. o4se_merged_v1_0_7.ttl class skos:definition coverage 100% (507/507); REDO Violations 0 (was 284). Two-tier sourcing: Tier-1 file-grounded; Tier-2 verified seminal authorities (ISO/IEC/IEEE 24765/12207/25010/29119/29148, SFIA, NIST SP 800-145, Haerder&Reuter, Fowler PoEAA, Hennessy&Patterson, Sebesta, Scrum Guide, Humble&Farley, Team Topologies, LeSS, SRE); convention-based Organizations terms honestly tagged. ADVISORY-OPEN: 70 object + 38 datatype properties still lack skos:definition (REDO Warnings, not Violations).",
+   "remediation_2026_06_05\"_props": "ADVISORY CLOSED. O4SE v1.0.9: all 70 object + 38 datatype properties now carry skos:definition + dcterms:source (two-tier: structural domain/range semantics + seminal sources — 24765/12207, CMMI, SWEBOK, ISO/IEC 25010, 29119, ACID, Scrum Guide, DORA/SRE, SFIA, Team Topologies, Sebesta, metrics). Definition coverage now 100% for classes (507/507), object properties (70/70), and datatype properties (38/38). REDO Violations remain 0. Consistency re-confirmed (canonical HermiT: isConsistent()=true, 0 unsatisfiable classes)."
+  },
+  {
+   "id": "SD-9",
+   "ontology": "O4SE",
+   "severity": "MEDIUM",
+   "verified": true,
+   "defect": "DRIFT-19: 8 datatype properties use rdfs:range outside OWL2-DL datatype map (hasDuration, leadTime, mttr, hasEndDate, hasStartDate, queryPerformance, ...)",
+   "evidence": "redo_shacl_v4_0_0 redo-shapes-drift19 (8 Violation)",
+   "disposition": "OPEN — retype ranges (R-1). PROPOSAL.",
+   "remediation_2026_06_05": "RESOLVED. o4se_merged_v1_0_7.ttl: 8 DRIFT-19 datatype ranges fixed (duration->string; date->string)."
+  },
+  {
+   "id": "SD-10",
+   "ontology": "O4SE",
+   "severity": "MEDIUM",
+   "verified": true,
+   "defect": "All 8 O4SE modules missing owl:versionIRI; owl:versionInfo literals are xsd:string-typed (datatype hygiene)",
+   "evidence": "redo_shacl_v4_0_0 OntologyHeaderShape (8 Violation) + parse",
+   "disposition": "OPEN — add versionIRI per BP-D7 (R-1). PROPOSAL.",
+   "remediation_2026_06_05": "RESOLVED. o4se_merged_v1_0_7.ttl: owl:versionIRI added 8/8; versionInfo present."
+  },
+  {
+   "id": "SD-11",
+   "ontology": "O4SE",
+   "severity": "MEDIUM",
+   "verified": true,
+   "defect": "Ontology-level BP-D24 metadata ~0/10 across modules (7 of 8 at 0; main O4SE at 3) — no license/rights/publisher/creator/PROV",
+   "disposition": "OPEN — add BP-D24 metadata (R-1). PROPOSAL.",
+   "remediation_2026_06_05": "RESOLVED. o4se BP-D24 ontology-level metadata brought to complete (8/8) with PROV agent http://www.zt4swe.io/agent/YusufAltunel."
+  },
+  {
+   "id": "SD-12",
+   "ontology": "O4UCM",
+   "severity": "LOW",
+   "verified": true,
+   "defect": "Individual O4UCM_v1_0_1_Token typed with un-imported external class amod:VersionToken (undeclared type — REDO C7+)",
+   "disposition": "OPEN — import/declare amod:VersionToken or retype (R-3).",
+   "remediation_2026_06_05": "DOCUMENTED (accepted). amod:VersionToken left un-imported by design to avoid L-52 import-coupling defect; flagged for owner."
+  },
+  {
+   "id": "SD-13",
+   "ontology": "O4UCM",
+   "severity": "LOW",
+   "verified": true,
+   "defect": "3 housekeeping individuals lack skos:definition (O4UCM_ChangeLog_v1_0_0, O4UCM_ChangeLog_v1_0_1, O4UCM_v1_0_1_Token)",
+   "evidence": "redo C2+ + native shape (3)",
+   "disposition": "OPEN — add definitions (R-3).",
+   "remediation_2026_06_05": "RESOLVED. o4ucm_v1_0_2.ttl: 3 housekeeping skos:definition added."
+  },
+  {
+   "id": "SHAPE-1",
+   "ontology": "Ontology4UsecaseModeling_shacl_v1_0_0 (validator, NOT O4UCM)",
+   "severity": "MEDIUM",
+   "verified": true,
+   "defect": "Native shape rdfs:label constraint pairs sh:languageIn ('en') with sh:minCount 1; sh:languageIn constrains EVERY value, so legitimate @tr labels trip it. Produces 73 false 'missing English label' violations though 0/69 classes actually lack @en.",
+   "disposition": "DEFECT IS IN THE SHAPE, not the data. Fix shape to admit en+tr (or qualifiedValueShape >=1 @en) (R-3). Verified: 69 @en + 69 @tr, 0 missing @en.",
+   "remediation_2026_06_05": "RESOLVED. Ontology4UsecaseModeling_shacl_v1_0_1.ttl: sh:languageIn('en') replaced with qualifiedValueShape requiring >=1 @en label, permitting @tr. Native violations 77->6 (residual = 1 anonymous intersectionOf class = ARTIFACT-1)."
+  },
+  {
+   "id": "ARTIFACT-1",
+   "ontology": "measurement-method",
+   "severity": "INFO",
+   "verified": true,
+   "defect": "REDO C2 & native shapes target owl:Class without excluding blank-node class expressions; 1 anonymous owl:intersectionOf node generates label/definition/scopeNote/example/isDefinedBy 'failures'.",
+   "disposition": "Measurement artifact — anonymous class expressions legitimately carry no annotations. Not an O4UCM content defect. Optional shape hardening.",
+   "remediation_2026_06_05": "DOCUMENTED. Residual 6 native-shape violations target an anonymous owl:intersectionOf class expression; measurement artifact, not a content defect."
+  },
+  {
+   "id": "SD-14",
+   "ontology": "O4SE (Core_Structure) / merged O4SDLC",
+   "severity": "HIGH",
+   "verified": true,
+   "defect": "Merged O4SDLC OWL2-DL INCONSISTENT. REAL root cause (canonical HermiT + deletion-based MUS): O4SE_Core_Structure declares hasDescription with rdfs:range xsd:string, but 17 individuals carry language-tagged (@en) values (datatype rdf:langString, disjoint from xsd:string) -> DL clash. The owl:AllDisjointClasses was a RED HERRING from an unreliable owlready2->HermiT bridge.",
+   "evidence": "Canonical HermiT via OWLAPI (Configuration.throwInconsistentOntologyException=false). Deletion-based MUS justification (2 axioms): DataPropertyRange(hasDescription xsd:string) + DataPropertyAssertion(hasDescription ScrumFramework \"...\"@en). Scope scan: only hasDescription affected, 17 @en values. Scripts/Java in /home/claude/work/step2/r4/ (Mus.java, Check.java, cli.py).",
+   "anomaly_note": "RESOLVED-EXPLAINED. Earlier 'AllDisjointClasses / remove-any-range' signature was an owlready2-bridge artifact: the bridge reported the ADC-removed graph consistent while the canonical CLI reported it inconsistent. Canonical OWLAPI path is authoritative.",
+   "reproducibility_finding": "The in-package HermiT_consistency_proof_v1_0_0.txt claims CONSISTENT, but that claim is NOT independently reproducible: O4SE_Core_Structure is inconsistent standalone, so any merge containing it must be inconsistent. BP-D2 vindicated — a prior proof is itself a claim requiring re-verification.",
+   "disposition": "RESOLVED (owner-authorized edit). O4SE v1.0.8: hasDescription rdfs:range widened xsd:string -> rdfs:Literal (admits xsd:string AND rdf:langString; preserves @en multilingual text). owl:AllDisjointClasses UNCHANGED (option 2: disjointness preserved). VERIFIED: canonical HermiT on merged O4SDLC v1.0.8 -> isConsistent()=true, 0 unsatisfiable classes, owl:Thing satisfiable. REDO SHACL on O4SE v1.0.8 still 0 violations, class defs 100%. Proof: O4SDLC_HermiT_consistency_proof_v2_0_0.txt.",
+   "status\"": "RESOLVED"
+  }
+ ],
+ "pamg_model_defects_OUT_OF_SCOPE": [
+  {
+   "id": "PM-1",
+   "defect": "PAMG A&D coverage 38-42% of O4UCM/O4DF"
+  },
+  {
+   "id": "PM-2",
+   "defect": "PAMG invented design-activity set; omitted EnvironmentDescriptionActivity"
+  },
+  {
+   "id": "PM-3",
+   "defect": "PAMG flat structure — no refinement/sub-phase/evolution"
+  }
+ ],
+ "open_ratifications": [
+  "CRUD operations (Create/Read/Update/Delete): meta-level (O4SE) vs O4UCM analysis-construct — undecided"
+ ],
+ "closure_summary": {
+  "total_findings": 16,
+  "HIGH_open": 0,
+  "HIGH_open_ids": [],
+  "HIGH_resolved": [
+   "SD-1",
+   "SD-2",
+   "SD-8",
+   "SD-14"
+  ],
+  "MEDIUM_resolved": [
+   "SD-3",
+   "SD-9",
+   "SD-10",
+   "SD-11",
+   "SHAPE-1"
+  ],
+  "MEDIUM_open": 0,
+  "LOW_resolved": [
+   "SD-13"
+  ],
+  "LOW_documented": [
+   "SD-12"
+  ],
+  "INVESTIGATE_cleared": [
+   "SD-7"
+  ],
+  "prior_closed": [
+   "SD-4",
+   "SD-5",
+   "SD-6"
+  ],
+  "advisory_open": [],
+  "trust_gate": {
+   "SHACL_0_violations": "MET (O4SE 0; O4DF conforms; O4UCM residual = ARTIFACT-1 anon class)",
+   "BP_D24_metadata": "MET (all ontologies)",
+   "coverage_documented": "MET (class defs 100%; sourcing map delivered)",
+   "provenance_authority": "MET (ownership ruling + per-term citations)",
+   "DL_consistency_reproof": "MET — SD-14 resolved; canonical HermiT: merged O4SDLC isConsistent()=true, 0 unsatisfiable classes",
+   "examiner_signoff": "PENDING",
+   "overall": "GATE MET on all technical criteria (SHACL 0 violations, BP-D24, coverage, provenance, DL consistency). PENDING examiner sign-off only."
+  },
+  "note": "All HIGH findings resolved by owner-authorized edits. SD-14 root cause was a language-tagged-literal vs xsd:string-range clash (fixed by widening to rdfs:Literal), NOT the disjointness. Consistency re-proven with the canonical OWLAPI/HermiT path after the owlready2 bridge proved unreliable. Property-definition advisory (108) closed in v1.0.9; definition coverage 100% across classes and properties.",
+  "advisory_closed": [
+   "SD-8 property definitions (108) — done in O4SE v1.0.9"
+  ],
+  "residual_warnings_optional": "REDO warnings remaining are non-definition back-links only: rdfs:isDefinedBy on classes/properties (615) and dcterms:source on 239 Tier-1-grounded classes + 24 S-STRUCT-2. Advisory; do not affect violations or consistency."
+ }
+}

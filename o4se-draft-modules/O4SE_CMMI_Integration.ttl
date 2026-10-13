@@ -1,0 +1,370 @@
+@prefix o4se: <http://www.semanticweb.org/ontologies/2025/O4SE#> .
+@prefix cmmi: <http://www.semanticweb.org/ontologies/2025/O4SE/CMMI#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+# ===========================
+# CMMI Integration Module
+# ===========================
+
+<http://www.semanticweb.org/ontologies/2025/O4SE/CMMI> a owl:Ontology ;
+    owl:versionInfo "1.0.0"^^xsd:string ;
+    dcterms:title "O4SE CMMI Integration Module"@en ;
+    dcterms:description "Integration of SEI CMMI process areas and maturity model into O4SE"@en ;
+    owl:imports <http://www.semanticweb.org/ontologies/2025/O4SE> .
+
+# ===========================
+# CMMI Core Classes
+# ===========================
+
+cmmi:ProcessMaturityFramework a owl:Class ;
+    rdfs:label "Process Maturity Framework"@en ;
+    rdfs:comment "Framework for assessing and improving organizational process maturity"@en ;
+    rdfs:subClassOf o4se:Process .
+
+cmmi:MaturityLevel a owl:Class ;
+    rdfs:label "Maturity Level"@en ;
+    rdfs:comment "Degree of process improvement across predefined process areas"@en .
+
+cmmi:ProcessArea a owl:Class ;
+    rdfs:label "Process Area"@en ;
+    rdfs:comment "Cluster of related practices in an area that satisfy goals"@en ;
+    rdfs:subClassOf o4se:Process .
+
+cmmi:ProcessCategory a owl:Class ;
+    rdfs:label "Process Category"@en ;
+    rdfs:comment "Grouping of process areas with similar focus"@en .
+
+cmmi:Goal a owl:Class ;
+    rdfs:label "Goal"@en ;
+    rdfs:comment "Required component that describes what must be achieved"@en .
+
+cmmi:SpecificGoal a owl:Class ;
+    rdfs:label "Specific Goal"@en ;
+    rdfs:subClassOf cmmi:Goal ;
+    skos:definition "Goal that applies to a specific process area"@en .
+
+cmmi:GenericGoal a owl:Class ;
+    rdfs:label "Generic Goal"@en ;
+    rdfs:subClassOf cmmi:Goal ;
+    skos:definition "Goal that applies to multiple process areas"@en .
+
+cmmi:Practice a owl:Class ;
+    rdfs:label "Practice"@en ;
+    rdfs:comment "Expected component that describes activities for achieving goals"@en ;
+    rdfs:subClassOf o4se:Activity .
+
+cmmi:SpecificPractice a owl:Class ;
+    rdfs:label "Specific Practice"@en ;
+    rdfs:subClassOf cmmi:Practice ;
+    skos:definition "Practice unique to a process area"@en .
+
+cmmi:GenericPractice a owl:Class ;
+    rdfs:label "Generic Practice"@en ;
+    rdfs:subClassOf cmmi:Practice ;
+    skos:definition "Practice that ensures process is effective"@en .
+
+# ===========================
+# Maturity Levels
+# ===========================
+
+cmmi:Level1_Initial a owl:Class ;
+    rdfs:label "Level 1 - Initial"@en ;
+    rdfs:subClassOf cmmi:MaturityLevel ;
+    skos:definition "Processes are unpredictable and reactive"@en .
+
+cmmi:Level2_Managed a owl:Class ;
+    rdfs:label "Level 2 - Managed"@en ;
+    rdfs:subClassOf cmmi:MaturityLevel ;
+    skos:definition "Processes are planned and executed per policy"@en .
+
+cmmi:Level3_Defined a owl:Class ;
+    rdfs:label "Level 3 - Defined"@en ;
+    rdfs:subClassOf cmmi:MaturityLevel ;
+    skos:definition "Processes are well characterized and understood"@en .
+
+cmmi:Level4_QuantitativelyManaged a owl:Class ;
+    rdfs:label "Level 4 - Quantitatively Managed"@en ;
+    rdfs:subClassOf cmmi:MaturityLevel ;
+    skos:definition "Processes are measured and controlled"@en .
+
+cmmi:Level5_Optimizing a owl:Class ;
+    rdfs:label "Level 5 - Optimizing"@en ;
+    rdfs:subClassOf cmmi:MaturityLevel ;
+    skos:definition "Focus on continuous process improvement"@en .
+
+# ===========================
+# Process Categories
+# ===========================
+
+cmmi:ProcessManagement a owl:Class ;
+    rdfs:label "Process Management"@en ;
+    rdfs:subClassOf cmmi:ProcessCategory ;
+    skos:definition "Activities for defining, planning, and improving processes"@en .
+
+cmmi:ProjectManagement a owl:Class ;
+    rdfs:label "Project Management"@en ;
+    rdfs:subClassOf cmmi:ProcessCategory ;
+    skos:definition "Project management activities for planning and monitoring"@en .
+
+cmmi:Engineering a owl:Class ;
+    rdfs:label "Engineering"@en ;
+    rdfs:subClassOf cmmi:ProcessCategory ;
+    skos:definition "Development and maintenance activities"@en .
+
+cmmi:Support a owl:Class ;
+    rdfs:label "Support"@en ;
+    rdfs:subClassOf cmmi:ProcessCategory ;
+    skos:definition "Activities supporting development and maintenance"@en .
+
+# ===========================
+# Level 2 Process Areas
+# ===========================
+
+cmmi:RequirementsManagement_REQM a owl:Class ;
+    rdfs:label "Requirements Management (REQM)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:Engineering ;
+    cmmi:associatedWithLevel cmmi:Level2_Managed ;
+    skos:definition "Managing requirements and ensuring alignment with plans"@en .
+
+cmmi:ProjectPlanning_PP a owl:Class ;
+    rdfs:label "Project Planning (PP)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:ProjectManagement ;
+    cmmi:associatedWithLevel cmmi:Level2_Managed ;
+    skos:definition "Establishing and maintaining project plans"@en .
+
+cmmi:ProjectMonitoringAndControl_PMC a owl:Class ;
+    rdfs:label "Project Monitoring and Control (PMC)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:ProjectManagement ;
+    cmmi:associatedWithLevel cmmi:Level2_Managed ;
+    skos:definition "Monitoring progress against plans"@en .
+
+cmmi:SupplierAgreementManagement_SAM a owl:Class ;
+    rdfs:label "Supplier Agreement Management (SAM)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:ProjectManagement ;
+    cmmi:associatedWithLevel cmmi:Level2_Managed ;
+    skos:definition "Managing acquisition of products from suppliers"@en .
+
+cmmi:MeasurementAndAnalysis_MA a owl:Class ;
+    rdfs:label "Measurement and Analysis (MA)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:Support ;
+    cmmi:associatedWithLevel cmmi:Level2_Managed ;
+    skos:definition "Developing and sustaining measurement capability"@en .
+
+cmmi:ProcessAndProductQualityAssurance_PPQA a owl:Class ;
+    rdfs:label "Process and Product Quality Assurance (PPQA)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:Support ;
+    cmmi:associatedWithLevel cmmi:Level2_Managed ;
+    skos:definition "Providing objective insight into processes and products"@en .
+
+cmmi:ConfigurationManagement_CM a owl:Class ;
+    rdfs:label "Configuration Management (CM)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:Support ;
+    cmmi:associatedWithLevel cmmi:Level2_Managed ;
+    skos:definition "Establishing and maintaining integrity of work products"@en .
+
+# ===========================
+# Level 3 Process Areas
+# ===========================
+
+cmmi:RequirementsDevelopment_RD a owl:Class ;
+    rdfs:label "Requirements Development (RD)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:Engineering ;
+    cmmi:associatedWithLevel cmmi:Level3_Defined ;
+    skos:definition "Producing and analyzing customer, product, and component requirements"@en .
+
+cmmi:TechnicalSolution_TS a owl:Class ;
+    rdfs:label "Technical Solution (TS)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:Engineering ;
+    cmmi:associatedWithLevel cmmi:Level3_Defined ;
+    skos:definition "Designing, developing, and implementing solutions"@en .
+
+cmmi:ProductIntegration_PI a owl:Class ;
+    rdfs:label "Product Integration (PI)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:Engineering ;
+    cmmi:associatedWithLevel cmmi:Level3_Defined ;
+    skos:definition "Assembling product from components"@en .
+
+cmmi:Verification_VER a owl:Class ;
+    rdfs:label "Verification (VER)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:Engineering ;
+    cmmi:associatedWithLevel cmmi:Level3_Defined ;
+    skos:definition "Ensuring work products meet requirements"@en .
+
+cmmi:Validation_VAL a owl:Class ;
+    rdfs:label "Validation (VAL)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:Engineering ;
+    cmmi:associatedWithLevel cmmi:Level3_Defined ;
+    skos:definition "Demonstrating product fulfills intended use"@en .
+
+cmmi:OrganizationalProcessFocus_OPF a owl:Class ;
+    rdfs:label "Organizational Process Focus (OPF)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:ProcessManagement ;
+    cmmi:associatedWithLevel cmmi:Level3_Defined ;
+    skos:definition "Planning and implementing process improvement"@en .
+
+cmmi:OrganizationalProcessDefinition_OPD a owl:Class ;
+    rdfs:label "Organizational Process Definition (OPD)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:ProcessManagement ;
+    cmmi:associatedWithLevel cmmi:Level3_Defined ;
+    skos:definition "Establishing and maintaining process assets"@en .
+
+cmmi:OrganizationalTraining_OT a owl:Class ;
+    rdfs:label "Organizational Training (OT)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:ProcessManagement ;
+    cmmi:associatedWithLevel cmmi:Level3_Defined ;
+    skos:definition "Developing skills and knowledge"@en .
+
+cmmi:IntegratedProjectManagement_IPM a owl:Class ;
+    rdfs:label "Integrated Project Management (IPM)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:ProjectManagement ;
+    cmmi:associatedWithLevel cmmi:Level3_Defined ;
+    skos:definition "Establishing and managing project per defined process"@en .
+
+cmmi:RiskManagement_RSKM a owl:Class ;
+    rdfs:label "Risk Management (RSKM)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:ProjectManagement ;
+    cmmi:associatedWithLevel cmmi:Level3_Defined ;
+    skos:definition "Identifying and mitigating risks"@en .
+
+cmmi:DecisionAnalysisAndResolution_DAR a owl:Class ;
+    rdfs:label "Decision Analysis and Resolution (DAR)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:Support ;
+    cmmi:associatedWithLevel cmmi:Level3_Defined ;
+    skos:definition "Analyzing possible decisions using formal process"@en .
+
+# ===========================
+# Level 4 Process Areas
+# ===========================
+
+cmmi:OrganizationalPerformanceManagement_OPM a owl:Class ;
+    rdfs:label "Organizational Performance Management (OPM)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:ProcessManagement ;
+    cmmi:associatedWithLevel cmmi:Level4_QuantitativelyManaged ;
+    skos:definition "Managing business performance"@en .
+
+cmmi:QuantitativeProjectManagement_QPM a owl:Class ;
+    rdfs:label "Quantitative Project Management (QPM)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:ProjectManagement ;
+    cmmi:associatedWithLevel cmmi:Level4_QuantitativelyManaged ;
+    skos:definition "Quantitatively managing project's defined process"@en .
+
+# ===========================
+# Level 5 Process Areas
+# ===========================
+
+cmmi:CausalAnalysisAndResolution_CAR a owl:Class ;
+    rdfs:label "Causal Analysis and Resolution (CAR)"@en ;
+    rdfs:subClassOf cmmi:ProcessArea ;
+    cmmi:belongsToCategory cmmi:Support ;
+    cmmi:associatedWithLevel cmmi:Level5_Optimizing ;
+    skos:definition "Identifying causes of defects and preventing recurrence"@en .
+
+# ===========================
+# CMMI-specific Properties
+# ===========================
+
+cmmi:associatedWithLevel a owl:ObjectProperty ;
+    rdfs:label "associated with level"@en ;
+    rdfs:domain cmmi:ProcessArea ;
+    rdfs:range cmmi:MaturityLevel .
+
+cmmi:belongsToCategory a owl:ObjectProperty ;
+    rdfs:label "belongs to category"@en ;
+    rdfs:domain cmmi:ProcessArea ;
+    rdfs:range cmmi:ProcessCategory .
+
+cmmi:hasGoal a owl:ObjectProperty ;
+    rdfs:label "has goal"@en ;
+    rdfs:domain cmmi:ProcessArea ;
+    rdfs:range cmmi:Goal .
+
+cmmi:hasPractice a owl:ObjectProperty ;
+    rdfs:label "has practice"@en ;
+    rdfs:domain cmmi:ProcessArea ;
+    rdfs:range cmmi:Practice .
+
+cmmi:achievesGoal a owl:ObjectProperty ;
+    rdfs:label "achieves goal"@en ;
+    rdfs:domain cmmi:Practice ;
+    rdfs:range cmmi:Goal .
+
+cmmi:assessedAtLevel a owl:ObjectProperty ;
+    rdfs:label "assessed at level"@en ;
+    rdfs:domain o4se:Process ;
+    rdfs:range cmmi:MaturityLevel .
+
+cmmi:implementsProcessArea a owl:ObjectProperty ;
+    rdfs:label "implements process area"@en ;
+    rdfs:domain o4se:Process ;
+    rdfs:range cmmi:ProcessArea .
+
+# ===========================
+# CMMI Data Properties
+# ===========================
+
+cmmi:hasMaturityScore a owl:DatatypeProperty ;
+    rdfs:label "has maturity score"@en ;
+    rdfs:domain o4se:Process ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Maturity level score from 1 to 5"@en .
+
+cmmi:hasCapabilityLevel a owl:DatatypeProperty ;
+    rdfs:label "has capability level"@en ;
+    rdfs:domain cmmi:ProcessArea ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Capability level for specific process area (0-3)"@en .
+
+cmmi:isInstitutionalized a owl:DatatypeProperty ;
+    rdfs:label "is institutionalized"@en ;
+    rdfs:domain cmmi:Practice ;
+    rdfs:range xsd:boolean ;
+    rdfs:comment "Whether practice is institutionalized in organization"@en .
+
+# ===========================
+# CMMI Individuals
+# ===========================
+
+cmmi:CMMI_DEV a cmmi:ProcessMaturityFramework ;
+    rdfs:label "CMMI for Development"@en ;
+    o4se:hasDescription "CMMI model for product and service development"@en .
+
+cmmi:CMMI_SVC a cmmi:ProcessMaturityFramework ;
+    rdfs:label "CMMI for Services"@en ;
+    o4se:hasDescription "CMMI model for service establishment and delivery"@en .
+
+cmmi:CMMI_ACQ a cmmi:ProcessMaturityFramework ;
+    rdfs:label "CMMI for Acquisition"@en ;
+    o4se:hasDescription "CMMI model for acquisition processes"@en .
+
+# ===========================
+# Alignment with O4SE Core
+# ===========================
+
+cmmi:ProcessArea rdfs:subClassOf o4se:Process .
+cmmi:Practice rdfs:subClassOf o4se:Activity .
+cmmi:Goal rdfs:subClassOf o4se:Artifact .

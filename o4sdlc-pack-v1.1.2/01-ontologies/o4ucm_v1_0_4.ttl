@@ -1,0 +1,1165 @@
+@prefix amod: <http://example.org/amod#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix meta: <http://example.org/ontology-engineering#> .
+@prefix o4ucm: <http://www.zt4swe.io/sad/ch5#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sad: <http://www.zt4swe.io/sad/core#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+o4ucm:AIUseCaseExtension a owl:Class ;
+    rdfs:label "AI Use Case Extension"@en,
+        "Yapay Zeka Kullanim Senaryosu Uzantisi"@tr ;
+    dcterms:source "Uysal, M. P. (2022). Machine learning-enabled healthcare information systems. Journal of Industrial Information Integration, 30(1), 1-18."@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:Post2015Extension ;
+    skos:definition "An extension to use case modeling techniques designed to address requirements engineering challenges posed by artificial intelligence components in modern information systems, including specification of AI-driven features as use cases with scenario-based testing strategies."@en ;
+    skos:example "A use case for an AI-powered chatbot feature with postcondition: The chatbot must correctly resolve the customer enquiry with semantic accuracy >= 0.85 as measured by human evaluation."@en ;
+    skos:scopeNote "Closely related to MLUseCaseExtension but broader in scope, encompassing all AI behaviours including NLP interfaces, autonomous decision-making, and generative AI features. Growing importance as AI components become prevalent in enterprise systems."@en .
+
+o4ucm:CRUDMatrix a owl:Class ;
+    rdfs:label "CRUD Matrix"@en,
+        "CRUD Matrisi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:ValidationTechnique ;
+    skos:definition "A two-dimensional table that maps use cases against domain classes and records, in each cell, the type of data operation (C, R, U, or D) performed by that use case on that domain class, providing a comprehensive visual summary of use case model data coverage."@en ;
+    skos:example "The CRUD matrix for RMO CSMS (Fig. 5-13) reveals that Sale class has only Read coverage and Adjustment class has only Create coverage - indicating missing use cases for both."@en ;
+    skos:scopeNote "A tool produced by the CRUD technique. Empty cells or missing C, R, U, or D entries indicate gaps requiring new use cases. In integrated systems, cells annotate which application handles the operation."@en .
+
+o4ucm:Customer_Actor a owl:NamedIndividual,
+        o4ucm:Actor ;
+    rdfs:label "Customer"@en,
+        "Musteri"@tr ;
+    dcterms:source "Satzinger et al. (2016), Fig. 5-2."@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    skos:definition "An actor representing the role of an individual who creates and manages their own customer account in an e-commerce or retail information system."@en ;
+    o4ucm:hasName "Customer" .
+
+o4ucm:DecisionDiamond a owl:Class ;
+    rdfs:label "Decision Diamond"@en,
+        "Karar Elmas"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:DiagramElement ;
+    skos:definition "A diamond-shaped symbol in a UML activity diagram that represents a decision point at which the flow of control diverges into two or more alternative paths based on a condition evaluated at runtime, with each outgoing path labelled with its condition."@en ;
+    skos:example "In Ship items activity diagram: the decision diamond labelled Available? directs flow to Mark as shipped (Yes) or Mark as backordered (No)."@en ;
+    skos:scopeNote "Equivalent to the decision node in the UML activity diagram specification. In Ship items, the decision diamond evaluates whether each sale item is available for shipment."@en .
+
+o4ucm:DomainModelClassDiagram a owl:Class ;
+    rdfs:label "Domain Model Class Diagram"@en,
+        "Alan Modeli Sinif Diyagrami"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:DiagramArtefact,
+        o4ucm:DomainConcept ;
+    skos:definition "A UML class diagram that models the types of objects (domain classes) in the problem domain of an information system and the associations among them, serving as the primary anchor model for use case modeling."@en ;
+    skos:example "The RMO CSMS domain model class diagram containing Customer, Sale, Account, Inventory Item, Promotion, Shipment, and related classes."@en ;
+    skos:relatedMatch sad:DomainModelClassDiagram ;
+    skos:scopeNote "Should be developed as completely as possible early in the project. The number of domain classes is a proxy for system complexity. Must be consistent with all dependent use case models. Cross-chapter: also central to CH04."@en .
+
+o4ucm:EcosystemIntegrationNote a owl:AnnotationProperty ;
+    rdfs:label "Ecosystem Integration Note"@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> .
+
+o4ucm:ElallaouilNLPApproach_2018 a owl:NamedIndividual,
+        o4ucm:NLPUseCaseGeneration,
+        o4ucm:POSTaggingApproach ;
+    rdfs:label "Elallaoui et al. NLP Use Case Generation (2018)"@en ;
+    dcterms:source "Elallaoui, M., Rubab, K., & Lahmer, M. (2018). Automatic transformation of user stories into UML use case diagrams using NLP techniques. Procedia Computer Science, 130, 42-49. doi:10.1016/j.procs.2018.04.010"@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    skos:definition "The NLP-driven use case generation approach by Elallaoui, Rubab and Lahmer (2018) using POS tagging to transform semi-structured user stories into UML use case diagrams, achieving 87-98% precision in case study evaluations."@en ;
+    o4ucm:hasSourceDocumentURI "https://doi.org/10.1016/j.procs.2018.04.010"^^xsd:anyURI .
+
+o4ucm:IntegratedSystem a owl:Class ;
+    rdfs:label "Integrated System"@en,
+        "Entegre Sistem"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:DomainConcept ;
+    skos:definition "An external information system that shares data with the system being developed, having primary responsibility for creating, updating, or deleting certain domain classes that the system under development only reads or uses."@en ;
+    skos:example "The RMO supply chain management application that creates and maintains product data; the RMO CSMS only reads and updates product information."@en ;
+    skos:scopeNote "Relevant to CRUD analysis in integrated enterprise environments. Identifying integrated systems prevents duplicate data management logic and clarifies system scope."@en .
+
+o4ucm:KasauliAgileRE_2023 a owl:NamedIndividual,
+        o4ucm:AgileRequirementsFramework ;
+    rdfs:label "Kasauli et al. Agile Requirements Framework (2023)"@en ;
+    dcterms:source "Kasauli, R., Liebel, G., Knauss, E., Gopakumar, S., & Kanagwa, B. (2023). Journal of Systems and Software, 198. doi:10.1016/j.jss.2023.111596"@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    skos:definition "The agile requirements modelling study by Kasauli, Liebel, Knauss, Gopakumar and Kanagwa (2023) conducted at Ericsson AB, investigating the use of requirements models in very-large-scale agile systems engineering contexts."@en ;
+    o4ucm:hasSourceDocumentURI "https://doi.org/10.1016/j.jss.2023.111596"^^xsd:anyURI .
+
+o4ucm:LookUpCustomer_UC a owl:NamedIndividual,
+        o4ucm:UseCase ;
+    rdfs:label "Look Up Customer"@en,
+        "Musteriye Bak"@tr ;
+    dcterms:source "Satzinger, J. W., Jackson, R. B., & Burd, S. D. (2016). Systems Analysis and Design in a Changing World, 7th ed. Cengage Learning. Fig. 5-1."@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    skos:definition "A use case in which a user enters a customer account number and the system retrieves and displays the corresponding customer and account data."@en ;
+    o4ucm:hasIdentifier "UC-CH5-003" ;
+    o4ucm:hasName "Look up customer" .
+
+o4ucm:MLUseCaseExtension a owl:Class ;
+    rdfs:label "ML Use Case Extension"@en,
+        "Makine Ogrenmesi Kullanim Senaryosu Uzantisi"@tr ;
+    dcterms:source "Uysal, M. P. (2021). Machine learning and data science project management from an agile perspective. In Contemporary Challenges for Agile Project Management. IGI Global."@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:Post2015Extension ;
+    skos:definition "An extension to the traditional use case modeling technique that adapts preconditions, postconditions, and exception conditions to capture the non-deterministic, probabilistic behaviour of machine learning components embedded within an information system."@en ;
+    skos:example "A use case postcondition for an ML-based product recommendation feature: The recommendation engine must return at least 5 products with precision@5 >= 0.70 for the given customer profile."@en ;
+    skos:scopeNote "Active research area. Addresses the limitation that traditional use cases assume deterministic system behaviour. Relevant for systems incorporating recommendation engines, classifiers, and other ML components."@en .
+
+o4ucm:ModelDrivenDevelopmentApproach a owl:Class ;
+    rdfs:label "Model-Driven Development Approach"@en,
+        "Model Odakli Gelistirme Yaklasimi"@tr ;
+    dcterms:source "Frontiers in Computer Science. (2025). Automated requirements engineering framework for agile model-driven development. https://www.frontiersin.org/journals/computer-science/articles/10.3389/fcomp.2025.1537100/full"@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:Post2015Extension ;
+    skos:definition "A software engineering approach in which models are the primary artefacts of development, applied to use case generation by specifying transformations from requirements models (user stories, CIM) to design models (UML use case diagrams, class diagrams, PIM, PSM)."@en ;
+    skos:example "An MDD pipeline that takes user stories as CIM input, applies POS tagging and transformation rules, and outputs a UML use case diagram as PIM."@en ;
+    skos:scopeNote "Used in NLP-driven use case generation workflows. Combines with POS tagging to automate the CIM-to-PIM transformation. Nasiri et al. (2020) applied MDD to generate UML class diagrams from user stories using Stanford CoreNLP."@en .
+
+o4ucm:O4UCM_ChangeLog_v1_0_0 a owl:NamedIndividual ;
+    rdfs:label "Change Log v1.0.0"@en ;
+    amod:forVersion o4ucm:O4UCM_v1_0_0_Token ;
+    dcterms:description "INITIAL RELEASE v1.0.0 (2026-04-20 - Phase 7 Remediation): 1. TBox: 70 classes (all Chapter 5 + post-2015 + RequirementsModel alias). 2. 38 properties (29 object, 9 data). 3. 12 named individuals: 3 use cases, 2 scenarios, 2 actors, 5 post-2015. 4. Full annotation: rdfs:label EN+TR, skos:definition, skos:scopeNote, skos:example on all classes. 5. OWL 2 DL restrictions: FDUCD compartments, UC actor/event cardinality, SSD lifeline. 6. Disjoint axioms: CRUD ops, frame types, descriptions, Actor/Stakeholder, Input/Output messages. 7. Inferrable taxonomy: equivalentClass for ActivityDiagram, UseCaseScenario=UseCaseInstance. 8. Ecosystem integration architecture: sad:core stubs, synthesis comments. 9. REMEDIATION: G1 fixed (file built programmatically via rdflib); G2 fixed (RequirementsModel added); G4 fixed (all 70 classes have skos:scopeNote); C8-V resolved (version string 1.0.0 in ontology header)."@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    skos:definition "AMOD change-log record documenting the initial v1.0.0 release of the O4UCM (Ontology for Use-Case Modeling) ontology, capturing its TBox/ABox scope and Phase-7 remediation closure."@en .
+
+o4ucm:O4UCM_ChangeLog_v1_0_1 a owl:NamedIndividual ;
+    rdfs:label "Change Log v1.0.1"@en ;
+    dcterms:description "v1.0.1 CHANGES (patch — version bump for post-delivery remediation): REASON FOR BUMP: v1.0.0 was delivered to the user in Ontology4usecasemodeling_v1_0_0.zip before BS-02 (live reasoner verification) was resolved. AMOD policy requires version bump on any post-delivery change, regardless of sprint boundaries. CONTENT CHANGES: (1) owl:versionInfo 1.0.0 -> 1.0.1; (2) owl:versionIRI updated to v1.0.1; (3) owl:priorVersion <ch5/v1.0.0> added; (4) AMOD ChangeLog v1.0.1 individual added; (5) G5 empirical evidence: HermiT T1-T6 all PASS, G5=100/100, BS-02 CLOSED. TBox/ABox triple count: 1,059 (v1.0.0) -> 1,063 (v1.0.1, version header additions only)."@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    skos:definition "AMOD change-log record documenting the v1.0.1 patch release of O4UCM: a post-delivery version bump recording closure of BS-02 live-reasoner verification, with no TBox/ABox content change."@en .
+
+o4ucm:OMG_UML251 a owl:NamedIndividual,
+        o4ucm:UML251Specification ;
+    rdfs:label "OMG UML 2.5.1 (December 2017)"@en ;
+    dcterms:source "Object Management Group. (2017). OMG UML 2.5.1. formal/17-12-05. https://www.omg.org/spec/UML/2.5.1/"@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    skos:definition "The UML 2.5.1 specification adopted by the Object Management Group in December 2017 (formal/17-12-05), providing the authoritative normative reference for use case and sequence diagram notation."@en ;
+    o4ucm:hasName "OMG UML 2.5.1" ;
+    o4ucm:hasSourceDocumentURI "https://www.omg.org/spec/UML/2.5.1/"^^xsd:anyURI ;
+    o4ucm:hasVersion "2.5.1" .
+
+o4ucm:OnlineCustomerScenario a owl:NamedIndividual,
+        o4ucm:UseCaseScenario ;
+    rdfs:label "Create Online Customer Account Scenario"@en ;
+    dcterms:source "Satzinger et al. (2016), Fig. 5-2."@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    skos:definition "The scenario in which a new customer creates their account independently via the organisation's website, triggering the event: New customer wants to set up account online."@en ;
+    o4ucm:hasIdentifier "SC-CH5-001" ;
+    o4ucm:hasName "Create online customer account" ;
+    o4ucm:isScenarioOf o4ucm:CreateCustomerAccount_UC .
+
+o4ucm:RequirementsModel a owl:Class ;
+    rdfs:label "Requirements Model"@en,
+        "Gereksinim Modeli"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    owl:equivalentClass o4ucm:RequirementsArtifact ;
+    skos:definition "A structured representation of system requirements as a formal or semi-formal model, encompassing use case models, domain model class diagrams, activity diagrams, and system sequence diagrams that together specify the functional requirements of an information system."@en ;
+    skos:example "The set of use case diagrams, domain model class diagram, and system sequence diagrams constitutes the requirements model for a system."@en ;
+    skos:scopeNote "Synonym for RequirementsArtifact in some literature; declared as equivalent class for terminological completeness. In Satzinger et al. (2016), requirements models include use case diagrams, descriptions, activity diagrams, SSDs, and domain model class diagrams."@en .
+
+o4ucm:SharedDatabase a owl:Class ;
+    rdfs:label "Shared Database"@en,
+        "Paylasilan Veritabani"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:DomainConcept ;
+    skos:definition "A persistent data store accessed by multiple integrated systems, in which different applications may have different CRUD responsibilities for different domain classes, requiring careful boundary definition during use case modeling."@en ;
+    skos:example "An enterprise database shared between the RMO CSMS and the supply chain management system, where product data is owned by the supply chain application."@en ;
+    skos:scopeNote "When systems share a database, CRUD analysis must identify which application is responsible for each CRUD operation on each domain class, not just that the operation is covered."@en .
+
+o4ucm:ShipNewSaleScenario a owl:NamedIndividual,
+        o4ucm:UseCaseScenario ;
+    rdfs:label "Ship Items for a New Sale Scenario"@en ;
+    dcterms:source "Satzinger et al. (2016), Fig. 5-3."@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    skos:definition "The scenario in which the shipping clerk processes a new sale (as opposed to back-ordered items from a previous sale), triggered by notification of a new sale to be shipped."@en ;
+    o4ucm:hasIdentifier "SC-CH5-002" ;
+    o4ucm:hasName "Ship items for a new sale" ;
+    o4ucm:isScenarioOf o4ucm:ShipItems_UC .
+
+o4ucm:ShippingClerk_Actor a owl:NamedIndividual,
+        o4ucm:Actor ;
+    rdfs:label "Shipping Clerk"@en,
+        "Nakliye Memuru"@tr ;
+    dcterms:source "Satzinger et al. (2016), Fig. 5-3."@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    skos:definition "An actor representing the role of an employee responsible for retrieving sale information, recording shipment details, and producing shipping labels in a logistics management system."@en ;
+    o4ucm:hasName "Shipping clerk" .
+
+o4ucm:SynchronisationBar a owl:Class ;
+    rdfs:label "Synchronisation Bar"@en,
+        "Senkronizasyon Cubugu"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:DiagramElement ;
+    skos:definition "A thick horizontal line in a UML activity diagram that serves either as a fork/join construct for parallel concurrent activities or as the beginning/ending marker of a loop structure, with the correct interpretation depending on the diagram context."@en ;
+    skos:example "In Ship items activity diagram: the opening synchronisation bar begins the foreach loop that processes each sale item; the closing bar ends the loop."@en ;
+    skos:scopeNote "Dual use: (1) fork and join for parallel paths, (2) begin and end of a loop. In the Ship items activity diagram, synchronisation bars mark the foreach SaleItem loop bounds."@en .
+
+o4ucm:TrueFalseCondition a owl:Class ;
+    rdfs:label "True/False Condition"@en,
+        "Dogru/Yanlis Kosul"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:DiagramElement ;
+    skos:definition "A Boolean guard condition in a UML sequence diagram, enclosed in square brackets, that is evaluated before a message is sent and determines whether the message is transmitted; if true, the message is sent; if false, the message is not sent."@en ;
+    skos:example "In Ship items SSD: [shipped item] - if true, recordShippedItem is sent; [else] - initiateBackorder is sent."@en ;
+    skos:scopeNote "Appears in message notation as [condition] before the message name. Used for conditional message sending and for controlling loops. In loop notation, the condition controls repetition."@en .
+
+o4ucm:UseCase20_Jacobson2016 a owl:NamedIndividual,
+        o4ucm:UseCase20Framework ;
+    rdfs:label "Use Case 2.0 (Jacobson, Spence and Kerr, 2016)"@en ;
+    dcterms:source "Jacobson, I., Spence, I., & Kerr, B. (2016). Use Case 2.0: The Hub of Software Development. Ivar Jacobson International."@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    skos:definition "The Use Case 2.0 framework published by Ivar Jacobson International in 2016, extending traditional use case modeling with slices, narratives, and agile scheduling guidance."@en ;
+    o4ucm:hasName "Use Case 2.0" ;
+    o4ucm:hasSourceDocumentURI "https://www.ivarjacobson.com/publications/white-papers/use-case-20-white-paper"^^xsd:anyURI ;
+    o4ucm:hasVersion "2.0" .
+
+o4ucm:UseCaseSlice a owl:Class ;
+    rdfs:label "Use Case Slice"@en,
+        "Kullanim Senaryosu Dilimi"@tr ;
+    dcterms:source "Jacobson, I., Spence, I., & Kerr, B. (2016). Use Case 2.0: The Hub of Software Development. Ivar Jacobson International."@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:AgileConstruct,
+        o4ucm:Post2015Extension ;
+    skos:definition "A decomposition of a use case into a smaller, independently implementable and testable increment introduced by Use Case 2.0, representing a subset of the use case's scenarios and flow steps that delivers a coherent piece of value to the user."@en ;
+    skos:example "A use case slice of Ship items covering only the standard shipping path (no back-orders), implementable in a single sprint before the back-order slice is delivered."@en ;
+    skos:scopeNote "Bridges the traditional use case (potentially too large for one sprint) and the user story (potentially too small for system design). Ordered by technical risk, business value, and architectural significance."@en .
+
+o4ucm:UserStory a owl:Class ;
+    rdfs:label "User Story"@en,
+        "Kullanici Hikayesi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:AgileConstruct,
+        o4ucm:TextualArtefact ;
+    skos:definition "A brief, informal natural language description of a system feature written from the perspective of an end user, typically following the template As a [role], I want [feature] so that [benefit], used in agile methodologies as an alternative or complement to use case descriptions."@en ;
+    skos:example "As a customer, I want to create an account so that I can track my orders and save my payment details."@en ;
+    skos:scopeNote "Sometimes used in place of use cases in agile development (Satzinger et al., 2016). Less formal than a fully developed use case description. Use Case 2.0 bridges user stories and use cases via use case slices."@en .
+
+o4ucm:complementedBy a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "complemented by"@en ;
+    rdfs:domain o4ucm:RequirementsArtifact ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:RequirementsArtifact ;
+    skos:definition "Relates two requirements artefacts that provide complementary views of the same use case."@en .
+
+o4ucm:consistsOf a owl:ObjectProperty ;
+    rdfs:label "consists of"@en ;
+    rdfs:domain o4ucm:FlowOfActivities ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:ActivityStep ;
+    skos:definition "Relates a flow of activities to the individual activity steps that constitute it."@en .
+
+o4ucm:extendsUseCase a owl:ObjectProperty ;
+    rdfs:label "extends use case"@en ;
+    rdfs:domain o4ucm:Post2015Extension ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:UseCase ;
+    skos:definition "Relates a post-2015 concept or framework to the use case modeling technique it extends or adapts."@en .
+
+o4ucm:hasAutomationBoundary a owl:ObjectProperty ;
+    rdfs:label "has automation boundary"@en ;
+    rdfs:domain o4ucm:ActivityDiagram ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:AutomationBoundary ;
+    skos:definition "Relates an activity diagram to the automation boundary separating actor and system swimlanes."@en .
+
+o4ucm:hasExceptionCondition a owl:ObjectProperty ;
+    rdfs:label "has exception condition"@en ;
+    rdfs:domain o4ucm:UseCase ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:ExceptionCondition ;
+    skos:definition "Relates a use case to the exception conditions that may arise and require alternative system responses."@en .
+
+o4ucm:hasIdentifier a owl:DatatypeProperty ;
+    rdfs:label "has identifier"@en ;
+    rdfs:domain o4ucm:SAD_Concept ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range xsd:string ;
+    skos:definition "A unique identifier assigned to a use case, scenario, or artefact within a project for cross-referencing and traceability."@en .
+
+o4ucm:hasMessageSyntax a owl:DatatypeProperty ;
+    rdfs:label "has message syntax"@en ;
+    rdfs:domain o4ucm:Message ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range xsd:string ;
+    skos:definition "The full formal notation of a message in a system sequence diagram, following the pattern: [true/false condition] return-value := message-name (parameter-list)."@en .
+
+o4ucm:hasName a owl:DatatypeProperty ;
+    rdfs:label "has name"@en ;
+    rdfs:domain o4ucm:SAD_Concept ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range xsd:string ;
+    skos:definition "The descriptive name assigned to a use case, actor, or other named element, following the verb-noun convention for use cases and role-based naming for actors."@en .
+
+o4ucm:hasParameter a owl:ObjectProperty ;
+    rdfs:label "has parameter"@en ;
+    rdfs:domain o4ucm:Message ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:MessageParameter ;
+    skos:definition "Relates an input message to the data parameters transmitted with it."@en .
+
+o4ucm:hasParameterList a owl:DatatypeProperty ;
+    rdfs:label "has parameter list"@en ;
+    rdfs:domain o4ucm:Message ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range xsd:string ;
+    skos:definition "The textual representation of the parameter list of a message in SSD notation, enclosed in parentheses and listing the data items transmitted with the message."@en .
+
+o4ucm:hasReturnValue a owl:ObjectProperty ;
+    rdfs:label "has return value"@en ;
+    rdfs:domain o4ucm:Message ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:ReturnValue ;
+    skos:definition "Relates a message to the return value produced by the system in response."@en .
+
+o4ucm:hasSourceDocumentURI a owl:DatatypeProperty ;
+    rdfs:label "has source document URI"@en ;
+    rdfs:domain o4ucm:SAD_Concept ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "The URI of the document or resource from which a concept or individual is derived, providing direct provenance for post-2015 extensions."@en .
+
+o4ucm:hasStakeholder a owl:ObjectProperty ;
+    rdfs:label "has stakeholder"@en ;
+    rdfs:domain o4ucm:UseCase ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:Stakeholder ;
+    skos:definition "Relates a use case to the stakeholders who have an interest in its outcomes without directly invoking it."@en .
+
+o4ucm:hasStepNumber a owl:DatatypeProperty ;
+    rdfs:label "has step number"@en ;
+    rdfs:domain o4ucm:ActivityStep ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range xsd:string ;
+    skos:definition "The hierarchical number identifying an activity step in the flow of activities: integers (1, 2) for actor steps; decimal notation (1.1, 1.2) for system responses."@en .
+
+o4ucm:hasTrueFalseConditionText a owl:DatatypeProperty ;
+    rdfs:label "has true/false condition text"@en ;
+    rdfs:domain o4ucm:Message ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range xsd:string ;
+    skos:definition "The textual expression of the true/false condition that guards a message in a system sequence diagram, enclosed in square brackets in the SSD notation."@en .
+
+o4ucm:hasVersion a owl:DatatypeProperty ;
+    rdfs:label "has version"@en ;
+    rdfs:domain o4ucm:SAD_Concept ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range xsd:string ;
+    skos:definition "The version string associated with a specification, standard, or framework individual."@en .
+
+o4ucm:identifiedBy a owl:ObjectProperty ;
+    rdfs:label "identified by"@en ;
+    rdfs:domain o4ucm:UseCase ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:UCIdentificationTechnique ;
+    skos:definition "Relates a use case to the identification technique used to discover it."@en .
+
+o4ucm:isRepeating a owl:DatatypeProperty ;
+    rdfs:label "is repeating"@en ;
+    rdfs:domain o4ucm:Message ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Indicates whether a message in a system sequence diagram is sent multiple times (true) or once (false), corresponding to the asterisk notation in the SSD message syntax."@en .
+
+o4ucm:performedBy a owl:ObjectProperty ;
+    rdfs:label "performed by"@en ;
+    rdfs:domain o4ucm:ActorStep ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:Actor ;
+    skos:definition "Relates an actor step in the flow of activities to the actor responsible for performing it."@en .
+
+o4ucm:referencedBy a owl:ObjectProperty ;
+    rdfs:label "referenced by"@en ;
+    rdfs:domain o4ucm:DomainClass ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:UseCaseCondition ;
+    skos:definition "Relates a domain class to the use case conditions (preconditions, postconditions) that reference it."@en .
+
+o4ucm:respondedToBy a owl:ObjectProperty ;
+    rdfs:label "responded to by"@en ;
+    rdfs:domain o4ucm:ActorStep ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:SystemStep ;
+    skos:definition "Relates an actor step to the system step(s) that constitute the system's response."@en .
+
+o4ucm:sendsMessage a owl:ObjectProperty ;
+    rdfs:label "sends message"@en ;
+    rdfs:domain o4ucm:Lifeline ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:Message ;
+    skos:definition "Relates a lifeline to the messages it sends to another lifeline in the system sequence diagram."@en .
+
+o4ucm:supports a owl:ObjectProperty ;
+    rdfs:label "supports"@en ;
+    rdfs:domain o4ucm:CRUDOperation ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:UseCase ;
+    skos:definition "Relates a CRUD operation type to the use cases that implement it for a given domain class."@en .
+
+<http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> a prov:Activity ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date .
+
+o4ucm:AgileRequirementsFramework a owl:Class ;
+    rdfs:label "Agile Requirements Framework"@en,
+        "Cevrik Gereksinim Cercevesi"@tr ;
+    dcterms:source "Kasauli, R., Liebel, G., Knauss, E., Gopakumar, S., & Kanagwa, B. (2023). Aspects of modelling requirements in very-large agile systems engineering. Journal of Systems and Software, 198. doi:10.1016/j.jss.2023.111596"@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:AgileConstruct,
+        o4ucm:Post2015Extension ;
+    skos:definition "A structured methodology for requirements engineering in agile and large-scale agile development contexts, combining elements of traditional use case modeling with agile practices such as user stories, backlog management, and incremental delivery."@en ;
+    skos:example "A framework used at Ericsson AB combining formal requirements models with agile sprint cadences for a very-large-scale telecommunications system development programme."@en ;
+    skos:scopeNote "Addressed by Kasauli et al. (2021/2023) in large-scale agile contexts. Use Case 2.0 is a notable instantiation. Connects traditional use case modeling to agile scaling frameworks such as SAFe and LeSS."@en .
+
+o4ucm:AutomationBoundary a owl:Class ;
+    rdfs:label "Automation Boundary"@en,
+        "Otomasyon Siniri"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:DiagramElement ;
+    skos:definition "The conceptual and visual boundary in a use case activity diagram that separates the manually performed activities from the automated system's activities, typically coinciding with the vertical line between the actor's swimlane and the system's swimlane."@en ;
+    skos:example "The boundary between Customer and System swimlanes in Create customer account identifies three crossing points: request account, enter addresses, enter credit info."@en ;
+    skos:scopeNote "Every workflow arrow that crosses the automation boundary corresponds to a potential message in the System Sequence Diagram. Identifying crossing points is step 1 in the SSD development procedure."@en .
+
+o4ucm:CRUDTechnique a owl:Class ;
+    rdfs:label "CRUD Technique"@en,
+        "CRUD Teknigi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty o4ucm:validates ],
+        o4ucm:ValidationTechnique ;
+    skos:definition "A systematic requirements validation approach that cross-checks the identified set of use cases against the domain model class diagram to verify that, for every domain class, use cases have been identified to Create, Read/Report, Update, and Delete instances."@en ;
+    skos:example "Applying CRUD to the Customer domain class reveals: Create covered by Create customer account, Read by Look up customer, Update by Update customer account, Delete/Archive by the same."@en ;
+    skos:scopeNote "Applied as a complement to the user goal technique, not a replacement. Most effective for discovering overlooked update and archive use cases. In integrated systems, also identifies which application is responsible for each CRUD operation."@en .
+
+o4ucm:CreateCustomerAccount_UC a owl:NamedIndividual,
+        o4ucm:UseCase ;
+    rdfs:label "Create Customer Account"@en,
+        "Musteri Hesabi Olusturma"@tr ;
+    dcterms:source "Satzinger, J. W., Jackson, R. B., & Burd, S. D. (2016). Systems Analysis and Design in a Changing World, 7th ed. Cengage Learning. Fig. 5-2."@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    skos:definition "A use case in which an online customer creates a new customer account by entering basic information, one or more addresses, and credit/debit card details, resulting in the creation of customer, address, and account records."@en ;
+    o4ucm:hasIdentifier "UC-CH5-001" ;
+    o4ucm:hasName "Create customer account" .
+
+o4ucm:EventDecompositionTechnique a owl:Class ;
+    rdfs:label "Event Decomposition Technique"@en,
+        "Olay Ayristirma Teknigi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:UCIdentificationTechnique ;
+    owl:disjointWith o4ucm:UserGoalTechnique ;
+    skos:definition "A use case identification technique that derives the set of use cases for a system by identifying and cataloguing the external events - stimuli from actors or the environment - and temporal events - time-driven triggers - to which the system must respond."@en ;
+    skos:example "Identifying the external event Shipping is notified of a new sale to be shipped leads to the Ship items use case."@en ;
+    skos:scopeNote "Complements the user goal technique. External events are initiated by actors; temporal events are initiated by time. Each event typically corresponds to one or more use cases. Particularly effective for discovering system-initiated use cases."@en .
+
+o4ucm:ExceptionCondition a owl:Class ;
+    rdfs:label "Exception Condition"@en,
+        "Istisna Kosulu"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:UseCaseCondition ;
+    skos:definition "An anticipated deviation from the normal flow of activities within a use case, representing a condition that may arise during execution and that requires the system to respond in a specified alternative manner, numbered to tie it to the specific activity step where it may occur."@en ;
+    skos:example "Exception 3.2 in Create customer account: Credit/debit information is not valid. Exception 2.1 in Ship items: Shipper is not available to that location."@en ;
+    skos:scopeNote "Identified in the eleventh compartment of the fully developed use case description. Not conventional errors; they are anticipated alternative outcomes. Numbering scheme (e.g., 3.2) links each exception to its step."@en .
+
+o4ucm:MessageParameter a owl:Class ;
+    rdfs:label "Message Parameter"@en,
+        "Mesaj Parametresi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:DiagramElement ;
+    skos:definition "A data item passed along with an input message from an actor to the automated system in a UML sequence diagram, enclosed in parentheses after the message name, and derived from the attributes of the relevant domain model class diagram classes."@en ;
+    skos:example "In createNewCustomer(name, phones, emails): name, phones, and emails are message parameters derived from attributes of the Customer domain class."@en ;
+    skos:scopeNote "Identified in step 2 of the SSD development procedure. Determining the correct parameter list requires iteration and reference to the domain model class diagram."@en .
+
+o4ucm:POSTaggingApproach a owl:Class ;
+    rdfs:label "POS Tagging Approach"@en,
+        "Sozluk Tur Etiketleme Yaklasimi"@tr ;
+    dcterms:source "Elallaoui, M., Rubab, K., & Lahmer, M. (2018). Automatic transformation of user stories into UML use case diagrams using NLP techniques. Procedia Computer Science, 130, 42-49."@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:NLPUseCaseGeneration ;
+    skos:definition "A natural language processing technique applied to use case generation that assigns part-of-speech tags to the words of requirements text and uses these tags to systematically identify actors (nouns/noun phrases) and use case names (verb phrases)."@en ;
+    skos:example "POS tagger applied to A customer registers for the system tags customer as NN (actor candidate) and registers as VBZ (use case candidate), yielding actor Customer and use case Register."@en ;
+    skos:scopeNote "Used by Elallaoui et al. (2018) achieving 87-98% precision in case study evaluations. Applied as a transformation from semi-structured user stories to UML use case diagrams in model-driven development workflows."@en .
+
+o4ucm:ReturnValue a owl:Class ;
+    rdfs:label "Return Value"@en,
+        "Donus Degeri"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:DiagramElement ;
+    skos:definition "A data value produced by the automated system in response to an input message and returned to the actor, either shown as a separate dashed-arrow output message or encoded on the same line as the initiating message using the assignment operator notation (return-value :=)."@en ;
+    skos:example "In the abbreviated notation: address details := enterAddress(address) where address details is the return value."@en ;
+    skos:scopeNote "Two notational forms: (1) separate dashed arrow with noun-phrase label, (2) left-side of assignment operator on the message line. Choice depends on diagram complexity."@en .
+
+o4ucm:ShipItems_UC a owl:NamedIndividual,
+        o4ucm:UseCase ;
+    rdfs:label "Ship Items"@en,
+        "Esyalari Gonder"@tr ;
+    dcterms:source "Satzinger, J. W., Jackson, R. B., & Burd, S. D. (2016). Systems Analysis and Design in a Changing World, 7th ed. Cengage Learning. Fig. 5-3."@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    skos:definition "A use case in which a shipping clerk retrieves sale details, records each item as shipped or back-ordered, and produces a shipping label, resulting in a shipment record associated with the shipper and updated sale items."@en ;
+    o4ucm:hasIdentifier "UC-CH5-002" ;
+    o4ucm:hasName "Ship items" .
+
+o4ucm:Swimlane a owl:Class ;
+    rdfs:label "Swimlane"@en,
+        "Yuzmeli Serit"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:DiagramElement ;
+    skos:definition "A vertical or horizontal partition in a UML activity diagram that assigns each activity node to the actor or system component responsible for performing it, making the automation boundary visually explicit and immediately apparent."@en ;
+    skos:example "In the Create customer account activity diagram: one swimlane for Customer (3 activities) and one for System (5 activities)."@en ;
+    skos:scopeNote "In a standard two-swimlane use case activity diagram, one swimlane represents the actor and one represents the system. The vertical line between them is the automation boundary. Arrow crossings indicate potential SSD message locations."@en .
+
+o4ucm:TriggeringEvent a owl:Class ;
+    rdfs:label "Triggering Event"@en,
+        "Tetikleyici Olay"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:UseCaseCondition ;
+    skos:definition "The external event or condition that initiates the execution of a use case, identified in the third compartment of the fully developed use case description, and representing the specific stimulus that causes the actor to begin interacting with the system."@en ;
+    skos:example "Triggering event for Create customer account: New customer wants to set up account online."@en ;
+    skos:scopeNote "Distinguished from preconditions: the triggering event starts the use case, while preconditions are conditions that must already be true before it can respond."@en .
+
+o4ucm:UML251Specification a owl:Class ;
+    rdfs:label "UML 2.5.1 Specification"@en,
+        "UML 2.5.1 Spesifikasyonu"@tr ;
+    dcterms:source "Object Management Group. (2017). OMG UML Version 2.5.1. formal/17-12-05. https://www.omg.org/spec/UML/2.5.1/"@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:Post2015Extension ;
+    skos:definition "The current normative standard for the Unified Modeling Language, adopted by the Object Management Group in December 2017 as a substantial editorial revision of UML 2.5 (released March 2015), providing greater precision in the formal semantics of interaction frames."@en ;
+    skos:example "UML 2.5.1 formalises the semantics of the combined fragment construct governing loop, opt, and alt frames in system sequence diagrams."@en ;
+    skos:scopeNote "The authoritative reference for all UML notation used in use case modeling, including lifelines, interaction frames, actor notation, and message syntax. Freely available from the OMG website."@en .
+
+o4ucm:UseCase20Framework a owl:Class ;
+    rdfs:label "Use Case 2.0 Framework"@en,
+        "Kullanim Senaryosu 2.0 Cercevesi"@tr ;
+    dcterms:source "Jacobson, I., Spence, I., & Kerr, B. (2016). Use Case 2.0: The Hub of Software Development. Ivar Jacobson International."@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:AgileConstruct,
+        o4ucm:Post2015Extension ;
+    skos:definition "A refined use case technique developed by Ivar Jacobson and colleagues specifically for agile and incremental development contexts, extending traditional use case modeling with use case slices, user-story narratives, and iteration scheduling guidance."@en ;
+    skos:example "A use case slice of Create customer account that delivers basic account creation without address or payment information - an independently testable and deployable increment."@en ;
+    skos:scopeNote "Bridges the gap between formal use case descriptions and agile user stories. Implemented in the Essence framework (OMG standard). Provides a scalable technique applicable at varying levels of formality."@en .
+
+o4ucm:UseCaseInstance a owl:Class ;
+    rdfs:label "Use Case Instance"@en,
+        "Kullanim Senaryosu Ornegi (Ornek)"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:UseCase ;
+    owl:equivalentClass o4ucm:UseCaseScenario ;
+    skos:definition "A concrete, enumerable execution of a use case representing a unique path through the use case's flow of activities. Used interchangeably with scenario in Satzinger et al. (2016) to emphasise the concrete nature of the path as an actual system execution."@en ;
+    skos:example "A specific execution of Create customer account by customer Jane Smith on 2026-04-20."@en ;
+    skos:scopeNote "Synonym for UseCaseScenario. Declared separately for terminological fidelity; linked via owl:equivalentClass."@en .
+
+o4ucm:UserGoalTechnique a owl:Class ;
+    rdfs:label "User Goal Technique"@en,
+        "Kullanici Hedefi Teknigi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:UCIdentificationTechnique ;
+    owl:disjointWith o4ucm:EventDecompositionTechnique ;
+    skos:definition "A use case identification technique that derives the set of use cases for a system by systematically enumerating the goals that each actor wishes to accomplish through interactions with the system, ensuring that every goal is associated with at least one use case."@en ;
+    skos:example "Interviewing shipping clerks to discover the goal Ship items leads to the Ship items use case."@en ;
+    skos:scopeNote "Works best in combination with the event decomposition technique. Users goal focus tends to favour primary transaction use cases; update and archive use cases are often discovered only through CRUD cross-checking."@en .
+
+o4ucm:containedIn a owl:ObjectProperty ;
+    rdfs:label "contained in"@en ;
+    rdfs:domain o4ucm:Message ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:ControlFlowAnnotation ;
+    owl:inverseOf o4ucm:contains ;
+    skos:definition "Relates a message to the control flow frame (loop, alt, opt) that encloses it."@en .
+
+o4ucm:contains a owl:ObjectProperty ;
+    rdfs:label "contains"@en ;
+    rdfs:domain o4ucm:ControlFlowAnnotation ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:Message ;
+    owl:inverseOf o4ucm:containedIn ;
+    skos:definition "Relates a control flow frame to the messages it encloses."@en .
+
+o4ucm:documentedBy a owl:ObjectProperty ;
+    rdfs:label "documented by"@en ;
+    rdfs:domain o4ucm:UseCase ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:RequirementsArtifact ;
+    owl:inverseOf o4ucm:documents ;
+    skos:definition "Relates a use case to the requirements artefacts that document its specification."@en .
+
+o4ucm:documents a owl:ObjectProperty ;
+    rdfs:label "documents"@en ;
+    rdfs:domain o4ucm:RequirementsArtifact ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:UseCase ;
+    owl:inverseOf o4ucm:documentedBy ;
+    skos:definition "Relates a requirements artefact to the use case it documents."@en .
+
+o4ucm:hasActor a owl:ObjectProperty ;
+    rdfs:label "has actor"@en ;
+    rdfs:domain o4ucm:UseCase ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:Actor ;
+    skos:definition "Relates a use case to the actors that directly interact with the system during its execution."@en .
+
+o4ucm:hasFlowOfActivities a owl:ObjectProperty ;
+    rdfs:label "has flow of activities"@en ;
+    rdfs:domain o4ucm:UseCase ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:FlowOfActivities ;
+    skos:definition "Relates a use case to its flow of activities, specifying the detailed sequence of actor actions and system responses."@en .
+
+o4ucm:hasLifeline a owl:ObjectProperty ;
+    rdfs:label "has lifeline"@en ;
+    rdfs:domain o4ucm:SystemSequenceDiagram ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:Lifeline ;
+    skos:definition "Relates a system sequence diagram to the lifelines it contains (one for actor, one for :System)."@en .
+
+o4ucm:hasPostcondition a owl:ObjectProperty ;
+    rdfs:label "has postcondition"@en ;
+    rdfs:domain o4ucm:UseCase ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:PostconditionSet ;
+    skos:definition "Relates a use case to the set of conditions that must be true upon its successful completion."@en .
+
+o4ucm:hasPrecondition a owl:ObjectProperty ;
+    rdfs:label "has precondition"@en ;
+    rdfs:domain o4ucm:UseCase ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:PreconditionSet ;
+    skos:definition "Relates a use case to the set of conditions that must hold before it can begin execution."@en .
+
+o4ucm:hasScenario a owl:ObjectProperty ;
+    rdfs:label "has scenario"@en ;
+    rdfs:domain o4ucm:UseCase ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:UseCaseScenario ;
+    owl:inverseOf o4ucm:isScenarioOf ;
+    skos:definition "Relates a use case to one or more scenarios (specific execution paths) that it encompasses."@en .
+
+o4ucm:hasSwimlane a owl:ObjectProperty ;
+    rdfs:label "has swimlane"@en ;
+    rdfs:domain o4ucm:ActivityDiagram ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:Swimlane ;
+    skos:definition "Relates an activity diagram to the swimlanes it contains."@en .
+
+o4ucm:hasTriggeringEvent a owl:ObjectProperty ;
+    rdfs:label "has triggering event"@en ;
+    rdfs:domain o4ucm:UseCase ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:TriggeringEvent ;
+    skos:definition "Relates a use case to the external event or condition that initiates its execution."@en .
+
+o4ucm:validates a owl:ObjectProperty ;
+    rdfs:label "validates"@en ;
+    rdfs:domain o4ucm:CRUDTechnique ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:DomainClass ;
+    skos:definition "Relates the CRUD technique to the domain classes it cross-checks against the use case model."@en .
+
+o4ucm:BriefUseCaseDescription a owl:Class ;
+    rdfs:label "Brief Use Case Description"@en,
+        "Kisa Kullanim Senaryosu Tanimi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:UseCaseDescription ;
+    owl:disjointWith o4ucm:FullyDevelopedUseCaseDescription ;
+    skos:definition "A concise, one-to-two sentence summary of a use case that identifies the actor, the primary action taken, and the system's principal response, providing sufficient detail for simple, well-understood use cases without documenting internal steps or exception handling."@en ;
+    skos:example "Look up customer: Actor enters account number; system retrieves and displays customer data. (Satzinger et al., 2016, Fig. 5-1)"@en ;
+    skos:scopeNote "Appropriate for simple use cases (Add product comment, Send message) or early project stages when scope enumeration takes priority over detailed specification."@en .
+
+o4ucm:DomainClass a owl:Class ;
+    rdfs:label "Domain Class"@en,
+        "Alan Sinifi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:DomainConcept ;
+    skos:definition "A type of real-world object in the problem domain of the information system, represented as a class in the domain model class diagram, with attributes describing its properties and associations describing relationships to other domain classes."@en ;
+    skos:example "Customer, Sale, Account, Shipment, SaleItem, Adjustment - domain classes in the RMO CSMS."@en ;
+    skos:relatedMatch sad:DomainClass ;
+    skos:scopeNote "Domain classes are identified through object-oriented analysis. They correspond to persistent data in the system database. Referenced in use case preconditions and postconditions. Shared with CH04 (Domain Modeling)."@en .
+
+o4ucm:FullyDevelopedUseCaseDescription a owl:Class ;
+    rdfs:label "Fully Developed Use Case Description"@en,
+        "Tam Gelistirilmis Kullanim Senaryosu Tanimi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty o4ucm:hasPrecondition ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty o4ucm:hasPostcondition ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty o4ucm:hasFlowOfActivities ],
+        o4ucm:UseCaseDescription ;
+    owl:disjointWith o4ucm:BriefUseCaseDescription ;
+    skos:definition "The most formal and comprehensive method for documenting a use case, consisting of eleven standardised compartments: use case name, scenario, triggering event, brief description, actors, related use cases, stakeholders, preconditions, postconditions, flow of activities, and exception conditions; enabling complete traceability to design and test artefacts."@en ;
+    skos:example "The fully developed description of Create customer account (Satzinger et al., 2016, Fig. 5-2) documenting all 11 compartments."@en ;
+    skos:scopeNote "Required for complex use cases involving significant branching, multiple actors, or critical exception handling. The eleven compartments form a complete requirements contract."@en .
+
+o4ucm:InputMessage a owl:Class ;
+    rdfs:label "Input Message"@en,
+        "Giris Mesaji"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:Message ;
+    owl:disjointWith o4ucm:OutputMessage ;
+    skos:definition "A message sent from an actor to the automated system in a UML sequence diagram, represented as a solid-line arrow with a filled arrowhead, that requests a service from the system and carries input data as parameters, following the verb-noun naming convention."@en ;
+    skos:example "The message createNewCustomer(name, phones, emails) sent from Customer to :System."@en ;
+    skos:scopeNote "Input messages correspond to points where the actor crosses the automation boundary with data. Each is identified by step 1 of the SSD development procedure (tracing boundary crossings in the activity diagram)."@en .
+
+o4ucm:Lifeline a owl:Class ;
+    rdfs:label "Lifeline"@en,
+        "Yasam Cizgisi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:DiagramElement ;
+    skos:altLabel "Object Lifeline"@en ;
+    skos:definition "A vertical dashed line in a UML sequence diagram that represents the existence and temporal extent of an actor or object during the depicted interaction, with time flowing downward, and serving as the origin or destination of message arrows."@en ;
+    skos:example "The dashed vertical line beneath :System in the Ship items SSD representing the system lifeline during the shipping interaction."@en ;
+    skos:scopeNote "In an SSD, two lifelines are present: one for the actor (below the stick figure) and one for the :System object. Messages are ordered top-to-bottom to indicate execution sequence."@en .
+
+o4ucm:NLPUseCaseGeneration a owl:Class ;
+    rdfs:label "NLP Use Case Generation"@en,
+        "DID Kullanim Senaryosu Uretimi"@tr ;
+    dcterms:source "Elallaoui, M., Rubab, K., & Lahmer, M. (2018). Automatic transformation of user stories into UML use case diagrams using NLP techniques. Procedia Computer Science, 130, 42-49. doi:10.1016/j.procs.2018.04.010"@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:Post2015Extension ;
+    skos:definition "An approach to automated or semi-automated generation of UML use case models from natural language requirements specifications, applying natural language processing techniques such as part-of-speech tagging, syntactic parsing, and semantic role labelling."@en ;
+    skos:example "An NLP tool that processes the requirement A customer can create an account by providing basic information and generates actor Customer and use case Create account."@en ;
+    skos:scopeNote "Active research area since 2015. Achieved 87-98% precision in case study evaluations using POS tagging (Elallaoui et al., 2018). Complements but does not replace analyst judgment."@en .
+
+o4ucm:OutputMessage a owl:Class ;
+    rdfs:label "Output Message"@en,
+        "Cikis Mesaji"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:Message ;
+    owl:disjointWith o4ucm:InputMessage ;
+    skos:definition "A message returned from the automated system to an actor in a UML sequence diagram, represented as a dashed-line arrow with an open arrowhead, carrying data produced by the system in response to a preceding input message."@en ;
+    skos:example "The dashed-arrow return cust ID, name, phones, emails from :System to Customer in response to createNewCustomer in the Create customer account SSD (Fig. 5-10)."@en ;
+    skos:scopeNote "May be shown as a separate dashed arrow (explicit return) or as a return value on the same line as the initiating message using the := operator (abbreviated notation)."@en .
+
+o4ucm:Participant a owl:Class ;
+    rdfs:label "Participant"@en,
+        "Katilimci"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:SAD_Concept ;
+    skos:definition "A person, organisational role, or external system that has a defined relationship with one or more use cases, either as a direct initiator of interactions with the automated system or as an interested party whose requirements must be satisfied by the system's outputs."@en ;
+    skos:example "A customer service representative (Actor) and the Accounting Department (Stakeholder) are Participants."@en ;
+    skos:scopeNote "Superclass of Actor and Stakeholder. Distinguishes those who invoke use cases from those with interests in outcomes."@en .
+
+o4ucm:PostconditionSet a owl:Class ;
+    rdfs:label "Postcondition Set"@en,
+        "Son Kosul Kumesi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:UseCaseCondition ;
+    owl:disjointWith o4ucm:PreconditionSet ;
+    skos:definition "A set of conditions that must be true upon the successful completion of a use case, specifying what new objects have been created, what existing objects have been updated, and what associations have been established, providing the basis for test assertions."@en ;
+    skos:example "Postconditions for Create customer account: Customer must be created and saved. Addresses must be created. Account must be created with all associations."@en ;
+    skos:scopeNote "Identified in the ninth compartment of the fully developed use case description. Postconditions identify domain objects involved and guide design-phase collaboration. They translate directly to test oracle assertions."@en .
+
+o4ucm:PreconditionSet a owl:Class ;
+    rdfs:label "Precondition Set"@en,
+        "On Kosul Kumesi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:UseCaseCondition ;
+    owl:disjointWith o4ucm:PostconditionSet ;
+    skos:definition "A set of conditions that must be true before a use case can begin execution, specifying which objects must already exist in the system, which subsystems must be operational, and any other required states necessary for the use case to proceed."@en ;
+    skos:example "Preconditions for Ship items: Customer and address must exist. Sale must exist. Sale items must exist."@en ;
+    skos:scopeNote "Identified in the eighth compartment of the fully developed use case description. Preconditions reference domain model classes and form the basis for test setup."@en .
+
+o4ucm:SystemSequenceDiagram a owl:Class ;
+    rdfs:label "System Sequence Diagram"@en,
+        "Sistem Dizi Diyagrami"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onProperty o4ucm:hasLifeline ],
+        o4ucm:DiagramArtefact ;
+    owl:disjointWith o4ucm:ActivityDiagram ;
+    skos:altLabel "SSD"@en ;
+    skos:definition "A specialised form of the UML sequence diagram that documents the inputs flowing from external actors into an automated system and the outputs returning from the system to the actors during the execution of a use case or scenario, treating the system as a black box."@en ;
+    skos:example "The SSD for Create customer account (Fig. 5-10) with three input messages: createNewCustomer(name, phones, emails), *enterAddress(address), and enterCreditCard(cc-info)."@en ;
+    skos:scopeNote "Defined by UML 2.5.1 specification. Used to explicitly identify data exchanged at each actor-system interaction point. Provides the foundation for user interface design and is developed from use case descriptions or activity diagrams."@en .
+
+o4ucm:SystemStep a owl:Class ;
+    rdfs:label "System Step"@en,
+        "Sistem Adimi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:ActivityStep ;
+    owl:disjointWith o4ucm:ActorStep ;
+    skos:definition "An activity step performed by the automated system in response to an actor's action within the flow of activities of a use case, identified by a decimal numbering scheme (e.g., 2.1) that ties each system step to the actor step that triggered it."@en ;
+    skos:example "System step 2.1 in Ship items: System creates shipment and associates it with the shipper."@en ;
+    skos:scopeNote "In the two-column format, system steps occupy the right column. Multiple system steps may respond to a single actor step."@en .
+
+o4ucm:UseCaseDescription a owl:Class ;
+    rdfs:label "Use Case Description"@en,
+        "Kullanim Senaryosu Tanimi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:TextualArtefact ;
+    skos:definition "A textual model that lists and describes the processing details for a use case, specifying the actor interactions, system responses, and conditions associated with the use case's execution at a level of detail appropriate to the complexity of the use case."@en ;
+    skos:example "Any written specification of the Look up customer use case, whether brief or fully developed."@en ;
+    skos:scopeNote "Abstract superclass of BriefUseCaseDescription and FullyDevelopedUseCaseDescription. Both forms document the same use case; they differ in depth of specification."@en .
+
+o4ucm:ValidationTechnique a owl:Class ;
+    rdfs:label "Validation Technique"@en,
+        "Dogrulama Teknigi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:SAD_Concept ;
+    skos:definition "A systematic method applied during requirements analysis to verify that the set of identified use cases is complete, consistent, and accurately reflects the data and functional requirements of the system under development."@en ;
+    skos:example "The CRUD technique applied to domain classes Customer and Sale to discover missing use cases."@en ;
+    skos:scopeNote "Superclass of all techniques used to check and refine use cases. The CRUD technique is the primary instantiation in Chapter 5."@en .
+
+o4ucm:isScenarioOf a owl:ObjectProperty ;
+    rdfs:label "is scenario of"@en ;
+    rdfs:domain o4ucm:UseCaseScenario ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:range o4ucm:UseCase ;
+    owl:inverseOf o4ucm:hasScenario ;
+    skos:definition "Relates a scenario to the use case that it is a specific execution path of."@en .
+
+<http://www.zt4swe.io/agent/YusufAltunel> a prov:Agent .
+
+o4ucm:ActivityDiagram a owl:Class ;
+    rdfs:label "Activity Diagram"@en,
+        "Aktivite Diyagrami"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:DiagramArtefact ;
+    owl:disjointWith o4ucm:SystemSequenceDiagram ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( o4ucm:DiagramArtefact [ a owl:Restriction ;
+                        owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onProperty o4ucm:hasSwimlane ] ) ] ;
+    skos:definition "A UML behavioural diagram that graphically documents the flow of activities within a use case or across multiple use cases, using swimlanes to assign activities to responsible actors or systems, and control flow constructs to represent sequential, parallel, iterative, and conditional logic."@en ;
+    skos:example "The activity diagram for Ship items (Satzinger et al., 2016, Fig. 5-5) with two swimlanes, a loop for each sale item, and a decision diamond for item availability."@en ;
+    skos:scopeNote "Can supplement or replace the flow of activities section of a fully developed use case description. Particularly valuable for loops, decisions, or inter-use-case invocations. Used to identify input/output crossing points for SSD development."@en .
+
+o4ucm:ActorStep a owl:Class ;
+    rdfs:label "Actor Step"@en,
+        "Aktor Adimi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:ActivityStep ;
+    owl:disjointWith o4ucm:SystemStep ;
+    skos:definition "An activity step performed by an actor within the flow of activities of a use case, representing an action initiated by the external role that interacts with the automated system, identified by a sequential integer number in the two-column use case description format."@en ;
+    skos:example "Actor step 2 in Ship items: Shipping assigns shipper."@en ;
+    skos:scopeNote "In the two-column format, actor steps occupy the left column. Each actor step typically triggers one or more system steps."@en .
+
+o4ucm:AltFrame a owl:Class ;
+    rdfs:label "Alt Frame"@en,
+        "Alternatif Cerceve"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:ControlFlowAnnotation ;
+    owl:disjointWith o4ucm:LoopFrame,
+        o4ucm:OptFrame ;
+    skos:definition "A rectangular frame in a UML sequence diagram that represents if-then-else conditional logic, containing two or more alternative message groups separated by a horizontal dashed line, where each group is guarded by a condition determining which is executed at runtime."@en ;
+    skos:example "In Ship items SSD: Alt frame with [shipped item] branch (recordShippedItem) and [else] branch (initiateBackorder) - conditional dispatch for each sale item."@en ;
+    skos:scopeNote "The alt frame provides two paths: one for the true condition and one for the else condition. It is the sequence diagram equivalent of an if-then-else construct in programming."@en .
+
+o4ucm:FlowOfActivities a owl:Class ;
+    rdfs:label "Flow of Activities"@en,
+        "Aktivite Akisi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:TextualArtefact ;
+    skos:definition "The tenth compartment of a fully developed use case description, presenting the detailed sequence of actor actions and corresponding system responses as a two-column table in which numbered actor steps are paired with numbered system responses."@en ;
+    skos:example "In Create customer account: actor step 1 (customer enters info) paired with system step 1.1 (system creates customer) and 1.2 (system prompts for addresses)."@en ;
+    skos:scopeNote "Central content of the fully developed use case description. Can also be modelled graphically as a UML activity diagram, providing complementary perspectives on the same interaction."@en .
+
+o4ucm:LoopFrame a owl:Class ;
+    rdfs:label "Loop Frame"@en,
+        "Dongu Cercevesi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:ControlFlowAnnotation ;
+    owl:disjointWith o4ucm:AltFrame,
+        o4ucm:OptFrame ;
+    skos:definition "A rectangular frame in a UML sequence diagram that encloses one or more messages that are to be repeated, with a smaller control rectangle at the top containing a condition that governs the iteration; the enclosed messages repeat as long as the condition is true."@en ;
+    skos:example "In Ship items SSD (Fig. 5-11): Loop [more sale items] enclosing the alt frame with recordShippedItem and initiateBackorder - repeating for each sale item."@en ;
+    skos:scopeNote "Used when multiple messages repeat together and the abbreviated asterisk notation is insufficient. The alternative uses asterisk before the message name with a condition in brackets."@en .
+
+o4ucm:OptFrame a owl:Class ;
+    rdfs:label "Opt Frame"@en,
+        "Opsiyonel Cerceve"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:ControlFlowAnnotation ;
+    owl:disjointWith o4ucm:AltFrame,
+        o4ucm:LoopFrame ;
+    skos:definition "A rectangular frame in a UML sequence diagram that encloses one or more messages that are optional, executed only when the associated guard condition evaluates to true, and skipped entirely when false, representing a single-branch conditional with no else path."@en ;
+    skos:example "Opt [accessory selected] - the addAccessory message is sent only if the customer selected an accessory; otherwise the frame is skipped entirely."@en ;
+    skos:scopeNote "Simpler than the alt frame: only one branch exists. Used when a message or group of messages should be sent only under a specific optional condition."@en .
+
+o4ucm:Stakeholder a owl:Class ;
+    rdfs:label "Stakeholder"@en,
+        "Pay Sahibi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:Participant ;
+    owl:disjointWith o4ucm:Actor ;
+    skos:definition "An individual, group, or organisational unit that has a legitimate interest in the outcomes produced by a use case but does not directly invoke or interact with the automated system during the use case's execution, and whose requirements must be considered in the specification."@en ;
+    skos:example "The Accounting Department, Marketing Department, and Sales Department are stakeholders in Create customer account (Satzinger et al., 2016, Fig. 5-2)."@en ;
+    skos:scopeNote "Identified in the seventh compartment of the fully developed use case description. Distinguished from actors by the absence of direct system interaction."@en .
+
+o4ucm:UCIdentificationTechnique a owl:Class ;
+    rdfs:label "Use Case Identification Technique"@en,
+        "Kullanim Senaryosu Belirleme Teknigi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:SAD_Concept ;
+    skos:definition "A structured approach for discovering and enumerating the use cases of a system under development, by systematically examining the goals of actors or the events to which the system must respond."@en ;
+    skos:example "Using the user goal technique to identify that a shipping clerk needs to Ship items."@en ;
+    skos:scopeNote "Two primary techniques: the user goal technique and the event decomposition technique (Satzinger et al., 2016)."@en .
+
+o4ucm:ActivityStep a owl:Class ;
+    rdfs:label "Activity Step"@en,
+        "Aktivite Adimi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:FlowOfActivities ;
+    skos:definition "A single numbered action within the flow of activities of a use case, representing either an actor's action or the system's response to that action, identified by a hierarchical numbering scheme that links actor steps to corresponding system responses."@en ;
+    skos:example "Actor step 3 in Create customer account: Customer enters credit/debit card information."@en ;
+    skos:scopeNote "Superclass of ActorStep and SystemStep. Actor steps use integers (1, 2, 3); system responses use decimal notation (1.1, 1.2) to link to the initiating actor step."@en .
+
+o4ucm:AgileConstruct a owl:Class ;
+    rdfs:label "Agile Construct"@en,
+        "Cevrik Yapi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:SAD_Concept ;
+    skos:definition "A requirements artefact or technique that originates from or is specifically adapted for use within agile software development methodologies, characterised by incrementality, lightweight documentation, and close alignment with iterative delivery practices."@en ;
+    skos:example "A user story: As a customer, I want to create an account so that I can track my orders."@en ;
+    skos:scopeNote "Covers UserStory (alternative to use case in Scrum/XP) and UseCaseSlice (Use Case 2.0 increment). Connects use case modeling to agile engineering practice."@en .
+
+o4ucm:CreateOperation a owl:Class ;
+    rdfs:label "Create Operation"@en,
+        "Olusturma Islemi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:CRUDOperation ;
+    owl:disjointWith o4ucm:DeleteOperation,
+        o4ucm:ReadOperation,
+        o4ucm:UpdateOperation ;
+    skos:definition "A CRUD operation type representing the instantiation of a new domain class instance in the persistent data store of the system, corresponding to an INSERT operation in database terminology."@en ;
+    skos:example "Create operation on Customer class: performed by Create customer account, resulting in a new Customer record."@en ;
+    skos:scopeNote "Indicates the associated use case is responsible for creating new records of the corresponding domain class. Part of the four-element CRUD lifecycle for every domain class."@en .
+
+o4ucm:DeleteOperation a owl:Class ;
+    rdfs:label "Delete/Archive Operation"@en,
+        "Silme/Arsivleme Islemi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:CRUDOperation ;
+    owl:disjointWith o4ucm:CreateOperation,
+        o4ucm:ReadOperation,
+        o4ucm:UpdateOperation ;
+    skos:definition "A CRUD operation type representing the removal or archiving of an existing domain class instance from the active dataset of the system, corresponding to a DELETE or soft-delete operation in database terminology, often implemented as an archive function."@en ;
+    skos:example "Delete/Archive operation on Customer class: performed by Update customer account with archive function, eliminating the need for a separate Archive customer use case."@en ;
+    skos:scopeNote "Most commonly overlooked CRUD operation. Often folded into an update use case (e.g., Update customer account includes the archiving function for inactive customers)."@en .
+
+o4ucm:DomainConcept a owl:Class ;
+    rdfs:label "Domain Concept"@en,
+        "Alan Kavrami"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:SAD_Concept ;
+    skos:definition "A concept from the real-world problem domain that the information system is designed to support, represented as a class, relationship, or persistent data entity in the domain model and referenced in use case preconditions, postconditions, and SSD message parameters."@en ;
+    skos:example "The Customer class, Sale class, and Shipment class are domain concepts in the RMO CSMS."@en ;
+    skos:relatedMatch sad:DomainConcept ;
+    skos:scopeNote "Superclass of DomainClass, DomainModelClassDiagram, IntegratedSystem, SharedDatabase. Cross-chapter: also relevant to CH04 Domain Modeling."@en .
+
+o4ucm:ReadOperation a owl:Class ;
+    rdfs:label "Read/Report Operation"@en,
+        "Okuma/Raporlama Islemi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:CRUDOperation ;
+    owl:disjointWith o4ucm:CreateOperation,
+        o4ucm:DeleteOperation,
+        o4ucm:UpdateOperation ;
+    skos:definition "A CRUD operation type representing the retrieval and display of data from one or more domain class instances without modifying the persistent state of the system, corresponding to a SELECT operation in database terminology."@en ;
+    skos:example "Read operation on Customer class: performed by Look up customer and Produce customer usage report."@en ;
+    skos:scopeNote "Covers both interactive lookups and batch reporting functions. The most commonly represented CRUD operation in user-facing use cases. Distinguished from Update by its read-only nature."@en .
+
+o4ucm:TextualArtefact a owl:Class ;
+    rdfs:label "Textual Artefact"@en,
+        "Metinsel Eser"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:RequirementsArtifact ;
+    owl:disjointWith o4ucm:DiagramArtefact ;
+    skos:definition "A requirements artefact that is primarily expressed in natural language or structured narrative form, as opposed to a graphical or diagrammatic representation. Textual artefacts include use case descriptions in brief or fully developed form."@en ;
+    skos:example "A brief use case description stating: Actor enters customer account number; system retrieves data."@en ;
+    skos:scopeNote "Covers all prose-based requirements documentation artefacts within use case modeling."@en .
+
+o4ucm:UpdateOperation a owl:Class ;
+    rdfs:label "Update Operation"@en,
+        "Guncelleme Islemi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:CRUDOperation ;
+    owl:disjointWith o4ucm:CreateOperation,
+        o4ucm:DeleteOperation,
+        o4ucm:ReadOperation ;
+    skos:definition "A CRUD operation type representing the modification of one or more attribute values in an existing domain class instance in the persistent data store, corresponding to an UPDATE operation in database terminology."@en ;
+    skos:example "Update operation on Account class: performed by Process account adjustment, which modifies the account balance."@en ;
+    skos:scopeNote "Often overlooked in goal-based elicitation since update use cases may be infrequent. The CRUD cross-check is particularly valuable for discovering missing update use cases."@en .
+
+o4ucm:CRUDOperation a owl:Class ;
+    rdfs:label "CRUD Operation"@en,
+        "CRUD Islemi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:SAD_Concept ;
+    skos:definition "One of the four fundamental data management operations - Create, Read/Report, Update, or Delete - that a use case may perform on a domain class, used as the basis for validating that the complete lifecycle of each type of persistent data is supported by the use case model."@en ;
+    skos:example "The Create customer account use case performs a CreateOperation on both the Customer and Account domain classes."@en ;
+    skos:scopeNote "Superclass of CreateOperation, ReadOperation, UpdateOperation, DeleteOperation. Each operation type maps to at least one use case in a complete requirements model."@en .
+
+o4ucm:ControlFlowAnnotation a owl:Class ;
+    rdfs:label "Control Flow Annotation"@en,
+        "Kontrol Akisi Aciklamasi"@tr ;
+    dcterms:source "Object Management Group. (2017). OMG UML Version 2.5.1. formal/17-12-05. https://www.omg.org/spec/UML/2.5.1/"@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:DiagramElement ;
+    skos:definition "A notational frame or annotation in a UML sequence diagram that specifies the control flow behaviour of one or more enclosed messages, including iteration, conditional execution, and alternative branching, as defined in the UML 2.5.1 interaction fragment specification."@en ;
+    skos:example "A loop frame enclosing the recordShippedItem message repeating for each sale item."@en ;
+    skos:scopeNote "Superclass of LoopFrame, AltFrame, and OptFrame. Inferred from the common structural role these elements play in SSD notation."@en .
+
+o4ucm:DiagramArtefact a owl:Class ;
+    rdfs:label "Diagram Artefact"@en,
+        "Diyagram Eseri"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:RequirementsArtifact ;
+    owl:disjointWith o4ucm:TextualArtefact ;
+    skos:definition "A requirements artefact that is primarily expressed in a graphical or diagrammatic notation, following a defined visual language such as the Unified Modeling Language (UML). Diagram artefacts convey structure, flow, and interaction patterns through standardised symbols."@en ;
+    skos:example "A UML activity diagram showing the flow of activities for the Ship items use case with two swimlanes."@en ;
+    skos:scopeNote "Covers all UML-based diagrammatic artefacts used in use case modeling, including activity diagrams and system sequence diagrams."@en .
+
+o4ucm:UseCaseCondition a owl:Class ;
+    rdfs:label "Use Case Condition"@en,
+        "Kullanim Senaryosu Kosulu"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:SAD_Concept ;
+    skos:definition "A declarative statement that defines a required state of the system or its environment at a specified point in the execution of a use case, specifically at its initiation (precondition), at its successful completion (postcondition), or upon occurrence of an exceptional event."@en ;
+    skos:example "The precondition Customer Account subsystem must be available for Create customer account."@en ;
+    skos:scopeNote "Superclass of PreconditionSet, PostconditionSet, ExceptionCondition, and TriggeringEvent."@en .
+
+o4ucm:UseCaseScenario a owl:Class ;
+    rdfs:label "Use Case Scenario"@en,
+        "Kullanim Senaryosu Ornegi"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty o4ucm:isScenarioOf ],
+        o4ucm:UseCase ;
+    owl:equivalentClass o4ucm:UseCaseInstance ;
+    skos:definition "A unique, specific path of execution through a use case, representing one particular sequence of actor actions and system responses that realises the use case under a specific set of initial conditions, actor choices, and data values."@en ;
+    skos:example "The scenario Create online customer account is one path through Create customer account."@en ;
+    skos:scopeNote "A use case may have multiple scenarios. Each may involve different actors or decision paths. Synonymous with use case instance per Satzinger et al. (2016)."@en .
+
+o4ucm:Actor a owl:Class ;
+    rdfs:label "Actor"@en,
+        "Aktor"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:Participant ;
+    owl:disjointWith o4ucm:Stakeholder ;
+    skos:definition "An entity - a person, organisational role, or external system - that is outside the automation boundary of the system being modelled and that directly initiates or participates in a use case by sending input messages to or receiving output messages from the system."@en ;
+    skos:example "Customer (in Create customer account), Shipping clerk (in Ship items)."@en ;
+    skos:scopeNote "Actors are depicted as stick figures in UML use case and sequence diagrams. They define the automation boundary. An actor may be a human user, another software system, or a time-triggered mechanism."@en .
+
+o4ucm:RequirementsArtifact a owl:Class ;
+    rdfs:label "Requirements Artifact"@en,
+        "Gereksinim Eseri"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:SAD_Concept ;
+    skos:definition "Any tangible product of the requirements engineering process that documents, specifies, or communicates the functional or non-functional requirements of an information system, including textual descriptions, diagrams, and matrices."@en ;
+    skos:example "A fully developed use case description for Create customer account is a RequirementsArtifact."@en ;
+    skos:scopeNote "Superclass of all artefacts produced during requirements analysis. Includes both textual artefacts (use case descriptions) and diagrammatic artefacts (activity diagrams, SSDs)."@en .
+
+o4ucm:Post2015Extension a owl:Class ;
+    rdfs:label "Post-2015 Extension"@en,
+        "2015 Sonrasi Uzanti"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty dcterms:source ],
+        o4ucm:SAD_Concept ;
+    skos:definition "A concept, standard, technique, or framework related to use case modeling that has emerged, been formalised, or gained significant adoption in the software engineering research and practice community after 2015, extending or adapting the foundational approach in Satzinger et al. (2016)."@en ;
+    skos:example "Use Case 2.0 (Jacobson, Spence and Kerr, 2016) and UML 2.5.1 (OMG, 2017) are Post2015Extensions."@en ;
+    skos:scopeNote "Collects post-2015 developments: UML 2.5.1, Use Case 2.0, NLP automation, ML/AI extensions. All individuals in this class carry dcterms:source."@en .
+
+o4ucm:DiagramElement a owl:Class ;
+    rdfs:label "Diagram Element"@en,
+        "Diyagram Unsuru"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:SAD_Concept ;
+    skos:definition "A constituent graphical or structural element of a UML diagram used in use case modeling, including the symbols, notational constructs, and organisational divisions that convey the semantics of the diagram in accordance with the UML 2.5.1 specification."@en ;
+    skos:example "A lifeline, a swimlane, a loop frame, and a decision diamond are all DiagramElements."@en ;
+    skos:scopeNote "Superclass of all symbols and structural parts within activity diagrams and system sequence diagrams."@en .
+
+o4ucm:Message a owl:Class ;
+    rdfs:label "Message"@en,
+        "Mesaj"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf o4ucm:DiagramElement ;
+    skos:definition "A communication between an actor and the system in a UML sequence diagram, represented as a horizontal arrow connecting two lifelines, specifying an action to be invoked on the destination object along with parameters and any return value."@en ;
+    skos:example "The message inquireOnItem(catalogID, prodID, size) sent from a Clerk actor to :System (Fig. 5-7)."@en ;
+    skos:scopeNote "Complete message syntax: [true/false condition] return-value := message-name (parameter-list). Any component may be omitted. Messages are ordered top-to-bottom to indicate execution sequence."@en .
+
+o4ucm:SAD_Concept a owl:Class ;
+    rdfs:label "SAD Concept"@en,
+        "SA&T Kavrami"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf owl:Thing ;
+    skos:definition "The root class for all concepts defined within the Systems Analysis and Design chapter ontology series. All chapter-specific classes subclass from this root to enable synthesis-layer unification across the SAD-ECOSYSTEM."@en ;
+    skos:example "UseCase, ActivityDiagram, SystemSequenceDiagram are all SAD_Concept instances."@en ;
+    skos:relatedMatch sad:SADConcept ;
+    skos:scopeNote "Used as the universal superclass within the SAD chapter ontology series. After ecosystem synthesis, this class will be aligned with sad:SADConcept in the core synthesis namespace."@en .
+
+o4ucm:UseCase a owl:Class ;
+    rdfs:label "Use Case"@en,
+        "Kullanim Senaryosu"@tr ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/sad/ch5> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty o4ucm:hasActor ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty o4ucm:hasTriggeringEvent ],
+        o4ucm:SAD_Concept ;
+    skos:definition "A named, bounded specification of a set of interactions between one or more actors and an automated system that, when executed, produces an observable result of value to the actor, representing a complete goal that the actor wishes to accomplish through the system."@en ;
+    skos:example "The use case Create customer account in which a customer establishes a new account."@en,
+        "The use case Ship items in which a shipping clerk looks up sale details and produces a shipping label."@en ;
+    skos:relatedMatch sad:UseCase ;
+    skos:scopeNote "The central organising concept of use case modeling. Identified through the user goal technique or event decomposition technique and documented via descriptions, activity diagrams, and SSDs."@en .
+
+<http://www.zt4swe.io/sad/ch5> a owl:Ontology ;
+    rdfs:label "Ontology for Use Case Modeling (SAD Chapter 5)"@en,
+        "Kullanim Senaryosu Modelleme Ontolojisi (SAD Bolum 5)"@tr ;
+    meta:governedBy <http://example.org/ontology-engineering/v6.3.2> ;
+    meta:numberOfClasses 70 ;
+    meta:numberOfIndividuals 12 ;
+    meta:numberOfProperties 38 ;
+    meta:qualityFramework <http://example.org/quality/v2.2.3> ;
+    meta:reliabilityFramework <http://example.org/reliability/v2.5.8> ;
+    meta:versionGovernance <http://example.org/amod/v1.2.5> ;
+    dc:title "Ontology4UsecaseModeling" ;
+    dcterms:created "2026-04-20"^^xsd:date ;
+    dcterms:creator "Claude Sonnet 4.6 - Automated Ontology Engineering (Anthropic, 2026)" ;
+    dcterms:description "A comprehensive OWL 2 DL ontology formalising the concepts, techniques, artefacts, relationships, and constraints of Use Case Modeling as presented in Chapter 5 of Satzinger, Jackson and Burd (2016) Systems Analysis and Design in a Changing World (7th ed., Cengage Learning), extended with post-2015 developments including UML 2.5.1, Use Case 2.0, NLP-driven automation, and ML/AI extensions."@en ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-06-05"^^xsd:date ;
+    dcterms:publisher <http://www.zt4swe.io/agent/YusufAltunel> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed under CC BY 4.0."@en ;
+    dcterms:rightsHolder <http://www.zt4swe.io/agent/YusufAltunel> ;
+    dcterms:source <https://www.cengage.com/c/systems-analysis-design-in-a-changing-world-7e-satzinger/9781285867380/> ;
+    dcterms:subject "Use Case Modeling, Systems Analysis and Design, UML, Requirements Engineering" ;
+    dcterms:title "Ontology for Use Case Modeling in Systems Analysis and Design"@en ;
+    rdfs:comment "SAD CHAPTER SERIES: CH05 of SAD-ECOSYSTEM. Covers Use Case Modeling per Satzinger et al. (2016) Chapter 5. Part of series CH01-CH20+ to be synthesised into the SAD-ECOSYSTEM ontology."@en,
+        "v1.0.4 (E-4): removed stale amod:VersionToken individual (cleared REDO C7+ on unimported foreign type). Two residual REDO C2 results on the anonymous owl:intersectionOf equivalentClass of ActivityDiagram are documented ARTIFACT-class false-positives (anonymous class expressions correctly carry no rdfs:label/skos:definition)."@en ;
+    owl:imports <http://www.w3.org/2004/02/skos/core>,
+        <http://www.w3.org/ns/prov-o> ;
+    owl:priorVersion <http://www.zt4swe.io/sad/ch5/1.0.3> ;
+    owl:versionIRI <http://www.zt4swe.io/sad/ch5/1.0.4> ;
+    owl:versionInfo "1.0.4" ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> ;
+    o4ucm:EcosystemIntegrationNote "ECOSYSTEM INTEGRATION ARCHITECTURE (SAD-ECOSYSTEM v1): (a) IRI PATTERN: http://www.zt4swe.io/sad/chN# where N is chapter number. This ontology: ch5. (b) SYNTHESIS NAMESPACE: http://www.zt4swe.io/sad/core# is reserved for synthesis layer; not defined here. (c) SUBCLASS STUBS: All root classes carry rdfs:subClassOf sad:SADConcept synthesis hook. (d) SYNTHESIS IMPORT STUB: Commented owl:imports for sad:core present in serialised file. (e) CROSS-CHAPTER LINKS: Shared classes annotated with skos:relatedMatch to synthesis IRIs. PLANNED SERIES: CH01 System Dev Fundamentals | CH02 Investigating Requirements | CH03 Use Cases and Domain Modeling | CH04 Domain Modeling | CH05 Use Case Modeling [THIS] | CH06 Essentials of Design | CH07 System Design | CH08 UI Design | CH09 Data Management | CH10 OO Design | CH11 Agile Development | ... (to completion)"@en .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( o4ucm:Actor o4ucm:Stakeholder ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( o4ucm:CreateOperation o4ucm:ReadOperation o4ucm:UpdateOperation o4ucm:DeleteOperation ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( o4ucm:LoopFrame o4ucm:AltFrame o4ucm:OptFrame ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( o4ucm:BriefUseCaseDescription o4ucm:FullyDevelopedUseCaseDescription ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( o4ucm:InputMessage o4ucm:OutputMessage ) .
+

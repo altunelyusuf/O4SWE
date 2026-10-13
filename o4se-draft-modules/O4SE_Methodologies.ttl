@@ -1,0 +1,409 @@
+@prefix o4se: <http://www.semanticweb.org/ontologies/2025/O4SE#> .
+@prefix method: <http://www.semanticweb.org/ontologies/2025/O4SE/Methodologies#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+# ===========================
+# Methodologies Integration Module
+# ===========================
+
+<http://www.semanticweb.org/ontologies/2025/O4SE/Methodologies> a owl:Ontology ;
+    owl:versionInfo "1.0.0"^^xsd:string ;
+    dcterms:title "O4SE Methodologies and Lifecycle Models Module"@en ;
+    dcterms:description "Integration of software development methodologies and lifecycle models into O4SE"@en ;
+    owl:imports <http://www.semanticweb.org/ontologies/2025/O4SE> .
+
+# ===========================
+# Lifecycle Model Classes
+# ===========================
+
+method:LifecycleModel a owl:Class ;
+    rdfs:label "Lifecycle Model"@en ;
+    rdfs:comment "A framework defining the phases and activities of software development"@en ;
+    rdfs:subClassOf o4se:Methodology .
+
+method:LinearModel a owl:Class ;
+    rdfs:label "Linear Model"@en ;
+    rdfs:subClassOf method:LifecycleModel ;
+    skos:definition "Sequential progression through phases without iteration"@en .
+
+method:IterativeModel a owl:Class ;
+    rdfs:label "Iterative Model"@en ;
+    rdfs:subClassOf method:LifecycleModel ;
+    skos:definition "Development through repeated cycles"@en .
+
+method:IncrementalModel a owl:Class ;
+    rdfs:label "Incremental Model"@en ;
+    rdfs:subClassOf method:LifecycleModel ;
+    skos:definition "Development in small portions with growing functionality"@en .
+
+method:EvolutionaryModel a owl:Class ;
+    rdfs:label "Evolutionary Model"@en ;
+    rdfs:subClassOf method:LifecycleModel ;
+    skos:definition "Continuous refinement based on feedback"@en .
+
+# ===========================
+# Traditional Methodologies
+# ===========================
+
+method:Waterfall a owl:Class ;
+    rdfs:label "Waterfall Methodology"@en ;
+    rdfs:subClassOf method:LinearModel ;
+    skos:definition "Linear sequential phases: requirements, design, implementation, testing, deployment, maintenance"@en .
+
+method:VModel a owl:Class ;
+    rdfs:label "V-Model"@en ;
+    rdfs:subClassOf method:LinearModel ;
+    skos:definition "Extension of waterfall with corresponding test phases"@en .
+
+method:SpiralModel a owl:Class ;
+    rdfs:label "Spiral Model"@en ;
+    rdfs:subClassOf method:IterativeModel ;
+    skos:definition "Risk-driven process model combining waterfall and prototyping"@en .
+
+method:PrototypingModel a owl:Class ;
+    rdfs:label "Prototyping Model"@en ;
+    rdfs:subClassOf method:EvolutionaryModel ;
+    skos:definition "Building prototypes for requirements clarification"@en .
+
+method:RAD a owl:Class ;
+    rdfs:label "Rapid Application Development"@en ;
+    rdfs:subClassOf method:IncrementalModel ;
+    skos:definition "Emphasizes rapid prototyping over planning"@en .
+
+# ===========================
+# Agile Methodologies
+# ===========================
+
+method:AgileFramework a owl:Class ;
+    rdfs:label "Agile Framework"@en ;
+    rdfs:subClassOf o4se:AgileMethodology ;
+    skos:definition "Iterative approach emphasizing flexibility and collaboration"@en .
+
+method:Scrum a owl:Class ;
+    rdfs:label "Scrum"@en ;
+    rdfs:subClassOf method:AgileFramework ;
+    skos:definition "Framework using sprints and defined roles"@en .
+
+method:Kanban a owl:Class ;
+    rdfs:label "Kanban"@en ;
+    rdfs:subClassOf method:AgileFramework ;
+    skos:definition "Visual workflow management with continuous delivery"@en .
+
+method:XP a owl:Class ;
+    rdfs:label "Extreme Programming"@en ;
+    rdfs:subClassOf method:AgileFramework ;
+    skos:definition "Emphasizes engineering practices and customer involvement"@en .
+
+method:LeanSoftwareDevelopment a owl:Class ;
+    rdfs:label "Lean Software Development"@en ;
+    rdfs:subClassOf method:AgileFramework ;
+    skos:definition "Eliminates waste and optimizes flow"@en .
+
+method:SAFe a owl:Class ;
+    rdfs:label "Scaled Agile Framework"@en ;
+    rdfs:subClassOf method:AgileFramework ;
+    skos:definition "Agile practices at enterprise scale"@en .
+
+method:LeSS a owl:Class ;
+    rdfs:label "Large-Scale Scrum"@en ;
+    rdfs:subClassOf method:AgileFramework ;
+    skos:definition "Scrum framework for large product development"@en .
+
+method:CrystalMethodology a owl:Class ;
+    rdfs:label "Crystal Methodology"@en ;
+    rdfs:subClassOf method:AgileFramework ;
+    skos:definition "Family of methodologies based on team size and criticality"@en .
+
+method:FDD a owl:Class ;
+    rdfs:label "Feature-Driven Development"@en ;
+    rdfs:subClassOf method:AgileFramework ;
+    skos:definition "Model-driven short-iteration process"@en .
+
+# ===========================
+# DevOps and Modern Approaches
+# ===========================
+
+method:DevOpsPractice a owl:Class ;
+    rdfs:label "DevOps Practice"@en ;
+    rdfs:subClassOf o4se:DevOpsMethodology ;
+    skos:definition "Practice integrating development and operations"@en .
+
+method:ContinuousIntegration a owl:Class ;
+    rdfs:label "Continuous Integration"@en ;
+    rdfs:subClassOf method:DevOpsPractice ;
+    skos:definition "Frequently merging code changes to main branch"@en .
+
+method:ContinuousDelivery a owl:Class ;
+    rdfs:label "Continuous Delivery"@en ;
+    rdfs:subClassOf method:DevOpsPractice ;
+    skos:definition "Automated deployment to production-like environments"@en .
+
+method:ContinuousDeployment a owl:Class ;
+    rdfs:label "Continuous Deployment"@en ;
+    rdfs:subClassOf method:DevOpsPractice ;
+    skos:definition "Automated deployment to production"@en .
+
+method:InfrastructureAsCode a owl:Class ;
+    rdfs:label "Infrastructure as Code"@en ;
+    rdfs:subClassOf method:DevOpsPractice ;
+    skos:definition "Managing infrastructure through code"@en .
+
+method:DevSecOps a owl:Class ;
+    rdfs:label "DevSecOps"@en ;
+    rdfs:subClassOf method:DevOpsPractice ;
+    skos:definition "Integration of security into DevOps"@en .
+
+method:GitOps a owl:Class ;
+    rdfs:label "GitOps"@en ;
+    rdfs:subClassOf method:DevOpsPractice ;
+    skos:definition "Using Git as single source of truth for infrastructure"@en .
+
+method:SRE a owl:Class ;
+    rdfs:label "Site Reliability Engineering"@en ;
+    rdfs:subClassOf method:DevOpsPractice ;
+    skos:definition "Software engineering approach to IT operations"@en .
+
+# ===========================
+# Agile Concepts
+# ===========================
+
+method:Sprint a owl:Class ;
+    rdfs:label "Sprint"@en ;
+    rdfs:comment "Fixed time period for completing work"@en ;
+    rdfs:subClassOf o4se:Activity .
+
+method:UserStory a owl:Class ;
+    rdfs:label "User Story"@en ;
+    rdfs:comment "Short description of feature from user perspective"@en ;
+    rdfs:subClassOf o4se:Requirement .
+
+method:Epic a owl:Class ;
+    rdfs:label "Epic"@en ;
+    rdfs:comment "Large user story broken down into smaller stories"@en ;
+    rdfs:subClassOf method:UserStory .
+
+method:Backlog a owl:Class ;
+    rdfs:label "Backlog"@en ;
+    rdfs:comment "Prioritized list of features or requirements"@en ;
+    rdfs:subClassOf o4se:Artifact .
+
+method:ProductBacklog a owl:Class ;
+    rdfs:label "Product Backlog"@en ;
+    rdfs:subClassOf method:Backlog .
+
+method:SprintBacklog a owl:Class ;
+    rdfs:label "Sprint Backlog"@en ;
+    rdfs:subClassOf method:Backlog .
+
+method:Velocity a owl:Class ;
+    rdfs:label "Velocity"@en ;
+    rdfs:comment "Measure of work completed per sprint"@en ;
+    rdfs:subClassOf o4se:QualityAttribute .
+
+method:BurndownChart a owl:Class ;
+    rdfs:label "Burndown Chart"@en ;
+    rdfs:comment "Visual representation of work remaining"@en ;
+    rdfs:subClassOf o4se:Artifact .
+
+# ===========================
+# Agile Roles
+# ===========================
+
+method:ScrumMaster a owl:Class ;
+    rdfs:label "Scrum Master"@en ;
+    rdfs:subClassOf o4se:Stakeholder ;
+    skos:definition "Facilitates Scrum process and removes impediments"@en .
+
+method:ProductOwner a owl:Class ;
+    rdfs:label "Product Owner"@en ;
+    rdfs:subClassOf o4se:Stakeholder ;
+    skos:definition "Defines product vision and prioritizes backlog"@en .
+
+method:DevelopmentTeam a owl:Class ;
+    rdfs:label "Development Team"@en ;
+    rdfs:subClassOf o4se:Stakeholder ;
+    skos:definition "Cross-functional team delivering product"@en .
+
+# ===========================
+# Agile Ceremonies
+# ===========================
+
+method:SprintPlanning a owl:Class ;
+    rdfs:label "Sprint Planning"@en ;
+    rdfs:subClassOf o4se:Planning ;
+    skos:definition "Meeting to plan sprint work"@en .
+
+method:DailyStandup a owl:Class ;
+    rdfs:label "Daily Standup"@en ;
+    rdfs:subClassOf o4se:Activity ;
+    skos:definition "Daily synchronization meeting"@en .
+
+method:SprintReview a owl:Class ;
+    rdfs:label "Sprint Review"@en ;
+    rdfs:subClassOf o4se:Activity ;
+    skos:definition "Demonstration of completed work"@en .
+
+method:SprintRetrospective a owl:Class ;
+    rdfs:label "Sprint Retrospective"@en ;
+    rdfs:subClassOf o4se:Activity ;
+    skos:definition "Reflection on process improvement"@en .
+
+# ===========================
+# DevOps Concepts
+# ===========================
+
+method:Pipeline a owl:Class ;
+    rdfs:label "Pipeline"@en ;
+    rdfs:comment "Automated sequence of processes"@en ;
+    rdfs:subClassOf o4se:Process .
+
+method:CIPipeline a owl:Class ;
+    rdfs:label "CI Pipeline"@en ;
+    rdfs:subClassOf method:Pipeline .
+
+method:CDPipeline a owl:Class ;
+    rdfs:label "CD Pipeline"@en ;
+    rdfs:subClassOf method:Pipeline .
+
+method:Container a owl:Class ;
+    rdfs:label "Container"@en ;
+    rdfs:comment "Lightweight virtualization for applications"@en ;
+    rdfs:subClassOf o4se:Tool .
+
+method:Microservice a owl:Class ;
+    rdfs:label "Microservice"@en ;
+    rdfs:comment "Small, independently deployable service"@en ;
+    rdfs:subClassOf o4se:Software .
+
+method:Monitoring a owl:Class ;
+    rdfs:label "Monitoring"@en ;
+    rdfs:subClassOf o4se:Activity ;
+    skos:definition "Observing system behavior and performance"@en .
+
+method:Orchestration a owl:Class ;
+    rdfs:label "Orchestration"@en ;
+    rdfs:subClassOf o4se:Activity ;
+    skos:definition "Automated configuration and management"@en .
+
+# ===========================
+# Methodology Properties
+# ===========================
+
+method:usesFramework a owl:ObjectProperty ;
+    rdfs:label "uses framework"@en ;
+    rdfs:domain o4se:SoftwareSystem ;
+    rdfs:range method:AgileFramework .
+
+method:hasSprint a owl:ObjectProperty ;
+    rdfs:label "has sprint"@en ;
+    rdfs:domain method:Scrum ;
+    rdfs:range method:Sprint .
+
+method:implementsPractice a owl:ObjectProperty ;
+    rdfs:label "implements practice"@en ;
+    rdfs:domain o4se:Process ;
+    rdfs:range method:DevOpsPractice .
+
+method:containsStory a owl:ObjectProperty ;
+    rdfs:label "contains story"@en ;
+    rdfs:domain method:Backlog ;
+    rdfs:range method:UserStory .
+
+method:facilitatedBy a owl:ObjectProperty ;
+    rdfs:label "facilitated by"@en ;
+    rdfs:domain method:Sprint ;
+    rdfs:range method:ScrumMaster .
+
+method:prioritizedBy a owl:ObjectProperty ;
+    rdfs:label "prioritized by"@en ;
+    rdfs:domain method:Backlog ;
+    rdfs:range method:ProductOwner .
+
+method:usesPipeline a owl:ObjectProperty ;
+    rdfs:label "uses pipeline"@en ;
+    rdfs:domain method:DevOpsPractice ;
+    rdfs:range method:Pipeline .
+
+# ===========================
+# Data Properties
+# ===========================
+
+method:sprintDuration a owl:DatatypeProperty ;
+    rdfs:label "sprint duration"@en ;
+    rdfs:domain method:Sprint ;
+    rdfs:range xsd:duration ;
+    rdfs:comment "Length of sprint in weeks"@en .
+
+method:storyPoints a owl:DatatypeProperty ;
+    rdfs:label "story points"@en ;
+    rdfs:domain method:UserStory ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Estimated effort for user story"@en .
+
+method:velocityValue a owl:DatatypeProperty ;
+    rdfs:label "velocity value"@en ;
+    rdfs:domain method:Velocity ;
+    rdfs:range xsd:decimal ;
+    rdfs:comment "Story points completed per sprint"@en .
+
+method:deploymentFrequency a owl:DatatypeProperty ;
+    rdfs:label "deployment frequency"@en ;
+    rdfs:domain method:ContinuousDeployment ;
+    rdfs:range xsd:string ;
+    rdfs:comment "How often deployments occur"@en .
+
+method:leadTime a owl:DatatypeProperty ;
+    rdfs:label "lead time"@en ;
+    rdfs:domain method:DevOpsPractice ;
+    rdfs:range xsd:duration ;
+    rdfs:comment "Time from commit to production"@en .
+
+method:mttr a owl:DatatypeProperty ;
+    rdfs:label "mean time to recovery"@en ;
+    rdfs:domain method:SRE ;
+    rdfs:range xsd:duration ;
+    rdfs:comment "Average time to recover from failure"@en .
+
+# ===========================
+# Methodology Individuals
+# ===========================
+
+method:AgileManifesto a method:AgileFramework ;
+    rdfs:label "Agile Manifesto"@en ;
+    o4se:hasDescription "Values: Individuals over processes, Working software over documentation, Customer collaboration over negotiation, Responding to change over planning"@en .
+
+method:TwoWeekSprint a method:Sprint ;
+    rdfs:label "Two Week Sprint"@en ;
+    method:sprintDuration "P14D"^^xsd:duration .
+
+method:Docker a method:Container ;
+    rdfs:label "Docker"@en ;
+    o4se:hasDescription "Container platform for application deployment"@en .
+
+method:Kubernetes a method:Orchestration ;
+    rdfs:label "Kubernetes"@en ;
+    o4se:hasDescription "Container orchestration platform"@en .
+
+method:Jenkins a method:CIPipeline ;
+    rdfs:label "Jenkins"@en ;
+    o4se:hasDescription "Automation server for CI/CD"@en .
+
+# ===========================
+# Axioms
+# ===========================
+
+[] a owl:AllDifferent ;
+    owl:distinctMembers (
+        method:Waterfall
+        method:Scrum
+        method:Kanban
+        method:XP
+    ) .
+
+method:ContinuousDeployment rdfs:subClassOf method:ContinuousDelivery .
+method:ContinuousDelivery rdfs:subClassOf method:ContinuousIntegration .

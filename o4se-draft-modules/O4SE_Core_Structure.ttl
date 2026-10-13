@@ -1,0 +1,437 @@
+@prefix o4se: <http://www.semanticweb.org/ontologies/2025/O4SE#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+# ===========================
+# Ontology Declaration
+# ===========================
+
+<http://www.semanticweb.org/ontologies/2025/O4SE> a owl:Ontology ;
+    owl:versionInfo "1.0.0"^^xsd:string ;
+    dcterms:title "O4SE - Ontology for Software Engineering"@en ;
+    dcterms:description "Comprehensive ontology for Software Engineering encompassing processes, methodologies, artifacts, stakeholders, and quality attributes"@en ;
+    dcterms:creator "Yusuf (Software Engineering PhD, Professor)" ;
+    dcterms:created "2025-10-27"^^xsd:date ;
+    dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+    vann:preferredNamespacePrefix "o4se" ;
+    vann:preferredNamespaceUri "http://www.semanticweb.org/ontologies/2025/O4SE#" ;
+    rdfs:comment "O4SE provides a formal representation of software engineering knowledge based on IEEE SWEBOK, SEI CMMI, ACM curricula, and industry standards"@en .
+
+# ===========================
+# Core Classes
+# ===========================
+
+# --- Software Engineering Discipline ---
+
+o4se:SoftwareEngineering a owl:Class ;
+    rdfs:label "Software Engineering"@en ;
+    rdfs:comment "The application of a systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software"@en ;
+    skos:definition "Engineering discipline concerned with all aspects of software production from early stages to maintenance"@en .
+
+# --- Software System ---
+
+o4se:SoftwareSystem a owl:Class ;
+    rdfs:label "Software System"@en ;
+    rdfs:comment "A collection of software components organized to accomplish specific functions or objectives"@en .
+
+o4se:Software a owl:Class ;
+    rdfs:label "Software"@en ;
+    rdfs:comment "Computer programs, procedures, and associated documentation and data"@en ;
+    rdfs:subClassOf o4se:SoftwareSystem .
+
+o4se:Application a owl:Class ;
+    rdfs:label "Application"@en ;
+    rdfs:subClassOf o4se:Software .
+
+o4se:SystemSoftware a owl:Class ;
+    rdfs:label "System Software"@en ;
+    rdfs:subClassOf o4se:Software .
+
+o4se:EmbeddedSoftware a owl:Class ;
+    rdfs:label "Embedded Software"@en ;
+    rdfs:subClassOf o4se:Software .
+
+# --- Software Engineering Process ---
+
+o4se:Process a owl:Class ;
+    rdfs:label "Process"@en ;
+    rdfs:comment "A set of interrelated activities that transform inputs into outputs"@en .
+
+o4se:SoftwareProcess a owl:Class ;
+    rdfs:label "Software Process"@en ;
+    rdfs:comment "A set of activities, methods, practices, and transformations used to develop and maintain software"@en ;
+    rdfs:subClassOf o4se:Process .
+
+o4se:DevelopmentProcess a owl:Class ;
+    rdfs:label "Development Process"@en ;
+    rdfs:subClassOf o4se:SoftwareProcess .
+
+o4se:ManagementProcess a owl:Class ;
+    rdfs:label "Management Process"@en ;
+    rdfs:subClassOf o4se:SoftwareProcess .
+
+o4se:SupportProcess a owl:Class ;
+    rdfs:label "Support Process"@en ;
+    rdfs:subClassOf o4se:SoftwareProcess .
+
+# --- Lifecycle Phases ---
+
+o4se:LifecyclePhase a owl:Class ;
+    rdfs:label "Lifecycle Phase"@en ;
+    rdfs:comment "A distinct period in the software lifecycle with defined objectives and deliverables"@en .
+
+o4se:RequirementsPhase a owl:Class ;
+    rdfs:label "Requirements Phase"@en ;
+    rdfs:subClassOf o4se:LifecyclePhase .
+
+o4se:DesignPhase a owl:Class ;
+    rdfs:label "Design Phase"@en ;
+    rdfs:subClassOf o4se:LifecyclePhase .
+
+o4se:ImplementationPhase a owl:Class ;
+    rdfs:label "Implementation Phase"@en ;
+    rdfs:subClassOf o4se:LifecyclePhase .
+
+o4se:TestingPhase a owl:Class ;
+    rdfs:label "Testing Phase"@en ;
+    rdfs:subClassOf o4se:LifecyclePhase .
+
+o4se:DeploymentPhase a owl:Class ;
+    rdfs:label "Deployment Phase"@en ;
+    rdfs:subClassOf o4se:LifecyclePhase .
+
+o4se:MaintenancePhase a owl:Class ;
+    rdfs:label "Maintenance Phase"@en ;
+    rdfs:subClassOf o4se:LifecyclePhase .
+
+# --- Artifacts ---
+
+o4se:Artifact a owl:Class ;
+    rdfs:label "Artifact"@en ;
+    rdfs:comment "A work product produced during software engineering activities"@en .
+
+o4se:Requirement a owl:Class ;
+    rdfs:label "Requirement"@en ;
+    rdfs:comment "A documented need or constraint that software must satisfy"@en ;
+    rdfs:subClassOf o4se:Artifact .
+
+o4se:FunctionalRequirement a owl:Class ;
+    rdfs:label "Functional Requirement"@en ;
+    rdfs:subClassOf o4se:Requirement .
+
+o4se:NonFunctionalRequirement a owl:Class ;
+    rdfs:label "Non-Functional Requirement"@en ;
+    rdfs:subClassOf o4se:Requirement .
+
+o4se:DesignDocument a owl:Class ;
+    rdfs:label "Design Document"@en ;
+    rdfs:subClassOf o4se:Artifact .
+
+o4se:SourceCode a owl:Class ;
+    rdfs:label "Source Code"@en ;
+    rdfs:subClassOf o4se:Artifact .
+
+o4se:TestCase a owl:Class ;
+    rdfs:label "Test Case"@en ;
+    rdfs:subClassOf o4se:Artifact .
+
+o4se:Documentation a owl:Class ;
+    rdfs:label "Documentation"@en ;
+    rdfs:subClassOf o4se:Artifact .
+
+# --- Stakeholders ---
+
+o4se:Stakeholder a owl:Class ;
+    rdfs:label "Stakeholder"@en ;
+    rdfs:comment "An individual or organization with interest in or influence on the software system"@en .
+
+o4se:Developer a owl:Class ;
+    rdfs:label "Developer"@en ;
+    rdfs:comment "A person who designs, codes, and tests software"@en ;
+    rdfs:subClassOf o4se:Stakeholder .
+
+o4se:ProjectManager a owl:Class ;
+    rdfs:label "Project Manager"@en ;
+    rdfs:subClassOf o4se:Stakeholder .
+
+o4se:Customer a owl:Class ;
+    rdfs:label "Customer"@en ;
+    rdfs:subClassOf o4se:Stakeholder .
+
+o4se:User a owl:Class ;
+    rdfs:label "User"@en ;
+    rdfs:subClassOf o4se:Stakeholder .
+
+o4se:Tester a owl:Class ;
+    rdfs:label "Tester"@en ;
+    rdfs:subClassOf o4se:Stakeholder .
+
+o4se:Architect a owl:Class ;
+    rdfs:label "Software Architect"@en ;
+    rdfs:subClassOf o4se:Stakeholder .
+
+# --- Quality Attributes ---
+
+o4se:QualityAttribute a owl:Class ;
+    rdfs:label "Quality Attribute"@en ;
+    rdfs:comment "A measurable property of software that indicates how well it satisfies stakeholder needs"@en .
+
+o4se:Reliability a owl:Class ;
+    rdfs:label "Reliability"@en ;
+    rdfs:subClassOf o4se:QualityAttribute .
+
+o4se:Performance a owl:Class ;
+    rdfs:label "Performance"@en ;
+    rdfs:subClassOf o4se:QualityAttribute .
+
+o4se:Security a owl:Class ;
+    rdfs:label "Security"@en ;
+    rdfs:subClassOf o4se:QualityAttribute .
+
+o4se:Maintainability a owl:Class ;
+    rdfs:label "Maintainability"@en ;
+    rdfs:subClassOf o4se:QualityAttribute .
+
+o4se:Usability a owl:Class ;
+    rdfs:label "Usability"@en ;
+    rdfs:subClassOf o4se:QualityAttribute .
+
+o4se:Scalability a owl:Class ;
+    rdfs:label "Scalability"@en ;
+    rdfs:subClassOf o4se:QualityAttribute .
+
+# --- Methodologies ---
+
+o4se:Methodology a owl:Class ;
+    rdfs:label "Methodology"@en ;
+    rdfs:comment "A systematic approach to software development with defined principles, practices, and procedures"@en .
+
+o4se:TraditionalMethodology a owl:Class ;
+    rdfs:label "Traditional Methodology"@en ;
+    rdfs:subClassOf o4se:Methodology .
+
+o4se:AgileMethodology a owl:Class ;
+    rdfs:label "Agile Methodology"@en ;
+    rdfs:subClassOf o4se:Methodology .
+
+o4se:DevOpsMethodology a owl:Class ;
+    rdfs:label "DevOps Methodology"@en ;
+    rdfs:subClassOf o4se:Methodology .
+
+# --- Activities ---
+
+o4se:Activity a owl:Class ;
+    rdfs:label "Activity"@en ;
+    rdfs:comment "A task or action performed within a software engineering process"@en .
+
+o4se:Planning a owl:Class ;
+    rdfs:label "Planning"@en ;
+    rdfs:subClassOf o4se:Activity .
+
+o4se:Analysis a owl:Class ;
+    rdfs:label "Analysis"@en ;
+    rdfs:subClassOf o4se:Activity .
+
+o4se:Design a owl:Class ;
+    rdfs:label "Design"@en ;
+    rdfs:subClassOf o4se:Activity .
+
+o4se:Implementation a owl:Class ;
+    rdfs:label "Implementation"@en ;
+    rdfs:subClassOf o4se:Activity .
+
+o4se:Testing a owl:Class ;
+    rdfs:label "Testing"@en ;
+    rdfs:subClassOf o4se:Activity .
+
+o4se:Deployment a owl:Class ;
+    rdfs:label "Deployment"@en ;
+    rdfs:subClassOf o4se:Activity .
+
+o4se:Maintenance a owl:Class ;
+    rdfs:label "Maintenance"@en ;
+    rdfs:subClassOf o4se:Activity .
+
+# --- Tools ---
+
+o4se:Tool a owl:Class ;
+    rdfs:label "Tool"@en ;
+    rdfs:comment "Software or hardware used to support software engineering activities"@en .
+
+o4se:DevelopmentTool a owl:Class ;
+    rdfs:label "Development Tool"@en ;
+    rdfs:subClassOf o4se:Tool .
+
+o4se:TestingTool a owl:Class ;
+    rdfs:label "Testing Tool"@en ;
+    rdfs:subClassOf o4se:Tool .
+
+o4se:ManagementTool a owl:Class ;
+    rdfs:label "Management Tool"@en ;
+    rdfs:subClassOf o4se:Tool .
+
+o4se:VersionControlTool a owl:Class ;
+    rdfs:label "Version Control Tool"@en ;
+    rdfs:subClassOf o4se:Tool .
+
+# ===========================
+# Object Properties
+# ===========================
+
+o4se:follows a owl:ObjectProperty ;
+    rdfs:label "follows"@en ;
+    rdfs:domain o4se:SoftwareSystem ;
+    rdfs:range o4se:Methodology .
+
+o4se:hasPhase a owl:ObjectProperty ;
+    rdfs:label "has phase"@en ;
+    rdfs:domain o4se:SoftwareProcess ;
+    rdfs:range o4se:LifecyclePhase .
+
+o4se:produces a owl:ObjectProperty ;
+    rdfs:label "produces"@en ;
+    rdfs:domain o4se:Activity ;
+    rdfs:range o4se:Artifact .
+
+o4se:performedBy a owl:ObjectProperty ;
+    rdfs:label "performed by"@en ;
+    rdfs:domain o4se:Activity ;
+    rdfs:range o4se:Stakeholder .
+
+o4se:uses a owl:ObjectProperty ;
+    rdfs:label "uses"@en ;
+    rdfs:domain o4se:Activity ;
+    rdfs:range o4se:Tool .
+
+o4se:hasQualityAttribute a owl:ObjectProperty ;
+    rdfs:label "has quality attribute"@en ;
+    rdfs:domain o4se:SoftwareSystem ;
+    rdfs:range o4se:QualityAttribute .
+
+o4se:implements a owl:ObjectProperty ;
+    rdfs:label "implements"@en ;
+    rdfs:domain o4se:SourceCode ;
+    rdfs:range o4se:Requirement .
+
+o4se:validates a owl:ObjectProperty ;
+    rdfs:label "validates"@en ;
+    rdfs:domain o4se:TestCase ;
+    rdfs:range o4se:Requirement .
+
+o4se:participatesIn a owl:ObjectProperty ;
+    rdfs:label "participates in"@en ;
+    rdfs:domain o4se:Stakeholder ;
+    rdfs:range o4se:Process .
+
+o4se:precedes a owl:ObjectProperty ;
+    rdfs:label "precedes"@en ;
+    rdfs:domain o4se:LifecyclePhase ;
+    rdfs:range o4se:LifecyclePhase .
+
+o4se:includes a owl:ObjectProperty ;
+    rdfs:label "includes"@en ;
+    rdfs:domain o4se:Process ;
+    rdfs:range o4se:Activity .
+
+o4se:basedOn a owl:ObjectProperty ;
+    rdfs:label "based on"@en ;
+    rdfs:domain o4se:DesignDocument ;
+    rdfs:range o4se:Requirement .
+
+o4se:responsibleFor a owl:ObjectProperty ;
+    rdfs:label "responsible for"@en ;
+    rdfs:domain o4se:Stakeholder ;
+    rdfs:range o4se:Artifact .
+
+o4se:supports a owl:ObjectProperty ;
+    rdfs:label "supports"@en ;
+    rdfs:domain o4se:Tool ;
+    rdfs:range o4se:Activity .
+
+# ===========================
+# Data Properties
+# ===========================
+
+o4se:hasName a owl:DatatypeProperty ;
+    rdfs:label "has name"@en ;
+    rdfs:domain o4se:SoftwareSystem ;
+    rdfs:range xsd:string .
+
+o4se:hasVersion a owl:DatatypeProperty ;
+    rdfs:label "has version"@en ;
+    rdfs:domain o4se:SoftwareSystem ;
+    rdfs:range xsd:string .
+
+o4se:hasDescription a owl:DatatypeProperty ;
+    rdfs:label "has description"@en ;
+    rdfs:range xsd:string .
+
+o4se:hasPriority a owl:DatatypeProperty ;
+    rdfs:label "has priority"@en ;
+    rdfs:domain o4se:Requirement ;
+    rdfs:range xsd:integer .
+
+o4se:hasComplexity a owl:DatatypeProperty ;
+    rdfs:label "has complexity"@en ;
+    rdfs:domain o4se:SoftwareSystem ;
+    rdfs:range xsd:string .
+
+o4se:hasDuration a owl:DatatypeProperty ;
+    rdfs:label "has duration"@en ;
+    rdfs:domain o4se:Activity ;
+    rdfs:range xsd:duration .
+
+o4se:hasStartDate a owl:DatatypeProperty ;
+    rdfs:label "has start date"@en ;
+    rdfs:domain o4se:LifecyclePhase ;
+    rdfs:range xsd:date .
+
+o4se:hasEndDate a owl:DatatypeProperty ;
+    rdfs:label "has end date"@en ;
+    rdfs:domain o4se:LifecyclePhase ;
+    rdfs:range xsd:date .
+
+o4se:hasCost a owl:DatatypeProperty ;
+    rdfs:label "has cost"@en ;
+    rdfs:domain o4se:Process ;
+    rdfs:range xsd:decimal .
+
+o4se:hasMetricValue a owl:DatatypeProperty ;
+    rdfs:label "has metric value"@en ;
+    rdfs:domain o4se:QualityAttribute ;
+    rdfs:range xsd:decimal .
+
+# ===========================
+# Individuals (Examples)
+# ===========================
+
+o4se:WaterfallModel a o4se:TraditionalMethodology ;
+    rdfs:label "Waterfall Model"@en ;
+    o4se:hasDescription "Linear sequential approach to software development"@en .
+
+o4se:ScrumFramework a o4se:AgileMethodology ;
+    rdfs:label "Scrum Framework"@en ;
+    o4se:hasDescription "Iterative and incremental agile software development framework"@en .
+
+o4se:ContinuousIntegration a o4se:DevOpsMethodology ;
+    rdfs:label "Continuous Integration"@en ;
+    o4se:hasDescription "Practice of merging developer working copies to a shared mainline several times a day"@en .
+
+# ===========================
+# Ontology Metadata
+# ===========================
+
+[] a owl:AllDisjointClasses ;
+    owl:members (
+        o4se:Stakeholder
+        o4se:Process
+        o4se:Artifact
+        o4se:Tool
+        o4se:QualityAttribute
+    ) .

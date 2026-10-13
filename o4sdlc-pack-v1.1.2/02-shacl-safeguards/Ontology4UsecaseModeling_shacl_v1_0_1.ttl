@@ -1,0 +1,242 @@
+# Ontology4UsecaseModeling SHACL v1.0.1 (SHAPE-1 fix, 2026-06-05)
+# FIX: class rdfs:label constraint changed from sh:languageIn ("en") [rejected every @tr label]
+#      to sh:qualifiedValueShape requiring >=1 @en label while permitting @tr (bilingual ontology).
+# priorVersion: Ontology4UsecaseModeling_shacl_v1_0_0.ttl
+# =============================================================================
+# SHACL SHAPES — Ontology4UsecaseModeling_shacl_v1_0_0.ttl
+# =============================================================================
+# Validates structural completeness, annotation quality, and semantic constraints
+# of the Ontology4UsecaseModeling v1.0.0 ontology.
+# Governed by: oqc_shacl_v1_1_1.ttl patterns | redo_shacl_v2_0_7.ttl
+# =============================================================================
+
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix o4ucm:  <http://www.zt4swe.io/sad/ch5#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix amod:   <http://example.org/amod#> .
+
+# =============================================================================
+# SHAPE S1: ONTOLOGY HEADER COMPLETENESS
+# =============================================================================
+o4ucm:OntologyHeaderShape
+    a sh:NodeShape ;
+    sh:targetNode <http://www.zt4swe.io/sad/ch5> ;
+    sh:name "Ontology Header Completeness Shape" ;
+    rdfs:comment "Validates that the ontology header contains all mandatory AMOD v1.2.5 metadata fields." ;
+    sh:property [
+        sh:path owl:versionInfo ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "Ontology must declare owl:versionInfo."
+    ] ;
+    sh:property [
+        sh:path owl:versionIRI ;
+        sh:minCount 1 ;
+        sh:message "Ontology must declare owl:versionIRI."
+    ] ;
+    sh:property [
+        sh:path dcterms:created ;
+        sh:minCount 1 ;
+        sh:message "Ontology must declare dcterms:created."
+    ] ;
+    sh:property [
+        sh:path dcterms:modified ;
+        sh:minCount 1 ;
+        sh:message "Ontology must declare dcterms:modified."
+    ] ;
+    sh:property [
+        sh:path dcterms:creator ;
+        sh:minCount 1 ;
+        sh:message "Ontology must declare dcterms:creator."
+    ] ;
+    sh:property [
+        sh:path dcterms:license ;
+        sh:minCount 1 ;
+        sh:message "Ontology must declare dcterms:license."
+    ] .
+
+# =============================================================================
+# SHAPE S2: CLASS ANNOTATION COMPLETENESS
+# Every named class must have rdfs:label (EN), skos:definition, skos:scopeNote, skos:example
+# =============================================================================
+o4ucm:ClassAnnotationShape
+    a sh:NodeShape ;
+    sh:targetClass owl:Class ;
+    sh:name "Class Annotation Completeness Shape" ;
+    rdfs:comment "Validates that every OWL class in the o4ucm namespace has mandatory annotation properties." ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:qualifiedValueShape [ sh:languageIn ("en") ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:message "Every class must have at least one English rdfs:label (bilingual EN+TR labels permitted)."
+    ] ;
+    sh:property [
+        sh:path skos:definition ;
+        sh:minCount 1 ;
+        sh:message "Every class must have a skos:definition."
+    ] ;
+    sh:property [
+        sh:path skos:scopeNote ;
+        sh:minCount 1 ;
+        sh:message "Every class must have a skos:scopeNote."
+    ] ;
+    sh:property [
+        sh:path skos:example ;
+        sh:minCount 1 ;
+        sh:message "Every class must have at least one skos:example."
+    ] ;
+    sh:property [
+        sh:path rdfs:isDefinedBy ;
+        sh:minCount 1 ;
+        sh:message "Every class must declare rdfs:isDefinedBy."
+    ] .
+
+# =============================================================================
+# SHAPE S3: POST-2015 EXTENSION SOURCE ANNOTATION
+# Every Post2015Extension individual must carry dcterms:source
+# =============================================================================
+o4ucm:Post2015SourceShape
+    a sh:NodeShape ;
+    sh:targetClass o4ucm:Post2015Extension ;
+    sh:name "Post-2015 Extension Source Shape" ;
+    rdfs:comment "Validates that every individual typed as Post2015Extension carries a dcterms:source annotation." ;
+    sh:property [
+        sh:path dcterms:source ;
+        sh:minCount 1 ;
+        sh:message "Every Post2015Extension individual must have at least one dcterms:source annotation."
+    ] .
+
+# =============================================================================
+# SHAPE S4: USE CASE STRUCTURAL CONSTRAINTS
+# Every UseCase individual must have at least one actor and a triggering event
+# =============================================================================
+o4ucm:UseCaseStructureShape
+    a sh:NodeShape ;
+    sh:targetClass o4ucm:UseCase ;
+    sh:name "Use Case Structural Constraints Shape" ;
+    rdfs:comment "Validates that use case individuals carry minimum required structural relationships." ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:message "Every UseCase individual must have an rdfs:label."
+    ] ;
+    sh:property [
+        sh:path skos:definition ;
+        sh:minCount 1 ;
+        sh:message "Every UseCase individual must have a skos:definition."
+    ] ;
+    sh:property [
+        sh:path dcterms:source ;
+        sh:minCount 1 ;
+        sh:message "Every UseCase individual must cite a dcterms:source."
+    ] .
+
+# =============================================================================
+# SHAPE S5: ACTOR ANNOTATION CONSTRAINTS
+# =============================================================================
+o4ucm:ActorAnnotationShape
+    a sh:NodeShape ;
+    sh:targetClass o4ucm:Actor ;
+    sh:name "Actor Annotation Shape" ;
+    rdfs:comment "Validates that actor individuals have minimum annotations." ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:message "Every Actor individual must have an rdfs:label."
+    ] ;
+    sh:property [
+        sh:path skos:definition ;
+        sh:minCount 1 ;
+        sh:message "Every Actor individual must have a skos:definition."
+    ] .
+
+# =============================================================================
+# SHAPE S6: FULLY DEVELOPED USE CASE DESCRIPTION COMPARTMENT CONSTRAINTS
+# =============================================================================
+o4ucm:FDUCDShape
+    a sh:NodeShape ;
+    sh:targetClass o4ucm:FullyDevelopedUseCaseDescription ;
+    sh:name "Fully Developed Use Case Description Shape" ;
+    rdfs:comment "Validates that fully developed use case descriptions reference the documented use case." ;
+    sh:property [
+        sh:path o4ucm:documents ;
+        sh:minCount 1 ;
+        sh:message "A FullyDevelopedUseCaseDescription must document at least one UseCase."
+    ] .
+
+# =============================================================================
+# SHAPE S7: NAMED INDIVIDUAL BASE ANNOTATION
+# =============================================================================
+o4ucm:IndividualAnnotationShape
+    a sh:NodeShape ;
+    sh:targetClass owl:NamedIndividual ;
+    sh:name "Named Individual Annotation Shape" ;
+    rdfs:comment "Validates that all named individuals have at minimum a label and definition." ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:message "Every NamedIndividual must have rdfs:label."
+    ] ;
+    sh:property [
+        sh:path skos:definition ;
+        sh:minCount 1 ;
+        sh:message "Every NamedIndividual must have skos:definition."
+    ] ;
+    sh:property [
+        sh:path rdfs:isDefinedBy ;
+        sh:minCount 1 ;
+        sh:message "Every NamedIndividual must declare rdfs:isDefinedBy."
+    ] .
+
+# =============================================================================
+# SHAPE S8: MESSAGE PARAMETER STRUCTURE
+# =============================================================================
+o4ucm:MessageShape
+    a sh:NodeShape ;
+    sh:targetClass o4ucm:Message ;
+    sh:name "Message Shape" ;
+    rdfs:comment "Validates message structure." ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:message "Every Message class/individual must have rdfs:label."
+    ] .
+
+# =============================================================================
+# SHAPE S9: ECOSYSTEM INTEGRATION NOTE PRESENCE
+# =============================================================================
+o4ucm:EcosystemNoteShape
+    a sh:NodeShape ;
+    sh:targetNode <http://www.zt4swe.io/sad/ch5> ;
+    sh:name "Ecosystem Integration Note Shape" ;
+    rdfs:comment "Validates that the ontology carries the mandatory EcosystemIntegrationNote annotation." ;
+    sh:property [
+        sh:path o4ucm:EcosystemIntegrationNote ;
+        sh:minCount 1 ;
+        sh:message "Ontology must carry o4ucm:EcosystemIntegrationNote."
+    ] .
+
+# =============================================================================
+# SHAPE S10: OBJECT PROPERTY DOMAIN/RANGE DECLARATION
+# =============================================================================
+o4ucm:ObjectPropertyShape
+    a sh:NodeShape ;
+    sh:targetClass owl:ObjectProperty ;
+    sh:name "Object Property Domain Range Shape" ;
+    rdfs:comment "Validates that object properties declare domain and range." ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:message "Every ObjectProperty must have rdfs:label."
+    ] ;
+    sh:property [
+        sh:path skos:definition ;
+        sh:minCount 1 ;
+        sh:message "Every ObjectProperty must have skos:definition."
+    ] .

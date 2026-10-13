@@ -1,0 +1,2379 @@
+@prefix : <http://example.org/domain-engineering#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@base <http://example.org/domain-engineering#> .
+
+<http://example.org/domain-engineering> rdf:type owl:Ontology ;
+    dc:title "Domain Engineering Ontology (Enterprise Edition)"@en ;
+    dc:description "A formal ontology for enterprise domain engineering covering domain analysis, design, implementation and evolution; domain assets, features and variability; processes, roles, metrics and optimization; business context, strategic analysis (SWOT, SIPOC), product, customer, channel, financial, inventory, campaign, organizational and agility management; with SKOS taxonomies for its hierarchies. Built following the Meta-Ontology definition of ontology and taxonomy."@en ;
+    dcterms:created "2026-10-13"^^xsd:date ;
+    dcterms:modified "2026-10-13"^^xsd:date ;
+    owl:versionInfo "2.0.0 - Enterprise Edition" ;
+    dc:creator "Domain Engineering Working Group" ;
+    dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:subject "Domain Engineering", "Business Analysis", "Strategic Planning", "Product Management",
+                    "Customer Management", "Organizational Management", "Agile Methodologies",
+                    "Quality Management", "Operations Management", "Process Improvement" ;
+    dcterms:coverage "Enterprise Domain Engineering" .
+
+#################################################################
+# Domain Engineering Activities and Processes
+#################################################################
+
+:ProcessActivity a owl:Class ;
+    rdfs:label "Process Activity"@en ;
+    skos:definition "A unit of work performed within a process, with a duration, effort and responsible roles"@en .
+
+:DomainEngineeringActivity a owl:Class ;
+    rdfs:subClassOf :ProcessActivity ;
+    rdfs:label "Domain Engineering Activity"@en ;
+    skos:definition "A systematic activity that contributes to the creation, analysis, design, implementation or evolution of domain assets"@en ;
+    skos:scopeNote "Domain engineering activities are the fundamental building blocks of the domain engineering process"@en ;
+    skos:example "Domain analysis, feature modeling, component design, asset testing"@en .
+
+:DomainAnalysis a owl:Class ; rdfs:subClassOf :DomainEngineeringActivity ;
+    rdfs:label "Domain Analysis"@en ;
+    skos:definition "Identification and understanding of the problem space: stakeholder needs, constraints, common requirements and variability"@en .
+:DomainDesign a owl:Class ; rdfs:subClassOf :DomainEngineeringActivity ;
+    rdfs:label "Domain Design"@en ;
+    skos:definition "Creation of architectural solutions and design patterns for the commonalities and variabilities found in analysis"@en .
+:DomainImplementation a owl:Class ; rdfs:subClassOf :DomainEngineeringActivity ;
+    rdfs:label "Domain Implementation"@en ;
+    skos:definition "Development and testing of reusable components, frameworks and domain-specific tools"@en .
+:DomainEvolution a owl:Class ; rdfs:subClassOf :DomainEngineeringActivity ;
+    rdfs:label "Domain Evolution"@en ;
+    skos:definition "Change management, versioning and maintenance of domain assets over time"@en .
+
+:DomainEngineeringProcess a owl:Class ;
+    rdfs:label "Domain Engineering Process"@en ;
+    skos:definition "A structured set of activities, roles and controls that produces and maintains domain assets"@en .
+
+:DataCollectionActivity a owl:Class ; rdfs:subClassOf :DomainEngineeringActivity ;
+    rdfs:label "Data Collection Activity"@en ;
+    skos:definition "Systematic activity for collecting data, information and knowledge relevant to domain engineering"@en .
+
+:AgileActivity a owl:Class ; rdfs:subClassOf :DomainEngineeringActivity ;
+    rdfs:label "Agile Activity"@en ;
+    skos:definition "A domain engineering activity that follows agile principles such as iterative development and continuous feedback"@en .
+:Sprint a owl:Class ; rdfs:subClassOf :AgileActivity ;
+    rdfs:label "Sprint"@en ;
+    skos:definition "A time-boxed iteration used in agile methodologies to deliver working increments"@en .
+:Retrospective a owl:Class ; rdfs:subClassOf :AgileActivity ;
+    rdfs:label "Retrospective"@en ;
+    skos:definition "A regular meeting where a team reflects on its process and identifies improvements"@en .
+
+#################################################################
+# Domain Assets
+#################################################################
+
+:DomainAsset a owl:Class ;
+    rdfs:label "Domain Asset"@en ;
+    skos:definition "A reusable artifact that encapsulates domain knowledge and can be used across multiple applications within the same domain"@en ;
+    skos:scopeNote "Domain assets are the primary output of domain engineering activities"@en ;
+    skos:example "Reusable components, frameworks, reference architectures, domain models, DSLs"@en .
+:Component a owl:Class ; rdfs:subClassOf :DomainAsset ; rdfs:label "Component"@en ;
+    skos:definition "A reusable, configurable software building block with defined interfaces"@en .
+:Framework a owl:Class ; rdfs:subClassOf :DomainAsset ; rdfs:label "Framework"@en ;
+    skos:definition "A reusable skeleton of cooperating components with extension points for a domain"@en .
+:DomainSpecificLanguage a owl:Class ; rdfs:subClassOf :DomainAsset ; rdfs:label "Domain-Specific Language"@en ;
+    skos:definition "A language with syntax and semantics tailored to expressing solutions in the domain"@en .
+:ReferenceArchitecture a owl:Class ; rdfs:subClassOf :DomainAsset ; rdfs:label "Reference Architecture"@en ;
+    skos:definition "An architectural template capturing the structural and behavioral patterns of systems in the domain"@en .
+:DomainModel a owl:Class ; rdfs:subClassOf :DomainAsset ; rdfs:label "Domain Model"@en ;
+    skos:definition "A model of the key concepts, relationships and constraints within the application domain"@en .
+:FeatureModel a owl:Class ; rdfs:subClassOf :DomainAsset ; rdfs:label "Feature Model"@en ;
+    skos:definition "A hierarchical model that captures the commonalities and variabilities of a domain in terms of features and their relationships"@en ;
+    skos:scopeNote "Feature models are central to managing variability in domain engineering"@en .
+
+#################################################################
+# Features and Variability
+#################################################################
+
+:Feature a owl:Class ; rdfs:label "Feature"@en ;
+    skos:definition "A distinguishable characteristic of a system that is relevant to a stakeholder"@en .
+:MandatoryFeature a owl:Class ; rdfs:subClassOf :Feature ; rdfs:label "Mandatory Feature"@en .
+:OptionalFeature a owl:Class ; rdfs:subClassOf :Feature ; rdfs:label "Optional Feature"@en .
+:AlternativeFeature a owl:Class ; rdfs:subClassOf :Feature ; rdfs:label "Alternative Feature"@en .
+
+:VariationPoint a owl:Class ; rdfs:label "Variation Point"@en ;
+    skos:definition "A location in a domain asset where variation occurs, representing a design decision that can be made in different ways"@en ;
+    skos:scopeNote "Variation points enable customization and adaptation of domain assets"@en ;
+    skos:example "Database selection point, authentication mechanism choice, UI framework selection"@en .
+:Variant a owl:Class ; rdfs:label "Variant"@en ;
+    skos:definition "One concrete choice that can be bound at a variation point"@en .
+:VariabilityMechanism a owl:Class ; rdfs:label "Variability Mechanism"@en ;
+    skos:definition "A technique that implements variation at a variation point"@en .
+:ParameterVariability a owl:Class ; rdfs:subClassOf :VariabilityMechanism ; rdfs:label "Parameter Variability"@en .
+:InheritanceVariability a owl:Class ; rdfs:subClassOf :VariabilityMechanism ; rdfs:label "Inheritance Variability"@en .
+:CompositionVariability a owl:Class ; rdfs:subClassOf :VariabilityMechanism ; rdfs:label "Composition Variability"@en .
+
+#################################################################
+# Quality, Metrics, Roles, Tools and Methods
+#################################################################
+
+:QualityAttribute a owl:Class ; rdfs:label "Quality Attribute"@en ;
+    skos:definition "A measurable property of a system or asset such as security, performance or reusability"@en .
+:Reusability a owl:Class ; rdfs:subClassOf :QualityAttribute ; rdfs:label "Reusability"@en .
+
+:Metric a owl:Class ; rdfs:label "Metric"@en ;
+    skos:definition "A defined measure used to quantify a quality attribute or process performance"@en .
+:ReuseMetric a owl:Class ; rdfs:subClassOf :Metric ; rdfs:label "Reuse Metric"@en .
+:ProcessMetric a owl:Class ; rdfs:subClassOf :Metric ; rdfs:label "Process Metric"@en .
+
+:Stakeholder a owl:Class ; rdfs:subClassOf foaf:Agent ; rdfs:label "Stakeholder"@en ;
+    skos:definition "A person or organization with an interest in, or influence over, the domain"@en .
+:Role a owl:Class ; rdfs:label "Role"@en ;
+    skos:definition "A set of responsibilities and competencies assigned to a person in a process"@en .
+:DomainAnalyst a owl:Class ; rdfs:subClassOf :Role ; rdfs:label "Domain Analyst"@en .
+:DomainArchitect a owl:Class ; rdfs:subClassOf :Role ; rdfs:label "Domain Architect"@en .
+:DomainDeveloper a owl:Class ; rdfs:subClassOf :Role ; rdfs:label "Domain Developer"@en .
+
+:Tool a owl:Class ; rdfs:label "Tool"@en ;
+    skos:definition "A software tool that supports domain engineering activities"@en .
+:FeatureModelingTool a owl:Class ; rdfs:subClassOf :Tool ; rdfs:label "Feature Modeling Tool"@en .
+:Method a owl:Class ; rdfs:label "Method"@en ;
+    skos:definition "A systematic technique for carrying out domain engineering activities"@en .
+:FODA a owl:Class ; rdfs:subClassOf :Method ; rdfs:label "Feature-Oriented Domain Analysis"@en .
+:DSSA a owl:Class ; rdfs:subClassOf :Method ; rdfs:label "Domain-Specific Software Architecture"@en .
+:ProductLineEngineering a owl:Class ; rdfs:subClassOf :Method ; rdfs:label "Product Line Engineering"@en .
+
+#################################################################
+# Business Context
+#################################################################
+
+:BusinessContext a owl:Class ; rdfs:label "Business Context"@en ;
+    skos:definition "Business-oriented information and context that influences domain engineering decisions: environment, problems, capabilities, benefits, processes, roles, rules and architecture"@en ;
+    skos:scopeNote "Business context provides the foundation for understanding domain requirements and constraints"@en .
+:BusinessEnvironment a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Business Environment"@en ;
+    skos:definition "The business ecosystem, market conditions and organizational context in which the domain operates"@en .
+:ProblemDescription a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Problem Description"@en ;
+    skos:definition "A structured description of business problems, challenges and opportunities that drive domain engineering efforts"@en .
+:SystemCapabilities a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "System Capabilities"@en ;
+    skos:definition "Abilities, features and services that systems within the domain must deliver"@en .
+:BusinessBenefits a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Business Benefits"@en ;
+    skos:definition "Quantifiable and qualitative benefits that domain engineering brings to the organization"@en .
+:BusinessProcess a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Business Process"@en ;
+    skos:definition "A collection of related, structured activities that produce a specific service or product for customers"@en ;
+    skos:example "Order processing, customer onboarding, payment processing, inventory management"@en .
+:BusinessRole a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Business Role"@en ;
+    skos:definition "A set of responsibilities and authorities assigned to individuals in business processes"@en .
+:BusinessRule a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Business Rule"@en ;
+    skos:definition "A directive intended to influence or guide business behavior and decision-making"@en .
+:ApplicationPortfolio a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Application Portfolio"@en ;
+    skos:definition "An inventory of all applications, systems and software assets used in the business domain"@en .
+:OperationalArchitecture a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Operational Architecture"@en ;
+    skos:definition "The structural design of business operations, workflows and organizational elements"@en .
+
+:ProcessClassification a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Process Classification"@en ;
+    skos:definition "Categorization of business processes based on their purpose and characteristics"@en .
+:CoreBusinessProcess a owl:Class ; rdfs:subClassOf :BusinessProcess ; rdfs:label "Core Business Process"@en ;
+    skos:definition "Essential business processes that directly create customer value"@en ;
+    skos:example "Order processing, product development, customer service, payment processing"@en .
+:SupportingProcess a owl:Class ; rdfs:subClassOf :BusinessProcess ; rdfs:label "Supporting Process"@en ;
+    skos:definition "Processes that provide the support and infrastructure for core business processes"@en ;
+    skos:example "Human resources, IT support, accounting, facilities management, compliance"@en ;
+    owl:disjointWith :CoreBusinessProcess .
+
+:OperationsManagement a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Operations Management"@en ;
+    skos:definition "Management of day-to-day operational activities and environments"@en .
+:OperationalEnvironment a owl:Class ; rdfs:subClassOf :OperationsManagement ; rdfs:label "Operational Environment"@en ;
+    skos:definition "The physical, technological and organizational context in which operations take place"@en .
+:Operation a owl:Class ; rdfs:subClassOf :OperationsManagement ; rdfs:label "Operation"@en ;
+    skos:definition "A specific activity or set of activities performed as part of business operations"@en .
+
+#################################################################
+# Data Collection and Documentation
+#################################################################
+
+:DataCollectionLog a owl:Class ; rdfs:subClassOf :DomainAsset ; rdfs:label "Data Collection Log"@en ;
+    skos:definition "A systematic record of what data was collected, when, how and by whom during domain engineering"@en .
+:ActivitySummary a owl:Class ; rdfs:subClassOf :DomainAsset ; rdfs:label "Activity Summary"@en ;
+    skos:definition "A consolidated record of what activities were performed, when, where and with whom"@en .
+:InterviewList a owl:Class ; rdfs:subClassOf :DataCollectionLog ; rdfs:label "Interview List"@en ;
+    skos:definition "A list of interviews with stakeholders: participants, topics and outcomes"@en .
+:MeetingList a owl:Class ; rdfs:subClassOf :DataCollectionLog ; rdfs:label "Meeting List"@en ;
+    skos:definition "A list of meetings, workshops and collaborative sessions conducted during domain engineering"@en .
+:DocumentAnalysisList a owl:Class ; rdfs:subClassOf :DataCollectionLog ; rdfs:label "Document Analysis List"@en ;
+    skos:definition "A record of documents analyzed, analysis methods used and findings obtained"@en .
+
+#################################################################
+# Vendors and Solutions
+#################################################################
+
+:VendorSolution a owl:Class ; rdfs:label "Vendor Solution"@en ;
+    skos:definition "Third-party products, services and solutions that can be leveraged or considered in domain engineering"@en ;
+    skos:example "Cloud platforms, commercial frameworks, third-party components, consulting services"@en .
+:Vendor a owl:Class ; rdfs:subClassOf :Stakeholder ; rdfs:label "Vendor"@en ;
+    skos:definition "A commercial entity that offers products, services or solutions relevant to the domain"@en .
+:SolutionProvider a owl:Class ; rdfs:subClassOf :Stakeholder ; rdfs:label "Solution Provider"@en ;
+    skos:definition "Any organization that provides solutions, services or expertise relevant to domain engineering"@en .
+:AlternativeSolution a owl:Class ; rdfs:subClassOf :VendorSolution ; rdfs:label "Alternative Solution"@en ;
+    skos:definition "A different technological or methodological approach that can address the same domain requirements"@en .
+
+#################################################################
+# Strategic Analysis (SWOT) and Process Analysis (SIPOC)
+#################################################################
+
+:StrategicAnalysis a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Strategic Analysis"@en ;
+    skos:definition "Systematic analysis of strategic factors, including internal strengths and weaknesses and external opportunities and threats"@en ;
+    skos:example "SWOT analysis, PEST analysis, competitive analysis, value chain analysis"@en .
+:SWOTAnalysis a owl:Class ; rdfs:subClassOf :StrategicAnalysis ; rdfs:label "SWOT Analysis"@en ;
+    skos:definition "A framework that evaluates Strengths, Weaknesses, Opportunities and Threats"@en .
+:Strength a owl:Class ; rdfs:subClassOf :StrategicAnalysis ; rdfs:label "Strength"@en ;
+    skos:definition "Internal capabilities, resources or attributes that provide competitive advantage"@en .
+:Weakness a owl:Class ; rdfs:subClassOf :StrategicAnalysis ; rdfs:label "Weakness"@en ;
+    skos:definition "Internal limitations or deficiencies that may hinder performance"@en .
+:Opportunity a owl:Class ; rdfs:subClassOf :StrategicAnalysis ; rdfs:label "Opportunity"@en ;
+    skos:definition "External factors or trends that could provide business opportunities"@en .
+:Threat a owl:Class ; rdfs:subClassOf :StrategicAnalysis ; rdfs:label "Threat"@en ;
+    skos:definition "External factors or trends that could pose risks or challenges"@en .
+
+:ProcessAnalysis a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Process Analysis"@en ;
+    skos:definition "Systematic analysis of business processes and their components"@en .
+:SIPOCAnalysis a owl:Class ; rdfs:subClassOf :ProcessAnalysis ; rdfs:label "SIPOC Analysis"@en ;
+    skos:definition "A framework analyzing Suppliers, Inputs, Process, Outputs and Customers to understand process boundaries"@en .
+:Supplier a owl:Class ; rdfs:subClassOf :Stakeholder ; rdfs:label "Supplier"@en ;
+    skos:definition "An organization or individual that provides inputs, materials or services to business processes"@en .
+:ProcessInput a owl:Class ; rdfs:label "Process Input"@en ;
+    skos:definition "Any material, information, resource or trigger consumed or used by a business process"@en .
+:ProcessOutput a owl:Class ; rdfs:label "Process Output"@en ;
+    skos:definition "Any product, service, information or result produced by a business process"@en .
+:Customer a owl:Class ; rdfs:subClassOf :Stakeholder ; rdfs:label "Customer"@en ;
+    skos:definition "An individual or organization that receives and uses the outputs of business processes"@en .
+
+#################################################################
+# Product and Service Portfolio, Lifecycle, Quality
+#################################################################
+
+:PortfolioManagement a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Portfolio Management"@en ;
+    skos:definition "Systematic management of products and services throughout their lifecycles"@en .
+:ProductPortfolio a owl:Class ; rdfs:subClassOf :PortfolioManagement ; rdfs:label "Product Portfolio"@en ;
+    skos:definition "A collection of products managed by the organization, with lifecycle stages, market performance and strategic positioning"@en .
+:ServicePortfolio a owl:Class ; rdfs:subClassOf :PortfolioManagement ; rdfs:label "Service Portfolio"@en ;
+    skos:definition "A collection of services offered by the organization"@en .
+:Product a owl:Class ; rdfs:label "Product"@en ;
+    skos:definition "A tangible or intangible good offered to satisfy customer needs"@en .
+:Service a owl:Class ; rdfs:label "Service"@en ;
+    skos:definition "An intangible offering that provides value to customers through activities or benefits"@en .
+:ProductLifecycle a owl:Class ; rdfs:label "Product Lifecycle"@en ;
+    skos:definition "The progression of a product through distinct phases from development to discontinuation"@en .
+:ProductLifecycleStage a owl:Class ; rdfs:label "Product Lifecycle Stage"@en ;
+    skos:definition "A distinct phase in a product's lifecycle"@en .
+:DevelopmentStage a owl:Class ; rdfs:subClassOf :ProductLifecycleStage ; rdfs:label "Development Stage"@en ;
+    rdfs:comment "Product is being developed and designed"@en .
+:IntroductionStage a owl:Class ; rdfs:subClassOf :ProductLifecycleStage ; rdfs:label "Introduction Stage"@en ;
+    rdfs:comment "Product is launched to market"@en .
+:GrowthStage a owl:Class ; rdfs:subClassOf :ProductLifecycleStage ; rdfs:label "Growth Stage"@en ;
+    rdfs:comment "Product experiences rapid market acceptance"@en .
+:MaturityStage a owl:Class ; rdfs:subClassOf :ProductLifecycleStage ; rdfs:label "Maturity Stage"@en ;
+    rdfs:comment "Product reaches peak market penetration"@en .
+:DeclineStage a owl:Class ; rdfs:subClassOf :ProductLifecycleStage ; rdfs:label "Decline Stage"@en ;
+    rdfs:comment "Product experiences decreasing demand"@en .
+
+:QualityManagement a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Quality Management"@en ;
+    skos:definition "A systematic approach to ensuring that products and services meet or exceed requirements through planning, control, assurance and improvement"@en .
+:ProductQualityManagement a owl:Class ; rdfs:subClassOf :QualityManagement ; rdfs:label "Product Quality Management"@en ;
+    skos:definition "Management of quality standards, controls and improvements for products"@en .
+:QualityStandard a owl:Class ; rdfs:subClassOf :QualityManagement ; rdfs:label "Quality Standard"@en ;
+    skos:definition "Documented criteria used to measure and ensure quality"@en .
+:QualityControl a owl:Class ; rdfs:subClassOf :QualityManagement ; rdfs:label "Quality Control"@en ;
+    skos:definition "Operational activities that verify that products and services meet quality requirements"@en .
+:QualityAssurance a owl:Class ; rdfs:subClassOf :QualityManagement ; rdfs:label "Quality Assurance"@en ;
+    skos:definition "Process-focused activities that prevent quality issues"@en .
+
+#################################################################
+# Customer Management, CRM, Experience
+#################################################################
+
+:CustomerManagement a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Customer Management"@en ;
+    skos:definition "Management of customer interactions, relationships and experiences"@en .
+:CustomerCategorization a owl:Class ; rdfs:subClassOf :CustomerManagement ; rdfs:label "Customer Categorization"@en ;
+    skos:definition "Classification of customers based on characteristics, behavior or value"@en .
+:CustomerSegment a owl:Class ; rdfs:subClassOf :CustomerCategorization ; rdfs:label "Customer Segment"@en ;
+    skos:definition "A group of customers who share similar characteristics, needs or behaviors"@en .
+:CRM a owl:Class ; rdfs:subClassOf :CustomerManagement ; rdfs:label "Customer Relationship Management"@en ;
+    skos:altLabel "CRM"@en ;
+    skos:definition "Technology and processes used to manage customer interactions and relationships"@en .
+:CustomerExperience a owl:Class ; rdfs:subClassOf :CustomerManagement ; rdfs:label "Customer Experience"@en ;
+    skos:definition "The complete set of interactions and perceptions a customer has with the organization"@en .
+:CustomerJourney a owl:Class ; rdfs:subClassOf :CustomerExperience ; rdfs:label "Customer Journey"@en ;
+    skos:definition "The sequence of experiences a customer has across all touchpoints"@en .
+:Touchpoint a owl:Class ; rdfs:subClassOf :CustomerExperience ; rdfs:label "Touchpoint"@en ;
+    skos:definition "Any point of contact between a customer and the organization"@en .
+
+#################################################################
+# Channels, Financial, Inventory, Marketing
+#################################################################
+
+:ChannelManagement a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Channel Management"@en ;
+    skos:definition "Management of the channels through which products and services reach customers"@en .
+:Channel a owl:Class ; rdfs:subClassOf :ChannelManagement ; rdfs:label "Channel"@en ;
+    skos:definition "A medium or pathway through which products, services or information reach customers"@en .
+:SalesChannel a owl:Class ; rdfs:subClassOf :Channel ; rdfs:label "Sales Channel"@en .
+:DistributionChannel a owl:Class ; rdfs:subClassOf :Channel ; rdfs:label "Distribution Channel"@en .
+:DigitalChannel a owl:Class ; rdfs:subClassOf :Channel ; rdfs:label "Digital Channel"@en .
+
+:FinancialManagement a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Financial Management"@en ;
+    skos:definition "Management of financial resources, costs and pricing strategies"@en .
+:CostManagement a owl:Class ; rdfs:subClassOf :FinancialManagement ; rdfs:label "Cost Management"@en .
+:Cost a owl:Class ; rdfs:subClassOf :CostManagement ; rdfs:label "Cost"@en ;
+    skos:definition "An amount of money spent to acquire or maintain something"@en .
+:PricingManagement a owl:Class ; rdfs:subClassOf :FinancialManagement ; rdfs:label "Pricing Management"@en .
+:PricingModel a owl:Class ; rdfs:subClassOf :PricingManagement ; rdfs:label "Pricing Model"@en ;
+    skos:definition "A structured approach for setting prices"@en .
+:DiscountingManagement a owl:Class ; rdfs:subClassOf :FinancialManagement ; rdfs:label "Discounting Management"@en .
+:Discount a owl:Class ; rdfs:subClassOf :DiscountingManagement ; rdfs:label "Discount"@en ;
+    skos:definition "A reduction in the regular price of a product or service"@en .
+
+:InventoryManagement a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Inventory Management"@en ;
+    skos:definition "Oversight of inventory levels, stock control and supply chain coordination"@en .
+:StockManagement a owl:Class ; rdfs:subClassOf :InventoryManagement ; rdfs:label "Stock Management"@en .
+:Inventory a owl:Class ; rdfs:subClassOf :InventoryManagement ; rdfs:label "Inventory"@en ;
+    skos:definition "The quantity of goods and materials held in stock by a business"@en .
+:StockLevel a owl:Class ; rdfs:subClassOf :StockManagement ; rdfs:label "Stock Level"@en ;
+    skos:definition "The current quantity of a particular item held in inventory"@en .
+
+:MarketingManagement a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Marketing Management"@en .
+:CampaignManagement a owl:Class ; rdfs:subClassOf :MarketingManagement ; rdfs:label "Campaign Management"@en .
+:MarketingCampaign a owl:Class ; rdfs:subClassOf :CampaignManagement ; rdfs:label "Marketing Campaign"@en ;
+    skos:definition "A coordinated series of marketing activities designed to achieve specific objectives"@en .
+:PromotionalCampaign a owl:Class ; rdfs:subClassOf :MarketingCampaign ; rdfs:label "Promotional Campaign"@en ;
+    skos:definition "A campaign designed to promote special offers, discounts or incentives"@en .
+
+#################################################################
+# Organization, Human Resources, Agility
+#################################################################
+
+:OrganizationalManagement a owl:Class ; rdfs:subClassOf :BusinessContext ; rdfs:label "Organizational Management"@en .
+:OrganizationalStructure a owl:Class ; rdfs:subClassOf :OrganizationalManagement ; rdfs:label "Organizational Structure"@en ;
+    skos:definition "The formal framework of roles, responsibilities and reporting relationships within an organization"@en .
+:OrganizationalHierarchy a owl:Class ; rdfs:subClassOf :OrganizationalStructure ; rdfs:label "Organizational Hierarchy"@en ;
+    skos:definition "The vertical structure of authority levels and reporting relationships"@en .
+:OrganizationalUnit a owl:Class ; rdfs:subClassOf :OrganizationalStructure ; rdfs:label "Organizational Unit"@en .
+:Department a owl:Class ; rdfs:subClassOf :OrganizationalUnit ; rdfs:label "Department"@en .
+:Team a owl:Class ; rdfs:subClassOf :OrganizationalUnit ; rdfs:label "Team"@en .
+:HumanResourceManagement a owl:Class ; rdfs:subClassOf :OrganizationalManagement ; rdfs:label "Human Resource Management"@en ;
+    skos:altLabel "HRM"@en ;
+    skos:definition "Management of human capital, including recruitment, development, performance and retention"@en .
+:Employee a owl:Class ; rdfs:subClassOf :Stakeholder ; rdfs:label "Employee"@en .
+:Position a owl:Class ; rdfs:subClassOf :HumanResourceManagement ; rdfs:label "Position"@en ;
+    skos:definition "A specific job with defined responsibilities and requirements"@en .
+:AgilityManagement a owl:Class ; rdfs:subClassOf :OrganizationalManagement ; rdfs:label "Agility Management"@en .
+:OrganizationalAgility a owl:Class ; rdfs:subClassOf :AgilityManagement ; rdfs:label "Organizational Agility"@en ;
+    skos:definition "The capability of an organization to rapidly adapt and respond to market changes and opportunities"@en .
+:AgileMethodology a owl:Class ; rdfs:subClassOf :AgilityManagement ; rdfs:label "Agile Methodology"@en ;
+    skos:definition "Methodologies that promote adaptive planning, evolutionary development and continuous improvement"@en ;
+    skos:example "Scrum, Kanban, Lean, SAFe, Extreme Programming"@en .
+
+#################################################################
+# Object Properties - Domain Engineering Core
+#################################################################
+
+:precedes a owl:ObjectProperty ; rdfs:domain :ProcessActivity ; rdfs:range :ProcessActivity ;
+    rdfs:label "precedes"@en ; rdfs:comment "Temporal ordering between activities"@en .
+:partOfProcess a owl:ObjectProperty ; rdfs:domain :ProcessActivity ; rdfs:range :DomainEngineeringProcess ;
+    rdfs:label "part of process"@en .
+:producesAsset a owl:ObjectProperty ; rdfs:domain :DomainEngineeringActivity ; rdfs:range :DomainAsset ;
+    rdfs:label "produces asset"@en .
+:usesAsset a owl:ObjectProperty ; rdfs:domain :DomainEngineeringActivity ; rdfs:range :DomainAsset ;
+    rdfs:label "uses asset"@en .
+:usesTool a owl:ObjectProperty ; rdfs:domain :ProcessActivity ; rdfs:range :Tool ;
+    rdfs:label "uses tool"@en .
+:appliesMethod a owl:ObjectProperty ; rdfs:domain :ProcessActivity ; rdfs:range :Method ;
+    rdfs:label "applies method"@en .
+:involvesStakeholder a owl:ObjectProperty ; rdfs:domain :ProcessActivity ; rdfs:range :Stakeholder ;
+    rdfs:label "involves stakeholder"@en .
+:performsActivity a owl:ObjectProperty ; rdfs:domain :Role ; rdfs:range :ProcessActivity ;
+    rdfs:label "performs activity"@en .
+:dependsOn a owl:ObjectProperty ; rdfs:domain :DomainAsset ; rdfs:range :DomainAsset ;
+    rdfs:label "depends on"@en .
+:hasFeature a owl:ObjectProperty ; rdfs:domain :FeatureModel ; rdfs:range :Feature ;
+    rdfs:label "has feature"@en .
+:childFeature a owl:ObjectProperty ; rdfs:domain :Feature ; rdfs:range :Feature ;
+    rdfs:label "child feature"@en ; owl:inverseOf :parentFeature .
+:parentFeature a owl:ObjectProperty ; rdfs:domain :Feature ; rdfs:range :Feature ;
+    rdfs:label "parent feature"@en .
+:requiresFeature a owl:ObjectProperty ; rdfs:domain :Feature ; rdfs:range :Feature ;
+    rdfs:label "requires feature"@en .
+:excludesFeature a owl:ObjectProperty , owl:SymmetricProperty ; rdfs:domain :Feature ; rdfs:range :Feature ;
+    rdfs:label "excludes feature"@en .
+:hasVariationPoint a owl:ObjectProperty ; rdfs:domain :DomainAsset ; rdfs:range :VariationPoint ;
+    rdfs:label "has variation point"@en .
+:hasVariant a owl:ObjectProperty ; rdfs:domain :VariationPoint ; rdfs:range :Variant ;
+    rdfs:label "has variant"@en .
+:implementsVariability a owl:ObjectProperty ; rdfs:domain :VariationPoint ; rdfs:range :VariabilityMechanism ;
+    rdfs:label "implements variability"@en .
+:hasQualityAttribute a owl:ObjectProperty ; rdfs:domain :DomainAsset ; rdfs:range :QualityAttribute ;
+    rdfs:label "has quality attribute"@en .
+:measuredBy a owl:ObjectProperty ; rdfs:domain :QualityAttribute ; rdfs:range :Metric ;
+    rdfs:label "measured by"@en .
+
+#################################################################
+# Object Properties - Business Context
+#################################################################
+
+:definesBusinessProcess a owl:ObjectProperty ; rdfs:domain :BusinessEnvironment ; rdfs:range :BusinessProcess ;
+    rdfs:label "defines business process"@en .
+:hasBusinessRole a owl:ObjectProperty ; rdfs:domain :BusinessProcess ; rdfs:range :BusinessRole ;
+    rdfs:label "has business role"@en .
+:governedByRule a owl:ObjectProperty ; rdfs:domain :BusinessProcess ; rdfs:range :BusinessRule ;
+    rdfs:label "governed by rule"@en .
+:addressesProblem a owl:ObjectProperty ; rdfs:domain :DomainEngineeringActivity ; rdfs:range :ProblemDescription ;
+    rdfs:label "addresses problem"@en .
+:enablesCapability a owl:ObjectProperty ; rdfs:domain :DomainAsset ; rdfs:range :SystemCapabilities ;
+    rdfs:label "enables capability"@en .
+:deliversBenefit a owl:ObjectProperty ; rdfs:domain :DomainAsset ; rdfs:range :BusinessBenefits ;
+    rdfs:label "delivers benefit"@en .
+:includesApplication a owl:ObjectProperty ; rdfs:domain :ApplicationPortfolio ; rdfs:range :DomainAsset ;
+    rdfs:label "includes application"@en .
+:implementsArchitecture a owl:ObjectProperty ; rdfs:domain :DomainAsset ; rdfs:range :OperationalArchitecture ;
+    rdfs:label "implements architecture"@en .
+
+#################################################################
+# Object Properties - Data Collection
+#################################################################
+
+:logsActivity a owl:ObjectProperty ; rdfs:domain :DataCollectionLog ; rdfs:range :DomainEngineeringActivity ;
+    rdfs:label "logs activity"@en .
+:summarizesActivity a owl:ObjectProperty ; rdfs:domain :ActivitySummary ; rdfs:range :DomainEngineeringActivity ;
+    rdfs:label "summarizes activity"@en .
+:documentsInterview a owl:ObjectProperty ; rdfs:domain :InterviewList ; rdfs:range :Stakeholder ;
+    rdfs:label "documents interview"@en .
+:recordsMeeting a owl:ObjectProperty ; rdfs:domain :MeetingList ; rdfs:range :Stakeholder ;
+    rdfs:label "records meeting"@en .
+:analyzesDocument a owl:ObjectProperty ; rdfs:domain :DocumentAnalysisList ; rdfs:range :DomainAsset ;
+    rdfs:label "analyzes document"@en .
+
+#################################################################
+# Object Properties - Vendors and Solutions
+#################################################################
+
+:providedByVendor a owl:ObjectProperty ; rdfs:domain :VendorSolution ; rdfs:range :Vendor ;
+    rdfs:label "provided by vendor"@en .
+:offeredBySolutionProvider a owl:ObjectProperty ; rdfs:domain :VendorSolution ; rdfs:range :SolutionProvider ;
+    rdfs:label "offered by solution provider"@en .
+:hasAlternative a owl:ObjectProperty , owl:SymmetricProperty ; rdfs:domain :VendorSolution ; rdfs:range :VendorSolution ;
+    rdfs:label "has alternative"@en .
+:competesWith a owl:ObjectProperty , owl:SymmetricProperty ; rdfs:domain :VendorSolution ; rdfs:range :VendorSolution ;
+    rdfs:label "competes with"@en .
+:supportsCapability a owl:ObjectProperty ; rdfs:domain :VendorSolution ; rdfs:range :SystemCapabilities ;
+    rdfs:label "supports capability"@en .
+
+#################################################################
+# Object Properties - SWOT and SIPOC
+#################################################################
+
+:hasStrength a owl:ObjectProperty ; rdfs:domain :SWOTAnalysis ; rdfs:range :Strength ; rdfs:label "has strength"@en .
+:hasWeakness a owl:ObjectProperty ; rdfs:domain :SWOTAnalysis ; rdfs:range :Weakness ; rdfs:label "has weakness"@en .
+:hasOpportunity a owl:ObjectProperty ; rdfs:domain :SWOTAnalysis ; rdfs:range :Opportunity ; rdfs:label "has opportunity"@en .
+:hasThreat a owl:ObjectProperty ; rdfs:domain :SWOTAnalysis ; rdfs:range :Threat ; rdfs:label "has threat"@en .
+:leveragesStrength a owl:ObjectProperty ; rdfs:domain :SWOTAnalysis ; rdfs:range :Strength ;
+    rdfs:label "leverages strength"@en .
+:exploitsWeakness a owl:ObjectProperty ; rdfs:domain :Threat ; rdfs:range :Weakness ;
+    rdfs:label "exploits weakness"@en .
+
+:hasSupplier a owl:ObjectProperty ; rdfs:domain :SIPOCAnalysis ; rdfs:range :Supplier ; rdfs:label "has supplier"@en .
+:hasInput a owl:ObjectProperty ; rdfs:domain :SIPOCAnalysis ; rdfs:range :ProcessInput ; rdfs:label "has input"@en .
+:hasOutput a owl:ObjectProperty ; rdfs:domain :SIPOCAnalysis ; rdfs:range :ProcessOutput ; rdfs:label "has output"@en .
+:hasCustomer a owl:ObjectProperty ; rdfs:domain :SIPOCAnalysis ; rdfs:range :Customer ; rdfs:label "has customer"@en .
+:analyzesProcess a owl:ObjectProperty ; rdfs:domain :SIPOCAnalysis ; rdfs:range :BusinessProcess ;
+    rdfs:label "analyzes process"@en .
+:suppliesInput a owl:ObjectProperty ; rdfs:domain :Supplier ; rdfs:range :ProcessInput ; rdfs:label "supplies input"@en .
+:consumesInput a owl:ObjectProperty ; rdfs:domain :BusinessProcess ; rdfs:range :ProcessInput ; rdfs:label "consumes input"@en .
+:producesOutput a owl:ObjectProperty ; rdfs:domain :BusinessProcess ; rdfs:range :ProcessOutput ; rdfs:label "produces output"@en .
+:receivesOutput a owl:ObjectProperty ; rdfs:domain :Customer ; rdfs:range :ProcessOutput ; rdfs:label "receives output"@en .
+
+#################################################################
+# Object Properties - Product, Quality, Customer
+#################################################################
+
+:includesProduct a owl:ObjectProperty ; rdfs:domain :ProductPortfolio ; rdfs:range :Product ;
+    rdfs:label "includes product"@en .
+:hasLifecycle a owl:ObjectProperty ; rdfs:domain :Product ; rdfs:range :ProductLifecycle ; rdfs:label "has lifecycle"@en .
+:currentStage a owl:ObjectProperty ; rdfs:domain :Product ; rdfs:range :ProductLifecycleStage ;
+    rdfs:label "current stage"@en .
+:appliesQualityControl a owl:ObjectProperty ; rdfs:domain :BusinessProcess ; rdfs:range :QualityControl ;
+    rdfs:label "applies quality control"@en .
+:implementsQualityAssurance a owl:ObjectProperty ; rdfs:domain :BusinessProcess ; rdfs:range :QualityAssurance ;
+    rdfs:label "implements quality assurance"@en .
+:meetsStandard a owl:ObjectProperty ; rdfs:domain :Product ; rdfs:range :QualityStandard ;
+    rdfs:label "meets standard"@en .
+
+:belongsToSegment a owl:ObjectProperty ; rdfs:domain :Customer ; rdfs:range :CustomerSegment ;
+    rdfs:label "belongs to segment"@en .
+:managedByCRM a owl:ObjectProperty ; rdfs:domain :Customer ; rdfs:range :CRM ; rdfs:label "managed by CRM"@en .
+:hasCustomerJourney a owl:ObjectProperty ; rdfs:domain :Customer ; rdfs:range :CustomerJourney ;
+    rdfs:label "has customer journey"@en .
+:includesTouchpoint a owl:ObjectProperty ; rdfs:domain :CustomerJourney ; rdfs:range :Touchpoint ;
+    rdfs:label "includes touchpoint"@en .
+:experiencesAtTouchpoint a owl:ObjectProperty ; rdfs:domain :Customer ; rdfs:range :Touchpoint ;
+    rdfs:label "experiences at touchpoint"@en .
+:providesExperience a owl:ObjectProperty ; rdfs:domain :Touchpoint ; rdfs:range :CustomerExperience ;
+    rdfs:label "provides experience"@en .
+
+#################################################################
+# Object Properties - Channels, Financial, Inventory, Marketing
+#################################################################
+
+:usesChannel a owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( :Product :MarketingCampaign ) ] ; rdfs:range :Channel ;
+    rdfs:label "uses channel"@en ; rdfs:comment "Relates products and campaigns to the channels they use"@en .
+:servesCustomerThrough a owl:ObjectProperty ; rdfs:domain :Channel ; rdfs:range :Customer ;
+    rdfs:label "serves customer through"@en .
+:operatesChannel a owl:ObjectProperty ; rdfs:domain :OrganizationalUnit ; rdfs:range :Channel ;
+    rdfs:label "operates channel"@en .
+:integratesWithChannel a owl:ObjectProperty , owl:SymmetricProperty ; rdfs:domain :Channel ; rdfs:range :Channel ;
+    rdfs:label "integrates with channel"@en .
+
+:hasCost a owl:ObjectProperty ; rdfs:domain :BusinessProcess ; rdfs:range :Cost ; rdfs:label "has cost"@en .
+:usesPricingModel a owl:ObjectProperty ; rdfs:domain :Product ; rdfs:range :PricingModel ; rdfs:label "uses pricing model"@en .
+:appliesDiscount a owl:ObjectProperty ; rdfs:domain :Product ; rdfs:range :Discount ; rdfs:label "applies discount"@en .
+:eligibleForDiscount a owl:ObjectProperty ; rdfs:domain :CustomerSegment ; rdfs:range :Discount ;
+    rdfs:label "eligible for discount"@en .
+:managesCost a owl:ObjectProperty ; rdfs:domain :CostManagement ; rdfs:range :Cost ; rdfs:label "manages cost"@en .
+
+:hasInventory a owl:ObjectProperty ; rdfs:domain :Product ; rdfs:range :Inventory ; rdfs:label "has inventory"@en .
+:hasStockLevel a owl:ObjectProperty ; rdfs:domain :Inventory ; rdfs:range :StockLevel ; rdfs:label "has stock level"@en .
+:managesInventory a owl:ObjectProperty ; rdfs:domain :OrganizationalUnit ; rdfs:range :Inventory ;
+    rdfs:label "manages inventory"@en .
+:suppliedBySupplier a owl:ObjectProperty ; rdfs:domain :Inventory ; rdfs:range :Supplier ;
+    rdfs:label "supplied by supplier"@en .
+
+:targetsSegment a owl:ObjectProperty ; rdfs:domain :MarketingCampaign ; rdfs:range :CustomerSegment ;
+    rdfs:label "targets segment"@en .
+:promotesProduct a owl:ObjectProperty ; rdfs:domain :MarketingCampaign ; rdfs:range :Product ;
+    rdfs:label "promotes product"@en .
+:includesDiscount a owl:ObjectProperty ; rdfs:domain :PromotionalCampaign ; rdfs:range :Discount ;
+    rdfs:label "includes discount"@en .
+:managedBy a owl:ObjectProperty ; rdfs:domain :MarketingCampaign ; rdfs:range :Employee ; rdfs:label "managed by"@en .
+
+#################################################################
+# Object Properties - Processes, Operations, Organization, Agility
+#################################################################
+
+:classifiedAs a owl:ObjectProperty ; rdfs:domain :BusinessProcess ; rdfs:range :ProcessClassification ;
+    rdfs:label "classified as"@en .
+:supportsCoreProcess a owl:ObjectProperty ; rdfs:domain :SupportingProcess ; rdfs:range :CoreBusinessProcess ;
+    rdfs:label "supports core process"@en .
+:enabledBySupportingProcess a owl:ObjectProperty ; rdfs:domain :CoreBusinessProcess ; rdfs:range :SupportingProcess ;
+    rdfs:label "enabled by supporting process"@en ; owl:inverseOf :supportsCoreProcess .
+
+:operatesIn a owl:ObjectProperty ; rdfs:domain :Operation ; rdfs:range :OperationalEnvironment ; rdfs:label "operates in"@en .
+:includesOperation a owl:ObjectProperty ; rdfs:domain :BusinessProcess ; rdfs:range :Operation ;
+    rdfs:label "includes operation"@en .
+:configuresEnvironment a owl:ObjectProperty ; rdfs:domain :OperationsManagement ; rdfs:range :OperationalEnvironment ;
+    rdfs:label "configures environment"@en .
+:monitorsOperation a owl:ObjectProperty ; rdfs:domain :OperationsManagement ; rdfs:range :Operation ;
+    rdfs:label "monitors operation"@en .
+
+:hasOrganizationalUnit a owl:ObjectProperty ; rdfs:domain :OrganizationalStructure ; rdfs:range :OrganizationalUnit ;
+    rdfs:label "has organizational unit"@en .
+:belongsToUnit a owl:ObjectProperty ; rdfs:domain :Employee ; rdfs:range :OrganizationalUnit ;
+    rdfs:label "belongs to unit"@en .
+:reportsTo a owl:ObjectProperty , owl:TransitiveProperty ; rdfs:domain :Employee ; rdfs:range :Employee ;
+    rdfs:label "reports to"@en .
+:manages a owl:ObjectProperty ; rdfs:domain :Employee ; rdfs:range :Employee ; rdfs:label "manages"@en ;
+    owl:inverseOf :reportsTo .
+:holdsPosition a owl:ObjectProperty ; rdfs:domain :Employee ; rdfs:range :Position ; rdfs:label "holds position"@en .
+:partOfDepartment a owl:ObjectProperty ; rdfs:domain :Team ; rdfs:range :Department ; rdfs:label "part of department"@en .
+:memberOfTeam a owl:ObjectProperty ; rdfs:domain :Employee ; rdfs:range :Team ; rdfs:label "member of team"@en .
+:leadsTeam a owl:ObjectProperty ; rdfs:domain :Employee ; rdfs:range :Team ; rdfs:label "leads team"@en .
+:headsDepartment a owl:ObjectProperty ; rdfs:domain :Employee ; rdfs:range :Department ; rdfs:label "heads department"@en .
+
+:implementsAgileMethodology a owl:ObjectProperty ; rdfs:domain :Team ; rdfs:range :AgileMethodology ;
+    rdfs:label "implements agile methodology"@en .
+:participatesInSprint a owl:ObjectProperty ; rdfs:domain :Employee ; rdfs:range :Sprint ;
+    rdfs:label "participates in sprint"@en .
+:includesActivity a owl:ObjectProperty ; rdfs:domain :Sprint ; rdfs:range :AgileActivity ;
+    rdfs:label "includes activity"@en .
+:conductsRetrospective a owl:ObjectProperty ; rdfs:domain :Team ; rdfs:range :Retrospective ;
+    rdfs:label "conducts retrospective"@en .
+:improvesAgility a owl:ObjectProperty ; rdfs:domain :AgileActivity ; rdfs:range :OrganizationalAgility ;
+    rdfs:label "improves agility"@en .
+:enablesAgility a owl:ObjectProperty ; rdfs:domain :AgileMethodology ; rdfs:range :OrganizationalAgility ;
+    rdfs:label "enables agility"@en .
+
+#################################################################
+# Datatype Properties
+#################################################################
+
+:hasName a owl:DatatypeProperty ; rdfs:domain owl:Thing ; rdfs:range xsd:string ; rdfs:label "has name"@en .
+:hasDescription a owl:DatatypeProperty ; rdfs:domain owl:Thing ; rdfs:range xsd:string ; rdfs:label "has description"@en .
+
+# Assets and activities
+:hasVersion a owl:DatatypeProperty ; rdfs:domain :DomainAsset ; rdfs:range xsd:string ; rdfs:label "has version"@en .
+:hasAuthor a owl:DatatypeProperty ; rdfs:domain :DomainAsset ; rdfs:range xsd:string ; rdfs:label "has author"@en .
+:hasCreationDate a owl:DatatypeProperty ; rdfs:domain :DomainAsset ; rdfs:range xsd:date ; rdfs:label "has creation date"@en .
+:hasReuseRate a owl:DatatypeProperty ; rdfs:domain :DomainAsset ; rdfs:range xsd:decimal ;
+    rdfs:label "has reuse rate"@en ; rdfs:comment "Share of projects reusing the asset (0.0-1.0)"@en .
+:isReusable a owl:DatatypeProperty ; rdfs:domain :DomainAsset ; rdfs:range xsd:boolean ; rdfs:label "is reusable"@en .
+:isConfigurable a owl:DatatypeProperty ; rdfs:domain :DomainAsset ; rdfs:range xsd:boolean ; rdfs:label "is configurable"@en .
+:hasComplexity a owl:DatatypeProperty ; rdfs:domain :DomainAsset ; rdfs:range xsd:decimal ; rdfs:label "has complexity"@en .
+:hasDuration a owl:DatatypeProperty ; rdfs:domain :ProcessActivity ; rdfs:range xsd:duration ; rdfs:label "has duration"@en .
+:hasEffort a owl:DatatypeProperty ; rdfs:domain :ProcessActivity ; rdfs:range xsd:decimal ;
+    rdfs:label "has effort"@en ; rdfs:comment "Effort in person-hours"@en .
+:isAutomated a owl:DatatypeProperty ; rdfs:domain :ProcessActivity ; rdfs:range xsd:boolean ; rdfs:label "is automated"@en .
+:hasMaturityLevel a owl:DatatypeProperty ; rdfs:domain :DomainEngineeringProcess ; rdfs:range xsd:int ;
+    rdfs:label "has maturity level"@en ; rdfs:comment "Process maturity 1 (Initial) to 5 (Optimizing)"@en .
+:hasCycleTime a owl:DatatypeProperty ; rdfs:domain :DomainEngineeringProcess ; rdfs:range xsd:duration ;
+    rdfs:label "has cycle time"@en .
+
+# Business context
+:businessValue a owl:DatatypeProperty ; rdfs:domain :BusinessBenefits ; rdfs:range xsd:decimal ; rdfs:label "business value"@en .
+:priorityLevel a owl:DatatypeProperty ; rdfs:domain :ProblemDescription ; rdfs:range xsd:string ;
+    rdfs:label "priority level"@en ; rdfs:comment "High, Medium or Low"@en .
+:problemSeverity a owl:DatatypeProperty ; rdfs:domain :ProblemDescription ; rdfs:range xsd:string ;
+    rdfs:label "problem severity"@en ; rdfs:comment "Critical, Major or Minor"@en .
+:capabilityType a owl:DatatypeProperty ; rdfs:domain :SystemCapabilities ; rdfs:range xsd:string ;
+    rdfs:label "capability type"@en ; rdfs:comment "Functional, Non-functional or Technical"@en .
+:processMaturity a owl:DatatypeProperty ; rdfs:domain :BusinessProcess ; rdfs:range xsd:int ;
+    rdfs:label "process maturity"@en ; rdfs:comment "Maturity of the business process (1-5)"@en .
+:ruleType a owl:DatatypeProperty ; rdfs:domain :BusinessRule ; rdfs:range xsd:string ;
+    rdfs:label "rule type"@en ; rdfs:comment "Constraint, Policy, Guideline or Validation"@en .
+:applicationCount a owl:DatatypeProperty ; rdfs:domain :ApplicationPortfolio ; rdfs:range xsd:int ;
+    rdfs:label "application count"@en .
+
+# Data collection
+:collectionDate a owl:DatatypeProperty ; rdfs:domain :DataCollectionLog ; rdfs:range xsd:date ; rdfs:label "collection date"@en .
+:collectionMethod a owl:DatatypeProperty ; rdfs:domain :DataCollectionLog ; rdfs:range xsd:string ; rdfs:label "collection method"@en .
+:interviewDuration a owl:DatatypeProperty ; rdfs:domain :InterviewList ; rdfs:range xsd:duration ; rdfs:label "interview duration"@en .
+:meetingType a owl:DatatypeProperty ; rdfs:domain :MeetingList ; rdfs:range xsd:string ;
+    rdfs:label "meeting type"@en ; rdfs:comment "Workshop, Review or Planning"@en .
+:analysisMethod a owl:DatatypeProperty ; rdfs:domain :DocumentAnalysisList ; rdfs:range xsd:string ; rdfs:label "analysis method"@en .
+:participantCount a owl:DatatypeProperty ; rdfs:domain :MeetingList ; rdfs:range xsd:int ; rdfs:label "participant count"@en .
+
+# Vendors and solutions
+:vendorName a owl:DatatypeProperty ; rdfs:domain :Vendor ; rdfs:range xsd:string ; rdfs:label "vendor name"@en .
+:solutionCost a owl:DatatypeProperty ; rdfs:domain :VendorSolution ; rdfs:range xsd:decimal ; rdfs:label "solution cost"@en .
+:solutionRating a owl:DatatypeProperty ; rdfs:domain :VendorSolution ; rdfs:range xsd:decimal ;
+    rdfs:label "solution rating"@en ; rdfs:comment "Quality rating from 0.0 to 5.0"@en .
+:marketShare a owl:DatatypeProperty ; rdfs:domain owl:Thing ; rdfs:range xsd:decimal ;
+    rdfs:label "market share"@en ; rdfs:comment "Market share percentage of a vendor or product"@en .
+:solutionMaturity a owl:DatatypeProperty ; rdfs:domain :VendorSolution ; rdfs:range xsd:string ;
+    rdfs:label "solution maturity"@en ; rdfs:comment "Emerging, Growing, Mature or Declining"@en .
+:implementationTime a owl:DatatypeProperty ; rdfs:domain :VendorSolution ; rdfs:range xsd:duration ; rdfs:label "implementation time"@en .
+
+# SWOT
+:strengthScore a owl:DatatypeProperty ; rdfs:domain :Strength ; rdfs:range xsd:decimal ; rdfs:label "strength score"@en .
+:weaknessImpact a owl:DatatypeProperty ; rdfs:domain :Weakness ; rdfs:range xsd:decimal ; rdfs:label "weakness impact"@en .
+:opportunityValue a owl:DatatypeProperty ; rdfs:domain :Opportunity ; rdfs:range xsd:decimal ; rdfs:label "opportunity value"@en .
+:likelihoodScore a owl:DatatypeProperty ; rdfs:domain :Opportunity ; rdfs:range xsd:decimal ;
+    rdfs:label "likelihood score"@en ; rdfs:comment "Probability from 0.0 to 1.0"@en .
+:threatLevel a owl:DatatypeProperty ; rdfs:domain :Threat ; rdfs:range xsd:string ; rdfs:label "threat level"@en .
+
+# Product, quality, customer
+:productCode a owl:DatatypeProperty ; rdfs:domain :Product ; rdfs:range xsd:string ; rdfs:label "product code"@en .
+:productCategory a owl:DatatypeProperty ; rdfs:domain :Product ; rdfs:range xsd:string ; rdfs:label "product category"@en .
+:launchDate a owl:DatatypeProperty ; rdfs:domain :Product ; rdfs:range xsd:date ; rdfs:label "launch date"@en .
+:price a owl:DatatypeProperty ; rdfs:domain :Product ; rdfs:range xsd:decimal ; rdfs:label "price"@en .
+:qualityScore a owl:DatatypeProperty ; rdfs:domain :Product ; rdfs:range xsd:decimal ;
+    rdfs:label "quality score"@en ; rdfs:comment "Quality score from 0.0 to 10.0"@en .
+:defectRate a owl:DatatypeProperty ; rdfs:domain :Product ; rdfs:range xsd:decimal ; rdfs:label "defect rate"@en .
+:stageDuration a owl:DatatypeProperty ; rdfs:domain :ProductLifecycleStage ; rdfs:range xsd:duration ; rdfs:label "stage duration"@en .
+:segmentSize a owl:DatatypeProperty ; rdfs:domain :CustomerSegment ; rdfs:range xsd:int ; rdfs:label "segment size"@en .
+:customerID a owl:DatatypeProperty ; rdfs:domain :Customer ; rdfs:range xsd:string ; rdfs:label "customer ID"@en .
+:customerValue a owl:DatatypeProperty ; rdfs:domain :Customer ; rdfs:range xsd:decimal ; rdfs:label "customer value"@en .
+:acquisitionDate a owl:DatatypeProperty ; rdfs:domain :Customer ; rdfs:range xsd:date ; rdfs:label "acquisition date"@en .
+:satisfactionScore a owl:DatatypeProperty ; rdfs:domain :CustomerExperience ; rdfs:range xsd:decimal ; rdfs:label "satisfaction score"@en .
+
+# Channels, campaigns, financial, inventory
+:channelType a owl:DatatypeProperty ; rdfs:domain :Channel ; rdfs:range xsd:string ; rdfs:label "channel type"@en .
+:channelCost a owl:DatatypeProperty ; rdfs:domain :Channel ; rdfs:range xsd:decimal ; rdfs:label "channel cost"@en .
+:channelRevenue a owl:DatatypeProperty ; rdfs:domain :Channel ; rdfs:range xsd:decimal ; rdfs:label "channel revenue"@en .
+:channelEfficiency a owl:DatatypeProperty ; rdfs:domain :Channel ; rdfs:range xsd:decimal ; rdfs:label "channel efficiency"@en .
+:campaignBudget a owl:DatatypeProperty ; rdfs:domain :MarketingCampaign ; rdfs:range xsd:decimal ; rdfs:label "campaign budget"@en .
+:campaignStartDate a owl:DatatypeProperty ; rdfs:domain :MarketingCampaign ; rdfs:range xsd:date ; rdfs:label "campaign start date"@en .
+:campaignEndDate a owl:DatatypeProperty ; rdfs:domain :MarketingCampaign ; rdfs:range xsd:date ; rdfs:label "campaign end date"@en .
+:campaignROI a owl:DatatypeProperty ; rdfs:domain :MarketingCampaign ; rdfs:range xsd:decimal ; rdfs:label "campaign ROI"@en .
+:targetAudience a owl:DatatypeProperty ; rdfs:domain :MarketingCampaign ; rdfs:range xsd:string ; rdfs:label "target audience"@en .
+:impressions a owl:DatatypeProperty ; rdfs:domain :MarketingCampaign ; rdfs:range xsd:int ; rdfs:label "impressions"@en .
+:clickThroughRate a owl:DatatypeProperty ; rdfs:domain :MarketingCampaign ; rdfs:range xsd:decimal ; rdfs:label "click-through rate"@en .
+:discountPercentage a owl:DatatypeProperty ; rdfs:domain :Discount ; rdfs:range xsd:decimal ;
+    rdfs:label "discount percentage"@en ; rdfs:comment "0.0 to 100.0"@en .
+:minimumStock a owl:DatatypeProperty ; rdfs:domain :Inventory ; rdfs:range xsd:int ; rdfs:label "minimum stock"@en .
+:maximumStock a owl:DatatypeProperty ; rdfs:domain :Inventory ; rdfs:range xsd:int ; rdfs:label "maximum stock"@en .
+:reorderPoint a owl:DatatypeProperty ; rdfs:domain :Inventory ; rdfs:range xsd:int ; rdfs:label "reorder point"@en .
+:unitCost a owl:DatatypeProperty ; rdfs:domain :Inventory ; rdfs:range xsd:decimal ; rdfs:label "unit cost"@en .
+:inventoryValue a owl:DatatypeProperty ; rdfs:domain :Inventory ; rdfs:range xsd:decimal ; rdfs:label "inventory value"@en .
+:utilizationRate a owl:DatatypeProperty ; rdfs:domain :OperationalEnvironment ; rdfs:range xsd:decimal ;
+    rdfs:label "utilization rate"@en ; rdfs:comment "0.0 to 100.0"@en .
+
+# Organization and agility
+:departmentCode a owl:DatatypeProperty ; rdfs:domain :Department ; rdfs:range xsd:string ; rdfs:label "department code"@en .
+:departmentSize a owl:DatatypeProperty ; rdfs:domain :Department ; rdfs:range xsd:int ; rdfs:label "department size"@en .
+:teamSize a owl:DatatypeProperty ; rdfs:domain :Team ; rdfs:range xsd:int ; rdfs:label "team size"@en .
+:employeeID a owl:DatatypeProperty ; rdfs:domain :Employee ; rdfs:range xsd:string ; rdfs:label "employee ID"@en .
+:hireDate a owl:DatatypeProperty ; rdfs:domain :Employee ; rdfs:range xsd:date ; rdfs:label "hire date"@en .
+:salary a owl:DatatypeProperty ; rdfs:domain :Employee ; rdfs:range xsd:decimal ; rdfs:label "salary"@en .
+:experienceYears a owl:DatatypeProperty ; rdfs:domain :Employee ; rdfs:range xsd:decimal ; rdfs:label "experience years"@en .
+:performanceRating a owl:DatatypeProperty ; rdfs:domain :Employee ; rdfs:range xsd:decimal ;
+    rdfs:label "performance rating"@en ; rdfs:comment "0.0 to 5.0"@en .
+:positionLevel a owl:DatatypeProperty ; rdfs:domain :Position ; rdfs:range xsd:string ;
+    rdfs:label "position level"@en ; rdfs:comment "Entry, Mid, Senior or Executive"@en .
+:hierarchyLevel a owl:DatatypeProperty ; rdfs:domain :OrganizationalHierarchy ; rdfs:range xsd:int ; rdfs:label "hierarchy level"@en .
+:agilityScore a owl:DatatypeProperty ; rdfs:domain :OrganizationalAgility ; rdfs:range xsd:decimal ;
+    rdfs:label "agility score"@en ; rdfs:comment "0.0 to 10.0"@en .
+:adaptabilityIndex a owl:DatatypeProperty ; rdfs:domain :OrganizationalAgility ; rdfs:range xsd:decimal ;
+    rdfs:label "adaptability index"@en ; rdfs:comment "0.0 to 1.0"@en .
+:responseTime a owl:DatatypeProperty ; rdfs:domain :OrganizationalAgility ; rdfs:range xsd:duration ; rdfs:label "response time"@en .
+:sprintDuration a owl:DatatypeProperty ; rdfs:domain :Sprint ; rdfs:range xsd:duration ; rdfs:label "sprint duration"@en .
+:sprintVelocity a owl:DatatypeProperty ; rdfs:domain :Sprint ; rdfs:range xsd:decimal ; rdfs:label "sprint velocity"@en .
+:methodologyType a owl:DatatypeProperty ; rdfs:domain :AgileMethodology ; rdfs:range xsd:string ;
+    rdfs:label "methodology type"@en ; rdfs:comment "Scrum, Kanban, SAFe or Lean"@en .
+
+#################################################################
+# Axioms and Restrictions
+#################################################################
+
+# Process activities must have a duration
+:ProcessActivity rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasDuration ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+# Quality attributes must be measured by at least one metric
+:QualityAttribute rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :measuredBy ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+# Domain Analysis precedes Domain Design; Domain Design precedes Domain Implementation
+:DomainAnalysis rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :precedes ; owl:someValuesFrom :DomainDesign ] .
+:DomainDesign rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :precedes ; owl:someValuesFrom :DomainImplementation ] .
+
+# Maturity level must be between 1 and 5
+:DomainEngineeringProcess rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasMaturityLevel ;
+    owl:allValuesFrom [ a rdfs:Datatype ; owl:onDatatype xsd:int ;
+        owl:withRestrictions ( [ xsd:minInclusive "1"^^xsd:int ] [ xsd:maxInclusive "5"^^xsd:int ] ) ] ] .
+
+# Business context
+:BusinessRule rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :ruleType ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+:BusinessProcess rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasBusinessRole ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+:DataCollectionLog rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :collectionDate ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+:DataCollectionLog rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :collectionMethod ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+:VendorSolution rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :providedByVendor ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+:Vendor rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :vendorName ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+
+# Allowed values and ranges
+:ProblemDescription rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :problemSeverity ;
+    owl:allValuesFrom [ a rdfs:Datatype ; owl:oneOf ( "Critical" "Major" "Minor" ) ] ] .
+:ProblemDescription rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :priorityLevel ;
+    owl:allValuesFrom [ a rdfs:Datatype ; owl:oneOf ( "High" "Medium" "Low" ) ] ] .
+:VendorSolution rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :solutionRating ;
+    owl:allValuesFrom [ a rdfs:Datatype ; owl:onDatatype xsd:decimal ;
+        owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:decimal ] [ xsd:maxInclusive "5.0"^^xsd:decimal ] ) ] ] .
+:Product rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :qualityScore ;
+    owl:allValuesFrom [ a rdfs:Datatype ; owl:onDatatype xsd:decimal ;
+        owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:decimal ] [ xsd:maxInclusive "10.0"^^xsd:decimal ] ) ] ] .
+:Employee rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :performanceRating ;
+    owl:allValuesFrom [ a rdfs:Datatype ; owl:onDatatype xsd:decimal ;
+        owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:decimal ] [ xsd:maxInclusive "5.0"^^xsd:decimal ] ) ] ] .
+:Discount rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :discountPercentage ;
+    owl:allValuesFrom [ a rdfs:Datatype ; owl:onDatatype xsd:decimal ;
+        owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:decimal ] [ xsd:maxInclusive "100.0"^^xsd:decimal ] ) ] ] .
+:OperationalEnvironment rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :utilizationRate ;
+    owl:allValuesFrom [ a rdfs:Datatype ; owl:onDatatype xsd:decimal ;
+        owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:decimal ] [ xsd:maxInclusive "100.0"^^xsd:decimal ] ) ] ] .
+
+# SWOT and SIPOC completeness
+:SWOTAnalysis rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasStrength ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+:SWOTAnalysis rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasWeakness ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+:SWOTAnalysis rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasOpportunity ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+:SWOTAnalysis rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasThreat ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+:SIPOCAnalysis rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasSupplier ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+:SIPOCAnalysis rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasInput ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+:SIPOCAnalysis rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasOutput ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+:SIPOCAnalysis rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasCustomer ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+
+# Product, customer, campaign, organization
+:Product rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasLifecycle ; owl:someValuesFrom :ProductLifecycle ] .
+:Product rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :currentStage ; owl:someValuesFrom :ProductLifecycleStage ] .
+:Customer rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :belongsToSegment ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+:MarketingCampaign rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :campaignStartDate ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+:MarketingCampaign rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :campaignEndDate ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+:Employee rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :belongsToUnit ; owl:someValuesFrom :OrganizationalUnit ] .
+:Employee rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :holdsPosition ; owl:someValuesFrom :Position ] .
+
+# Disjointness
+[] a owl:AllDisjointClasses ; owl:members ( :MandatoryFeature :OptionalFeature :AlternativeFeature ) .
+[] a owl:AllDisjointClasses ; owl:members ( :ParameterVariability :InheritanceVariability :CompositionVariability ) .
+[] a owl:AllDisjointClasses ; owl:members ( :DomainAnalysis :DomainDesign :DomainImplementation :DomainEvolution ) .
+[] a owl:AllDisjointClasses ; owl:members ( :Component :Framework :DomainSpecificLanguage :ReferenceArchitecture :DomainModel ) .
+[] a owl:AllDisjointClasses ; owl:members ( :BusinessEnvironment :ProblemDescription :SystemCapabilities :BusinessBenefits
+    :BusinessProcess :BusinessRole :BusinessRule :ApplicationPortfolio :OperationalArchitecture ) .
+[] a owl:AllDisjointClasses ; owl:members ( :InterviewList :MeetingList :DocumentAnalysisList :ActivitySummary ) .
+[] a owl:AllDisjointClasses ; owl:members ( :Vendor :SolutionProvider :VendorSolution ) .
+[] a owl:AllDisjointClasses ; owl:members ( :DevelopmentStage :IntroductionStage :GrowthStage :MaturityStage :DeclineStage ) .
+[] a owl:AllDisjointClasses ; owl:members ( :Strength :Weakness :Opportunity :Threat ) .
+[] a owl:AllDisjointClasses ; owl:members ( :SalesChannel :DistributionChannel :DigitalChannel ) .
+[] a owl:AllDisjointClasses ; owl:members ( :Department :Team ) .
+
+#################################################################
+# SKOS Taxonomies
+# Each concept links to the ontology class of the same label (rdfs:seeAlso) where one exists.
+#################################################################
+
+:DomainEngineeringTaxonomy a skos:ConceptScheme ;
+    dc:title "Domain Engineering Taxonomy"@en ;
+    dc:description "Hierarchical classification of domain engineering concepts"@en ;
+    skos:hasTopConcept :DomainEngineeringConcept .
+
+:DomainEngineeringConcept a skos:Concept ; ;
+    skos:prefLabel "Domain Engineering"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:topConceptOf :DomainEngineeringTaxonomy ;
+    skos:narrower :DomainEngineeringActivitiesConcept, :DomainAssetsConcept, :ProcessesConcept, :MethodologiesConcept, :QualityConcept, :BusinessContextConcept, :DataCollectionConcept, :VendorSolutionsConcept .
+
+:DomainEngineeringActivitiesConcept a skos:Concept ; ;
+    skos:prefLabel "Domain Engineering Activities"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainEngineeringConcept ;
+    skos:narrower :DomainAnalysisConcept, :DomainDesignConcept, :DomainImplementationConcept, :DomainEvolutionConcept .
+
+:DomainAnalysisConcept a skos:Concept ; ;
+    skos:prefLabel "Domain Analysis"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainEngineeringActivitiesConcept ;
+    skos:narrower :RequirementsAnalysisConcept, :StakeholderAnalysisConcept, :CompetitiveAnalysisConcept, :FeasibilityAnalysisConcept ;
+    rdfs:seeAlso :DomainAnalysis .
+
+:RequirementsAnalysisConcept a skos:Concept ; ;
+    skos:prefLabel "Requirements Analysis"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainAnalysisConcept .
+
+:StakeholderAnalysisConcept a skos:Concept ; ;
+    skos:prefLabel "Stakeholder Analysis"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainAnalysisConcept .
+
+:CompetitiveAnalysisConcept a skos:Concept ; ;
+    skos:prefLabel "Competitive Analysis"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainAnalysisConcept .
+
+:FeasibilityAnalysisConcept a skos:Concept ; ;
+    skos:prefLabel "Feasibility Analysis"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainAnalysisConcept .
+
+:DomainDesignConcept a skos:Concept ; ;
+    skos:prefLabel "Domain Design"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainEngineeringActivitiesConcept ;
+    skos:narrower :ArchitectureDesignConcept, :ComponentDesignConcept, :VariabilityDesignConcept, :InterfaceDesignConcept ;
+    rdfs:seeAlso :DomainDesign .
+
+:ArchitectureDesignConcept a skos:Concept ; ;
+    skos:prefLabel "Architecture Design"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainDesignConcept .
+
+:ComponentDesignConcept a skos:Concept ; ;
+    skos:prefLabel "Component Design"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainDesignConcept .
+
+:VariabilityDesignConcept a skos:Concept ; ;
+    skos:prefLabel "Variability Design"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainDesignConcept .
+
+:InterfaceDesignConcept a skos:Concept ; ;
+    skos:prefLabel "Interface Design"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainDesignConcept .
+
+:DomainImplementationConcept a skos:Concept ; ;
+    skos:prefLabel "Domain Implementation"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainEngineeringActivitiesConcept ;
+    skos:narrower :ComponentDevelopmentConcept, :FrameworkDevelopmentConcept, :ToolDevelopmentConcept, :TestingConcept ;
+    rdfs:seeAlso :DomainImplementation .
+
+:ComponentDevelopmentConcept a skos:Concept ; ;
+    skos:prefLabel "Component Development"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainImplementationConcept .
+
+:FrameworkDevelopmentConcept a skos:Concept ; ;
+    skos:prefLabel "Framework Development"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainImplementationConcept .
+
+:ToolDevelopmentConcept a skos:Concept ; ;
+    skos:prefLabel "Tool Development"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainImplementationConcept .
+
+:TestingConcept a skos:Concept ; ;
+    skos:prefLabel "Testing"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainImplementationConcept .
+
+:DomainEvolutionConcept a skos:Concept ; ;
+    skos:prefLabel "Domain Evolution"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainEngineeringActivitiesConcept ;
+    skos:narrower :ChangeManagementConcept, :VersionControlConcept, :MaintenanceConcept, :RefactoringConcept ;
+    rdfs:seeAlso :DomainEvolution .
+
+:ChangeManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Change Management"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainEvolutionConcept .
+
+:VersionControlConcept a skos:Concept ; ;
+    skos:prefLabel "Version Control"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainEvolutionConcept .
+
+:MaintenanceConcept a skos:Concept ; ;
+    skos:prefLabel "Maintenance"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainEvolutionConcept .
+
+:RefactoringConcept a skos:Concept ; ;
+    skos:prefLabel "Refactoring"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainEvolutionConcept .
+
+:DomainAssetsConcept a skos:Concept ; ;
+    skos:prefLabel "Domain Assets"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainEngineeringConcept ;
+    skos:narrower :ComponentConcept, :FrameworkConcept, :DomainSpecificLanguageConcept, :ReferenceArchitectureConcept, :DomainModelConcept, :FeatureModelConcept .
+
+:ComponentConcept a skos:Concept ; ;
+    skos:prefLabel "Component"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainAssetsConcept ;
+    rdfs:seeAlso :Component .
+
+:FrameworkConcept a skos:Concept ; ;
+    skos:prefLabel "Framework"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainAssetsConcept ;
+    rdfs:seeAlso :Framework .
+
+:DomainSpecificLanguageConcept a skos:Concept ; ;
+    skos:prefLabel "Domain-Specific Language"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainAssetsConcept ;
+    rdfs:seeAlso :DomainSpecificLanguage .
+
+:ReferenceArchitectureConcept a skos:Concept ; ;
+    skos:prefLabel "Reference Architecture"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainAssetsConcept ;
+    rdfs:seeAlso :ReferenceArchitecture .
+
+:DomainModelConcept a skos:Concept ; ;
+    skos:prefLabel "Domain Model"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainAssetsConcept ;
+    rdfs:seeAlso :DomainModel .
+
+:FeatureModelConcept a skos:Concept ; ;
+    skos:prefLabel "Feature Model"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainAssetsConcept ;
+    rdfs:seeAlso :FeatureModel .
+
+:ProcessesConcept a skos:Concept ; ;
+    skos:prefLabel "Processes"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainEngineeringConcept ;
+    skos:narrower :CoreProcessesConcept, :SupportingProcessesConcept, :ManagementProcessesConcept .
+
+:CoreProcessesConcept a skos:Concept ; ;
+    skos:prefLabel "Core Processes"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :ProcessesConcept ;
+    skos:narrower :AnalysisProcessConcept, :DesignProcessConcept, :ImplementationProcessConcept, :EvolutionProcessConcept .
+
+:AnalysisProcessConcept a skos:Concept ; ;
+    skos:prefLabel "Analysis Process"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :CoreProcessesConcept .
+
+:DesignProcessConcept a skos:Concept ; ;
+    skos:prefLabel "Design Process"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :CoreProcessesConcept .
+
+:ImplementationProcessConcept a skos:Concept ; ;
+    skos:prefLabel "Implementation Process"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :CoreProcessesConcept .
+
+:EvolutionProcessConcept a skos:Concept ; ;
+    skos:prefLabel "Evolution Process"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :CoreProcessesConcept .
+
+:SupportingProcessesConcept a skos:Concept ; ;
+    skos:prefLabel "Supporting Processes"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :ProcessesConcept ;
+    skos:narrower :AssetManagementConcept, :QualityAssuranceConcept, :KnowledgeManagementConcept, :ConfigurationManagementConcept .
+
+:AssetManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Asset Management"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :SupportingProcessesConcept .
+
+:QualityAssuranceConcept a skos:Concept ; ;
+    skos:prefLabel "Quality Assurance"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :SupportingProcessesConcept ;
+    rdfs:seeAlso :QualityAssurance .
+
+:KnowledgeManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Knowledge Management"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :SupportingProcessesConcept .
+
+:ConfigurationManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Configuration Management"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :SupportingProcessesConcept .
+
+:ManagementProcessesConcept a skos:Concept ; ;
+    skos:prefLabel "Management Processes"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :ProcessesConcept ;
+    skos:narrower :ProjectManagementConcept, :RiskManagementConcept, :PortfolioManagementConcept, :GovernanceConcept .
+
+:ProjectManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Project Management"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :ManagementProcessesConcept .
+
+:RiskManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Risk Management"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :ManagementProcessesConcept .
+
+:PortfolioManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Portfolio Management"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :ManagementProcessesConcept ;
+    rdfs:seeAlso :PortfolioManagement .
+
+:GovernanceConcept a skos:Concept ; ;
+    skos:prefLabel "Governance"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :ManagementProcessesConcept .
+
+:MethodologiesConcept a skos:Concept ; ;
+    skos:prefLabel "Methodologies"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainEngineeringConcept ;
+    skos:narrower :FeatureOrientedDomainAnalysisConcept, :DomainSpecificSoftwareArchitectureConcept, :ProductLineEngineeringConcept, :VariabilityModelingConcept .
+
+:FeatureOrientedDomainAnalysisConcept a skos:Concept ; ;
+    skos:prefLabel "Feature-Oriented Domain Analysis"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :MethodologiesConcept ;
+    rdfs:seeAlso :FODA .
+
+:DomainSpecificSoftwareArchitectureConcept a skos:Concept ; ;
+    skos:prefLabel "Domain-Specific Software Architecture"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :MethodologiesConcept ;
+    rdfs:seeAlso :DSSA .
+
+:ProductLineEngineeringConcept a skos:Concept ; ;
+    skos:prefLabel "Product Line Engineering"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :MethodologiesConcept ;
+    rdfs:seeAlso :ProductLineEngineering .
+
+:VariabilityModelingConcept a skos:Concept ; ;
+    skos:prefLabel "Variability Modeling"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :MethodologiesConcept .
+
+:QualityConcept a skos:Concept ; ;
+    skos:prefLabel "Quality"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainEngineeringConcept ;
+    skos:narrower :QualityAttributesConcept, :MetricsConcept, :MeasurementConcept, :OptimizationConcept .
+
+:QualityAttributesConcept a skos:Concept ; ;
+    skos:prefLabel "Quality Attributes"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :QualityConcept .
+
+:MetricsConcept a skos:Concept ; ;
+    skos:prefLabel "Metrics"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :QualityConcept .
+
+:MeasurementConcept a skos:Concept ; ;
+    skos:prefLabel "Measurement"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :QualityConcept .
+
+:OptimizationConcept a skos:Concept ; ;
+    skos:prefLabel "Optimization"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :QualityConcept .
+
+:BusinessContextConcept a skos:Concept ; ;
+    skos:prefLabel "Business Context"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainEngineeringConcept ;
+    skos:narrower :BusinessEnvironmentConcept, :ProblemDescriptionConcept, :SystemCapabilitiesConcept, :BusinessBenefitsConcept, :BusinessProcessConcept, :BusinessRoleConcept, :BusinessRuleConcept, :ApplicationPortfolioConcept, :OperationalArchitectureConcept ;
+    rdfs:seeAlso :BusinessContext .
+
+:BusinessEnvironmentConcept a skos:Concept ; ;
+    skos:prefLabel "Business Environment"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :BusinessContextConcept ;
+    rdfs:seeAlso :BusinessEnvironment .
+
+:ProblemDescriptionConcept a skos:Concept ; ;
+    skos:prefLabel "Problem Description"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :BusinessContextConcept ;
+    rdfs:seeAlso :ProblemDescription .
+
+:SystemCapabilitiesConcept a skos:Concept ; ;
+    skos:prefLabel "System Capabilities"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :BusinessContextConcept ;
+    rdfs:seeAlso :SystemCapabilities .
+
+:BusinessBenefitsConcept a skos:Concept ; ;
+    skos:prefLabel "Business Benefits"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :BusinessContextConcept ;
+    rdfs:seeAlso :BusinessBenefits .
+
+:BusinessProcessConcept a skos:Concept ; ;
+    skos:prefLabel "Business Process"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :BusinessContextConcept ;
+    rdfs:seeAlso :BusinessProcess .
+
+:BusinessRoleConcept a skos:Concept ; ;
+    skos:prefLabel "Business Role"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :BusinessContextConcept ;
+    rdfs:seeAlso :BusinessRole .
+
+:BusinessRuleConcept a skos:Concept ; ;
+    skos:prefLabel "Business Rule"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :BusinessContextConcept ;
+    rdfs:seeAlso :BusinessRule .
+
+:ApplicationPortfolioConcept a skos:Concept ; ;
+    skos:prefLabel "Application Portfolio"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :BusinessContextConcept ;
+    rdfs:seeAlso :ApplicationPortfolio .
+
+:OperationalArchitectureConcept a skos:Concept ; ;
+    skos:prefLabel "Operational Architecture"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :BusinessContextConcept ;
+    rdfs:seeAlso :OperationalArchitecture .
+
+:DataCollectionConcept a skos:Concept ; ;
+    skos:prefLabel "Data Collection"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainEngineeringConcept ;
+    skos:narrower :DataCollectionLogConcept, :ActivitySummaryConcept, :InterviewListConcept, :MeetingListConcept, :DocumentAnalysisListConcept .
+
+:DataCollectionLogConcept a skos:Concept ; ;
+    skos:prefLabel "Data Collection Log"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DataCollectionConcept ;
+    rdfs:seeAlso :DataCollectionLog .
+
+:ActivitySummaryConcept a skos:Concept ; ;
+    skos:prefLabel "Activity Summary"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DataCollectionConcept ;
+    rdfs:seeAlso :ActivitySummary .
+
+:InterviewListConcept a skos:Concept ; ;
+    skos:prefLabel "Interview List"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DataCollectionConcept ;
+    rdfs:seeAlso :InterviewList .
+
+:MeetingListConcept a skos:Concept ; ;
+    skos:prefLabel "Meeting List"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DataCollectionConcept ;
+    rdfs:seeAlso :MeetingList .
+
+:DocumentAnalysisListConcept a skos:Concept ; ;
+    skos:prefLabel "Document Analysis List"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DataCollectionConcept ;
+    rdfs:seeAlso :DocumentAnalysisList .
+
+:VendorSolutionsConcept a skos:Concept ; ;
+    skos:prefLabel "Vendor Solutions"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :DomainEngineeringConcept ;
+    skos:narrower :VendorConcept, :SolutionProviderConcept, :AlternativeSolutionConcept .
+
+:VendorConcept a skos:Concept ; ;
+    skos:prefLabel "Vendor"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :VendorSolutionsConcept ;
+    rdfs:seeAlso :Vendor .
+
+:SolutionProviderConcept a skos:Concept ; ;
+    skos:prefLabel "Solution Provider"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :VendorSolutionsConcept ;
+    rdfs:seeAlso :SolutionProvider .
+
+:AlternativeSolutionConcept a skos:Concept ; ;
+    skos:prefLabel "Alternative Solution"@en ; ;
+    skos:inScheme :DomainEngineeringTaxonomy ;
+    skos:broader :VendorSolutionsConcept ;
+    rdfs:seeAlso :AlternativeSolution .
+
+:ProcessMaturityTaxonomy a skos:ConceptScheme ;
+    dc:title "Process Maturity Taxonomy"@en ;
+    dc:description "Classification of process maturity levels"@en ;
+    skos:hasTopConcept :ProcessMaturityConcept .
+
+:ProcessMaturityConcept a skos:Concept ; ;
+    skos:prefLabel "Process Maturity"@en ; ;
+    skos:inScheme :ProcessMaturityTaxonomy ;
+    skos:topConceptOf :ProcessMaturityTaxonomy ;
+    skos:narrower :InitialConcept, :ManagedConcept, :DefinedConcept, :QuantitativelyManagedConcept, :OptimizingConcept .
+
+:InitialConcept a skos:Concept ; ;
+    skos:prefLabel "Initial"@en ; ;
+    skos:inScheme :ProcessMaturityTaxonomy ;
+    skos:broader :ProcessMaturityConcept ;
+    skos:definition "Ad-hoc, unpredictable processes"@en ;
+    skos:notation "1" .
+
+:ManagedConcept a skos:Concept ; ;
+    skos:prefLabel "Managed"@en ; ;
+    skos:inScheme :ProcessMaturityTaxonomy ;
+    skos:broader :ProcessMaturityConcept ;
+    skos:definition "Reactive processes with some planning"@en ;
+    skos:notation "2" .
+
+:DefinedConcept a skos:Concept ; ;
+    skos:prefLabel "Defined"@en ; ;
+    skos:inScheme :ProcessMaturityTaxonomy ;
+    skos:broader :ProcessMaturityConcept ;
+    skos:definition "Proactive processes that are well characterized"@en ;
+    skos:notation "3" .
+
+:QuantitativelyManagedConcept a skos:Concept ; ;
+    skos:prefLabel "Quantitatively Managed"@en ; ;
+    skos:inScheme :ProcessMaturityTaxonomy ;
+    skos:broader :ProcessMaturityConcept ;
+    skos:definition "Measured and controlled processes"@en ;
+    skos:notation "4" .
+
+:OptimizingConcept a skos:Concept ; ;
+    skos:prefLabel "Optimizing"@en ; ;
+    skos:inScheme :ProcessMaturityTaxonomy ;
+    skos:broader :ProcessMaturityConcept ;
+    skos:definition "Focus on continuous process improvement"@en ;
+    skos:notation "5" .
+
+:AssetClassificationTaxonomy a skos:ConceptScheme ;
+    dc:title "Domain Asset Classification Taxonomy"@en ;
+    dc:description "Hierarchical classification of domain assets by type and characteristics"@en ;
+    skos:hasTopConcept :AssetTypesConcept .
+
+:AssetTypesConcept a skos:Concept ; ;
+    skos:prefLabel "Asset Types"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:topConceptOf :AssetClassificationTaxonomy ;
+    skos:narrower :CodeAssetsConcept, :ModelAssetsConcept, :DocumentationAssetsConcept, :ProcessAssetsConcept .
+
+:CodeAssetsConcept a skos:Concept ; ;
+    skos:prefLabel "Code Assets"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :AssetTypesConcept ;
+    skos:narrower :ComponentsConcept, :LibrariesConcept, :FrameworksConcept, :ServicesConcept .
+
+:ComponentsConcept a skos:Concept ; ;
+    skos:prefLabel "Components"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :CodeAssetsConcept .
+
+:LibrariesConcept a skos:Concept ; ;
+    skos:prefLabel "Libraries"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :CodeAssetsConcept .
+
+:FrameworksConcept a skos:Concept ; ;
+    skos:prefLabel "Frameworks"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :CodeAssetsConcept .
+
+:ServicesConcept a skos:Concept ; ;
+    skos:prefLabel "Services"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :CodeAssetsConcept .
+
+:ModelAssetsConcept a skos:Concept ; ;
+    skos:prefLabel "Model Assets"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :AssetTypesConcept ;
+    skos:narrower :DomainModelsConcept, :FeatureModelsConcept, :ArchitectureModelsConcept, :VariabilityModelsConcept .
+
+:DomainModelsConcept a skos:Concept ; ;
+    skos:prefLabel "Domain Models"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :ModelAssetsConcept .
+
+:FeatureModelsConcept a skos:Concept ; ;
+    skos:prefLabel "Feature Models"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :ModelAssetsConcept .
+
+:ArchitectureModelsConcept a skos:Concept ; ;
+    skos:prefLabel "Architecture Models"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :ModelAssetsConcept .
+
+:VariabilityModelsConcept a skos:Concept ; ;
+    skos:prefLabel "Variability Models"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :ModelAssetsConcept .
+
+:DocumentationAssetsConcept a skos:Concept ; ;
+    skos:prefLabel "Documentation Assets"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :AssetTypesConcept ;
+    skos:narrower :RequirementsDocumentsConcept, :DesignDocumentsConcept, :UserManualsConcept, :TechnicalSpecificationsConcept .
+
+:RequirementsDocumentsConcept a skos:Concept ; ;
+    skos:prefLabel "Requirements Documents"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :DocumentationAssetsConcept .
+
+:DesignDocumentsConcept a skos:Concept ; ;
+    skos:prefLabel "Design Documents"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :DocumentationAssetsConcept .
+
+:UserManualsConcept a skos:Concept ; ;
+    skos:prefLabel "User Manuals"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :DocumentationAssetsConcept .
+
+:TechnicalSpecificationsConcept a skos:Concept ; ;
+    skos:prefLabel "Technical Specifications"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :DocumentationAssetsConcept .
+
+:ProcessAssetsConcept a skos:Concept ; ;
+    skos:prefLabel "Process Assets"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :AssetTypesConcept ;
+    skos:narrower :ProcessTemplatesConcept, :ChecklistsConcept, :GuidelinesConcept, :StandardsConcept .
+
+:ProcessTemplatesConcept a skos:Concept ; ;
+    skos:prefLabel "Process Templates"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :ProcessAssetsConcept .
+
+:ChecklistsConcept a skos:Concept ; ;
+    skos:prefLabel "Checklists"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :ProcessAssetsConcept .
+
+:GuidelinesConcept a skos:Concept ; ;
+    skos:prefLabel "Guidelines"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :ProcessAssetsConcept .
+
+:StandardsConcept a skos:Concept ; ;
+    skos:prefLabel "Standards"@en ; ;
+    skos:inScheme :AssetClassificationTaxonomy ;
+    skos:broader :ProcessAssetsConcept .
+
+:VariabilityTaxonomy a skos:ConceptScheme ;
+    dc:title "Variability Classification Taxonomy"@en ;
+    dc:description "Classification of variability mechanisms, binding times and types"@en ;
+    skos:hasTopConcept :VariabilityConcept .
+
+:VariabilityConcept a skos:Concept ; ;
+    skos:prefLabel "Variability"@en ; ;
+    skos:inScheme :VariabilityTaxonomy ;
+    skos:topConceptOf :VariabilityTaxonomy ;
+    skos:narrower :VariabilityMechanismsConcept, :BindingTimesConcept, :VariabilityTypesConcept .
+
+:VariabilityMechanismsConcept a skos:Concept ; ;
+    skos:prefLabel "Variability Mechanisms"@en ; ;
+    skos:inScheme :VariabilityTaxonomy ;
+    skos:broader :VariabilityConcept ;
+    skos:narrower :ParameterizationConcept, :InheritanceConcept, :CompositionConcept, :ConditionalCompilationConcept .
+
+:ParameterizationConcept a skos:Concept ; ;
+    skos:prefLabel "Parameterization"@en ; ;
+    skos:inScheme :VariabilityTaxonomy ;
+    skos:broader :VariabilityMechanismsConcept .
+
+:InheritanceConcept a skos:Concept ; ;
+    skos:prefLabel "Inheritance"@en ; ;
+    skos:inScheme :VariabilityTaxonomy ;
+    skos:broader :VariabilityMechanismsConcept .
+
+:CompositionConcept a skos:Concept ; ;
+    skos:prefLabel "Composition"@en ; ;
+    skos:inScheme :VariabilityTaxonomy ;
+    skos:broader :VariabilityMechanismsConcept .
+
+:ConditionalCompilationConcept a skos:Concept ; ;
+    skos:prefLabel "Conditional Compilation"@en ; ;
+    skos:inScheme :VariabilityTaxonomy ;
+    skos:broader :VariabilityMechanismsConcept .
+
+:BindingTimesConcept a skos:Concept ; ;
+    skos:prefLabel "Binding Times"@en ; ;
+    skos:inScheme :VariabilityTaxonomy ;
+    skos:broader :VariabilityConcept ;
+    skos:narrower :CompileTimeConcept, :LinkTimeConcept, :LoadTimeConcept, :RuntimeConcept .
+
+:CompileTimeConcept a skos:Concept ; ;
+    skos:prefLabel "Compile Time"@en ; ;
+    skos:inScheme :VariabilityTaxonomy ;
+    skos:broader :BindingTimesConcept .
+
+:LinkTimeConcept a skos:Concept ; ;
+    skos:prefLabel "Link Time"@en ; ;
+    skos:inScheme :VariabilityTaxonomy ;
+    skos:broader :BindingTimesConcept .
+
+:LoadTimeConcept a skos:Concept ; ;
+    skos:prefLabel "Load Time"@en ; ;
+    skos:inScheme :VariabilityTaxonomy ;
+    skos:broader :BindingTimesConcept .
+
+:RuntimeConcept a skos:Concept ; ;
+    skos:prefLabel "Runtime"@en ; ;
+    skos:inScheme :VariabilityTaxonomy ;
+    skos:broader :BindingTimesConcept .
+
+:VariabilityTypesConcept a skos:Concept ; ;
+    skos:prefLabel "Variability Types"@en ; ;
+    skos:inScheme :VariabilityTaxonomy ;
+    skos:broader :VariabilityConcept ;
+    skos:narrower :FunctionalVariabilityConcept, :QualityVariabilityConcept, :PlatformVariabilityConcept, :ConfigurationVariabilityConcept .
+
+:FunctionalVariabilityConcept a skos:Concept ; ;
+    skos:prefLabel "Functional Variability"@en ; ;
+    skos:inScheme :VariabilityTaxonomy ;
+    skos:broader :VariabilityTypesConcept .
+
+:QualityVariabilityConcept a skos:Concept ; ;
+    skos:prefLabel "Quality Variability"@en ; ;
+    skos:inScheme :VariabilityTaxonomy ;
+    skos:broader :VariabilityTypesConcept .
+
+:PlatformVariabilityConcept a skos:Concept ; ;
+    skos:prefLabel "Platform Variability"@en ; ;
+    skos:inScheme :VariabilityTaxonomy ;
+    skos:broader :VariabilityTypesConcept .
+
+:ConfigurationVariabilityConcept a skos:Concept ; ;
+    skos:prefLabel "Configuration Variability"@en ; ;
+    skos:inScheme :VariabilityTaxonomy ;
+    skos:broader :VariabilityTypesConcept .
+
+:ProblemClassificationTaxonomy a skos:ConceptScheme ;
+    dc:title "Problem Classification Taxonomy"@en ;
+    dc:description "Classification of problems addressed by domain engineering"@en ;
+    skos:hasTopConcept :ProblemTypesConcept .
+
+:ProblemTypesConcept a skos:Concept ; ;
+    skos:prefLabel "Problem Types"@en ; ;
+    skos:inScheme :ProblemClassificationTaxonomy ;
+    skos:topConceptOf :ProblemClassificationTaxonomy ;
+    skos:narrower :TechnicalProblemsConcept, :BusinessProblemsConcept, :ProcessProblemsConcept, :QualityProblemsConcept .
+
+:TechnicalProblemsConcept a skos:Concept ; ;
+    skos:prefLabel "Technical Problems"@en ; ;
+    skos:inScheme :ProblemClassificationTaxonomy ;
+    skos:broader :ProblemTypesConcept ;
+    skos:narrower :PerformanceIssuesConcept, :ScalabilityIssuesConcept, :IntegrationIssuesConcept, :SecurityIssuesConcept .
+
+:PerformanceIssuesConcept a skos:Concept ; ;
+    skos:prefLabel "Performance Issues"@en ; ;
+    skos:inScheme :ProblemClassificationTaxonomy ;
+    skos:broader :TechnicalProblemsConcept .
+
+:ScalabilityIssuesConcept a skos:Concept ; ;
+    skos:prefLabel "Scalability Issues"@en ; ;
+    skos:inScheme :ProblemClassificationTaxonomy ;
+    skos:broader :TechnicalProblemsConcept .
+
+:IntegrationIssuesConcept a skos:Concept ; ;
+    skos:prefLabel "Integration Issues"@en ; ;
+    skos:inScheme :ProblemClassificationTaxonomy ;
+    skos:broader :TechnicalProblemsConcept .
+
+:SecurityIssuesConcept a skos:Concept ; ;
+    skos:prefLabel "Security Issues"@en ; ;
+    skos:inScheme :ProblemClassificationTaxonomy ;
+    skos:broader :TechnicalProblemsConcept .
+
+:BusinessProblemsConcept a skos:Concept ; ;
+    skos:prefLabel "Business Problems"@en ; ;
+    skos:inScheme :ProblemClassificationTaxonomy ;
+    skos:broader :ProblemTypesConcept ;
+    skos:narrower :CostIssuesConcept, :TimeToMarketIssuesConcept, :CompetitivenessIssuesConcept, :ComplianceIssuesConcept .
+
+:CostIssuesConcept a skos:Concept ; ;
+    skos:prefLabel "Cost Issues"@en ; ;
+    skos:inScheme :ProblemClassificationTaxonomy ;
+    skos:broader :BusinessProblemsConcept .
+
+:TimeToMarketIssuesConcept a skos:Concept ; ;
+    skos:prefLabel "Time-to-Market Issues"@en ; ;
+    skos:inScheme :ProblemClassificationTaxonomy ;
+    skos:broader :BusinessProblemsConcept .
+
+:CompetitivenessIssuesConcept a skos:Concept ; ;
+    skos:prefLabel "Competitiveness Issues"@en ; ;
+    skos:inScheme :ProblemClassificationTaxonomy ;
+    skos:broader :BusinessProblemsConcept .
+
+:ComplianceIssuesConcept a skos:Concept ; ;
+    skos:prefLabel "Compliance Issues"@en ; ;
+    skos:inScheme :ProblemClassificationTaxonomy ;
+    skos:broader :BusinessProblemsConcept .
+
+:ProcessProblemsConcept a skos:Concept ; ;
+    skos:prefLabel "Process Problems"@en ; ;
+    skos:inScheme :ProblemClassificationTaxonomy ;
+    skos:broader :ProblemTypesConcept .
+
+:QualityProblemsConcept a skos:Concept ; ;
+    skos:prefLabel "Quality Problems"@en ; ;
+    skos:inScheme :ProblemClassificationTaxonomy ;
+    skos:broader :ProblemTypesConcept .
+
+:BusinessRuleClassificationTaxonomy a skos:ConceptScheme ;
+    dc:title "Business Rule Classification Taxonomy"@en ;
+    dc:description "Classification of business rules by type and scope"@en ;
+    skos:hasTopConcept :BusinessRuleTypesConcept .
+
+:BusinessRuleTypesConcept a skos:Concept ; ;
+    skos:prefLabel "Business Rule Types"@en ; ;
+    skos:inScheme :BusinessRuleClassificationTaxonomy ;
+    skos:topConceptOf :BusinessRuleClassificationTaxonomy ;
+    skos:narrower :ConstraintRulesConcept, :PolicyRulesConcept, :GuidelineRulesConcept, :ValidationRulesConcept .
+
+:ConstraintRulesConcept a skos:Concept ; ;
+    skos:prefLabel "Constraint Rules"@en ; ;
+    skos:inScheme :BusinessRuleClassificationTaxonomy ;
+    skos:broader :BusinessRuleTypesConcept ;
+    skos:definition "Rules that limit or restrict business behavior"@en .
+
+:PolicyRulesConcept a skos:Concept ; ;
+    skos:prefLabel "Policy Rules"@en ; ;
+    skos:inScheme :BusinessRuleClassificationTaxonomy ;
+    skos:broader :BusinessRuleTypesConcept ;
+    skos:definition "High-level organizational policies and standards"@en .
+
+:GuidelineRulesConcept a skos:Concept ; ;
+    skos:prefLabel "Guideline Rules"@en ; ;
+    skos:inScheme :BusinessRuleClassificationTaxonomy ;
+    skos:broader :BusinessRuleTypesConcept ;
+    skos:definition "Recommended practices and procedures"@en .
+
+:ValidationRulesConcept a skos:Concept ; ;
+    skos:prefLabel "Validation Rules"@en ; ;
+    skos:inScheme :BusinessRuleClassificationTaxonomy ;
+    skos:broader :BusinessRuleTypesConcept ;
+    skos:definition "Rules for validating data and business transactions"@en .
+
+:BusinessProcessTaxonomy a skos:ConceptScheme ;
+    dc:title "Business Process Classification Taxonomy"@en ;
+    dc:description "Categorization of business processes into core and supporting processes (examples)"@en ;
+    skos:hasTopConcept :BusinessProcessesConcept .
+
+:BusinessProcessesConcept a skos:Concept ; ;
+    skos:prefLabel "Business Processes"@en ; ;
+    skos:inScheme :BusinessProcessTaxonomy ;
+    skos:topConceptOf :BusinessProcessTaxonomy ;
+    skos:narrower :CoreBusinessProcessesConcept, :SupportingProcessesBPConcept .
+
+:CoreBusinessProcessesConcept a skos:Concept ; ;
+    skos:prefLabel "Core Business Processes"@en ; ;
+    skos:inScheme :BusinessProcessTaxonomy ;
+    skos:broader :BusinessProcessesConcept ;
+    skos:narrower :OrderProcessingConcept, :ProductDevelopmentConcept, :CustomerServiceConcept, :PaymentProcessingConcept ;
+    skos:definition "Directly create customer value"@en .
+
+:OrderProcessingConcept a skos:Concept ; ;
+    skos:prefLabel "Order Processing"@en ; ;
+    skos:inScheme :BusinessProcessTaxonomy ;
+    skos:broader :CoreBusinessProcessesConcept .
+
+:ProductDevelopmentConcept a skos:Concept ; ;
+    skos:prefLabel "Product Development"@en ; ;
+    skos:inScheme :BusinessProcessTaxonomy ;
+    skos:broader :CoreBusinessProcessesConcept .
+
+:CustomerServiceConcept a skos:Concept ; ;
+    skos:prefLabel "Customer Service"@en ; ;
+    skos:inScheme :BusinessProcessTaxonomy ;
+    skos:broader :CoreBusinessProcessesConcept .
+
+:PaymentProcessingConcept a skos:Concept ; ;
+    skos:prefLabel "Payment Processing"@en ; ;
+    skos:inScheme :BusinessProcessTaxonomy ;
+    skos:broader :CoreBusinessProcessesConcept .
+
+:SupportingProcessesBPConcept a skos:Concept ; ;
+    skos:prefLabel "Supporting Processes"@en ; ;
+    skos:inScheme :BusinessProcessTaxonomy ;
+    skos:broader :BusinessProcessesConcept ;
+    skos:narrower :HumanResourcesConcept, :ITSupportConcept, :AccountingConcept, :FacilitiesManagementConcept, :ComplianceConcept ;
+    skos:definition "Enable and support the core business processes"@en .
+
+:HumanResourcesConcept a skos:Concept ; ;
+    skos:prefLabel "Human Resources"@en ; ;
+    skos:inScheme :BusinessProcessTaxonomy ;
+    skos:broader :SupportingProcessesBPConcept .
+
+:ITSupportConcept a skos:Concept ; ;
+    skos:prefLabel "IT Support"@en ; ;
+    skos:inScheme :BusinessProcessTaxonomy ;
+    skos:broader :SupportingProcessesBPConcept .
+
+:AccountingConcept a skos:Concept ; ;
+    skos:prefLabel "Accounting"@en ; ;
+    skos:inScheme :BusinessProcessTaxonomy ;
+    skos:broader :SupportingProcessesBPConcept .
+
+:FacilitiesManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Facilities Management"@en ; ;
+    skos:inScheme :BusinessProcessTaxonomy ;
+    skos:broader :SupportingProcessesBPConcept .
+
+:ComplianceConcept a skos:Concept ; ;
+    skos:prefLabel "Compliance"@en ; ;
+    skos:inScheme :BusinessProcessTaxonomy ;
+    skos:broader :SupportingProcessesBPConcept .
+
+:StrategicAnalysisTaxonomy a skos:ConceptScheme ;
+    dc:title "Strategic Analysis Taxonomy"@en ;
+    dc:description "Classification of strategic analysis concepts and methods"@en ;
+    skos:hasTopConcept :StrategicAnalysisConcept .
+
+:StrategicAnalysisConcept a skos:Concept ; ;
+    skos:prefLabel "Strategic Analysis"@en ; ;
+    skos:inScheme :StrategicAnalysisTaxonomy ;
+    skos:topConceptOf :StrategicAnalysisTaxonomy ;
+    skos:narrower :SWOTAnalysisConcept, :SIPOCAnalysisConcept, :PESTAnalysisConcept, :PortersFiveForcesConcept, :ValueChainAnalysisConcept ;
+    rdfs:seeAlso :StrategicAnalysis .
+
+:SWOTAnalysisConcept a skos:Concept ; ;
+    skos:prefLabel "SWOT Analysis"@en ; ;
+    skos:inScheme :StrategicAnalysisTaxonomy ;
+    skos:broader :StrategicAnalysisConcept ;
+    skos:narrower :StrengthsConcept, :WeaknessesConcept, :OpportunitiesConcept, :ThreatsConcept ;
+    rdfs:seeAlso :SWOTAnalysis .
+
+:StrengthsConcept a skos:Concept ; ;
+    skos:prefLabel "Strengths"@en ; ;
+    skos:inScheme :StrategicAnalysisTaxonomy ;
+    skos:broader :SWOTAnalysisConcept .
+
+:WeaknessesConcept a skos:Concept ; ;
+    skos:prefLabel "Weaknesses"@en ; ;
+    skos:inScheme :StrategicAnalysisTaxonomy ;
+    skos:broader :SWOTAnalysisConcept .
+
+:OpportunitiesConcept a skos:Concept ; ;
+    skos:prefLabel "Opportunities"@en ; ;
+    skos:inScheme :StrategicAnalysisTaxonomy ;
+    skos:broader :SWOTAnalysisConcept .
+
+:ThreatsConcept a skos:Concept ; ;
+    skos:prefLabel "Threats"@en ; ;
+    skos:inScheme :StrategicAnalysisTaxonomy ;
+    skos:broader :SWOTAnalysisConcept .
+
+:SIPOCAnalysisConcept a skos:Concept ; ;
+    skos:prefLabel "SIPOC Analysis"@en ; ;
+    skos:inScheme :StrategicAnalysisTaxonomy ;
+    skos:broader :StrategicAnalysisConcept ;
+    skos:narrower :SuppliersConcept, :InputsConcept, :ProcessConcept, :OutputsConcept, :CustomersConcept ;
+    rdfs:seeAlso :SIPOCAnalysis .
+
+:SuppliersConcept a skos:Concept ; ;
+    skos:prefLabel "Suppliers"@en ; ;
+    skos:inScheme :StrategicAnalysisTaxonomy ;
+    skos:broader :SIPOCAnalysisConcept .
+
+:InputsConcept a skos:Concept ; ;
+    skos:prefLabel "Inputs"@en ; ;
+    skos:inScheme :StrategicAnalysisTaxonomy ;
+    skos:broader :SIPOCAnalysisConcept .
+
+:ProcessConcept a skos:Concept ; ;
+    skos:prefLabel "Process"@en ; ;
+    skos:inScheme :StrategicAnalysisTaxonomy ;
+    skos:broader :SIPOCAnalysisConcept .
+
+:OutputsConcept a skos:Concept ; ;
+    skos:prefLabel "Outputs"@en ; ;
+    skos:inScheme :StrategicAnalysisTaxonomy ;
+    skos:broader :SIPOCAnalysisConcept .
+
+:CustomersConcept a skos:Concept ; ;
+    skos:prefLabel "Customers"@en ; ;
+    skos:inScheme :StrategicAnalysisTaxonomy ;
+    skos:broader :SIPOCAnalysisConcept .
+
+:PESTAnalysisConcept a skos:Concept ; ;
+    skos:prefLabel "PEST Analysis"@en ; ;
+    skos:inScheme :StrategicAnalysisTaxonomy ;
+    skos:broader :StrategicAnalysisConcept .
+
+:PortersFiveForcesConcept a skos:Concept ; ;
+    skos:prefLabel "Porter's Five Forces"@en ; ;
+    skos:inScheme :StrategicAnalysisTaxonomy ;
+    skos:broader :StrategicAnalysisConcept .
+
+:ValueChainAnalysisConcept a skos:Concept ; ;
+    skos:prefLabel "Value Chain Analysis"@en ; ;
+    skos:inScheme :StrategicAnalysisTaxonomy ;
+    skos:broader :StrategicAnalysisConcept .
+
+:ProductPortfolioTaxonomy a skos:ConceptScheme ;
+    dc:title "Product Portfolio Taxonomy"@en ;
+    dc:description "Classification of products and portfolio management concepts"@en ;
+    skos:hasTopConcept :ProductManagementConcept .
+
+:ProductManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Product Management"@en ; ;
+    skos:inScheme :ProductPortfolioTaxonomy ;
+    skos:topConceptOf :ProductPortfolioTaxonomy ;
+    skos:narrower :ProductPortfolioConcept, :ServicePortfolioConcept, :ProductLifecycleConcept, :ProductQualityConcept .
+
+:ProductPortfolioConcept a skos:Concept ; ;
+    skos:prefLabel "Product Portfolio"@en ; ;
+    skos:inScheme :ProductPortfolioTaxonomy ;
+    skos:broader :ProductManagementConcept ;
+    rdfs:seeAlso :ProductPortfolio .
+
+:ServicePortfolioConcept a skos:Concept ; ;
+    skos:prefLabel "Service Portfolio"@en ; ;
+    skos:inScheme :ProductPortfolioTaxonomy ;
+    skos:broader :ProductManagementConcept ;
+    rdfs:seeAlso :ServicePortfolio .
+
+:ProductLifecycleConcept a skos:Concept ; ;
+    skos:prefLabel "Product Lifecycle"@en ; ;
+    skos:inScheme :ProductPortfolioTaxonomy ;
+    skos:broader :ProductManagementConcept ;
+    skos:narrower :DevelopmentStageConcept, :IntroductionStageConcept, :GrowthStageConcept, :MaturityStageConcept, :DeclineStageConcept ;
+    rdfs:seeAlso :ProductLifecycle .
+
+:DevelopmentStageConcept a skos:Concept ; ;
+    skos:prefLabel "Development Stage"@en ; ;
+    skos:inScheme :ProductPortfolioTaxonomy ;
+    skos:broader :ProductLifecycleConcept ;
+    rdfs:seeAlso :DevelopmentStage .
+
+:IntroductionStageConcept a skos:Concept ; ;
+    skos:prefLabel "Introduction Stage"@en ; ;
+    skos:inScheme :ProductPortfolioTaxonomy ;
+    skos:broader :ProductLifecycleConcept ;
+    rdfs:seeAlso :IntroductionStage .
+
+:GrowthStageConcept a skos:Concept ; ;
+    skos:prefLabel "Growth Stage"@en ; ;
+    skos:inScheme :ProductPortfolioTaxonomy ;
+    skos:broader :ProductLifecycleConcept ;
+    rdfs:seeAlso :GrowthStage .
+
+:MaturityStageConcept a skos:Concept ; ;
+    skos:prefLabel "Maturity Stage"@en ; ;
+    skos:inScheme :ProductPortfolioTaxonomy ;
+    skos:broader :ProductLifecycleConcept ;
+    rdfs:seeAlso :MaturityStage .
+
+:DeclineStageConcept a skos:Concept ; ;
+    skos:prefLabel "Decline Stage"@en ; ;
+    skos:inScheme :ProductPortfolioTaxonomy ;
+    skos:broader :ProductLifecycleConcept ;
+    rdfs:seeAlso :DeclineStage .
+
+:ProductQualityConcept a skos:Concept ; ;
+    skos:prefLabel "Product Quality"@en ; ;
+    skos:inScheme :ProductPortfolioTaxonomy ;
+    skos:broader :ProductManagementConcept ;
+    skos:narrower :QualityStandardConcept, :QualityControlConcept, :QualityAssurancePPConcept .
+
+:QualityStandardConcept a skos:Concept ; ;
+    skos:prefLabel "Quality Standard"@en ; ;
+    skos:inScheme :ProductPortfolioTaxonomy ;
+    skos:broader :ProductQualityConcept ;
+    rdfs:seeAlso :QualityStandard .
+
+:QualityControlConcept a skos:Concept ; ;
+    skos:prefLabel "Quality Control"@en ; ;
+    skos:inScheme :ProductPortfolioTaxonomy ;
+    skos:broader :ProductQualityConcept ;
+    rdfs:seeAlso :QualityControl .
+
+:QualityAssurancePPConcept a skos:Concept ; ;
+    skos:prefLabel "Quality Assurance"@en ; ;
+    skos:inScheme :ProductPortfolioTaxonomy ;
+    skos:broader :ProductQualityConcept ;
+    rdfs:seeAlso :QualityAssurance .
+
+:CustomerManagementTaxonomy a skos:ConceptScheme ;
+    dc:title "Customer Management Taxonomy"@en ;
+    dc:description "Classification of customer management and CRM concepts"@en ;
+    skos:hasTopConcept :CustomerManagementConcept .
+
+:CustomerManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Customer Management"@en ; ;
+    skos:inScheme :CustomerManagementTaxonomy ;
+    skos:topConceptOf :CustomerManagementTaxonomy ;
+    skos:narrower :CustomerSegmentationConcept, :CustomerRelationshipManagementConcept, :CustomerExperienceConcept, :ChannelManagementConcept ;
+    rdfs:seeAlso :CustomerManagement .
+
+:CustomerSegmentationConcept a skos:Concept ; ;
+    skos:prefLabel "Customer Segmentation"@en ; ;
+    skos:inScheme :CustomerManagementTaxonomy ;
+    skos:broader :CustomerManagementConcept ;
+    skos:narrower :DemographicSegmentationConcept, :BehavioralSegmentationConcept, :ValueBasedSegmentationConcept .
+
+:DemographicSegmentationConcept a skos:Concept ; ;
+    skos:prefLabel "Demographic Segmentation"@en ; ;
+    skos:inScheme :CustomerManagementTaxonomy ;
+    skos:broader :CustomerSegmentationConcept .
+
+:BehavioralSegmentationConcept a skos:Concept ; ;
+    skos:prefLabel "Behavioral Segmentation"@en ; ;
+    skos:inScheme :CustomerManagementTaxonomy ;
+    skos:broader :CustomerSegmentationConcept .
+
+:ValueBasedSegmentationConcept a skos:Concept ; ;
+    skos:prefLabel "Value-Based Segmentation"@en ; ;
+    skos:inScheme :CustomerManagementTaxonomy ;
+    skos:broader :CustomerSegmentationConcept .
+
+:CustomerRelationshipManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Customer Relationship Management"@en ; ;
+    skos:inScheme :CustomerManagementTaxonomy ;
+    skos:broader :CustomerManagementConcept ;
+    rdfs:seeAlso :CRM .
+
+:CustomerExperienceConcept a skos:Concept ; ;
+    skos:prefLabel "Customer Experience"@en ; ;
+    skos:inScheme :CustomerManagementTaxonomy ;
+    skos:broader :CustomerManagementConcept ;
+    skos:narrower :CustomerJourneyConcept, :TouchpointConcept ;
+    rdfs:seeAlso :CustomerExperience .
+
+:CustomerJourneyConcept a skos:Concept ; ;
+    skos:prefLabel "Customer Journey"@en ; ;
+    skos:inScheme :CustomerManagementTaxonomy ;
+    skos:broader :CustomerExperienceConcept ;
+    rdfs:seeAlso :CustomerJourney .
+
+:TouchpointConcept a skos:Concept ; ;
+    skos:prefLabel "Touchpoint"@en ; ;
+    skos:inScheme :CustomerManagementTaxonomy ;
+    skos:broader :CustomerExperienceConcept ;
+    rdfs:seeAlso :Touchpoint .
+
+:ChannelManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Channel Management"@en ; ;
+    skos:inScheme :CustomerManagementTaxonomy ;
+    skos:broader :CustomerManagementConcept ;
+    skos:narrower :SalesChannelConcept, :DistributionChannelConcept, :DigitalChannelConcept ;
+    rdfs:seeAlso :ChannelManagement .
+
+:SalesChannelConcept a skos:Concept ; ;
+    skos:prefLabel "Sales Channel"@en ; ;
+    skos:inScheme :CustomerManagementTaxonomy ;
+    skos:broader :ChannelManagementConcept ;
+    rdfs:seeAlso :SalesChannel .
+
+:DistributionChannelConcept a skos:Concept ; ;
+    skos:prefLabel "Distribution Channel"@en ; ;
+    skos:inScheme :CustomerManagementTaxonomy ;
+    skos:broader :ChannelManagementConcept ;
+    rdfs:seeAlso :DistributionChannel .
+
+:DigitalChannelConcept a skos:Concept ; ;
+    skos:prefLabel "Digital Channel"@en ; ;
+    skos:inScheme :CustomerManagementTaxonomy ;
+    skos:broader :ChannelManagementConcept ;
+    rdfs:seeAlso :DigitalChannel .
+
+:FinancialAndMarketingTaxonomy a skos:ConceptScheme ;
+    dc:title "Financial, Inventory and Marketing Taxonomy"@en ;
+    dc:description "Classification of cost, pricing, discount, stock and campaign concepts"@en ;
+    skos:hasTopConcept :CommercialManagementConcept .
+
+:CommercialManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Commercial Management"@en ; ;
+    skos:inScheme :FinancialAndMarketingTaxonomy ;
+    skos:topConceptOf :FinancialAndMarketingTaxonomy ;
+    skos:narrower :FinancialManagementConcept, :InventoryManagementConcept, :MarketingManagementConcept .
+
+:FinancialManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Financial Management"@en ; ;
+    skos:inScheme :FinancialAndMarketingTaxonomy ;
+    skos:broader :CommercialManagementConcept ;
+    skos:narrower :CostManagementConcept, :PricingManagementConcept, :DiscountingManagementConcept ;
+    rdfs:seeAlso :FinancialManagement .
+
+:CostManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Cost Management"@en ; ;
+    skos:inScheme :FinancialAndMarketingTaxonomy ;
+    skos:broader :FinancialManagementConcept ;
+    rdfs:seeAlso :CostManagement .
+
+:PricingManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Pricing Management"@en ; ;
+    skos:inScheme :FinancialAndMarketingTaxonomy ;
+    skos:broader :FinancialManagementConcept ;
+    rdfs:seeAlso :PricingManagement .
+
+:DiscountingManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Discounting Management"@en ; ;
+    skos:inScheme :FinancialAndMarketingTaxonomy ;
+    skos:broader :FinancialManagementConcept ;
+    rdfs:seeAlso :DiscountingManagement .
+
+:InventoryManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Inventory Management"@en ; ;
+    skos:inScheme :FinancialAndMarketingTaxonomy ;
+    skos:broader :CommercialManagementConcept ;
+    skos:narrower :StockManagementConcept, :StockLevelConcept ;
+    rdfs:seeAlso :InventoryManagement .
+
+:StockManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Stock Management"@en ; ;
+    skos:inScheme :FinancialAndMarketingTaxonomy ;
+    skos:broader :InventoryManagementConcept ;
+    rdfs:seeAlso :StockManagement .
+
+:StockLevelConcept a skos:Concept ; ;
+    skos:prefLabel "Stock Level"@en ; ;
+    skos:inScheme :FinancialAndMarketingTaxonomy ;
+    skos:broader :InventoryManagementConcept ;
+    rdfs:seeAlso :StockLevel .
+
+:MarketingManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Marketing Management"@en ; ;
+    skos:inScheme :FinancialAndMarketingTaxonomy ;
+    skos:broader :CommercialManagementConcept ;
+    skos:narrower :CampaignManagementConcept ;
+    rdfs:seeAlso :MarketingManagement .
+
+:CampaignManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Campaign Management"@en ; ;
+    skos:inScheme :FinancialAndMarketingTaxonomy ;
+    skos:broader :MarketingManagementConcept ;
+    skos:narrower :MarketingCampaignConcept, :PromotionalCampaignConcept ;
+    rdfs:seeAlso :CampaignManagement .
+
+:MarketingCampaignConcept a skos:Concept ; ;
+    skos:prefLabel "Marketing Campaign"@en ; ;
+    skos:inScheme :FinancialAndMarketingTaxonomy ;
+    skos:broader :CampaignManagementConcept ;
+    rdfs:seeAlso :MarketingCampaign .
+
+:PromotionalCampaignConcept a skos:Concept ; ;
+    skos:prefLabel "Promotional Campaign"@en ; ;
+    skos:inScheme :FinancialAndMarketingTaxonomy ;
+    skos:broader :CampaignManagementConcept ;
+    rdfs:seeAlso :PromotionalCampaign .
+
+:OrganizationalTaxonomy a skos:ConceptScheme ;
+    dc:title "Organizational Structure Taxonomy"@en ;
+    dc:description "Classification of organizational, human resource and agility concepts"@en ;
+    skos:hasTopConcept :OrganizationalManagementConcept .
+
+:OrganizationalManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Organizational Management"@en ; ;
+    skos:inScheme :OrganizationalTaxonomy ;
+    skos:topConceptOf :OrganizationalTaxonomy ;
+    skos:narrower :OrganizationalStructureConcept, :HumanResourceManagementConcept, :OrganizationalAgilityConcept ;
+    rdfs:seeAlso :OrganizationalManagement .
+
+:OrganizationalStructureConcept a skos:Concept ; ;
+    skos:prefLabel "Organizational Structure"@en ; ;
+    skos:inScheme :OrganizationalTaxonomy ;
+    skos:broader :OrganizationalManagementConcept ;
+    skos:narrower :HierarchicalStructureConcept, :FlatStructureConcept, :MatrixStructureConcept, :NetworkStructureConcept ;
+    rdfs:seeAlso :OrganizationalStructure .
+
+:HierarchicalStructureConcept a skos:Concept ; ;
+    skos:prefLabel "Hierarchical Structure"@en ; ;
+    skos:inScheme :OrganizationalTaxonomy ;
+    skos:broader :OrganizationalStructureConcept .
+
+:FlatStructureConcept a skos:Concept ; ;
+    skos:prefLabel "Flat Structure"@en ; ;
+    skos:inScheme :OrganizationalTaxonomy ;
+    skos:broader :OrganizationalStructureConcept .
+
+:MatrixStructureConcept a skos:Concept ; ;
+    skos:prefLabel "Matrix Structure"@en ; ;
+    skos:inScheme :OrganizationalTaxonomy ;
+    skos:broader :OrganizationalStructureConcept .
+
+:NetworkStructureConcept a skos:Concept ; ;
+    skos:prefLabel "Network Structure"@en ; ;
+    skos:inScheme :OrganizationalTaxonomy ;
+    skos:broader :OrganizationalStructureConcept .
+
+:HumanResourceManagementConcept a skos:Concept ; ;
+    skos:prefLabel "Human Resource Management"@en ; ;
+    skos:inScheme :OrganizationalTaxonomy ;
+    skos:broader :OrganizationalManagementConcept ;
+    skos:narrower :EmployeeConcept, :PositionConcept ;
+    rdfs:seeAlso :HumanResourceManagement .
+
+:EmployeeConcept a skos:Concept ; ;
+    skos:prefLabel "Employee"@en ; ;
+    skos:inScheme :OrganizationalTaxonomy ;
+    skos:broader :HumanResourceManagementConcept ;
+    rdfs:seeAlso :Employee .
+
+:PositionConcept a skos:Concept ; ;
+    skos:prefLabel "Position"@en ; ;
+    skos:inScheme :OrganizationalTaxonomy ;
+    skos:broader :HumanResourceManagementConcept ;
+    rdfs:seeAlso :Position .
+
+:OrganizationalAgilityConcept a skos:Concept ; ;
+    skos:prefLabel "Organizational Agility"@en ; ;
+    skos:inScheme :OrganizationalTaxonomy ;
+    skos:broader :OrganizationalManagementConcept ;
+    skos:narrower :AgileMethodologiesConcept, :AdaptabilityConcept, :ResponsivenessConcept ;
+    rdfs:seeAlso :OrganizationalAgility .
+
+:AgileMethodologiesConcept a skos:Concept ; ;
+    skos:prefLabel "Agile Methodologies"@en ; ;
+    skos:inScheme :OrganizationalTaxonomy ;
+    skos:broader :OrganizationalAgilityConcept ;
+    skos:narrower :ScrumConcept, :KanbanConcept, :SAFeConcept, :LeanConcept .
+
+:ScrumConcept a skos:Concept ; ;
+    skos:prefLabel "Scrum"@en ; ;
+    skos:inScheme :OrganizationalTaxonomy ;
+    skos:broader :AgileMethodologiesConcept .
+
+:KanbanConcept a skos:Concept ; ;
+    skos:prefLabel "Kanban"@en ; ;
+    skos:inScheme :OrganizationalTaxonomy ;
+    skos:broader :AgileMethodologiesConcept .
+
+:SAFeConcept a skos:Concept ; ;
+    skos:prefLabel "SAFe"@en ; ;
+    skos:inScheme :OrganizationalTaxonomy ;
+    skos:broader :AgileMethodologiesConcept .
+
+:LeanConcept a skos:Concept ; ;
+    skos:prefLabel "Lean"@en ; ;
+    skos:inScheme :OrganizationalTaxonomy ;
+    skos:broader :AgileMethodologiesConcept .
+
+:AdaptabilityConcept a skos:Concept ; ;
+    skos:prefLabel "Adaptability"@en ; ;
+    skos:inScheme :OrganizationalTaxonomy ;
+    skos:broader :OrganizationalAgilityConcept .
+
+:ResponsivenessConcept a skos:Concept ; ;
+    skos:prefLabel "Responsiveness"@en ; ;
+    skos:inScheme :OrganizationalTaxonomy ;
+    skos:broader :OrganizationalAgilityConcept .
+#################################################################
+# Illustrative Example Individuals
+# (sample data to show how the ontology is used; not sourced facts)
+#################################################################
+
+# --- Domain engineering core ---------------------------------------
+:WebApplicationDomainEngineering a owl:NamedIndividual , :DomainEngineeringProcess ;
+    rdfs:label "Web Application Domain Engineering Process"@en ;
+    :hasName "Web Application DE Process" ;
+    :hasDescription "Domain engineering process for the web application domain" ;
+    :hasMaturityLevel "3"^^xsd:int ;
+    :hasCycleTime "P90D"^^xsd:duration .
+
+:WebAppRequirementsAnalysis a owl:NamedIndividual , :DomainAnalysis ;
+    rdfs:label "Web App Requirements Analysis"@en ;
+    :hasName "Web Application Requirements Analysis" ;
+    :hasDuration "P14D"^^xsd:duration ;
+    :hasEffort "112.0"^^xsd:decimal ;
+    :isAutomated "false"^^xsd:boolean ;
+    :partOfProcess :WebApplicationDomainEngineering ;
+    :addressesProblem :ScalabilityProblem ;
+    :appliesMethod :FODAMethod ;
+    :usesTool :FeatureIDE ;
+    :producesAsset :WebAppFeatureModel ;
+    :involvesStakeholder :ExampleSeniorStakeholder ;
+    :precedes :WebAppDesign .
+
+:WebAppDesign a owl:NamedIndividual , :DomainDesign ;
+    rdfs:label "Web App Domain Design"@en ;
+    :hasDuration "P21D"^^xsd:duration ; :partOfProcess :WebApplicationDomainEngineering ;
+    :usesAsset :WebAppFeatureModel ; :precedes :WebAppImplementation .
+
+:WebAppImplementation a owl:NamedIndividual , :DomainImplementation ;
+    rdfs:label "Web App Domain Implementation"@en ;
+    :hasDuration "P45D"^^xsd:duration ; :partOfProcess :WebApplicationDomainEngineering ;
+    :producesAsset :AuthenticationComponent .
+
+:AuthenticationComponent a owl:NamedIndividual , :Component ;
+    rdfs:label "Authentication Component"@en ;
+    :hasName "Generic Authentication Component" ;
+    :hasDescription "Reusable authentication component for web applications" ;
+    :hasVersion "2.1.0" ;
+    :hasAuthor "Domain Engineering Team" ;
+    :hasCreationDate "2024-03-15"^^xsd:date ;
+    :hasReuseRate "0.85"^^xsd:decimal ;
+    :isReusable "true"^^xsd:boolean ;
+    :isConfigurable "true"^^xsd:boolean ;
+    :hasComplexity "7.5"^^xsd:decimal ;
+    :hasVariationPoint :AuthVariationPoint ;
+    :hasQualityAttribute :SecurityAttribute , :ReusabilityAttribute ;
+    :enablesCapability :PaymentProcessingCapability ;
+    :deliversBenefit :RevenueIncreaseBenefit ;
+    :implementsArchitecture :ECommerceOperationalArch .
+
+:WebAppFeatureModel a owl:NamedIndividual , :FeatureModel ;
+    rdfs:label "Web Application Feature Model"@en ;
+    :hasName "Web App Feature Model" ;
+    :hasVersion "1.0" ;
+    :hasFeature :UserManagement , :Authentication , :ContentManagement .
+
+:UserManagement a owl:NamedIndividual , :MandatoryFeature ; rdfs:label "User Management"@en ;
+    :hasName "User Management" ; :childFeature :UserRegistration , :UserProfile .
+:UserRegistration a owl:NamedIndividual , :MandatoryFeature ; rdfs:label "User Registration"@en .
+:UserProfile a owl:NamedIndividual , :OptionalFeature ; rdfs:label "User Profile"@en .
+:ContentManagement a owl:NamedIndividual , :OptionalFeature ; rdfs:label "Content Management"@en .
+:Authentication a owl:NamedIndividual , :MandatoryFeature ; rdfs:label "Authentication"@en ;
+    :hasName "Authentication" ; :childFeature :BasicAuth , :OAuth2 , :SAML .
+:BasicAuth a owl:NamedIndividual , :AlternativeFeature ; rdfs:label "Basic Authentication"@en ; :parentFeature :Authentication .
+:OAuth2 a owl:NamedIndividual , :AlternativeFeature ; rdfs:label "OAuth 2.0"@en ; :parentFeature :Authentication .
+:SAML a owl:NamedIndividual , :AlternativeFeature ; rdfs:label "SAML"@en ; :parentFeature :Authentication .
+
+:AuthVariationPoint a owl:NamedIndividual , :VariationPoint ;
+    rdfs:label "Authentication Variation Point"@en ;
+    :hasName "Authentication Method Selection" ;
+    :hasVariant :BasicAuthVariant , :OAuth2Variant , :SAMLVariant ;
+    :implementsVariability :ParameterVariabilityMechanism .
+:BasicAuthVariant a owl:NamedIndividual , :Variant ; rdfs:label "Basic Authentication Variant"@en .
+:OAuth2Variant a owl:NamedIndividual , :Variant ; rdfs:label "OAuth 2.0 Variant"@en .
+:SAMLVariant a owl:NamedIndividual , :Variant ; rdfs:label "SAML Variant"@en .
+:ParameterVariabilityMechanism a owl:NamedIndividual , :ParameterVariability ; rdfs:label "Parameter-based Variability"@en .
+
+:SecurityAttribute a owl:NamedIndividual , :QualityAttribute ; rdfs:label "Security"@en ; :measuredBy :SecurityMetric .
+:ReusabilityAttribute a owl:NamedIndividual , :Reusability ; rdfs:label "Reusability"@en ; :measuredBy :ReuseRateMetric .
+:SecurityMetric a owl:NamedIndividual , :Metric ; rdfs:label "Security Metric"@en ;
+    :hasDescription "Vulnerabilities found per release" .
+:ReuseRateMetric a owl:NamedIndividual , :ReuseMetric ; rdfs:label "Reuse Rate Metric"@en ;
+    :hasName "Asset Reuse Rate" ; :hasDescription "Percentage of assets reused across projects" .
+:CycleTimeMetric a owl:NamedIndividual , :ProcessMetric ; rdfs:label "Cycle Time Metric"@en ;
+    :hasName "Process Cycle Time" ; :hasDescription "Time from process start to completion" .
+
+:SeniorDomainAnalyst a owl:NamedIndividual , :DomainAnalyst ;
+    rdfs:label "Senior Domain Analyst (example role holder)"@en ;
+    :performsActivity :WebAppRequirementsAnalysis .
+:ExampleSeniorStakeholder a owl:NamedIndividual , :Stakeholder ; rdfs:label "Example Business Stakeholder"@en .
+:FeatureIDE a owl:NamedIndividual , :FeatureModelingTool ; rdfs:label "FeatureIDE"@en ;
+    :hasDescription "Eclipse-based tool for feature modeling" .
+:FODAMethod a owl:NamedIndividual , :FODA ; rdfs:label "FODA Method"@en ;
+    :hasDescription "Method for identifying and organizing domain features" .
+
+# --- Business context --------------------------------------------------
+:ECommerceDomain a owl:NamedIndividual , :BusinessEnvironment ;
+    rdfs:label "E-Commerce Business Environment"@en ;
+    :hasDescription "Business environment for e-commerce: online retail, payment processing and customer management" ;
+    :definesBusinessProcess :OrderProcessingProcess .
+:ScalabilityProblem a owl:NamedIndividual , :ProblemDescription ; rdfs:label "Scalability Problem"@en ;
+    :hasDescription "Current systems cannot handle peak traffic during sales events" ;
+    :priorityLevel "High" ; :problemSeverity "Critical" .
+:PaymentProcessingCapability a owl:NamedIndividual , :SystemCapabilities ; rdfs:label "Payment Processing Capability"@en ;
+    :hasDescription "Ability to process multiple payment methods securely and efficiently" ; :capabilityType "Functional" .
+:RevenueIncreaseBenefit a owl:NamedIndividual , :BusinessBenefits ; rdfs:label "Revenue Increase Benefit"@en ;
+    :hasDescription "Projected revenue increase through improved system performance" ; :businessValue "500000.00"^^xsd:decimal .
+:OrderProcessingProcess a owl:NamedIndividual , :CoreBusinessProcess ; rdfs:label "Order Processing Process"@en ;
+    :hasDescription "Process from order placement to fulfillment" ; :processMaturity "3"^^xsd:int ;
+    :hasBusinessRole :CustomerServiceRole ; :governedByRule :RefundPolicyRule ;
+    :includesOperation :OrderFulfillmentOperation ; :consumesInput :CustomerOrder ; :producesOutput :DeliveredProduct ;
+    :hasCost :OrderProcessingCost .
+:CustomerOrder a owl:NamedIndividual , :ProcessInput ; rdfs:label "Customer Order"@en .
+:DeliveredProduct a owl:NamedIndividual , :ProcessOutput ; rdfs:label "Delivered Product"@en .
+:OrderProcessingCost a owl:NamedIndividual , :Cost ; rdfs:label "Order Processing Cost"@en .
+:HRManagementProcess a owl:NamedIndividual , :SupportingProcess ; rdfs:label "Human Resources Process"@en ;
+    :supportsCoreProcess :OrderProcessingProcess ; :hasBusinessRole :CustomerServiceRole .
+:CustomerServiceRole a owl:NamedIndividual , :BusinessRole ; rdfs:label "Customer Service Role"@en ;
+    :hasDescription "Handles customer inquiries, complaints and support requests" .
+:RefundPolicyRule a owl:NamedIndividual , :BusinessRule ; rdfs:label "30-Day Refund Policy"@en ;
+    :hasDescription "Customers may return items within 30 days for a full refund" ; :ruleType "Policy" .
+:ECommerceAppPortfolio a owl:NamedIndividual , :ApplicationPortfolio ; rdfs:label "E-Commerce Application Portfolio"@en ;
+    :applicationCount "12"^^xsd:int ; :includesApplication :AuthenticationComponent .
+:ECommerceOperationalArch a owl:NamedIndividual , :OperationalArchitecture ;
+    rdfs:label "E-Commerce Operational Architecture"@en ;
+    :hasDescription "Operational architecture supporting e-commerce business processes" .
+:OrderFulfillmentOperation a owl:NamedIndividual , :Operation ; rdfs:label "Order Fulfillment Operation"@en ;
+    :operatesIn :ProductionEnvironment .
+:ProductionEnvironment a owl:NamedIndividual , :OperationalEnvironment ; rdfs:label "Production Environment"@en ;
+    :utilizationRate "72.5"^^xsd:decimal .
+:OperationsOffice a owl:NamedIndividual , :OperationsManagement ; rdfs:label "Operations Office"@en ;
+    :configuresEnvironment :ProductionEnvironment ; :monitorsOperation :OrderFulfillmentOperation .
+
+# --- Data collection --------------------------------------------------
+:StakeholderInterviewLog a owl:NamedIndividual , :DataCollectionLog ; rdfs:label "Stakeholder Interview Log"@en ;
+    :collectionDate "2024-06-15"^^xsd:date ; :collectionMethod "Structured interviews" ;
+    :logsActivity :WebAppRequirementsAnalysis .
+:ProjectActivitySummary a owl:NamedIndividual , :ActivitySummary ; rdfs:label "Project Activity Summary"@en ;
+    :hasCreationDate "2024-06-30"^^xsd:date ; :summarizesActivity :WebAppRequirementsAnalysis .
+:BusinessStakeholderInterviews a owl:NamedIndividual , :InterviewList ; rdfs:label "Business Stakeholder Interviews"@en ;
+    :collectionDate "2024-06-01"^^xsd:date ; :collectionMethod "Interview" ; :interviewDuration "PT90M"^^xsd:duration ;
+    :documentsInterview :ExampleSeniorStakeholder .
+:ArchitectureReviewMeetings a owl:NamedIndividual , :MeetingList ; rdfs:label "Architecture Review Meetings"@en ;
+    :collectionDate "2024-06-10"^^xsd:date ; :collectionMethod "Meeting minutes" ; :meetingType "Review" ;
+    :participantCount "8"^^xsd:int ; :recordsMeeting :ExampleSeniorStakeholder .
+:RequirementsDocAnalysis a owl:NamedIndividual , :DocumentAnalysisList ; rdfs:label "Requirements Document Analysis"@en ;
+    :collectionDate "2024-05-20"^^xsd:date ; :collectionMethod "Document review" ; :analysisMethod "Content analysis" ;
+    :analyzesDocument :WebAppFeatureModel .
+
+# --- Vendors and solutions (generic placeholders) ----------------------
+:ExampleCloudVendor a owl:NamedIndividual , :Vendor ; rdfs:label "Example Cloud Vendor"@en ;
+    :vendorName "Example Cloud Vendor" ; :marketShare "30.0"^^xsd:decimal .
+:ExampleCommerceVendor a owl:NamedIndividual , :Vendor ; rdfs:label "Example Commerce Vendor"@en ;
+    :vendorName "Example Commerce Vendor" ; :marketShare "8.5"^^xsd:decimal .
+:ExampleIntegrator a owl:NamedIndividual , :SolutionProvider ; rdfs:label "Example Solution Provider"@en .
+:ExampleCommercePlatform a owl:NamedIndividual , :VendorSolution ; rdfs:label "Example Commerce Platform (SaaS)"@en ;
+    :solutionCost "299.00"^^xsd:decimal ; :solutionRating "4.5"^^xsd:decimal ; :solutionMaturity "Mature" ;
+    :implementationTime "P60D"^^xsd:duration ; :providedByVendor :ExampleCommerceVendor ;
+    :offeredBySolutionProvider :ExampleIntegrator ; :supportsCapability :PaymentProcessingCapability ;
+    :hasAlternative :ExampleOpenSourcePlatform ; :competesWith :ExampleOpenSourcePlatform .
+:ExampleOpenSourcePlatform a owl:NamedIndividual , :AlternativeSolution ; rdfs:label "Example Open-Source Platform (alternative)"@en ;
+    :solutionCost "1500.00"^^xsd:decimal ; :solutionRating "4.2"^^xsd:decimal ; :solutionMaturity "Mature" ;
+    :implementationTime "P90D"^^xsd:duration ; :providedByVendor :ExampleCloudVendor .
+
+# --- SWOT and SIPOC ------------------------------------------------------
+:ECommerceSWOT a owl:NamedIndividual , :SWOTAnalysis ; rdfs:label "E-Commerce SWOT Analysis"@en ;
+    :hasDescription "Strengths, weaknesses, opportunities and threats of the e-commerce domain" ;
+    :hasStrength :TechnicalExpertise , :ExistingCustomerBase ;
+    :hasWeakness :LegacySystems , :LimitedMobilePresence ;
+    :hasOpportunity :CloudMigration , :AIIntegration ;
+    :hasThreat :CyberSecurityThreats , :CompetitorDisruption ;
+    :leveragesStrength :TechnicalExpertise .
+:TechnicalExpertise a owl:NamedIndividual , :Strength ; rdfs:label "Technical Expertise"@en ;
+    :hasDescription "Highly skilled team with deep domain knowledge" ; :strengthScore "4.5"^^xsd:decimal .
+:ExistingCustomerBase a owl:NamedIndividual , :Strength ; rdfs:label "Existing Customer Base"@en ; :strengthScore "4.0"^^xsd:decimal .
+:LegacySystems a owl:NamedIndividual , :Weakness ; rdfs:label "Legacy Systems"@en ;
+    :hasDescription "Legacy systems limit scalability and performance" ; :weaknessImpact "4.0"^^xsd:decimal .
+:LimitedMobilePresence a owl:NamedIndividual , :Weakness ; rdfs:label "Limited Mobile Presence"@en ; :weaknessImpact "3.0"^^xsd:decimal .
+:CloudMigration a owl:NamedIndividual , :Opportunity ; rdfs:label "Cloud Migration"@en ;
+    :hasDescription "Migrating to cloud for improved scalability" ;
+    :opportunityValue "750000.00"^^xsd:decimal ; :likelihoodScore "0.8"^^xsd:decimal .
+:AIIntegration a owl:NamedIndividual , :Opportunity ; rdfs:label "AI Integration"@en ;
+    :opportunityValue "300000.00"^^xsd:decimal ; :likelihoodScore "0.6"^^xsd:decimal .
+:CyberSecurityThreats a owl:NamedIndividual , :Threat ; rdfs:label "Cybersecurity Threats"@en ;
+    :hasDescription "Growing cybersecurity threats against e-commerce platforms" ; :threatLevel "High" ;
+    :exploitsWeakness :LegacySystems .
+:CompetitorDisruption a owl:NamedIndividual , :Threat ; rdfs:label "Competitor Disruption"@en ; :threatLevel "Medium" .
+
+:OrderProcessingSIPOC a owl:NamedIndividual , :SIPOCAnalysis ; rdfs:label "Order Processing SIPOC"@en ;
+    :analyzesProcess :OrderProcessingProcess ;
+    :hasSupplier :ExampleSupplier ; :hasInput :CustomerOrder ; :hasOutput :DeliveredProduct ; :hasCustomer :ExampleCustomer .
+:ExampleSupplier a owl:NamedIndividual , :Supplier ; rdfs:label "Example Supplier"@en ; :suppliesInput :CustomerOrder .
+
+# --- Product, customer, channel, campaign ---------------------------------
+:ECommerceProductPortfolio a owl:NamedIndividual , :ProductPortfolio ; rdfs:label "E-Commerce Product Portfolio"@en ;
+    :includesProduct :OnlineStorefront .
+:OnlineStorefront a owl:NamedIndividual , :Product ; rdfs:label "Online Storefront"@en ;
+    :hasDescription "Web-based storefront for online retail" ; :productCode "ES-001" ; :productCategory "Platform" ;
+    :launchDate "2020-03-15"^^xsd:date ; :price "299.99"^^xsd:decimal ; :marketShare "15.2"^^xsd:decimal ;
+    :qualityScore "8.5"^^xsd:decimal ; :hasLifecycle :StorefrontLifecycle ; :currentStage :MaturityStageInstance ;
+    :usesChannel :OnlineChannel ; :hasInventory :StorefrontInventory ; :usesPricingModel :SubscriptionPricing ;
+    :appliesDiscount :PremiumDiscount ; :meetsStandard :ExampleQualityStandard .
+:StorefrontLifecycle a owl:NamedIndividual , :ProductLifecycle ; rdfs:label "Storefront Lifecycle"@en .
+:MaturityStageInstance a owl:NamedIndividual , :MaturityStage ; rdfs:label "Storefront Maturity Phase"@en ;
+    :stageDuration "P2Y"^^xsd:duration .
+:SubscriptionPricing a owl:NamedIndividual , :PricingModel ; rdfs:label "Subscription Pricing"@en .
+:PremiumDiscount a owl:NamedIndividual , :Discount ; rdfs:label "Premium Customer Discount"@en ;
+    :discountPercentage "15.0"^^xsd:decimal .
+:ExampleQualityStandard a owl:NamedIndividual , :QualityStandard ; rdfs:label "Example Quality Standard"@en .
+
+:PremiumCustomers a owl:NamedIndividual , :CustomerSegment ; rdfs:label "Premium Customers"@en ;
+    :hasDescription "High-value customers with premium service needs" ; :segmentSize "2500"^^xsd:int ;
+    :eligibleForDiscount :PremiumDiscount .
+:ExampleCustomer a owl:NamedIndividual , :Customer ; rdfs:label "Example Customer"@en ;
+    :customerID "CUST-0001" ; :customerValue "5000.00"^^xsd:decimal ; :acquisitionDate "2023-06-15"^^xsd:date ;
+    :belongsToSegment :PremiumCustomers ; :managedByCRM :ECommerceCRM ; :hasCustomerJourney :ExampleJourney ;
+    :experiencesAtTouchpoint :WebsiteTouchpoint ; :receivesOutput :DeliveredProduct .
+:ECommerceCRM a owl:NamedIndividual , :CRM ; rdfs:label "E-Commerce CRM System"@en .
+:ExampleJourney a owl:NamedIndividual , :CustomerJourney ; rdfs:label "Example Customer Journey"@en ;
+    :includesTouchpoint :WebsiteTouchpoint .
+:WebsiteTouchpoint a owl:NamedIndividual , :Touchpoint ; rdfs:label "Website Touchpoint"@en ;
+    :providesExperience :WebsiteExperience .
+:WebsiteExperience a owl:NamedIndividual , :CustomerExperience ; rdfs:label "Website Browsing Experience"@en ;
+    :satisfactionScore "4.3"^^xsd:decimal .
+
+:OnlineChannel a owl:NamedIndividual , :DigitalChannel ; rdfs:label "Online Channel"@en ;
+    :channelType "Online" ; :channelCost "50000.00"^^xsd:decimal ; :channelRevenue "500000.00"^^xsd:decimal ;
+    :channelEfficiency "0.9"^^xsd:decimal ; :servesCustomerThrough :ExampleCustomer .
+
+:BlackFridayCampaign a owl:NamedIndividual , :PromotionalCampaign ; rdfs:label "Seasonal Sale Campaign"@en ;
+    :campaignBudget "100000.00"^^xsd:decimal ; :campaignStartDate "2024-11-25"^^xsd:date ;
+    :campaignEndDate "2024-11-29"^^xsd:date ; :campaignROI "3.5"^^xsd:decimal ;
+    :targetAudience "General consumers and premium customers" ; :impressions "1000000"^^xsd:int ;
+    :clickThroughRate "2.5"^^xsd:decimal ; :promotesProduct :OnlineStorefront ; :targetsSegment :PremiumCustomers ;
+    :usesChannel :OnlineChannel ; :includesDiscount :PremiumDiscount ; :managedBy :ExampleTeamLead .
+
+:StorefrontInventory a owl:NamedIndividual , :Inventory ; rdfs:label "Storefront Inventory"@en ;
+    :minimumStock "100"^^xsd:int ; :maximumStock "10000"^^xsd:int ; :reorderPoint "500"^^xsd:int ;
+    :unitCost "25.50"^^xsd:decimal ; :inventoryValue "127500.00"^^xsd:decimal ;
+    :hasStockLevel :StorefrontStockLevel ; :suppliedBySupplier :ExampleSupplier .
+:StorefrontStockLevel a owl:NamedIndividual , :StockLevel ; rdfs:label "Storefront Current Stock Level"@en .
+
+# --- Organization, HR and agility --------------------------------------
+:ITDepartment a owl:NamedIndividual , :Department ; rdfs:label "IT Department"@en ;
+    :departmentCode "IT-001" ; :departmentSize "45"^^xsd:int ; :operatesChannel :OnlineChannel ;
+    :managesInventory :StorefrontInventory .
+:DomainEngineeringTeam a owl:NamedIndividual , :Team ; rdfs:label "Domain Engineering Team"@en ;
+    :teamSize "8"^^xsd:int ; :partOfDepartment :ITDepartment ;
+    :implementsAgileMethodology :ScrumMethodology ; :conductsRetrospective :Q3Retrospective .
+:ExampleTeamLead a owl:NamedIndividual , :Employee ; rdfs:label "Example Team Lead"@en ;
+    :employeeID "EMP-0001" ; :hireDate "2019-09-01"^^xsd:date ; :salary "95000.00"^^xsd:decimal ;
+    :experienceYears "8.5"^^xsd:decimal ; :performanceRating "4.7"^^xsd:decimal ;
+    :belongsToUnit :DomainEngineeringTeam ; :memberOfTeam :DomainEngineeringTeam ; :leadsTeam :DomainEngineeringTeam ;
+    :holdsPosition :TeamLeaderPosition ; :participatesInSprint :Sprint2024Q3 ; :reportsTo :ExampleDepartmentHead .
+:ExampleDepartmentHead a owl:NamedIndividual , :Employee ; rdfs:label "Example Department Head"@en ;
+    :belongsToUnit :ITDepartment ; :holdsPosition :DepartmentHeadPosition ; :headsDepartment :ITDepartment .
+:TeamLeaderPosition a owl:NamedIndividual , :Position ; rdfs:label "Team Leader Position"@en ; :positionLevel "Senior" .
+:DepartmentHeadPosition a owl:NamedIndividual , :Position ; rdfs:label "Department Head Position"@en ; :positionLevel "Executive" .
+:ITHierarchy a owl:NamedIndividual , :OrganizationalHierarchy ; rdfs:label "IT Organizational Hierarchy"@en ;
+    :hierarchyLevel "2"^^xsd:int ; :hasOrganizationalUnit :ITDepartment , :DomainEngineeringTeam .
+:ScrumMethodology a owl:NamedIndividual , :AgileMethodology ; rdfs:label "Scrum Methodology"@en ;
+    :methodologyType "Scrum" ; :enablesAgility :EnterpriseAgility .
+:EnterpriseAgility a owl:NamedIndividual , :OrganizationalAgility ; rdfs:label "Enterprise Agility"@en ;
+    :agilityScore "7.2"^^xsd:decimal ; :adaptabilityIndex "0.7"^^xsd:decimal ; :responseTime "P5D"^^xsd:duration .
+:Sprint2024Q3 a owl:NamedIndividual , :Sprint ; rdfs:label "Sprint 2024 Q3-1"@en ;
+    :sprintDuration "P2W"^^xsd:duration ; :sprintVelocity "23.5"^^xsd:decimal ;
+    :includesActivity :Q3Retrospective .
+:Q3Retrospective a owl:NamedIndividual , :Retrospective ; rdfs:label "Q3 Sprint 1 Retrospective"@en ;
+    :improvesAgility :EnterpriseAgility .
+

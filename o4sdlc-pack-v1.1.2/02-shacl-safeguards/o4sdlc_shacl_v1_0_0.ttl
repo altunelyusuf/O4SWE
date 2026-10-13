@@ -1,0 +1,61 @@
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix o4sdlc:  <http://www.zt4swe.io/o4sdlc/shapes#> .
+
+<http://www.zt4swe.io/o4sdlc/shapes>
+    a owl:Ontology ;
+    rdfs:label "O4SDLC SHACL Safeguards v1.0.0"@en ;
+    owl:versionInfo "1.0.0" ;
+    owl:versionIRI <http://www.zt4swe.io/o4sdlc/shapes/1.0.0> ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed under CC BY 4.0."@en ;
+    dcterms:rightsHolder <http://www.zt4swe.io/agent/YusufAltunel> ;
+    dcterms:publisher    <http://www.zt4swe.io/agent/YusufAltunel> ;
+    dcterms:creator      <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy  <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> ;
+    rdfs:comment "Third leg of the O4SDLC TBox/ABox/SHACL triad (OE convention). Encodes O4SDLC's own structural invariants; complements (does not replace) redo_shacl_v4_0_0 and the O4UCM native shape."@en .
+
+# 1. Every owl:Ontology in the O4SDLC corpus carries BP-D24 metadata + BP-D7 version + PROV lineage.
+o4sdlc:OntologyMetadataShape
+    a sh:NodeShape ;
+    sh:targetClass owl:Ontology ;
+    sh:property [ sh:path dcterms:license ;      sh:minCount 1 ;
+                  sh:message "BP-D24: owl:Ontology must declare dcterms:license." ] ;
+    sh:property [ sh:path dcterms:rightsHolder ; sh:minCount 1 ;
+                  sh:message "BP-D24: owl:Ontology must declare dcterms:rightsHolder." ] ;
+    sh:property [ sh:path dcterms:creator ;      sh:minCount 1 ;
+                  sh:message "BP-D24: owl:Ontology must declare dcterms:creator." ] ;
+    sh:property [ sh:path owl:versionInfo ;      sh:minCount 1 ; sh:datatype xsd:string ;
+                  sh:message "BP-D7: owl:Ontology must declare owl:versionInfo." ] ;
+    sh:property [ sh:path owl:versionIRI ;       sh:minCount 1 ; sh:nodeKind sh:IRI ;
+                  sh:message "BP-D7: owl:Ontology must declare owl:versionIRI." ] ;
+    sh:property [ sh:path prov:wasAttributedTo ; sh:minCount 1 ; sh:nodeKind sh:IRI ;
+                  sh:message "BP-D24/D29: owl:Ontology must carry PROV-O lineage (prov:wasAttributedTo)." ] .
+
+# 2. Every named owl:Class carries an English rdfs:label AND a skos:definition (100% coverage invariant).
+o4sdlc:NamedClassDocumentationShape
+    a sh:NodeShape ;
+    sh:target [ a sh:SPARQLTarget ;
+                sh:select """PREFIX owl: <http://www.w3.org/2002/07/owl#>
+                             SELECT ?this WHERE { ?this a owl:Class . FILTER(isIRI(?this)) }""" ] ;
+    sh:property [ sh:path rdfs:label ;
+                  sh:qualifiedValueShape [ sh:datatype rdfs:Literal ; sh:languageIn ( "en" ) ] ;
+                  sh:qualifiedMinCount 1 ;
+                  sh:message "Every named class must carry at least one English rdfs:label." ] ;
+    sh:property [ sh:path skos:definition ; sh:minCount 1 ;
+                  sh:message "Every named class must carry a skos:definition." ] .
+
+# 3. BP-D18 / SD-14 regression guard: o4se:hasDescription must NOT range over xsd:string
+#    (a language-tagged value on an xsd:string-range datatype property is OWL2-DL inconsistent).
+o4sdlc:HasDescriptionRangeGuardShape
+    a sh:NodeShape ;
+    sh:targetNode <http://www.semanticweb.org/ontologies/2025/O4SE#hasDescription> ;
+    sh:property [ sh:path rdfs:range ;
+                  sh:not [ sh:hasValue xsd:string ] ;
+                  sh:message "BP-D18: o4se:hasDescription must not range over xsd:string; use rdfs:Literal so language-tagged values stay OWL2-DL consistent (SD-14 guard)." ] .

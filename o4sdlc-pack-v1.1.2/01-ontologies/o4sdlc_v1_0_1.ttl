@@ -1,0 +1,120 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix o4sdlc: <http://www.zt4swe.io/o4sdlc#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+skos:exactMatch a owl:ObjectProperty .
+
+o4sdlc:DomainClassDiagram a owl:NamedIndividual,
+        <http://zt4swe.io/ontology/sa-and-d/design-foundations#SADConcept> ;
+    rdfs:label "Domain class diagram"@en ;
+    dcterms:source "System Analysis & Design course/book (zt4swe); examiner CRUD ratification 2026-06-05."@en ;
+    skos:definition "Initial conceptual class diagram capturing domain classes during requirements/analysis."@en ;
+    o4sdlc:refinesInto o4sdlc:AnalysisClassDiagram .
+
+o4sdlc:UseCaseModel a owl:NamedIndividual,
+        <http://zt4swe.io/ontology/sa-and-d/design-foundations#SADConcept> ;
+    rdfs:label "Use-case model"@en ;
+    dcterms:source "System Analysis & Design course/book (zt4swe); examiner CRUD ratification 2026-06-05."@en ;
+    skos:definition "Use-case model developed hand-in-hand with the class diagrams; drives the analysis elaboration."@en ;
+    o4sdlc:refinesInto o4sdlc:AnalysisClassDiagram .
+
+o4sdlc:associatedLifecyclePhase a owl:AnnotationProperty ;
+    rdfs:label "associated lifecycle phase"@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/o4sdlc> ;
+    skos:definition "Associates an SDLC data-operation concept with the O4SE LifecyclePhase in which it is principally designed or realised."@en .
+
+o4sdlc:consolidates a owl:AnnotationProperty ;
+    rdfs:label "consolidates"@en ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/o4sdlc> ;
+    skos:definition "Relates the O4SDLC consolidated ontology to a source ontology whose vocabulary it brings under the consolidated SDLC identity."@en .
+
+o4sdlc:refinesInto a owl:ObjectProperty ;
+    rdfs:label "refines into"@en ;
+    rdfs:domain <http://zt4swe.io/ontology/sa-and-d/design-foundations#SADConcept> ;
+    rdfs:isDefinedBy <http://www.zt4swe.io/o4sdlc> ;
+    rdfs:range <http://zt4swe.io/ontology/sa-and-d/design-foundations#SADConcept> ;
+    rdfs:subPropertyOf <http://zt4swe.io/ontology/sa-and-d/design-foundations#isInputTo> ;
+    skos:definition "Relates an SDLC artifact to the more-refined artifact it evolves into across lifecycle phases (e.g., domain class diagram -> analysis class diagram -> design class diagram). Sub-property of o4df:isInputTo."@en .
+
+<http://www.zt4swe.io/sad/ch5#CRUDMatrix> dcterms:source "Remains an O4UCM CP3 analysis-modeling construct; its operation cells reference the O4SE-canonical CRUD ops."@en .
+
+<http://www.zt4swe.io/sad/ch5#CreateOperation> skos:exactMatch <http://www.semanticweb.org/ontologies/2025/O4SE/DataManagement#CreateOperation> .
+
+<http://www.zt4swe.io/sad/ch5#DeleteOperation> skos:exactMatch <http://www.semanticweb.org/ontologies/2025/O4SE/DataManagement#DeleteOperation> .
+
+<http://www.zt4swe.io/sad/ch5#ReadOperation> skos:exactMatch <http://www.semanticweb.org/ontologies/2025/O4SE/DataManagement#ReadOperation> .
+
+<http://www.zt4swe.io/sad/ch5#UpdateOperation> skos:exactMatch <http://www.semanticweb.org/ontologies/2025/O4SE/DataManagement#UpdateOperation> .
+
+<http://www.semanticweb.org/ontologies/2025/O4SE/DataManagement#CreateOperation> dcterms:source "System Analysis & Design course/book (zt4swe); examiner CRUD ratification 2026-06-05."@en ;
+    o4sdlc:associatedLifecyclePhase <http://www.semanticweb.org/ontologies/2025/O4SE#DesignPhase>,
+        <http://www.semanticweb.org/ontologies/2025/O4SE#ImplementationPhase> .
+
+<http://www.semanticweb.org/ontologies/2025/O4SE/DataManagement#DeleteOperation> dcterms:source "System Analysis & Design course/book (zt4swe); examiner CRUD ratification 2026-06-05."@en ;
+    o4sdlc:associatedLifecyclePhase <http://www.semanticweb.org/ontologies/2025/O4SE#DesignPhase>,
+        <http://www.semanticweb.org/ontologies/2025/O4SE#ImplementationPhase> .
+
+<http://www.semanticweb.org/ontologies/2025/O4SE/DataManagement#ReadOperation> dcterms:source "System Analysis & Design course/book (zt4swe); examiner CRUD ratification 2026-06-05."@en ;
+    o4sdlc:associatedLifecyclePhase <http://www.semanticweb.org/ontologies/2025/O4SE#DesignPhase>,
+        <http://www.semanticweb.org/ontologies/2025/O4SE#ImplementationPhase> .
+
+<http://www.semanticweb.org/ontologies/2025/O4SE/DataManagement#UpdateOperation> dcterms:source "System Analysis & Design course/book (zt4swe); examiner CRUD ratification 2026-06-05."@en ;
+    o4sdlc:associatedLifecyclePhase <http://www.semanticweb.org/ontologies/2025/O4SE#DesignPhase>,
+        <http://www.semanticweb.org/ontologies/2025/O4SE#ImplementationPhase> .
+
+<http://www.zt4swe.io/activity/o4sdlc-consolidation-v1_0_0> a prov:Activity ;
+    rdfs:label "O4SDLC consolidation v1.0.0"@en ;
+    dcterms:date "2026-06-05"^^xsd:date ;
+    prov:used <http://www.semanticweb.org/ontologies/2025/O4SE>,
+        <http://www.zt4swe.io/sad/ch5>,
+        <http://zt4swe.io/ontology/sa-and-d/design-foundations> ;
+    prov:wasAssociatedWith <http://www.zt4swe.io/agent/YusufAltunel> .
+
+o4sdlc:DesignClassDiagram a owl:NamedIndividual,
+        <http://zt4swe.io/ontology/sa-and-d/design-foundations#SADConcept> ;
+    rdfs:label "Design class diagram"@en ;
+    dcterms:source "System Analysis & Design course/book (zt4swe); examiner CRUD ratification 2026-06-05."@en ;
+    skos:definition "Design-level class diagram adding navigability, types, visibility and design classes."@en .
+
+o4sdlc:AnalysisClassDiagram a owl:NamedIndividual,
+        <http://zt4swe.io/ontology/sa-and-d/design-foundations#SADConcept> ;
+    rdfs:label "Analysis class diagram"@en ;
+    dcterms:source "System Analysis & Design course/book (zt4swe); examiner CRUD ratification 2026-06-05."@en ;
+    skos:definition "Analysis-level class diagram elaborating the domain model with analysis responsibilities."@en ;
+    o4sdlc:refinesInto o4sdlc:DesignClassDiagram .
+
+<http://www.zt4swe.io/o4sdlc> a owl:Ontology ;
+    rdfs:label "O4SDLC — Ontology for Systems Development Life Cycle"@en ;
+    dcterms:created "2026-06-05"^^xsd:date ;
+    dcterms:creator <http://www.zt4swe.io/agent/YusufAltunel> ;
+    dcterms:description "Owner-controlled consolidated upper layer over the SDLC source ontologies O4UCM (use-case / analysis), O4DF (design foundations) and O4SE (meta-level lifecycle, methodology, architecture, CMMI, SWEBOK, data, organisation, language). Consolidates the three under the examiner-ratified canonical-owner rule and the alignment graph; supersedes the PAMG-session integration layer (pamg_sdlc_integration) as the named SDLC ontology identity."@en ;
+    dcterms:identifier "o4sdlc_v1_0_0" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-06-05"^^xsd:date ;
+    dcterms:publisher <http://www.zt4swe.io/agent/YusufAltunel> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed under CC BY 4.0."@en ;
+    dcterms:rightsHolder <http://www.zt4swe.io/agent/YusufAltunel> ;
+    dcterms:source "Concepts sourced from the System Analysis and Design course/book context (zt4swe). The book is the provenance SOURCE, not the owning authority."@en ;
+    dcterms:title "O4SDLC — Ontology for Systems Development Life Cycle"@en ;
+    rdfs:comment "v1.0.0 establishes the O4SDLC identity + complete BP-D24 metadata. Member-source merge and the refinement axis are added in subsequent versions (remediation R-1/R-2)."@en,
+        "v1.0.1: E-CRUD (O4UCM CRUD ops skos:exactMatch -> O4SE DataManagement canonical ops; ops associated with Design/Implementation LifecyclePhase) + E-3 (o4sdlc:refinesInto refinement axis with sourced class-diagram evolution chain and use-case hand-in-hand link)."@en ;
+    rdfs:seeAlso <http://www.zt4swe.io/o4sdlc/alignment/1.1.0> ;
+    owl:priorVersion <http://www.zt4swe.io/o4sdlc/1.0.0> ;
+    owl:versionIRI <http://www.zt4swe.io/o4sdlc/1.0.1> ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/o4sdlc-consolidation-v1_0_0> ;
+    o4sdlc:consolidates <http://www.semanticweb.org/ontologies/2025/O4SE>,
+        <http://www.zt4swe.io/sad/ch5>,
+        <http://zt4swe.io/ontology/sa-and-d/design-foundations> .
+
+<http://www.zt4swe.io/agent/YusufAltunel> a prov:Agent,
+        foaf:Person ;
+    rdfs:label "Yusuf Altunel"@en ;
+    foaf:name "Yusuf Altunel" .
+

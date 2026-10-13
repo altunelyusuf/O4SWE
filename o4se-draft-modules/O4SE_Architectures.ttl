@@ -1,0 +1,434 @@
+@prefix o4se: <http://www.semanticweb.org/ontologies/2025/O4SE#> .
+@prefix arch: <http://www.semanticweb.org/ontologies/2025/O4SE/Architectures#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+# ===========================
+# Software Architectures Module
+# ===========================
+
+<http://www.semanticweb.org/ontologies/2025/O4SE/Architectures> a owl:Ontology ;
+    owl:versionInfo "1.0.0"^^xsd:string ;
+    dcterms:title "O4SE Software Architectures Module"@en ;
+    dcterms:description "Comprehensive software and hardware architecture patterns for software engineering"@en ;
+    owl:imports <http://www.semanticweb.org/ontologies/2025/O4SE> .
+
+# ===========================
+# Architecture Core Classes
+# ===========================
+
+arch:Architecture a owl:Class ;
+    rdfs:label "Architecture"@en ;
+    rdfs:comment "High-level structure of a system"@en .
+
+arch:SoftwareArchitecture a owl:Class ;
+    rdfs:label "Software Architecture"@en ;
+    rdfs:subClassOf arch:Architecture ;
+    skos:definition "Fundamental organization of a software system"@en .
+
+arch:HardwareArchitecture a owl:Class ;
+    rdfs:label "Hardware Architecture"@en ;
+    rdfs:subClassOf arch:Architecture ;
+    skos:definition "Physical components and their relationships"@en .
+
+arch:ArchitecturePattern a owl:Class ;
+    rdfs:label "Architecture Pattern"@en ;
+    rdfs:comment "Reusable solution to architectural problems"@en .
+
+arch:ArchitectureStyle a owl:Class ;
+    rdfs:label "Architecture Style"@en ;
+    rdfs:comment "Set of design rules and constraints"@en .
+
+# ===========================
+# Software Architecture Patterns
+# ===========================
+
+arch:MonolithicArchitecture a owl:Class ;
+    rdfs:label "Monolithic Architecture"@en ;
+    rdfs:subClassOf arch:ArchitecturePattern ;
+    skos:definition "Single deployable unit containing all functionality"@en .
+
+arch:ClientServerArchitecture a owl:Class ;
+    rdfs:label "Client-Server Architecture"@en ;
+    rdfs:subClassOf arch:ArchitecturePattern ;
+    skos:definition "Clients request services from servers"@en .
+
+arch:ThreeTierArchitecture a owl:Class ;
+    rdfs:label "Three-Tier Architecture"@en ;
+    rdfs:subClassOf arch:ClientServerArchitecture ;
+    skos:definition "Presentation, business logic, and data tiers"@en .
+
+arch:NTierArchitecture a owl:Class ;
+    rdfs:label "N-Tier Architecture"@en ;
+    rdfs:subClassOf arch:ClientServerArchitecture ;
+    skos:definition "Multiple logical and physical tiers"@en .
+
+arch:MicroservicesArchitecture a owl:Class ;
+    rdfs:label "Microservices Architecture"@en ;
+    rdfs:subClassOf arch:ArchitecturePattern ;
+    skos:definition "Application as suite of small services"@en .
+
+arch:ServiceOrientedArchitecture a owl:Class ;
+    rdfs:label "Service-Oriented Architecture (SOA)"@en ;
+    rdfs:subClassOf arch:ArchitecturePattern ;
+    skos:definition "Services communicate through interfaces"@en .
+
+arch:EventDrivenArchitecture a owl:Class ;
+    rdfs:label "Event-Driven Architecture"@en ;
+    rdfs:subClassOf arch:ArchitecturePattern ;
+    skos:definition "Components communicate through events"@en .
+
+arch:LayeredArchitecture a owl:Class ;
+    rdfs:label "Layered Architecture"@en ;
+    rdfs:subClassOf arch:ArchitecturePattern ;
+    skos:definition "Organized into horizontal layers"@en .
+
+arch:HexagonalArchitecture a owl:Class ;
+    rdfs:label "Hexagonal Architecture"@en ;
+    rdfs:subClassOf arch:ArchitecturePattern ;
+    skos:definition "Ports and adapters pattern"@en .
+
+arch:PipeAndFilterArchitecture a owl:Class ;
+    rdfs:label "Pipe and Filter Architecture"@en ;
+    rdfs:subClassOf arch:ArchitecturePattern ;
+    skos:definition "Data flows through processing components"@en .
+
+arch:ModelViewControllerArchitecture a owl:Class ;
+    rdfs:label "Model-View-Controller (MVC)"@en ;
+    rdfs:subClassOf arch:ArchitecturePattern ;
+    skos:definition "Separates data, presentation, and control"@en .
+
+arch:ModelViewPresenterArchitecture a owl:Class ;
+    rdfs:label "Model-View-Presenter (MVP)"@en ;
+    rdfs:subClassOf arch:ArchitecturePattern .
+
+arch:ModelViewViewModelArchitecture a owl:Class ;
+    rdfs:label "Model-View-ViewModel (MVVM)"@en ;
+    rdfs:subClassOf arch:ArchitecturePattern .
+
+arch:ServerlessArchitecture a owl:Class ;
+    rdfs:label "Serverless Architecture"@en ;
+    rdfs:subClassOf arch:ArchitecturePattern ;
+    skos:definition "Functions as a Service (FaaS)"@en .
+
+# ===========================
+# Distributed Architectures
+# ===========================
+
+arch:DistributedArchitecture a owl:Class ;
+    rdfs:label "Distributed Architecture"@en ;
+    rdfs:subClassOf arch:ArchitecturePattern ;
+    skos:definition "Components on networked computers"@en .
+
+arch:PeerToPeerArchitecture a owl:Class ;
+    rdfs:label "Peer-to-Peer Architecture"@en ;
+    rdfs:subClassOf arch:DistributedArchitecture ;
+    skos:definition "Decentralized resource sharing"@en .
+
+arch:BlockchainArchitecture a owl:Class ;
+    rdfs:label "Blockchain Architecture"@en ;
+    rdfs:subClassOf arch:DistributedArchitecture ;
+    skos:definition "Distributed ledger technology"@en .
+
+arch:DecentralizedArchitecture a owl:Class ;
+    rdfs:label "Decentralized Architecture"@en ;
+    rdfs:subClassOf arch:DistributedArchitecture ;
+    skos:definition "No central authority or control"@en .
+
+arch:FederatedArchitecture a owl:Class ;
+    rdfs:label "Federated Architecture"@en ;
+    rdfs:subClassOf arch:DistributedArchitecture ;
+    skos:definition "Independent systems cooperating"@en .
+
+arch:GridComputingArchitecture a owl:Class ;
+    rdfs:label "Grid Computing Architecture"@en ;
+    rdfs:subClassOf arch:DistributedArchitecture .
+
+arch:EdgeComputingArchitecture a owl:Class ;
+    rdfs:label "Edge Computing Architecture"@en ;
+    rdfs:subClassOf arch:DistributedArchitecture ;
+    skos:definition "Processing at network edge"@en .
+
+arch:FogComputingArchitecture a owl:Class ;
+    rdfs:label "Fog Computing Architecture"@en ;
+    rdfs:subClassOf arch:DistributedArchitecture .
+
+# ===========================
+# Application Layers
+# ===========================
+
+arch:ApplicationLayer a owl:Class ;
+    rdfs:label "Application Layer"@en ;
+    rdfs:comment "Logical division of application concerns"@en .
+
+arch:PresentationLayer a owl:Class ;
+    rdfs:label "Presentation Layer"@en ;
+    rdfs:subClassOf arch:ApplicationLayer ;
+    skos:definition "User interface and interaction"@en .
+
+arch:FrontendLayer a owl:Class ;
+    rdfs:label "Frontend Layer"@en ;
+    rdfs:subClassOf arch:PresentationLayer ;
+    skos:definition "Client-side user interface"@en .
+
+arch:BusinessLogicLayer a owl:Class ;
+    rdfs:label "Business Logic Layer"@en ;
+    rdfs:subClassOf arch:ApplicationLayer ;
+    skos:definition "Core business rules and processing"@en .
+
+arch:BackendLayer a owl:Class ;
+    rdfs:label "Backend Layer"@en ;
+    rdfs:subClassOf arch:BusinessLogicLayer ;
+    skos:definition "Server-side processing"@en .
+
+arch:DataAccessLayer a owl:Class ;
+    rdfs:label "Data Access Layer"@en ;
+    rdfs:subClassOf arch:ApplicationLayer ;
+    skos:definition "Database interaction logic"@en .
+
+arch:DatabaseLayer a owl:Class ;
+    rdfs:label "Database Layer"@en ;
+    rdfs:subClassOf arch:ApplicationLayer ;
+    skos:definition "Data persistence and storage"@en .
+
+arch:IntegrationLayer a owl:Class ;
+    rdfs:label "Integration Layer"@en ;
+    rdfs:subClassOf arch:ApplicationLayer ;
+    skos:definition "External system communication"@en .
+
+arch:MiddlewareLayer a owl:Class ;
+    rdfs:label "Middleware Layer"@en ;
+    rdfs:subClassOf arch:IntegrationLayer ;
+    skos:definition "Software between OS and applications"@en .
+
+arch:APILayer a owl:Class ;
+    rdfs:label "API Layer"@en ;
+    rdfs:subClassOf arch:IntegrationLayer ;
+    skos:definition "Application Programming Interface"@en .
+
+arch:CachingLayer a owl:Class ;
+    rdfs:label "Caching Layer"@en ;
+    rdfs:subClassOf arch:ApplicationLayer ;
+    skos:definition "Performance optimization through caching"@en .
+
+# ===========================
+# API Architectures
+# ===========================
+
+arch:APIArchitecture a owl:Class ;
+    rdfs:label "API Architecture"@en ;
+    rdfs:comment "Design of application programming interfaces"@en .
+
+arch:RESTfulAPI a owl:Class ;
+    rdfs:label "RESTful API"@en ;
+    rdfs:subClassOf arch:APIArchitecture ;
+    skos:definition "Representational State Transfer"@en .
+
+arch:GraphQLAPI a owl:Class ;
+    rdfs:label "GraphQL API"@en ;
+    rdfs:subClassOf arch:APIArchitecture ;
+    skos:definition "Query language for APIs"@en .
+
+arch:SOAPAPI a owl:Class ;
+    rdfs:label "SOAP API"@en ;
+    rdfs:subClassOf arch:APIArchitecture ;
+    skos:definition "Simple Object Access Protocol"@en .
+
+arch:gRPCAPI a owl:Class ;
+    rdfs:label "gRPC API"@en ;
+    rdfs:subClassOf arch:APIArchitecture ;
+    skos:definition "Remote Procedure Call framework"@en .
+
+arch:WebSocketAPI a owl:Class ;
+    rdfs:label "WebSocket API"@en ;
+    rdfs:subClassOf arch:APIArchitecture ;
+    skos:definition "Full-duplex communication"@en .
+
+# ===========================
+# Cloud Architectures
+# ===========================
+
+arch:CloudArchitecture a owl:Class ;
+    rdfs:label "Cloud Architecture"@en ;
+    rdfs:subClassOf arch:ArchitecturePattern ;
+    skos:definition "Leveraging cloud computing services"@en .
+
+arch:PublicCloud a owl:Class ;
+    rdfs:label "Public Cloud"@en ;
+    rdfs:subClassOf arch:CloudArchitecture .
+
+arch:PrivateCloud a owl:Class ;
+    rdfs:label "Private Cloud"@en ;
+    rdfs:subClassOf arch:CloudArchitecture .
+
+arch:HybridCloud a owl:Class ;
+    rdfs:label "Hybrid Cloud"@en ;
+    rdfs:subClassOf arch:CloudArchitecture .
+
+arch:MultiCloud a owl:Class ;
+    rdfs:label "Multi-Cloud"@en ;
+    rdfs:subClassOf arch:CloudArchitecture ;
+    skos:definition "Using multiple cloud providers"@en .
+
+arch:CloudNativeArchitecture a owl:Class ;
+    rdfs:label "Cloud-Native Architecture"@en ;
+    rdfs:subClassOf arch:CloudArchitecture ;
+    skos:definition "Built specifically for cloud"@en .
+
+# ===========================
+# Hardware Architectures
+# ===========================
+
+arch:ProcessorArchitecture a owl:Class ;
+    rdfs:label "Processor Architecture"@en ;
+    rdfs:subClassOf arch:HardwareArchitecture .
+
+arch:x86Architecture a owl:Class ;
+    rdfs:label "x86 Architecture"@en ;
+    rdfs:subClassOf arch:ProcessorArchitecture .
+
+arch:ARMArchitecture a owl:Class ;
+    rdfs:label "ARM Architecture"@en ;
+    rdfs:subClassOf arch:ProcessorArchitecture .
+
+arch:RISCArchitecture a owl:Class ;
+    rdfs:label "RISC Architecture"@en ;
+    rdfs:subClassOf arch:ProcessorArchitecture .
+
+arch:CISCArchitecture a owl:Class ;
+    rdfs:label "CISC Architecture"@en ;
+    rdfs:subClassOf arch:ProcessorArchitecture .
+
+arch:EmbeddedSystemArchitecture a owl:Class ;
+    rdfs:label "Embedded System Architecture"@en ;
+    rdfs:subClassOf arch:HardwareArchitecture ;
+    skos:definition "Dedicated function within larger system"@en .
+
+arch:IoTArchitecture a owl:Class ;
+    rdfs:label "IoT Architecture"@en ;
+    rdfs:subClassOf arch:HardwareArchitecture ;
+    skos:definition "Internet of Things devices"@en .
+
+# ===========================
+# Blockchain Concepts
+# ===========================
+
+arch:SmartContract a owl:Class ;
+    rdfs:label "Smart Contract"@en ;
+    rdfs:comment "Self-executing contract on blockchain"@en ;
+    rdfs:subClassOf o4se:Software .
+
+arch:DApp a owl:Class ;
+    rdfs:label "Decentralized Application"@en ;
+    rdfs:subClassOf o4se:Application ;
+    skos:definition "Application running on blockchain"@en .
+
+arch:ConsensusAlgorithm a owl:Class ;
+    rdfs:label "Consensus Algorithm"@en ;
+    rdfs:comment "Agreement mechanism in distributed systems"@en .
+
+arch:ProofOfWork a owl:Class ;
+    rdfs:label "Proof of Work"@en ;
+    rdfs:subClassOf arch:ConsensusAlgorithm .
+
+arch:ProofOfStake a owl:Class ;
+    rdfs:label "Proof of Stake"@en ;
+    rdfs:subClassOf arch:ConsensusAlgorithm .
+
+# ===========================
+# Properties
+# ===========================
+
+arch:hasArchitecture a owl:ObjectProperty ;
+    rdfs:label "has architecture"@en ;
+    rdfs:domain o4se:SoftwareSystem ;
+    rdfs:range arch:Architecture .
+
+arch:implementsPattern a owl:ObjectProperty ;
+    rdfs:label "implements pattern"@en ;
+    rdfs:domain o4se:SoftwareSystem ;
+    rdfs:range arch:ArchitecturePattern .
+
+arch:hasLayer a owl:ObjectProperty ;
+    rdfs:label "has layer"@en ;
+    rdfs:domain arch:Architecture ;
+    rdfs:range arch:ApplicationLayer .
+
+arch:communicatesWith a owl:ObjectProperty ;
+    rdfs:label "communicates with"@en ;
+    rdfs:domain arch:ApplicationLayer ;
+    rdfs:range arch:ApplicationLayer .
+
+arch:deployedOn a owl:ObjectProperty ;
+    rdfs:label "deployed on"@en ;
+    rdfs:domain o4se:Software ;
+    rdfs:range arch:CloudArchitecture .
+
+arch:runsOn a owl:ObjectProperty ;
+    rdfs:label "runs on"@en ;
+    rdfs:domain o4se:Software ;
+    rdfs:range arch:HardwareArchitecture .
+
+arch:exposesAPI a owl:ObjectProperty ;
+    rdfs:label "exposes API"@en ;
+    rdfs:domain arch:BackendLayer ;
+    rdfs:range arch:APIArchitecture .
+
+arch:usesConsensus a owl:ObjectProperty ;
+    rdfs:label "uses consensus"@en ;
+    rdfs:domain arch:BlockchainArchitecture ;
+    rdfs:range arch:ConsensusAlgorithm .
+
+# ===========================
+# Data Properties
+# ===========================
+
+arch:numberOfTiers a owl:DatatypeProperty ;
+    rdfs:label "number of tiers"@en ;
+    rdfs:domain arch:NTierArchitecture ;
+    rdfs:range xsd:integer .
+
+arch:numberOfServices a owl:DatatypeProperty ;
+    rdfs:label "number of services"@en ;
+    rdfs:domain arch:MicroservicesArchitecture ;
+    rdfs:range xsd:integer .
+
+arch:scalabilityLevel a owl:DatatypeProperty ;
+    rdfs:label "scalability level"@en ;
+    rdfs:domain arch:Architecture ;
+    rdfs:range xsd:string ;
+    rdfs:comment "horizontal, vertical, or both"@en .
+
+arch:latencyRequirement a owl:DatatypeProperty ;
+    rdfs:label "latency requirement"@en ;
+    rdfs:domain arch:Architecture ;
+    rdfs:range xsd:duration .
+
+# ===========================
+# Individuals
+# ===========================
+
+arch:RESTArchitecturalStyle a arch:ArchitectureStyle ;
+    rdfs:label "REST Architectural Style"@en ;
+    o4se:hasDescription "Representational State Transfer constraints"@en .
+
+arch:AWSCloud a arch:PublicCloud ;
+    rdfs:label "Amazon Web Services"@en .
+
+arch:AzureCloud a arch:PublicCloud ;
+    rdfs:label "Microsoft Azure"@en .
+
+arch:GoogleCloud a arch:PublicCloud ;
+    rdfs:label "Google Cloud Platform"@en .
+
+arch:Ethereum a arch:BlockchainArchitecture ;
+    rdfs:label "Ethereum Blockchain"@en ;
+    arch:usesConsensus arch:ProofOfStake .
+
+arch:Bitcoin a arch:BlockchainArchitecture ;
+    rdfs:label "Bitcoin Blockchain"@en ;
+    arch:usesConsensus arch:ProofOfWork .

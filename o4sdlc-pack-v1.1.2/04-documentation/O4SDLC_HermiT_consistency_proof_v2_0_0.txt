@@ -1,0 +1,43 @@
+O4SDLC — HermiT Consistency Proof v2.0.0  (REPRODUCIBLE)
+=========================================================
+Date: 2026-06-05
+Supersedes: in-package HermiT_consistency_proof_v1_0_0.txt (claim NOT reproducible; see SD-14).
+
+ARTIFACTS (merged):
+  O4UCM v1.0.2 + O4DF v1.0.1 + O4SE v1.0.8 + pamg_sdlc_alignment v1.1.0 + o4sdlc v1.0.0
+  Merged graph: 5912 triples.
+
+REASONER (canonical, not the owlready2 bridge):
+  HermiT via OWL API CLI — org.semanticweb.HermiT.cli.CommandLine
+  + org.semanticweb.HermiT.Reasoner (Configuration.throwInconsistentOntologyException=false)
+  HermiT.jar bundled with owlready2 0.50; OpenJDK 21.
+
+PREPROCESSING (reasoning-only; NOT written back to artifacts):
+  - owl:imports stripped (annotation vocabularies unresolvable offline).
+  - Non-OWL2-DL datatype literals on O4UCM/O4DF instance data coerced
+    xsd:date/xsd:duration -> xsd:string (27 literals). These datatypes are
+    outside the OWL 2 datatype map; coercion is a faithful reasoning transform.
+
+RESULT:
+  isConsistent()            : true
+  owl:Thing satisfiable     : true
+  unsatisfiable named classes: 0
+  => CONSISTENT.
+
+ROOT-CAUSE FIX APPLIED (SD-14, owner-authorized):
+  Defect: O4SE_Core_Structure asserted hasDescription with xsd:string range,
+  but 17 individuals carry language-tagged (@en) values. A language-tagged
+  literal has datatype rdf:langString, disjoint from xsd:string -> OWL 2 DL clash.
+  Minimal 2-axiom justification (computed by deletion-based MUS using HermiT):
+     DataPropertyRange(O4SE:hasDescription xsd:string)
+     DataPropertyAssertion(O4SE:hasDescription O4SE:ScrumFramework "…"@en)
+  Fix: widen hasDescription rdfs:range  xsd:string -> rdfs:Literal
+       (admits xsd:string AND rdf:langString; preserves multilingual text;
+        owl:AllDisjointClasses {Stakeholder,Process,Artifact,Tool,QualityAttribute} UNCHANGED).
+  => O4SE v1.0.8.
+
+NOTE ON THE EARLIER MISDIAGNOSIS (recorded for discipline):
+  The owlready2->HermiT bridge gave UNRELIABLE verdicts (it reported the
+  ADC-removed graph "consistent" when the canonical CLI reported it inconsistent,
+  and falsely implicated the AllDisjointClasses). The canonical OWL API/CLI path
+  is authoritative; the bridge must not be used for consistency certification.

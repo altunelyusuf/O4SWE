@@ -1,0 +1,1412 @@
+@prefix amod: <http://example.org/amod#> .
+@prefix core: <http://example.org/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix o4df: <http://zt4swe.io/ontology/sa-and-d/design-foundations#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sad: <http://zt4swe.io/ontology/sa-and-d/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sad:SAD_Ecosystem_Root a owl:NamedIndividual ;
+    rdfs:label "Systems Analysis and Design Ontology Ecosystem Root"@en ;
+    dcterms:description "Planned synthesis ontology for the full Systems Analysis and Design domain. Imports all chapter modules upon completion." ;
+    dcterms:source "Satzinger et al. (2016) — full textbook table of contents."@en ;
+    skos:definition "The planned synthesis ontology that will import all chapter-level modules of the SA&D domain, forming a unified knowledge graph covering the complete subject matter of Satzinger, Jackson, and Burd (2016) Systems Analysis and Design In a Changing World 7th edition."@en ;
+    prov:wasDerivedFrom sad:design-foundations ;
+    o4df:plannedModules "Ch1-Overview, Ch2-SDLC, Ch3-ProjectManagement, Ch4-Requirements, Ch5-Analysis, Ch6-DesignFoundations, Ch7-TechnologyArchitecture, Ch8-UIDesign, Ch9-DatabaseDesign, Ch10-SoftwareClassesAndMethods, Ch11-Testing, Ch12-Deployment, Ch13-ObjectOrientedDesign, Ch14-PackagingAndDeployment"^^xsd:string .
+
+o4df:AuditTrailControl a owl:Class ;
+    rdfs:label "Audit Trail Control"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.173, Figure 6-11."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:FraudPreventionControl ;
+    skos:definition "A fraud prevention control that creates an immutable, time-stamped log of all system transactions and record changes — accessible only to a restricted set of trusted administrators — enabling post-hoc detection of fraudulent or erroneous activity and supporting forensic investigation."@en ;
+    skos:example "A database trigger that logs every change to the AccountsPayable table with the user ID, timestamp, old value, and new value, storing the log in a write-once audit schema."@en .
+
+o4df:Authorization a owl:Class ;
+    rdfs:label "Authorization"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.174."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:AccessControl ;
+    skos:definition "The process of evaluating an authenticated user's request to access a specific resource against the applicable access control list and determining whether to grant or deny the requested access based on the user's assigned permissions."@en ;
+    skos:example "After authenticating as jsmith, the system checks the ACL for the OrderPricing table and determines that jsmith's role (OrderClerk) has SELECT but not UPDATE permission, denying the UPDATE request."@en .
+
+o4df:BackupProcedure a owl:Class ;
+    rdfs:label "Backup Procedure"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.172."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:RedundancyBackupRecoveryControl ;
+    skos:definition "A scheduled procedure that creates full or incremental copies of a file system, database, or application software to off-site removable storage media or a geographically separated storage server, enabling restoration of data following failure, corruption, or catastrophic loss."@en ;
+    skos:example "A nightly full backup of the accounting database to encrypted magnetic tape stored in a bank vault, supplemented by hourly incremental backups to a cloud storage service."@en .
+
+o4df:BiometricAuthentication a owl:Class ;
+    rdfs:label "Biometric Authentication"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.174."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:Authentication ;
+    skos:definition "An authentication method that verifies user identity by measuring a unique physiological or behavioural characteristic — including fingerprints, retinal patterns, facial geometry, or voice waveform — and comparing the measurement to a stored template, offering an inherence factor that cannot be forgotten or easily transferred."@en ;
+    skos:example "A fingerprint scanner on a tablet that authenticates a field engineer before they can access configuration data for critical infrastructure systems."@en .
+
+o4df:BuildBuyAcquireDecision a owl:Class ;
+    rdfs:label "Build-Buy-Acquire Decision"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.165. Bass, Clements, and Kazman (2022), Software Architecture in Practice 4th ed."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "An architectural decision made for each application component that determines whether it will be constructed by internal development staff (build), purchased as a commercial off-the-shelf package (buy), or consumed as an external service via a web services interface (acquire), based on trade-offs between cost, time, flexibility, and strategic dependency."@en ;
+    skos:example "Decision: acquire Google Maps API rather than build a custom mapping component; buy an ERP platform and build custom extensions."@en .
+
+o4df:ClassAnnotationShape a sh:NodeShape ;
+    rdfs:label "Class Annotation Completeness Shape"@en ;
+    sh:property [ sh:datatype rdf:langString ;
+            sh:description "Every class must have at least one rdfs:label with language tag." ;
+            sh:minCount 1 ;
+            sh:name "label" ;
+            sh:path rdfs:label ],
+        [ sh:datatype rdf:langString ;
+            sh:description "Every class must have a skos:definition with language tag." ;
+            sh:minCount 1 ;
+            sh:name "definition" ;
+            sh:path skos:definition ],
+        [ sh:description "Every class must declare dcterms:source." ;
+            sh:minCount 1 ;
+            sh:name "source" ;
+            sh:path dcterms:source ] ;
+    sh:targetClass owl:Class .
+
+o4df:ComponentDiagram a owl:Class ;
+    rdfs:label "Component Diagram"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.162, Figure 6-5."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:UMLDesignModel ;
+    skos:definition "A UML diagram that illustrates the physical software components of the system — executables, libraries, scripts, and data files — and the dependencies and interfaces between them, showing how the system is assembled from buildable and deployable units."@en ;
+    skos:example "A component diagram showing the web browser client, internet server, application server, and database server components with their communication interfaces."@en .
+
+o4df:ControlMechanismShape a sh:NodeShape ;
+    rdfs:label "Control Mechanism Annotation Shape"@en ;
+    sh:property [ sh:datatype rdf:langString ;
+            sh:description "Every ControlMechanism must have a skos:definition." ;
+            sh:minCount 1 ;
+            sh:name "definition" ;
+            sh:path skos:definition ],
+        [ sh:description "Every ControlMechanism must declare dcterms:source." ;
+            sh:minCount 1 ;
+            sh:path dcterms:source ] ;
+    sh:targetClass o4df:ControlMechanism .
+
+o4df:DatabaseAdministrator a owl:Class ;
+    rdfs:label "Database Administrator"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.168."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:StakeholderRole ;
+    skos:definition "A technical specialist responsible for designing, implementing, securing, and tuning the database infrastructure of an information system, addressing structural, performance, encryption, and distribution concerns during the database design activity."@en ;
+    skos:example "A DBA who designs table schemas, configures access controls, and tunes query performance for a health-care records system."@en .
+
+o4df:DecryptionProcess a owl:Class ;
+    rdfs:label "Decryption Process"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.176."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "The process of applying the inverse mathematical transformation of an encryption algorithm, using the correct decryption key, to convert ciphertext back into the original plaintext data, recoverable only by a party possessing the correct key."@en ;
+    skos:example "Applying the AES-256 decryption function with the stored key to recover readable patient records from an encrypted database backup."@en .
+
+o4df:DeploymentDiagram a owl:Class ;
+    rdfs:label "Deployment Diagram"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.162, Figure 6-5."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:UMLDesignModel ;
+    skos:definition "A UML diagram that models the physical distribution of application components across the hardware nodes in the deployment environment — servers, workstations, mobile devices, and network infrastructure — and specifies the communication links between nodes."@en ;
+    skos:example "A deployment diagram for an e-commerce system showing browser client, internet server, application server, and database server with network connections."@en .
+
+o4df:DescribeEnvironmentActivity a owl:NamedIndividual,
+        o4df:EnvironmentDescriptionActivity ;
+    rdfs:label "Describe the Environment"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.164–165."@en ;
+    skos:definition "The first design activity, which characterises external systems and technology architecture to establish the constraints within which all other design activities must operate."@en ;
+    o4df:hasKeyQuestion "How will this system interact with other systems and with the organisation's existing technologies?"^^xsd:string ;
+    o4df:hasPageReference "p.164–165"^^xsd:string ;
+    o4df:hasSourceChapter "Chapter 6"^^xsd:string ;
+    o4df:precedes o4df:DesignApplicationComponentsActivity,
+        o4df:DesignDatabaseActivity,
+        o4df:DesignSoftwareClassesActivity,
+        o4df:DesignUserInterfaceActivity .
+
+o4df:DesignActivityShape a sh:NodeShape ;
+    rdfs:label "Design Activity Constraint Shape"@en ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Every DesignActivity individual must declare its key question." ;
+            sh:minCount 1 ;
+            sh:path o4df:hasKeyQuestion ] ;
+    sh:targetClass o4df:DesignActivity .
+
+o4df:DesignClassDiagram a owl:Class ;
+    rdfs:label "Design Class Diagram"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.168–169, Figure 6-8."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:UMLDesignModel ;
+    skos:definition "A UML class diagram extended beyond the domain model to include software-specific elements — attribute data types, access modifiers, key designations, index specifications, and method signatures — constituting a direct blueprint for programmer implementation of object-oriented classes."@en ;
+    skos:example "The RMO CSMS design class diagram showing Customer with -accountNo:string{key}, -name:string and +updateName(), +requestHistory(); Sale with -saleID:int{key} and +addItem()."@en .
+
+o4df:DevSecOps a owl:Class ;
+    rdfs:label "DevSecOps"@en ;
+    dcterms:source "OWASP Top 10 (2021). CSA Security Guidance v4.0 (2017). COM4061 Research Report (2026)."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:ContemporaryConcept ;
+    skos:definition "A software engineering practice that integrates security activities — including static application security testing, dynamic testing, software composition analysis, and infrastructure-as-code security scanning — directly into the continuous integration and continuous delivery pipeline, enabling automated detection of security defects at the moment of code commit."@en ;
+    skos:example "A DevSecOps pipeline that runs SAST on every pull request, DAST on every deployment to staging, and SCA on every dependency update, blocking promotion if critical vulnerabilities are found."@en ;
+    o4df:extendsDesignPrinciple o4df:SecurityControl .
+
+o4df:DigitalSignature a owl:Class ;
+    rdfs:label "Digital Signature"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.178."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SecurityControl ;
+    skos:definition "A cryptographic technique in which a sender encrypts a hash of a document or message with their private key, enabling any recipient to verify authorship and message integrity by decrypting the signature with the sender's public key and confirming that the hash matches the received document."@en ;
+    skos:example "A bank encrypts the hash of a payment instruction with its private key; the recipient decrypts with the bank's public key to confirm authenticity and integrity."@en .
+
+o4df:DiscardedOutputControl a owl:Class ;
+    rdfs:label "Discarded Output Control"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.171."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:OutputControl ;
+    skos:definition "An output control that mandates the secure destruction of printed documents containing sensitive information by shredding or incineration rather than disposal with general waste, mitigating the risk of information recovery through physical search of discarded materials."@en ;
+    skos:example "A policy requiring that all printed patient records, financial statements, and personnel files be cross-cut shredded before disposal."@en .
+
+o4df:ElectronicOutputLabelling a owl:Class ;
+    rdfs:label "Electronic Output Labelling"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.172."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:OutputControl ;
+    skos:definition "An output control that requires electronic outputs to include internal metadata labels identifying their source system, content type, and relevant dates, together with checksums or cryptographic integrity verifications enabling recipients to detect tampering or data loss in transit."@en ;
+    skos:example "An electronic payroll export file with embedded XML headers declaring source system, export timestamp, record count, and a SHA-256 checksum of the data payload."@en .
+
+o4df:EncryptionKey a owl:Class ;
+    rdfs:label "Encryption Key"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.176. NIST SP 800-175B Rev.1 (2020)."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "A binary string of specified length that serves as the secret parameter to an encryption algorithm, determining the specific transformation applied to plaintext data such that the same algorithm with different keys produces different ciphertext, and that decryption without the correct key is computationally infeasible."@en ;
+    skos:example "A 256-bit AES encryption key generated using a cryptographically secure random number generator and stored in a hardware security module."@en .
+
+o4df:EncryptionShape a sh:NodeShape ;
+    rdfs:label "Encryption Mechanism Shape"@en ;
+    sh:property [ sh:description "Every EncryptionMechanism must have at least one concrete skos:example." ;
+            sh:minCount 1 ;
+            sh:path skos:example ] ;
+    sh:targetClass o4df:EncryptionMechanism .
+
+o4df:ExternalSystem a owl:Class ;
+    rdfs:label "External System"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.164."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:DeploymentEnvironment ;
+    skos:definition "A system outside the boundary of the new information system with which it must communicate or integrate, requiring the designer to specify precise message formats, network addresses, communication protocols, security methods, and error recovery procedures for each interface."@en ;
+    skos:example "A UPS package-tracking API, a Federal Express shipping service, a Tax Bureau payroll system."@en .
+
+o4df:ExternalSystemInterface a owl:Class ;
+    rdfs:label "External System Interface"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.164."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "The formal specification of the communication contract between the new information system and an external system, encompassing message format definitions, network addresses, communication protocol selections, security method requirements, and error detection and recovery procedures."@en ;
+    skos:example "An interface specification stating that the shipping subsystem communicates with UPS via REST/JSON over HTTPS on port 443, using OAuth 2.0 client credentials for authentication."@en .
+
+o4df:Firewall a owl:Class ;
+    rdfs:label "Firewall"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.170, Figure 6-9."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SecurityControl ;
+    skos:definition "A network security device positioned between an internal network and an external network — most commonly the Internet — that inspects incoming and outgoing network traffic according to configurable security rules and blocks potentially malicious communications while permitting legitimate traffic."@en ;
+    skos:example "A stateful inspection firewall blocking all inbound connections to internal servers except on ports 80 and 443, and logging all connection attempts for security monitoring."@en .
+
+o4df:FraudMotivationElement a owl:NamedIndividual,
+        o4df:FraudMotivation ;
+    rdfs:label "Motivation (Fraud Triangle)"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.173."@en ;
+    skos:definition "The second element of the fraud triangle: the perpetrator's desire for personal benefit from the fraud, beyond direct technical control of system designers."@en .
+
+o4df:FraudOpportunityElement a owl:NamedIndividual,
+        o4df:FraudOpportunity ;
+    rdfs:label "Opportunity (Fraud Triangle)"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.172–173, Figure 6-10."@en ;
+    skos:definition "The first and only technically controllable element of the fraud triangle: the practical system access that enables a perpetrator to commit fraud, targeted by separation of duties, access controls, and monitoring."@en ;
+    o4df:hasPageReference "p.172–173"^^xsd:string ;
+    o4df:hasSourceChapter "Chapter 6"^^xsd:string .
+
+o4df:FraudRationalizationElement a owl:NamedIndividual,
+        o4df:FraudRationalization ;
+    rdfs:label "Rationalisation (Fraud Triangle)"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.173."@en ;
+    skos:definition "The third element of the fraud triangle: the internal justification the perpetrator uses to reconcile the fraudulent act, beyond direct technical control of system designers."@en .
+
+o4df:GDPRCompliance a owl:Class ;
+    rdfs:label "GDPR Compliance"@en ;
+    dcterms:source "European Parliament and Council. Regulation (EU) 2016/679 (GDPR). COM4061 Research Report (2026)."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:seeAlso <https://eur-lex.europa.eu/eli/reg/2016/679> ;
+    rdfs:subClassOf o4df:ContemporaryConcept ;
+    skos:definition "The fulfilment of obligations imposed by the General Data Protection Regulation (EU) 2016/679 on information systems that process personal data of EU residents, including data minimisation, purpose limitation, lawfulness of processing, data subject rights (access, erasure, portability), and mandatory breach notification within 72 hours."@en ;
+    skos:example "A web application that collects only the personal data fields strictly necessary for service delivery, encrypts all personal data at rest, provides a data deletion API for right-to-erasure requests, and logs all access to personal data."@en ;
+    o4df:extendsDesignPrinciple o4df:EncryptionMechanism .
+
+o4df:HTTPSProtocolInstance a owl:NamedIndividual,
+        o4df:HTTPSProtocol ;
+    rdfs:label "HTTPS Protocol"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.179."@en ;
+    skos:definition "HTTP secured by TLS, the universal standard for web application communication security, providing server authentication via certificates and end-to-end data encryption."@en ;
+    o4df:hasAbbreviation "HTTPS"^^xsd:string .
+
+o4df:IPSecProtocol a owl:NamedIndividual,
+        o4df:IPSecurity ;
+    rdfs:label "IP Security Protocol"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.179."@en ;
+    skos:definition "The IETF network-layer security protocol suite encrypting IP packets transparently, used for VPN tunnels and point-to-point secure communications between network nodes."@en ;
+    o4df:hasAbbreviation "IPSec"^^xsd:string .
+
+o4df:ISOIEC27001 a owl:Class ;
+    rdfs:label "ISO/IEC 27001:2022"@en ;
+    dcterms:source "ISO/IEC 27001:2022. COM4061 Research Report (2026)."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:seeAlso <https://www.iso.org/standard/82875.html> ;
+    rdfs:subClassOf o4df:ContemporaryConcept ;
+    skos:definition "The international standard specifying requirements for establishing, implementing, maintaining, and continually improving an Information Security Management System (ISMS), providing a risk-based framework of Annex A controls that map directly to integrity control, security control, redundancy, and access management design decisions."@en ;
+    skos:example "An organisation achieving ISO/IEC 27001:2022 certification has demonstrated that its ISMS systematically addresses all applicable Annex A controls, including A.5 Organisational controls, A.7 Physical controls, and A.8 Technological controls."@en ;
+    o4df:extendsDesignPrinciple o4df:IntegrityControl .
+
+o4df:InteractionDiagram a owl:Class ;
+    rdfs:label "Interaction Diagram"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.162."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:UMLDesignModel ;
+    skos:definition "A UML diagram that specifies the sequence of messages exchanged between objects during the realisation of a use case, showing the order of method calls, the objects involved, and the data passed, thereby serving as a blueprint for the most complex algorithmic logic in the system."@en ;
+    skos:example "A sequence diagram showing the interactions between SaleHandler, Customer, Sale, and SaleItem objects during the processNewSale use case."@en .
+
+o4df:MicroservicesPattern a owl:Class ;
+    rdfs:label "Microservices Pattern"@en ;
+    dcterms:source "Newman, S. (2019), Monolith to Microservices. Richardson, C. (2018), Microservices Patterns."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:CloudNativeDesign ;
+    skos:definition "An application component design pattern in which the system is decomposed into small, independently deployable services each responsible for a single bounded context, communicating via lightweight APIs, enabling independent scaling, technology diversity, and continuous deployment of individual services without system-wide redeployment."@en ;
+    skos:example "An order management system decomposed into an OrderService, InventoryService, PaymentService, and NotificationService, each deployed independently and communicating via REST APIs."@en .
+
+o4df:Mockup a owl:Class ;
+    rdfs:label "UI Mockup"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.166."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:UIDesignModel ;
+    skos:definition "A static visual representation of a proposed interface screen that depicts the layout, visual hierarchy, content areas, and interactive controls without implementing actual functionality, used early in UI design to gather stakeholder feedback at low cost."@en ;
+    skos:example "A wireframe of the product search screen showing search field, filter panel, results grid, and pagination controls."@en .
+
+o4df:MultifactorAuthentication a owl:Class ;
+    rdfs:label "Multifactor Authentication"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.174. NIST SP 800-63B (2017), AAL2 and AAL3."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:Authentication ;
+    skos:definition "An authentication method that requires a user to present two or more independent authentication factors — drawn from at least two of the three categories knowledge, possession, and inherence — before access is granted, substantially increasing the cost of credential compromise for attackers."@en ;
+    skos:example "A VPN login requiring the user's password (knowledge) plus a one-time code from a hardware token (possession), so that stealing the password alone is insufficient."@en .
+
+o4df:MultimodalInterface a owl:Class ;
+    rdfs:label "Multimodal Interface"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.166."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:UserInterface ;
+    skos:definition "A user interface that accommodates multiple interaction modalities simultaneously or switchably, including touch, voice recognition, eye-tracking, keyboard, and mouse, enabling users to interact naturally across diverse device types and physical contexts."@en ;
+    skos:example "An interface that accepts both touch gestures on a tablet and keyboard input on a desktop, with voice recognition available as an accessibility alternative."@en .
+
+o4df:NISTCSF20 a owl:Class ;
+    rdfs:label "NIST Cybersecurity Framework 2.0"@en ;
+    dcterms:source "NIST CSWP 29 (2024). COM4061 Research Report (2026)."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:seeAlso <https://doi.org/10.6028/NIST.CSWP.29> ;
+    rdfs:subClassOf o4df:ContemporaryConcept ;
+    skos:definition "A voluntary US federal framework published in 2024 that organises cybersecurity activities into six core functions — Identify, Protect, Detect, Respond, Recover, and Govern — providing a structured vocabulary and risk management approach for integrating security controls across all phases of systems design and operation."@en ;
+    skos:example "An organisation mapping its security design decisions to the NIST CSF 2.0 Protect function, verifying that authentication (PR.AA), access control (PR.AC), and data protection (PR.DS) controls are addressed in each design activity."@en ;
+    o4df:extendsDesignPrinciple o4df:SecurityControl .
+
+o4df:OWASPTOP10 a owl:Class ;
+    rdfs:label "OWASP Top 10 (2021)"@en ;
+    dcterms:source "OWASP Foundation. OWASP Top 10 (2021)."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:seeAlso <https://owasp.org/Top10/> ;
+    rdfs:subClassOf o4df:ContemporaryConcept ;
+    skos:definition "An industry-consensus list published by the Open Web Application Security Project identifying the ten most critical web application security risk categories as of 2021 — including injection, broken authentication, cryptographic failures, and insecure design — providing a practical checklist for security-by-design activities."@en ;
+    skos:example "A systems designer cross-checking the application component design against OWASP Top 10 A01 (Broken Access Control) and A02 (Cryptographic Failures) to ensure no baseline vulnerabilities are introduced."@en ;
+    o4df:extendsDesignPrinciple o4df:InputControl .
+
+o4df:OutputFormattingAndLabelling a owl:Class ;
+    rdfs:label "Output Formatting and Labelling"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.172."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:OutputControl ;
+    skos:definition "An output control that mandates the inclusion of standardised control data on all system outputs — including date and time stamps, page-of-page pagination, control totals, report identifiers, and end-of-report trailers — to verify completeness and enable detection of missing or duplicated pages."@en ;
+    skos:example "Every printed financial report includes: report name, print timestamp, data period, page X of N, control total at foot, and 'END OF REPORT' trailer."@en .
+
+o4df:PackageDiagram a owl:Class ;
+    rdfs:label "Package Diagram"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.162, Figure 6-5."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:UMLDesignModel ;
+    skos:definition "A UML diagram that shows the subsystem and layer partitioning of the system's application components, grouping related classes into packages such as View Layer, Domain Layer, and Data Access Layer to communicate the architectural decomposition of the system."@en ;
+    skos:example "An RMO CSMS package diagram showing ViewLayer (containing SearchItemWindow, AddItemWindow), DomainLayer (CartHandler, Customer, Sale), and DataLayer (CustomerDA, OnlineCartDA)."@en .
+
+o4df:PerformanceQualityAttribute a owl:Class ;
+    rdfs:label "Performance Quality Attribute"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.168."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:QualityAttribute ;
+    skos:definition "The system quality attribute that specifies response time, throughput, and resource utilisation targets for the information system, directly driving database indexing, partitioning, caching, and application component architecture decisions during design."@en ;
+    skos:example "Response time requirement: all transaction queries return results within 1.5 seconds under peak load of 500 concurrent users."@en .
+
+o4df:PhysicalPrinterAccessControl a owl:Class ;
+    rdfs:label "Physical Printer Access Control"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.171."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:OutputControl ;
+    skos:definition "An output control that restricts physical access to printers and printed outputs to authorised personnel by locating printing facilities in secured, access-controlled areas and logging all print jobs that produce sensitive documents."@en ;
+    skos:example "A payroll department printer located in a card-access controlled room accessible only to HR staff."@en .
+
+o4df:PrivilegedUserType a owl:NamedIndividual,
+        o4df:PrivilegedUser ;
+    rdfs:label "Privileged User Type"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.175."@en ;
+    skos:definition "Named individual representing system administrators, programmers, and operators with elevated access to source code, executables, and database structures."@en .
+
+o4df:PublicKeyEncryption a owl:Class ;
+    rdfs:label "Public Key Encryption"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.177."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:AsymmetricKeyEncryption ;
+    skos:definition "A specific form of asymmetric key encryption in which the public key is freely broadcast and used for encryption by any sending party, while the corresponding private key is held exclusively by the recipient and used for decryption, enabling confidential communication with any sender without prior key exchange."@en ;
+    skos:example "A bank customer encrypts sensitive account data using the bank's published RSA public key before transmission; only the bank's private key can decrypt the message."@en .
+
+o4df:RecoveryProcedure a owl:Class ;
+    rdfs:label "Recovery Procedure"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.172."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:RedundancyBackupRecoveryControl ;
+    skos:definition "A documented procedure that restores a database or application system from backup copies following a failure event, making the system available again to users after a period of unavailability whose duration is bounded by the Recovery Time Objective."@en ;
+    skos:example "A documented 4-hour recovery procedure that restores the e-commerce database from the previous night's backup tape and applies transaction log replay to minimise data loss."@en .
+
+o4df:RedundantConfiguration a owl:Class ;
+    rdfs:label "Redundant Configuration"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.172."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:RedundancyBackupRecoveryControl ;
+    skos:definition "An operational continuity mechanism in which multiple identical servers, databases, or computing sites each host current copies of application software and data, with updates synchronised immediately or at short intervals so that failure of any single component does not disrupt service availability."@en ;
+    skos:example "Active-active database cluster where two database servers each hold an up-to-date replica; if server A fails, server B continues handling all requests."@en .
+
+o4df:RegisteredUserType a owl:NamedIndividual,
+        o4df:RegisteredUser ;
+    rdfs:label "Registered User Type"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.175."@en ;
+    skos:definition "Named individual representing authorised system users with defined, role-specific permissions to access specified functions and data."@en .
+
+o4df:RelationalDatabase a owl:Class ;
+    rdfs:label "Relational Database"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.167."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:DatabaseSystem ;
+    skos:definition "A database system organised as a collection of tables linked by foreign key relationships, supporting ad-hoc querying via Structured Query Language, transactional integrity through ACID properties, and concurrent access by multiple users and application components."@en ;
+    skos:example "A MySQL database for the RMO CSMS with tables for Customers, Orders, OrderItems, InventoryItems, and Addresses."@en .
+
+o4df:RemoteWipe a owl:Class ;
+    rdfs:label "Remote Wipe"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.177."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SecurityControl ;
+    skos:definition "A security mechanism for portable devices that automatically erases sensitive data from the device when triggered by specific conditions — such as repeated authentication failures, an unauthorised synchronisation attempt, or an explicit administrator command — protecting against data exposure resulting from device loss, theft, or disposal."@en ;
+    skos:example "A mobile device management policy that triggers automatic erasure of corporate email and documents from a company smartphone after 10 consecutive failed PIN attempts."@en .
+
+o4df:SSLProtocol a owl:NamedIndividual,
+        o4df:SecureSocketsLayer ;
+    rdfs:label "Secure Sockets Layer Protocol"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.179."@en ;
+    skos:definition "The original Netscape-developed protocol providing encrypted web communication, deprecated but whose name persists in colloquial usage for TLS-based web security."@en ;
+    o4df:hasAbbreviation "SSL"^^xsd:string .
+
+o4df:SecurityQualityAttribute a owl:Class ;
+    rdfs:label "Security Quality Attribute"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.169–179. NIST CSF 2.0 (2024). ISO/IEC 27001:2022."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:QualityAttribute ;
+    skos:definition "The system quality attribute requiring that the information system protects its data, processes, and infrastructure against unauthorised access, malicious attack, accidental tampering, and fraud, as enforced through integrity controls and security controls embedded in all design activities."@en ;
+    skos:example "Requirement that all patient data be encrypted at rest and in transit; that access be restricted to authenticated registered users."@en .
+
+o4df:SecuritySpecialist a owl:Class ;
+    rdfs:label "Security Specialist"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.158–159."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:StakeholderRole ;
+    skos:definition "A technical professional with expertise in information security controls, threat modelling, encryption, authentication, and regulatory compliance, who collaborates with designers to embed security mechanisms across all design activities."@en ;
+    skos:example "Alice Watts, the security consultant in the NMHS opening case, who conducted a penetration assessment and recommended design-stage security changes."@en .
+
+o4df:SeparationOfDuties a owl:Class ;
+    rdfs:label "Separation of Duties"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.173, Figure 6-11."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:FraudPreventionControl ;
+    skos:definition "A fraud prevention control that partitions critical system functions across multiple users or roles so that no single individual possesses both the system access required to commit a fraudulent act and the access required to conceal it, thereby making undetected fraud dependent on collusion between multiple parties."@en ;
+    skos:example "The accounts payable function requires one clerk to enter vendor invoices and a separate supervisor to approve payments, so neither can alone generate fraudulent payments."@en .
+
+o4df:SoftwareClass a owl:Class ;
+    rdfs:label "Software Class"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.168–169."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:ApplicationComponent ;
+    skos:definition "An application component defined in an object-oriented programming language that encapsulates a set of related attributes and methods, serving as the fundamental unit of design in object-oriented systems development."@en ;
+    skos:example "The Customer class with attributes accountNo, name, billingAddress and methods updateName(), updateAddress(), requestHistory()."@en .
+
+o4df:SoftwareMethod a owl:Class ;
+    rdfs:label "Software Method"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.168."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:ApplicationComponent ;
+    skos:definition "A fine-grained application component that encapsulates a single, well-defined operation on the data of a software class, expressed as a named function with a specified signature, parameter list, and return type."@en ;
+    skos:example "processNewSale() in the SaleHandler controller class; requestShipment() in the Sale class."@en .
+
+o4df:Storyboard a owl:Class ;
+    rdfs:label "UI Storyboard"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.166."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:UIDesignModel ;
+    skos:definition "A sequence of UI mockups that illustrates how users navigate through the interface across multiple states and system responses, enabling stakeholders to evaluate the flow and logic of the user experience without implementing executable code."@en ;
+    skos:example "A storyboard showing the sequence: Login screen → Dashboard → Product Search → Cart → Checkout → Order Confirmation."@en .
+
+o4df:Subsystem a owl:Class ;
+    rdfs:label "Subsystem"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.165."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:ApplicationComponent ;
+    skos:definition "A large-grained application component that encapsulates a coherent set of related functions constituting a major division of the overall information system, typically corresponding to one functional area such as order management, inventory, or authentication."@en ;
+    skos:example "The Order Acceptance Subsystem, the Customer Account Management Subsystem, the Reporting Subsystem."@en .
+
+o4df:SystemSequenceDiagram a owl:Class ;
+    rdfs:label "System Sequence Diagram"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.162, Figure 6-2 and Figure 6-6."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:AnalysisModel ;
+    skos:definition "A simplified UML sequence diagram produced during analysis that shows the interactions between external actors and the system as a black box, documenting the sequence of input and output messages for each use case scenario, and subsequently extended during UI design to detail user-interface interactions."@en ;
+    skos:example "An SSD for the Create Order use case showing: Clerk → System: inputOrderData(); System → Clerk: displayOrderConfirmation()."@en .
+
+o4df:SystemsAnalyst a owl:Class ;
+    rdfs:label "Systems Analyst"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.161."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:StakeholderRole ;
+    skos:definition "A professional who conducts systems analysis activities — eliciting, modelling, and documenting user requirements — with substantial user involvement to ensure that requirements models accurately represent the business domain and stakeholder needs."@en ;
+    skos:example "An analyst who conducts interviews with customers to build a use case diagram for an online ordering system."@en .
+
+o4df:SystemsDesigner a owl:Class ;
+    rdfs:label "Systems Designer"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.161."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:StakeholderRole ;
+    skos:definition "A professional who converts requirements models produced during analysis into design models that specify the structure, components, interfaces, and security mechanisms of the solution system, requiring technical expertise and significantly less direct user involvement than analysis."@en ;
+    skos:example "A designer who creates deployment diagrams, package diagrams, and design class diagrams for a web-based retail system."@en .
+
+o4df:TLS13Standard a owl:Class ;
+    rdfs:label "TLS 1.3 Standard (RFC 8446)"@en ;
+    dcterms:source "IETF RFC 8446 (2018). COM4061 Research Report (2026)."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:seeAlso <https://datatracker.ietf.org/doc/html/rfc8446> ;
+    rdfs:subClassOf o4df:ContemporaryConcept ;
+    skos:definition "The 2018 IETF revision of the Transport Layer Security protocol that eliminates obsolete cryptographic algorithms (RC4, 3DES, MD5, SHA-1), reduces handshake round trips from two to one (zero-round-trip resumption), mandates perfect forward secrecy for all cipher suites, and removes the static RSA key exchange mode."@en ;
+    skos:example "A systems designer specifying TLS 1.3 as the minimum protocol version for all HTTPS endpoints, disabling TLS 1.0 and 1.1 in the server configuration."@en ;
+    o4df:extendsDesignPrinciple o4df:TransportLayerSecurity .
+
+o4df:TLSProtocol a owl:NamedIndividual,
+        o4df:TransportLayerSecurity ;
+    rdfs:label "Transport Layer Security Protocol"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.179. RFC 8446 (2018)."@en ;
+    skos:definition "The IETF-standardised network security protocol providing authenticated and encrypted communication over the Internet, in active use as the security layer beneath HTTPS."@en ;
+    o4df:hasAbbreviation "TLS"^^xsd:string ;
+    o4df:hasStandardReference "IETF RFC 8446 (TLS 1.3, 2018)"^^xsd:string .
+
+o4df:TechnologyArchitecture a owl:Class ;
+    rdfs:label "Technology Architecture"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.2 and Ch.6, p.164–165. TOGAF Standard v9.2 (2018)."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:DeploymentEnvironment ;
+    skos:definition "The organisation-wide set of computing hardware, network hardware and topology, and system software — including operating systems, database management systems, web servers, and firewalls — that forms the stable infrastructure upon which all application systems are deployed, constraining rather than being designed by individual system designers."@en ;
+    skos:example "An enterprise technology architecture comprising Windows Server, Microsoft SQL Server DBMS, IIS web server, Azure AD identity management, and a Cisco firewall perimeter."@en ;
+    o4df:isExtensionPoint true .
+
+o4df:UIPrototype a owl:Class ;
+    rdfs:label "UI Prototype"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.166."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:UIDesignModel ;
+    skos:definition "A partially implemented, interactive version of the user interface that end users can operate to generate authentic usability feedback, revealing interaction problems that static mockups and storyboards cannot expose, particularly for complex or novel interface patterns."@en ;
+    skos:example "A clickable HTML/CSS prototype of the patient portal built in Figma, allowing patients to navigate between the appointments, messages, and records sections."@en .
+
+o4df:UnauthorisedUserType a owl:NamedIndividual,
+        o4df:UnauthorisedUser ;
+    rdfs:label "Unauthorised User Type"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.174–175."@en ;
+    skos:definition "Named individual representing the class of persons who have no right of access to any system function, including hackers, intruders, and former employees whose credentials have been revoked."@en .
+
+o4df:UsabilityQualityAttribute a owl:Class ;
+    rdfs:label "Usability Quality Attribute"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.165–167."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:QualityAttribute ;
+    skos:definition "The system quality attribute governing the ease, efficiency, and satisfaction with which end users can interact with the system's interface across multiple device types and interaction modalities, determining user adoption, productivity, and error rates."@en ;
+    skos:example "The user interface must be learnable by a new clerk within 30 minutes; all primary tasks must be completable in fewer than 4 mouse clicks."@en .
+
+o4df:WebService a owl:Class ;
+    rdfs:label "Web Service"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.165."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:ApplicationComponent ;
+    skos:definition "An application component deployed by an external organisation and accessed via a network interface — typically a REST or SOAP API over HTTP — that provides specific capabilities such as mapping, package tracking, or payment processing to the information system under development."@en ;
+    skos:example "Google Maps API for location services, FedEx package tracking web service, PayPal payment gateway."@en .
+
+o4df:ZeroTrustArchitecture a owl:Class ;
+    rdfs:label "Zero-Trust Architecture"@en ;
+    dcterms:source "NIST SP 800-207 (2020). COM4061 Research Report (2026)."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:seeAlso <https://csrc.nist.gov/publications/detail/sp/800-207/final> ;
+    rdfs:subClassOf o4df:ContemporaryConcept ;
+    skos:definition "An information security architecture paradigm that eliminates implicit trust based on network location, requiring every access request — regardless of its origin — to be explicitly authenticated, dynamically authorised against access policies, and continuously validated before access to any resource is granted."@en ;
+    skos:example "An enterprise that requires all internal microservices to authenticate each other via mutual TLS and check authorisation policies before honouring API calls, even within the data centre perimeter."@en ;
+    o4df:extendsDesignPrinciple o4df:AccessControl .
+
+o4df:comprisesThreatElement a owl:ObjectProperty ;
+    rdfs:label "comprises threat element"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.172–173."@en ;
+    rdfs:domain o4df:FraudTriangle ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range o4df:SADConcept ;
+    skos:definition "Relates the fraud triangle model to each of its three necessary elements — opportunity, motivation, and rationalisation — expressing the conjunctive dependency structure of the model."@en .
+
+o4df:dependsOn a owl:ObjectProperty ;
+    rdfs:label "depends on"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.163."@en ;
+    rdfs:domain o4df:DesignActivity ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range o4df:DesignActivity ;
+    skos:definition "Relates a design activity or component to another design activity or artifact that must be completed or available before it can proceed, encoding the dependency structure of the parallel design workflow."@en .
+
+o4df:enablesVia a owl:ObjectProperty ;
+    rdfs:label "enables via"@en ;
+    dcterms:source "Inferred from Satzinger et al. (2016), Ch.6, p.160, Figure 6-1."@en ;
+    rdfs:domain o4df:SADConcept ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range o4df:DesignArtifact ;
+    owl:propertyChainAxiom ( o4df:isInputTo o4df:producesArtifact ) ;
+    skos:definition "Inferred property relating an artifact that is input to a design activity to the output artifacts that the design activity produces, tracing the indirect enabling relationships across the analysis-to-design-to-implementation pipeline."@en .
+
+o4df:enforces a owl:ObjectProperty ;
+    rdfs:label "enforces"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.174."@en ;
+    rdfs:domain o4df:AccessControl ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range o4df:AccessControlList ;
+    skos:definition "Relates an access control mechanism to the access control list or policy that it applies in authorisation decisions, specifying that the mechanism operationalises the rules defined in the policy."@en .
+
+o4df:extendsDesignPrinciple a owl:ObjectProperty ;
+    rdfs:label "extends design principle"@en ;
+    dcterms:source "COM4061 Research Report (2026)."@en ;
+    rdfs:domain o4df:ContemporaryConcept ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range o4df:SADConcept ;
+    skos:definition "Relates a contemporary concept to the foundational design principle or activity from Satzinger et al. (2016) that it extends, enriches, or operationalises in the post-2015 technology landscape."@en .
+
+o4df:hasAbbreviation a owl:DatatypeProperty ;
+    rdfs:label "has abbreviation"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, Key Terms section, p.180."@en ;
+    rdfs:domain o4df:SADConcept ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range xsd:string ;
+    skos:definition "The standard abbreviation or acronym by which a concept is referred to in professional and academic discourse."@en .
+
+o4df:hasControlType a owl:ObjectProperty ;
+    rdfs:label "has control type"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.169."@en ;
+    rdfs:domain o4df:SADConcept ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range o4df:ControlMechanism ;
+    skos:definition "Relates a design activity, information system, or application component to the specific type of control mechanism that must be embedded within it, enabling traceability from design decisions to the controls they incorporate."@en .
+
+o4df:hasDesignActivity a owl:ObjectProperty ;
+    rdfs:label "has design activity"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.163."@en ;
+    rdfs:domain o4df:DesignPhase ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range o4df:DesignActivity ;
+    skos:definition "Relates a design phase to one of the five design activities it encompasses, establishing that the design activity is performed as part of and within that phase of the SDLC."@en .
+
+o4df:hasInputModel a owl:ObjectProperty ;
+    rdfs:label "has input model"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.160."@en ;
+    rdfs:domain o4df:DesignActivity ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range o4df:AnalysisModel ;
+    owl:inverseOf o4df:isInputTo ;
+    skos:definition "Relates a design activity to an analysis model that serves as its primary input, formalising the principle that analysis outputs are design inputs."@en .
+
+o4df:hasPageReference a owl:DatatypeProperty ;
+    rdfs:label "has page reference"@en ;
+    rdfs:domain o4df:SADConcept ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range xsd:string ;
+    skos:definition "The specific page or page range within Satzinger et al. (2016) where the concept is defined or illustrated."@en .
+
+o4df:hasSourceChapter a owl:DatatypeProperty ;
+    rdfs:label "has source chapter"@en ;
+    dcterms:source "Satzinger et al. (2016), Systems Analysis and Design In a Changing World, 7th ed. Cengage Learning."@en ;
+    rdfs:domain o4df:SADConcept ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range xsd:string ;
+    skos:definition "The chapter number within Satzinger et al. (2016) where the concept is primarily defined or discussed."@en .
+
+o4df:hasStandardReference a owl:DatatypeProperty ;
+    rdfs:label "has standard reference"@en ;
+    rdfs:domain o4df:SADConcept ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range xsd:string ;
+    skos:definition "A bibliographic or normative reference to a standard, regulation, or authoritative publication that defines, governs, or mandates requirements related to the concept."@en .
+
+o4df:hasUserCategory a owl:ObjectProperty ;
+    rdfs:label "has user category"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.174–175."@en ;
+    rdfs:domain o4df:SADConcept ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range o4df:UserCategory ;
+    skos:definition "Relates an information system to the user category it recognises and manages through its access control system, enumerating the classes of principals whose access must be controlled."@en .
+
+o4df:implements a owl:ObjectProperty ;
+    rdfs:label "implements"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.169–170."@en ;
+    rdfs:domain o4df:ControlMechanism ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range o4df:QualityAttribute ;
+    skos:definition "Relates a control mechanism or design element to the quality attribute that it realises, establishing traceability from concrete design decisions to the non-functional requirements they satisfy."@en .
+
+o4df:isExtensionPoint a owl:DatatypeProperty ;
+    rdfs:label "is extension point"@en ;
+    rdfs:domain o4df:SADConcept ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range xsd:boolean ;
+    skos:definition "A boolean flag indicating that this class is intended to be specialised or reused by future chapter modules in the SA&D Ontology Ecosystem, and that its IRI should be treated as a stable anchor point for cross-chapter alignment."@en .
+
+o4df:isSignedBy a owl:ObjectProperty ;
+    rdfs:label "is signed by"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.178, Figure 6-15."@en ;
+    rdfs:domain o4df:DigitalCertificate ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range o4df:CertifyingAuthority ;
+    skos:definition "Relates a digital certificate to the certifying authority that issued and digitally signed it, establishing the chain of trust that enables relying parties to verify the certificate's authenticity."@en .
+
+o4df:mitigates a owl:ObjectProperty ;
+    rdfs:label "mitigates"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.170–179. NIST SP 800-53 Rev.5 (2020)."@en ;
+    rdfs:domain o4df:ControlMechanism ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range o4df:SADConcept ;
+    skos:definition "Relates a control mechanism to a threat or fraud element that it reduces in probability or impact, specifying the risk reduction relationship between protective controls and the specific risks they address."@en .
+
+o4df:plannedModules a owl:DatatypeProperty ;
+    rdfs:label "planned modules"@en ;
+    rdfs:domain owl:Thing ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range xsd:string ;
+    skos:definition "A comma-separated list of planned ontology module identifiers that will compose the SA&D Ecosystem Root when all chapter ontologies have been produced and synthesised."@en .
+
+o4df:precedes a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "precedes"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.159–160."@en ;
+    rdfs:domain o4df:SADConcept ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range o4df:SADConcept ;
+    skos:definition "Relates one SDLC phase or design activity to another that logically or temporally follows it in the development process, transitively closing so that if A precedes B and B precedes C then A precedes C."@en .
+
+o4df:requiredByRegulation a owl:ObjectProperty ;
+    rdfs:label "required by regulation"@en ;
+    dcterms:source "ISO/IEC 27001:2022. GDPR (EU) 2016/679. COM4061 Research Report (2026)."@en ;
+    rdfs:domain o4df:ControlMechanism ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range o4df:ContemporaryConcept ;
+    skos:definition "Relates a control mechanism or design decision to the regulatory framework or standard that mandates its implementation, enabling compliance traceability from design artefacts to applicable legal or normative requirements."@en .
+
+o4df:usesEncryptionAlgorithm a owl:ObjectProperty ;
+    rdfs:label "uses encryption algorithm"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.176. NIST SP 800-175B Rev.1 (2020)."@en ;
+    rdfs:domain o4df:EncryptionMechanism ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range o4df:EncryptionAlgorithm ;
+    skos:definition "Relates an encryption mechanism to the specific encryption algorithm it employs to transform plaintext into ciphertext, specifying the mathematical foundation of the security control."@en .
+
+<http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> a prov:Activity ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date .
+
+o4df:AccessControlList a owl:Class ;
+    rdfs:label "Access Control List"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.174."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:AccessControl ;
+    skos:definition "A data structure attached to a specific protected resource that enumerates the users or user groups authorised to access that resource and specifies the type of permitted access — such as read, write, execute, or delete — for each listed principal."@en ;
+    skos:example "A file system ACL on the payroll database table granting SELECT to the HRViewers group, SELECT and UPDATE to the HRAdmins group, and no access to all other users."@en .
+
+o4df:CertifyingAuthority a owl:Class ;
+    rdfs:label "Certifying Authority"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.178."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "A widely trusted third-party organisation that issues digitally signed certificates binding public keys to verified entity identities, whose own public key is pre-installed in browsers and operating systems, enabling certificate verification without requiring prior relationships between communicating parties."@en ;
+    skos:example "DigiCert, GlobalSign, and Let's Encrypt are well-known certifying authorities whose root certificates are pre-installed in browsers such as Chrome, Firefox, and Safari."@en .
+
+o4df:CloudNativeDesign a owl:Class ;
+    rdfs:label "Cloud-Native Design"@en ;
+    dcterms:source "NIST SP 800-190 (2017). Richardson, C. (2018), Microservices Patterns. COM4061 Research Report (2026)."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:ContemporaryConcept ;
+    skos:definition "A systems design approach that fully exploits cloud infrastructure capabilities — including containerisation, container orchestration, managed cloud services, infrastructure-as-code, and auto-scaling — to produce systems that are elastic, resilient, observable, and independently deployable at the component level."@en ;
+    skos:example "Designing an e-commerce system as independently deployable Docker containers orchestrated by Kubernetes, with each microservice backed by a managed cloud database and connected via an API gateway."@en ;
+    o4df:extendsDesignPrinciple o4df:ApplicationComponentDesignActivity .
+
+o4df:DatabaseSystem a owl:Class ;
+    rdfs:label "Database System"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.167–168."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "The information storage and retrieval infrastructure of an information system, comprising the database management system, one or more databases, the schema defining tables and relationships, and the access controls, encryption, and performance configurations protecting and optimising data storage and retrieval."@en ;
+    skos:example "A MySQL relational database system with InnoDB engine, AES-256 encryption at rest, role-based access control, and read replicas for performance."@en ;
+    o4df:isExtensionPoint true .
+
+o4df:DesignApplicationComponentsActivity a owl:NamedIndividual,
+        o4df:ApplicationComponentDesignActivity ;
+    rdfs:label "Design the Application Components"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.165–166."@en ;
+    skos:definition "The design activity determining the modular software units, their granularity, programming languages, and build-buy-acquire strategy for each component of the information system."@en ;
+    o4df:hasKeyQuestion "What are the key parts of the information system and how will they interact when the system is deployed?"^^xsd:string ;
+    o4df:hasPageReference "p.165–166"^^xsd:string ;
+    o4df:hasSourceChapter "Chapter 6"^^xsd:string .
+
+o4df:DesignClassModel_Exemplar a owl:NamedIndividual,
+        o4df:DesignModel ;
+    rdfs:label "Design Class Model (exemplar instance)"@en ;
+    dcterms:source "Satzinger, J.W., Jackson, R.B., and Burd, S.D. (2016). Systems Analysis and Design In a Changing World, 7th ed., Ch.6."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    skos:definition "An exemplar Design Class Model: the design-phase artifact of design classes, methods and navigation visibility produced by the software-class design activity from the analysis domain model."@en .
+
+o4df:DesignDatabaseActivity a owl:NamedIndividual,
+        o4df:DatabaseDesignActivity ;
+    rdfs:label "Design the Database"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.167–168."@en ;
+    skos:definition "The design activity transforming the domain model into a database implementation schema, determining structure, distribution, performance, encryption, and access controls."@en ;
+    o4df:hasKeyQuestion "How will data be captured, structured, and stored for later use by the information system?"^^xsd:string ;
+    o4df:hasPageReference "p.167–168"^^xsd:string ;
+    o4df:hasSourceChapter "Chapter 6"^^xsd:string .
+
+o4df:DesignUserInterfaceActivity a owl:NamedIndividual,
+        o4df:UserInterfaceDesignActivity ;
+    rdfs:label "Design the User Interface"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.166–167."@en ;
+    skos:definition "The design activity specifying how users will interact with the system across all devices and modalities, producing mockups, storyboards, and prototypes."@en ;
+    o4df:hasKeyQuestion "How will users interact with the information system?"^^xsd:string ;
+    o4df:hasPageReference "p.166–167"^^xsd:string ;
+    o4df:hasSourceChapter "Chapter 6"^^xsd:string .
+
+o4df:DigitalCertificate a owl:Class ;
+    rdfs:label "Digital Certificate"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.178, Figure 6-15."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SecurityControl ;
+    skos:definition "A digitally signed data structure issued by a trusted certifying authority that binds a public key to the verified identity of its owner, including the owner's name, address, website URL, and certificate validity period, enabling third parties to trust that the presented public key genuinely belongs to the claimed entity."@en ;
+    skos:example "An SSL/TLS certificate issued by DigiCert for www.example-bank.com, binding the bank's public key to its verified domain name and legal entity."@en .
+
+o4df:DomainModelClassDiagram a owl:Class ;
+    rdfs:label "Domain Model Class Diagram"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.167."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:AnalysisModel ;
+    skos:definition "A UML class diagram produced during analysis that identifies the key business entities (domain classes), their attributes, and the relationships among them, serving as the primary input to the database design activity and as the starting point for the design class diagram."@en ;
+    skos:example "A domain model showing Customer, Order, OrderItem, Product, and InventoryItem classes with their business attributes and association relationships."@en .
+
+o4df:DomainModelClassDiagram_Exemplar a owl:NamedIndividual,
+        o4df:DomainModelClassDiagram ;
+    rdfs:label "Domain Model Class Diagram (exemplar instance)"@en ;
+    dcterms:source "Satzinger, J.W., Jackson, R.B., and Burd, S.D. (2016). Systems Analysis and Design In a Changing World, 7th ed., Ch.6."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    skos:definition "An exemplar Domain Model Class Diagram: the analysis-phase model of problem-domain classes and associations that serves as the primary input to object-oriented design."@en ;
+    o4df:isInputTo o4df:DesignSoftwareClassesActivity .
+
+o4df:EncryptionAlgorithm a owl:Class ;
+    rdfs:label "Encryption Algorithm"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.176. NIST SP 800-175B Rev.1 (2020)."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "A complex, reversible mathematical transformation function that converts plaintext binary data into ciphertext when combined with an encryption key, parameterising the transformation so that data can only be decrypted by a party possessing the correct key or a compatible decryption key."@en ;
+    skos:example "AES (Advanced Encryption Standard), RSA (Rivest-Shamir-Adleman), Triple DES (3DES)."@en .
+
+o4df:EnvironmentDescriptionActivity a owl:Class ;
+    rdfs:label "Environment Description Activity"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.164–165."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:DesignActivity ;
+    owl:disjointWith o4df:ApplicationComponentDesignActivity,
+        o4df:DatabaseDesignActivity,
+        o4df:SoftwareClassAndMethodDesignActivity,
+        o4df:UserInterfaceDesignActivity ;
+    skos:definition "The design activity that identifies and characterises the two key elements of the deployment environment — external systems and technology architecture — producing precise specifications of message formats, network addresses, communication protocols, security methods, and error detection procedures that constrain all other design activities."@en ;
+    skos:example "Documenting that the RMO CSMS must interface with the UPS shipping API via REST/JSON over HTTPS, and that it will be deployed on Microsoft Azure using .NET and SQL Server."@en ;
+    o4df:hasKeyQuestion "How will this system interact with other systems and with the organisation's existing technologies?"^^xsd:string .
+
+o4df:HTTPSProtocol a owl:Class ;
+    rdfs:label "HTTPS Protocol"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.179. OWASP Top 10 (2021) — A02: Cryptographic Failures."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SecureTransactionProtocol ;
+    skos:definition "An Internet standard for encrypting HTTP web communications by layering the protocol over a TLS channel, providing server authentication via digital certificates, client-server confidentiality, and data integrity for all web page content, form submissions, and API calls transmitted over port 443."@en ;
+    skos:example "A banking website serving all pages exclusively over HTTPS, displaying a padlock icon to indicate that the connection is encrypted and the server certificate is valid."@en .
+
+o4df:IPSecurity a owl:Class ;
+    rdfs:label "IP Security"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.179."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SecureTransactionProtocol ;
+    skos:definition "An IETF-standardised suite of protocols that provides authentication and encryption at the network layer for every IP packet in a communication session, implemented within operating systems or network hardware rather than individual applications, enabling transparent and high-performance protection of all network communications."@en ;
+    skos:example "IPSec in tunnel mode encrypting all traffic between two corporate office networks connected via an Internet VPN, protecting all application data without requiring application-level changes."@en .
+
+o4df:RecoveryPointObjective a owl:Class ;
+    rdfs:label "Recovery Point Objective"@en ;
+    dcterms:source "ISO/IEC 27001:2022, Annex A.5.30. COM4061 Research Report (2026)."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:ContemporaryConcept ;
+    owl:disjointWith o4df:RecoveryTimeObjective ;
+    skos:definition "A business continuity parameter that specifies the maximum acceptable quantity of data loss — measured in time — following a failure event, determining the required backup frequency and replication latency in the database design activity to ensure that no more data than the RPO permits is lost in any failure scenario."@en ;
+    skos:example "A financial trading system with an RPO of zero requires synchronous database replication to a hot standby, ensuring no committed transactions are ever lost."@en .
+
+o4df:RecoveryTimeObjective a owl:Class ;
+    rdfs:label "Recovery Time Objective"@en ;
+    dcterms:source "ISO/IEC 27001:2022, Annex A.5.30. COM4061 Research Report (2026)."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:ContemporaryConcept ;
+    owl:disjointWith o4df:RecoveryPointObjective ;
+    skos:definition "A business continuity parameter that specifies the maximum acceptable duration of system unavailability following a failure event, derived from business impact analysis and directly driving design decisions about redundancy levels, backup frequency, and recovery automation in the database and infrastructure design activities."@en ;
+    skos:example "A banking system with an RTO of 15 minutes requires active-active database replication and automated failover, rather than relying on tape backup recovery that would take hours."@en .
+
+o4df:SecureSocketsLayer a owl:Class ;
+    rdfs:label "Secure Sockets Layer"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.179."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SecureTransactionProtocol ;
+    skos:definition "The original Netscape-developed protocol providing authenticated, encrypted communication over the Internet through certificate exchange, key negotiation, and session key establishment, superseded by TLS but whose name remains in colloquial use for the general class of web security protocols."@en ;
+    skos:example "SSL 3.0 was widely used for HTTPS before being deprecated; modern systems use TLS but still refer to certificates as SSL certificates."@en .
+
+o4df:SymmetricKeyEncryption a owl:Class ;
+    rdfs:label "Symmetric Key Encryption"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.176, Figure 6-13."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:EncryptionMechanism ;
+    owl:disjointWith o4df:AsymmetricKeyEncryption ;
+    skos:definition "An encryption method that uses a single, shared secret key for both encryption and decryption operations, offering high computational efficiency and suitability for bulk data encryption at rest, but requiring a pre-existing secure channel to exchange the shared key between communicating parties."@en ;
+    skos:example "AES-256 symmetric encryption of a laptop's hard drive to protect data if the device is lost or stolen; the same key is used to encrypt on write and decrypt on read."@en .
+
+o4df:UserInterface a owl:Class ;
+    rdfs:label "User Interface"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.165–167."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "The totality of interaction mechanisms through which end users perceive, operate, and receive feedback from an information system, encompassing visual presentation, input methods, navigation structures, and device-specific affordances across all target devices and contexts of use."@en ;
+    skos:example "A responsive web interface for desktop, a native iOS app for mobile, a voice-activated interface for hands-free operation."@en ;
+    o4df:isExtensionPoint true .
+
+o4df:hasKeyQuestion a owl:DatatypeProperty ;
+    rdfs:label "has key question"@en ;
+    rdfs:domain o4df:DesignActivity ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range xsd:string ;
+    skos:definition "The guiding question associated with a design activity that focuses the designer on the essential objective of that activity, as articulated by Satzinger et al. (2016)."@en .
+
+o4df:producesArtifact a owl:ObjectProperty ;
+    rdfs:label "produces artifact"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.162–168."@en ;
+    rdfs:domain o4df:DesignActivity ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range o4df:DesignArtifact ;
+    skos:definition "Relates a design activity to an engineering artifact that it produces as an output, establishing the provenance of design documents and models."@en .
+
+o4df:AnalysisPhase a owl:Class ;
+    rdfs:label "Analysis Phase"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.159–161."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SDLCPhase ;
+    owl:disjointWith o4df:DesignPhase,
+        o4df:ImplementationPhase ;
+    skos:definition "The SDLC phase in which analysts decompose the problem domain, elicit requirements from stakeholders, and produce requirements models that specify what the new system must accomplish, without yet determining how it will be implemented."@en ;
+    skos:example "Creating use case diagrams, domain model class diagrams, and activity diagrams that document business processes and information requirements."@en ;
+    o4df:precedes o4df:DesignPhase .
+
+o4df:AsymmetricKeyEncryption a owl:Class ;
+    rdfs:label "Asymmetric Key Encryption"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.177, Figure 6-14."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:EncryptionMechanism ;
+    owl:disjointWith o4df:SymmetricKeyEncryption ;
+    skos:definition "An encryption method that uses two mathematically related but computationally independent keys — a publicly distributable public key for encryption and a privately held private key for decryption — eliminating the key distribution problem of symmetric encryption by allowing secure communication without a prior shared secret."@en ;
+    skos:example "An organisation publishes its RSA public key on its website; partners use it to encrypt shipment data; only the organisation can decrypt with its private key."@en .
+
+o4df:Authentication a owl:Class ;
+    rdfs:label "Authentication"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.174. NIST SP 800-63B (2017)."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:AccessControl ;
+    skos:definition "The process of establishing the claimed identity of a user or system requesting access to protected resources, using one or more authentication factors — knowledge (passwords, PINs), possession (smart cards, hardware tokens), or inherence (biometrics) — before access is considered for authorisation."@en ;
+    skos:example "A hospital system requiring physicians to authenticate using their employee badge (possession) and a PIN (knowledge) before accessing patient records."@en .
+
+o4df:DatabaseDesignActivity a owl:Class ;
+    rdfs:label "Database Design Activity"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.167–168."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:DesignActivity ;
+    skos:definition "The design activity that transforms the domain model class diagram into a database implementation schema, determining database type and structure, centralised versus distributed configuration, attribute types and defaults, indexing strategy, encryption, and access controls for the system's data layer."@en ;
+    skos:example "Defining the InventoryItems table in MySQL with attribute types, primary keys, foreign keys, and access control configuration for the RMO CSMS."@en ;
+    o4df:hasKeyQuestion "How will data be captured, structured, and stored for later use by the information system?"^^xsd:string .
+
+o4df:DeploymentEnvironment a owl:Class ;
+    rdfs:label "Deployment Environment"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.164–165."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "The complete collection of external systems, technology infrastructure, network topology, and system software within which a new information system will be deployed and operated, constituting the fixed constraints within which the designer must work."@en ;
+    skos:example "An organisation's Azure cloud infrastructure running SQL Server databases, an Active Directory identity management service, and a UPS shipping API as an external system."@en ;
+    o4df:isExtensionPoint true .
+
+o4df:DesignSoftwareClassesActivity a owl:NamedIndividual,
+        o4df:SoftwareClassAndMethodDesignActivity ;
+    rdfs:label "Design the Software Classes and Methods"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.168–169."@en ;
+    skos:definition "The design activity extending analysis models with software-specific elements to produce design class diagrams and interaction diagrams as blueprints for programmers."@en ;
+    o4df:hasInputModel o4df:DomainModelClassDiagram_Exemplar ;
+    o4df:hasKeyQuestion "What internal structure for each application component will ensure efficient construction, rapid deployment, and reliable operation?"^^xsd:string ;
+    o4df:hasPageReference "p.168–169"^^xsd:string ;
+    o4df:hasSourceChapter "Chapter 6"^^xsd:string ;
+    o4df:producesArtifact o4df:DesignClassModel_Exemplar .
+
+o4df:EngineeringArtifact a owl:Class ;
+    rdfs:label "Engineering Artifact"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.160–162."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "A tangible work product produced or consumed during the systems development process, including documents, diagrams, models, and code, that records decisions, communicates intentions, or guides subsequent development activities."@en ;
+    skos:example "Use case diagram, design class diagram, database table definition, deployment diagram."@en ;
+    o4df:isExtensionPoint true .
+
+o4df:FraudPreventionControl a owl:Class ;
+    rdfs:label "Fraud Prevention Control"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.172–173."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:IntegrityControl ;
+    skos:definition "An integrity control specifically designed to reduce the opportunity for authorised users to commit fraud by exploiting their legitimate system access, targeting the opportunity vertex of the fraud triangle while acknowledging that motive and rationalisation are beyond the system designer's direct control."@en ;
+    skos:example "Separation of duties preventing a single accounts payable clerk from both creating vendor records and approving payments; audit trail logging all changes to financial records."@en .
+
+o4df:RequirementsArtifact a owl:Class ;
+    rdfs:label "Requirements Artifact"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.160–162."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:EngineeringArtifact ;
+    owl:disjointWith o4df:DesignArtifact ;
+    skos:definition "An engineering artefact produced during the analysis phase that documents what the system must accomplish, including functional requirements, non-functional requirements, and the domain models that represent business processes and information structures."@en ;
+    skos:example "Use case description, domain model class diagram, event table."@en .
+
+o4df:SoftwareClassAndMethodDesignActivity a owl:Class ;
+    rdfs:label "Software Class and Method Design Activity"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.168–169."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:DesignActivity ;
+    skos:definition "The design activity that extends analysis-phase class diagrams, system sequence diagrams, and state machine diagrams with software-specific elements — attribute data types, access modifiers, method signatures, and design patterns — producing detailed blueprints from which programmers can directly write executable code."@en ;
+    skos:example "Extending the Customer class with attribute types (accountNo: String, status: String), method signatures (updateName(), requestHistory()), and a Controller class (SaleHandler) with processNewSale() and makePayment() methods."@en ;
+    o4df:hasKeyQuestion "What internal structure for each application component will ensure efficient construction, rapid deployment, and reliable operation?"^^xsd:string .
+
+o4df:TransportLayerSecurity a owl:Class ;
+    rdfs:label "Transport Layer Security"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.179. IETF RFC 8446 (2018)."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:seeAlso <https://datatracker.ietf.org/doc/html/rfc8446> ;
+    rdfs:subClassOf o4df:SecureTransactionProtocol ;
+    skos:definition "The IETF-standardised successor to SSL that establishes mutually authenticated, encrypted application-layer communication over the Internet through a handshake protocol involving certificate exchange, key negotiation using asymmetric cryptography, and session key derivation for subsequent symmetric encryption of all data."@en ;
+    skos:example "TLS 1.3, specified in RFC 8446, is used to secure HTTPS web sessions, SMTP email submission, and API calls between microservices."@en .
+
+o4df:UserInterfaceDesignActivity a owl:Class ;
+    rdfs:label "User Interface Design Activity"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.166–167."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:DesignActivity ;
+    skos:definition "The design activity that specifies how end users will interact with the information system across the full range of devices, screen sizes, and interaction modalities in use, producing mockups, storyboards, prototypes, and extended system sequence diagrams that define the user experience."@en ;
+    skos:example "Designing three interface variants for the RMO CSMS: a desktop web interface, a tablet-optimised responsive layout, and a native mobile app with touch gestures."@en ;
+    o4df:hasKeyQuestion "How will users interact with the information system?"^^xsd:string .
+
+o4df:isInputTo a owl:ObjectProperty ;
+    rdfs:label "is input to"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.160, Figure 6-1."@en ;
+    rdfs:domain o4df:SADConcept ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:range o4df:SADConcept ;
+    skos:definition "Relates an analysis artifact to the design activity or design artifact to which it serves as an input, tracing the flow of information from analysis through to design decisions."@en .
+
+o4df:AnalysisModel a owl:Class ;
+    rdfs:label "Analysis Model"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.160–162."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:RequirementsArtifact ;
+    owl:disjointWith o4df:DesignModel ;
+    skos:definition "A formal or semi-formal representation produced during the analysis phase that models the business domain, stakeholder requirements, or system behaviour from the perspective of what the system must accomplish, serving as the primary input to design activities."@en ;
+    skos:example "Domain model class diagram, use case diagram, activity diagram, system sequence diagram, requirements state machine diagram."@en .
+
+o4df:ApplicationComponentDesignActivity a owl:Class ;
+    rdfs:label "Application Component Design Activity"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.165–166."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:DesignActivity ;
+    skos:definition "The design activity that determines the modular software units composing the information system, including decisions about component granularity, the programming languages and toolkits employed, the build-buy-acquire strategy for each component, and the subsystem partitioning and layering architecture."@en ;
+    skos:example "Deciding to partition the RMO CSMS into View Layer, Domain Layer, and Data Access Layer subsystems using Java EE components deployed on an application server."@en ;
+    o4df:hasKeyQuestion "What are the key parts of the information system and how will they interact when the system is deployed?"^^xsd:string .
+
+o4df:CompletenessControl a owl:Class ;
+    rdfs:label "Completeness Control"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.171."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:InputControl ;
+    owl:disjointWith o4df:DataValidationControl,
+        o4df:FieldCombinationControl,
+        o4df:ValueLimitControl ;
+    skos:definition "An input control that verifies that all required data fields for a business object or transaction have been populated with non-null values before the record is accepted, preventing incomplete or ambiguous data from entering the database."@en ;
+    skos:example "A shipping address form that requires street address, city, postal code, and country to all be non-empty before the user can proceed to payment."@en .
+
+o4df:DataValidationControl a owl:Class ;
+    rdfs:label "Data Validation Control"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.171."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:InputControl ;
+    owl:disjointWith o4df:CompletenessControl,
+        o4df:FieldCombinationControl,
+        o4df:ValueLimitControl ;
+    skos:definition "An input control that verifies that an alphanumeric field containing a code or identifier matches a predefined set of valid values, rejecting any entry that is not a member of the allowed set to prevent incorrect categorisation or reference integrity violations."@en ;
+    skos:example "A grade entry system that accepts only A, B, C, D, and F and rejects any other string; a status field that accepts only 'Active', 'Inactive', or 'Suspended'."@en .
+
+o4df:FieldCombinationControl a owl:Class ;
+    rdfs:label "Field Combination Control"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.171."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:InputControl ;
+    owl:disjointWith o4df:CompletenessControl,
+        o4df:DataValidationControl,
+        o4df:ValueLimitControl ;
+    skos:definition "An input control that reviews logical relationships between two or more data fields to detect inconsistencies that would be invisible when examining individual fields in isolation, ensuring cross-field business rules are satisfied before a transaction is accepted."@en ;
+    skos:example "An insurance application system verifies that the application date is equal to or earlier than the effective date of coverage; a travel booking system verifies that the departure date precedes the return date."@en .
+
+o4df:FraudMotivation a owl:Class ;
+    rdfs:label "Fraud Motivation"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.173."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:FraudTriangle ;
+    owl:disjointWith o4df:FraudOpportunity,
+        o4df:FraudRationalization ;
+    skos:definition "The second element of the fraud triangle, representing the perpetrator's desire for the benefit that the fraud would yield — most commonly financial gain, but also including desires for status, power, or perceived organisational loyalty — over which system designers have no direct technical control."@en ;
+    skos:example "An employee facing medical bills, gambling debts, or financial pressure constitutes the motivational element of the fraud triangle."@en .
+
+o4df:FraudOpportunity a owl:Class ;
+    rdfs:label "Fraud Opportunity"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.172–173."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:FraudTriangle ;
+    owl:disjointWith o4df:FraudMotivation,
+        o4df:FraudRationalization ;
+    skos:definition "The first and only technically controllable element of the fraud triangle, consisting of the practical ability of an authorised user to take system actions that perpetrate a fraud, arising from insufficient access controls, inadequate separation of duties, or absence of monitoring and audit mechanisms."@en ;
+    skos:example "An employee with unrestricted access to the accounts payable module can create fictitious vendor records and generate payments without supervisory approval."@en .
+
+o4df:FraudRationalization a owl:Class ;
+    rdfs:label "Fraud Rationalisation"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.173."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:FraudTriangle ;
+    owl:disjointWith o4df:FraudMotivation,
+        o4df:FraudOpportunity ;
+    skos:definition "The third element of the fraud triangle, representing the internal justification that enables a perpetrator to reconcile the fraudulent act with their self-image — such as a belief that the organisation owes them, an intention to repay stolen funds, or a conviction that the act serves a greater good — over which system designers have no direct control."@en ;
+    skos:example "An employee who falsifies financial reports to prevent layoffs, believing they are protecting colleagues, employs rationalisation to justify the fraud."@en .
+
+o4df:ImplementationPhase a owl:Class ;
+    rdfs:label "Implementation Phase"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.159–160."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SDLCPhase ;
+    owl:disjointWith o4df:AnalysisPhase,
+        o4df:DesignPhase ;
+    skos:definition "The SDLC phase in which programmers translate design models and specifications into executable code, configure databases, and build the information system components that satisfy the requirements established during analysis and specified during design."@en ;
+    skos:example "Writing Java classes from design class diagrams, creating database schemas from table definitions, coding UI screens from UI prototypes."@en .
+
+o4df:PrivilegedUser a owl:Class ;
+    rdfs:label "Privileged User"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.175."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:UserCategory ;
+    owl:disjointWith o4df:RegisteredUser,
+        o4df:UnauthorisedUser ;
+    skos:definition "A person — typically a system programmer, application developer, operator, or system administrator — who has elevated access to the source code, executable programs, and database structures of the system, enabling them to modify system behaviour, access all data, and override standard access controls, and who is therefore subject to enhanced monitoring and accountability requirements."@en ;
+    skos:example "A database administrator with access to all database schemas and the ability to execute arbitrary SQL; a system administrator with root access to all servers."@en .
+
+o4df:RedundancyBackupRecoveryControl a owl:Class ;
+    rdfs:label "Redundancy Backup and Recovery Control"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.172. ISO/IEC 27001:2022, Annex A.8."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:IntegrityControl ;
+    skos:definition "A class of integrity controls designed to protect software and data against hardware failure and catastrophic events by maintaining multiple copies of operational data and systems, and by providing documented procedures for restoring normal operations after a disruption."@en ;
+    skos:example "A hospital information system with active-active database replication across two geographically separated data centres and nightly backups to a third off-site location."@en .
+
+o4df:RegisteredUser a owl:Class ;
+    rdfs:label "Registered User"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.175."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:UserCategory ;
+    owl:disjointWith o4df:PrivilegedUser,
+        o4df:UnauthorisedUser ;
+    skos:definition "A person who is authorised to access the information system and has been enrolled in the identity management system with defined permissions specifying which functions they may perform and which data they may view or modify, with different registered user roles having different permission sets."@en ;
+    skos:example "An order entry clerk authorised to create and modify orders but not to access payroll or financial reporting functions."@en .
+
+o4df:SDLCPhase a owl:Class ;
+    rdfs:label "SDLC Phase"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.159–160."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "A discrete, ordered stage within the Systems Development Life Cycle that is characterised by a specific objective, a defined set of activities, and a distinct set of input and output artefacts. Phases are temporally ordered, though iterative methodologies may revisit earlier phases within successive iterations."@en ;
+    skos:example "Analysis Phase, Design Phase, Implementation Phase."@en ;
+    o4df:isExtensionPoint true .
+
+o4df:UIDesignModel a owl:Class ;
+    rdfs:label "UI Design Model"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.166–167, Figure 6-6."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:DesignModel ;
+    skos:definition "A design model specifically focused on representing the appearance, structure, and interaction flow of the user interface, including static visual representations and interactive prototypes used to elicit user feedback and specify interface behaviour before full implementation."@en ;
+    skos:example "A mockup of the order entry screen, a storyboard showing the checkout flow, a small-screen menu prototype for mobile users."@en .
+
+o4df:UnauthorisedUser a owl:Class ;
+    rdfs:label "Unauthorised User"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.174–175."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:UserCategory ;
+    owl:disjointWith o4df:PrivilegedUser,
+        o4df:RegisteredUser ;
+    skos:definition "A person who has no right to access any part or function of the information system, including former employees whose access has been revoked, outside attackers, and any individual not listed in the system's access control lists, and who must be identified and denied access by the authentication and authorisation mechanisms."@en ;
+    skos:example "A hacker attempting to access patient records, a former employee whose system credentials have not been deactivated after termination."@en .
+
+o4df:ValueLimitControl a owl:Class ;
+    rdfs:label "Value Limit Control"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.171."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:InputControl ;
+    owl:disjointWith o4df:CompletenessControl,
+        o4df:DataValidationControl,
+        o4df:FieldCombinationControl ;
+    skos:definition "An input control that verifies that a numeric data input falls within a predefined reasonable range, rejecting values that are negative, exceed an upper threshold, or fall below a lower threshold in order to prevent data entry errors and potential fraud."@en ;
+    skos:example "A payroll system rejects any hourly rate entry below $0 or above $500; a sales system rejects any order total exceeding $50,000 without supervisory approval."@en .
+
+<http://www.zt4swe.io/agent/YusufAltunel> a prov:Agent .
+
+o4df:ApplicationComponent a owl:Class ;
+    rdfs:label "Application Component"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.165."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "A well-defined unit of software that performs one or more specific tasks within an information system, ranging in granularity from a single method or script to an entire subsystem, and that is independently buildable, testable, and deployable."@en ;
+    skos:example "A CartHandler controller class, an OrderAcceptance subsystem, a JavaScript validation script embedded in a web page."@en ;
+    o4df:isExtensionPoint true .
+
+o4df:DesignArtifact a owl:Class ;
+    rdfs:label "Design Artifact"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.160–168."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:EngineeringArtifact ;
+    owl:disjointWith o4df:RequirementsArtifact ;
+    skos:definition "An engineering artefact produced during the design phase that specifies how the system will be constructed, including architectural diagrams, database schemas, UI prototypes, and software class blueprints that guide the implementation phase."@en ;
+    skos:example "Design class diagram, deployment diagram, database table definition, UI mockup, package diagram."@en .
+
+o4df:DesignModel a owl:Class ;
+    rdfs:label "Design Model"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.160–162."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:DesignArtifact ;
+    skos:definition "A formal or semi-formal visual or textual representation of a specific aspect of the solution system's structure, behaviour, or deployment, produced during a design activity and serving as a blueprint that guides the implementation phase and coordinates the work of multiple designers."@en ;
+    skos:example "A deployment diagram showing server topology, a design class diagram showing attribute types and method signatures, a package diagram showing subsystem boundaries."@en ;
+    o4df:isExtensionPoint true .
+
+o4df:DesignPhase a owl:Class ;
+    rdfs:label "Design Phase"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.159–163."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SDLCPhase ;
+    owl:disjointWith o4df:AnalysisPhase,
+        o4df:ImplementationPhase ;
+    skos:definition "The SDLC phase in which the system's structure, components, interfaces, database, and security mechanisms are specified in sufficient detail to guide construction, converting requirements models produced during analysis into solution models that describe how the system will be built."@en ;
+    skos:example "Producing design class diagrams, deployment diagrams, database table definitions, and UI prototypes."@en ;
+    o4df:precedes o4df:ImplementationPhase .
+
+o4df:FraudTriangle a owl:Class ;
+    rdfs:label "Fraud Triangle"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.172–173, Figure 6-10. Cressey, D.R. (1953). Other People's Money. Free Press."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "A criminological model developed in the 1950s that identifies the three necessary and jointly sufficient conditions for fraud to occur — opportunity, motivation, and rationalisation — providing systems designers with a theoretical foundation for targeting opportunity reduction as the most technically tractable fraud prevention strategy."@en ;
+    skos:example "An accounts payable clerk (motivation: personal debt) exploits unrestricted system access (opportunity) believing funds will be repaid (rationalisation) — all three elements present."@en .
+
+o4df:OutputControl a owl:Class ;
+    rdfs:label "Output Control"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.171–172."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:IntegrityControl ;
+    owl:disjointWith o4df:InputControl ;
+    skos:definition "An integrity control that ensures that system outputs — whether printed reports, electronic data, or displayed information — reach the correct and authorised destination, are accurate and complete, and cannot be accessed or reconstructed by unauthorised persons."@en ;
+    skos:example "A pagination and date-stamping requirement for all printed financial reports; an access restriction requiring authentication before any payroll report can be printed."@en .
+
+o4df:QualityAttribute a owl:Class ;
+    rdfs:label "System Quality Attribute"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.163–168. ISO/IEC 25010:2023 — SQuaRE product quality model."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "A non-functional characteristic of an information system that defines a quality dimension — such as security, performance, usability, or maintainability — that must be satisfied by the design and that cross-cuts all five design activities."@en ;
+    skos:example "Security (protected against unauthorised access), Performance (responds within 2 seconds), Usability (new users productive within one hour)."@en ;
+    o4df:isExtensionPoint true .
+
+o4df:SecureTransactionProtocol a owl:Class ;
+    rdfs:label "Secure Transaction Protocol"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.179. IETF RFC 8446 (2018) — TLS 1.3."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SecurityControl ;
+    skos:definition "A standardised set of methods, handshake procedures, and protocol rules that together establish an authenticated, encrypted communication channel between two parties over an untrusted network, addressing authentication, key exchange, confidentiality, and integrity for digital transactions."@en ;
+    skos:example "TLS 1.3, IPSec, HTTPS."@en .
+
+o4df:StakeholderRole a owl:Class ;
+    rdfs:label "SA&D Stakeholder Role"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.161."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf core:Role,
+        o4df:SADConcept ;
+    skos:definition "A named function or responsibility held by an individual or group participating in the systems analysis and design process, defining the scope of their contribution, their interaction with artefacts, and their authority over design decisions."@en ;
+    skos:example "Systems Analyst, Systems Designer, Database Administrator, Security Specialist, Project Manager."@en ;
+    o4df:isExtensionPoint true .
+
+o4df:UserCategory a owl:Class ;
+    rdfs:label "User Category"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.174–175, Figure 6-12."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "A classification of system users according to their level of authorised access, distinguishing between those who have no access rights, those with defined functional access, and those with elevated technical access to system internals."@en ;
+    skos:example "Unauthorised User, Registered User, Privileged User."@en .
+
+o4df:AccessControl a owl:Class ;
+    rdfs:label "Access Control"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.174–175. NIST SP 800-53 Rev.5 (2020), AC control family."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SecurityControl ;
+    skos:definition "A security control that limits a user's ability to access resources — including servers, files, web pages, application programs, and database tables — based on the user's verified identity and their authorised permissions, implemented through authentication, access control lists, and authorisation enforcement."@en ;
+    skos:example "A role-based access control system that permits order clerks to create orders but not modify prices, while managers can modify both orders and prices."@en .
+
+o4df:EncryptionMechanism a owl:Class ;
+    rdfs:label "Encryption Mechanism"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.175–177. NIST SP 800-175B Rev.1 (2020)."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SecurityControl ;
+    skos:definition "A security control that transforms readable data into an unintelligible ciphertext form using a mathematical algorithm and a secret key, protecting the confidentiality of stored data and transmitted messages from unauthorised access even if the physical storage medium or network channel is compromised."@en ;
+    skos:example "AES-256 encryption of a patient database to protect against unauthorised access if the storage device is lost or stolen."@en .
+
+o4df:IntegrityControl a owl:Class ;
+    rdfs:label "Integrity Control"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.170–173."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:ControlMechanism ;
+    owl:disjointWith o4df:SecurityControl ;
+    skos:definition "An application-specific control mechanism that rejects invalid or erroneous data inputs, prevents unauthorised data outputs, and protects data and programs against accidental or malicious tampering, with the objectives of ensuring correct transactions, accurate recording and processing, and asset protection."@en ;
+    skos:example "A value limit control rejecting a commission input exceeding $10,000; a completeness control requiring all address fields before accepting a shipping record."@en .
+
+o4df:UMLDesignModel a owl:Class ;
+    rdfs:label "UML Design Model"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.161–162."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:DesignModel ;
+    skos:definition "A design model expressed using the Unified Modelling Language notation, providing a standardised graphical vocabulary for specifying object-oriented system structures, behavioural sequences, and physical deployment configurations."@en ;
+    skos:example "Design class diagram, interaction diagram, deployment diagram, component diagram, package diagram, design state machine diagram."@en .
+
+o4df:InputControl a owl:Class ;
+    rdfs:label "Input Control"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.171. OWASP Top 10 (2021) — A03: Injection."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:IntegrityControl ;
+    skos:definition "An integrity control that prevents invalid or erroneous data from entering the information system, applicable to data entered by human users or transmitted from internal or external systems, implemented within application programs, database schemas, or both."@en ;
+    skos:example "A form field that rejects any commission entry greater than $10,000 or less than $0."@en .
+
+o4df:ControlMechanism a owl:Class ;
+    rdfs:label "Control Mechanism"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.170–179. NIST SP 800-53 Rev.5 (2020)."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "A mechanism, procedure, or policy designed and embedded within an information system or its supporting infrastructure to safeguard system assets, ensure correct and authorised business transactions, detect and reject erroneous or malicious inputs, protect confidential outputs, and maintain operational continuity."@en ;
+    skos:example "An input validation rule rejecting negative sale amounts, an access control list restricting database table access to authorised users, a backup procedure copying database contents to off-site storage nightly."@en ;
+    o4df:isExtensionPoint true .
+
+o4df:SecurityControl a owl:Class ;
+    rdfs:label "Security Control"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.173–179. NIST SP 800-53 Rev.5 (2020). ISO/IEC 27001:2022."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:ControlMechanism ;
+    skos:definition "A cross-system control mechanism that protects the assets of an organisation from all threats — with primary focus on external threats — by maintaining a stable operating environment and protecting information during transmission across insecure networks."@en ;
+    skos:example "A firewall blocking unauthorised inbound connections; TLS encryption protecting patient data transmitted over the Internet; multi-factor authentication for privileged user access."@en .
+
+o4df:ContemporaryConcept a owl:Class ;
+    rdfs:label "Contemporary SA&D Concept"@en ;
+    dcterms:source "COM4061 Research Report — Foundations of Systems Design (2026). NIST SP 800-207 (2020). GDPR (EU) 2016/679."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "A concept, framework, pattern, or regulatory requirement that extends and contextualises the foundational principles of systems design within the technology landscape, regulatory environment, and architectural paradigms prevailing after 2015, representing the current state of professional practice."@en ;
+    skos:example "Zero-Trust Architecture, DevSecOps, GDPR compliance, Cloud-Native Design, Microservices Patterns."@en ;
+    o4df:isExtensionPoint true .
+
+o4df:DesignActivity a owl:Class ;
+    rdfs:label "Design Activity"@en ;
+    dcterms:source "Satzinger et al. (2016), Ch.6, p.163–168."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    rdfs:subClassOf o4df:SADConcept ;
+    skos:definition "One of five structured activities within the systems design phase, each addressing a distinct structural element of the target information system and producing a specific set of design models and documents. Design activities are conducted in parallel, with outputs from each activity influencing the others."@en ;
+    skos:example "Describe the Environment, Design the Application Components, Design the User Interface, Design the Database, Design the Software Classes and Methods."@en ;
+    o4df:isExtensionPoint true .
+
+o4df:SADConcept a owl:Class ;
+    rdfs:label "Systems Analysis and Design Concept"@en ;
+    dcterms:source "Satzinger, J.W., Jackson, R.B., and Burd, S.D. (2016). Systems Analysis and Design In a Changing World, 7th ed. Cengage Learning, p.1–484."@en ;
+    rdfs:comment "Extension point: all subsequent chapter ontologies subclass from o4df:SADConcept or its direct children."@en ;
+    rdfs:isDefinedBy sad:design-foundations ;
+    skos:definition "The root class of the SA&D Ontology Ecosystem, representing any conceptual entity within the domain of systems analysis and design as documented across the chapters of Satzinger et al. (2016). All domain-specific classes are subclasses of this root."@en ;
+    skos:example "SystemsDesign, DesignActivity, ControlMechanism, SecurityProtocol, DesignModel."@en ;
+    o4df:isExtensionPoint true .
+
+sad:design-foundations a owl:Ontology ;
+    rdfs:label "Ontology for Design Foundations (O4DF) v1.0.0"@en ;
+    amod:artifactFilename "o4df_v1_0_0.ttl" ;
+    amod:ecosystemModule "Module-1-DesignFoundations" ;
+    dc:creator "Ontology4DesignFoundations Engineering Sprint — Claude Sonnet 4.6 / İstanbul Kültür Üniversitesi COM4061" ;
+    dc:description "A comprehensive OWL 2 DL ontology formalising the knowledge domain of Foundations of Systems Design as presented in Chapter 6 of Satzinger, Jackson, and Burd (2016) and enriched by post-2015 standards, frameworks, and extended concepts. Module 1 of the planned SA&D Ontology Ecosystem covering all chapters of the textbook. Governed by META v6.3.2, quality-assured by OQC v2.2.3, reliability-verified by REDO v2.5.8, and version-managed by AMOD v1.2.5." ;
+    dc:subject "Systems Design, Systems Analysis, Information Systems, Security Controls, Integrity Controls, Design Activities, UML Models" ;
+    dc:title "Ontology for Design Foundations (O4DF) — Chapter 6 Systems Analysis and Design" ;
+    dcterms:created "2026-04-20"^^xsd:date ;
+    dcterms:creator <http://www.zt4swe.io/agent/YusufAltunel> ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-06-05"^^xsd:date ;
+    dcterms:publisher <http://www.zt4swe.io/agent/YusufAltunel> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed under CC BY 4.0."@en ;
+    dcterms:rightsHolder <http://www.zt4swe.io/agent/YusufAltunel> ;
+    dcterms:source "Satzinger, J.W., Jackson, R.B., and Burd, S.D. (2016). Systems Analysis and Design In a Changing World, 7th ed. Cengage Learning." ;
+    rdfs:comment "O4DF v1.0.0 — Module 1 of the SA&D Ontology Ecosystem. Covers Chapter 6: What Is Systems Design, Analysis-Design-Implementation continuum, five Design Activities (Environment, Application Components, User Interface, Database, Software Classes and Methods), Integrity Controls, and Security Controls. Five internal modules: A=CoreSADMetaLayer, B=DesignActivityTaxonomy, C=DesignModelsAndArtifacts, D=ControlsAndSecurityDomain, E=ExtendedConceptsAndStandardsAlignment.",
+        "v1.0.1 (2026-06-05, owner-authorized release): (SD-1) o4df:precedes corrected to OWL 2 DL — removed owl:AsymmetricProperty + owl:IrreflexiveProperty (illegal on a transitive/non-simple property), kept owl:TransitiveProperty; (SD-2) removed unresolvable owl:imports <http://example.org/core>; (SD-3) seeded a canonical refinement-chain exemplar (software-class design flow, Satzinger Ch.6). Book remains dcterms:source, not owner. priorVersion 1.0.0."@en ;
+    owl:priorVersion <http://zt4swe.io/ontology/sa-and-d/design-foundations/1.0.1> ;
+    owl:versionIRI <http://zt4swe.io/ontology/sa-and-d/design-foundations/1.0.2> ;
+    owl:versionInfo "1.0.2" ;
+    skos:note "Ecosystem role: Module 1 of SAD_Ecosystem_Root. Extension points marked with o4df:isExtensionPoint=true are expected to be specialised or reused by subsequent chapter modules (Ch7 Technology Architecture, Ch8 UI Design, Ch9 Database Design, etc.)." ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> .
+

@@ -1,0 +1,229 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix kb: <http://example.org/knowledge-base#> .
+@prefix okb: <http://www.zt4swe.io/o4sdlc/kb#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.zt4swe.io/o4sdlc/kb> a owl:Ontology ;
+    rdfs:label "O4SDLC Knowledge Base (ABox) v1.0.0"@en ;
+    dcterms:creator <http://www.zt4swe.io/agent/YusufAltunel> ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:publisher <http://www.zt4swe.io/agent/YusufAltunel> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed under CC BY 4.0."@en ;
+    dcterms:rightsHolder <http://www.zt4swe.io/agent/YusufAltunel> ;
+    dcterms:source <http://example.org/knowledge-base> ;
+    rdfs:comment "O4SDLC's own knowledge base, applying the OE knowledge_base convention (kb: vocabulary) to the SDLC domain ontology: release-blocking RegressionTest invariants (BP-D26), and O4SDLC-specific LessonsLearned + BestPractice. Reuses the OE kb: TBox as upper vocabulary; all instances stay in the O4SDLC namespace (L-64 scope discipline). OE-catalogue BestPractices are referenced, not duplicated (L-71)."@en ;
+    owl:priorVersion <http://www.zt4swe.io/o4sdlc/kb/1.0.0> ;
+    owl:versionIRI <http://www.zt4swe.io/o4sdlc/kb/1.0.1> ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> .
+
+okb:BestPractice_O4SDLC_1_ConsolidateNotImport a kb:BestPractice,
+        owl:NamedIndividual ;
+    rdfs:label "O4SDLC consolidates its sources via o4sdlc:consolidates, never owl:imports"@en ;
+    dcterms:source "O4SDLC o4sdlc_v1_0_0.ttl; OE BP-D2/B4 (identity-before-correctness)." ;
+    skos:definition "The O4SDLC upper layer links its three source ontologies (O4UCM, O4DF, O4SE) with the annotation property o4sdlc:consolidates, NOT owl:imports. This avoids import-resolution coupling and one-IRI-at-two-versions identity collisions (B4/BP-D2) while keeping the reasoning merge fully reproducible from the named source versions. Validation merges the named sources explicitly rather than dereferencing imports."@en ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> .
+
+okb:BestPractice_O4SDLC_2_TwoTierDefinitionSourcing a kb:BestPractice,
+        owl:NamedIndividual ;
+    rdfs:label "Define every term via two-tier sourcing with honest convention-tagging"@en ;
+    dcterms:source "O4SDLC O4SE_Tier2_Sourcing_Map_v1_0_0.md; OE BP-D41 (verify references)." ;
+    skos:definition "When authoring skos:definitions for a domain ontology, prefer Tier-1 (ground in the entity's own existing comment/structure); else Tier-2 (cite a verified seminal standard, confirmed against an authoritative source per BP-D41). Terms governed by no single standard are explicitly tagged convention-based in dcterms:source rather than attributed to a source they do not come from. Target 100% class and property coverage."@en ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> .
+
+okb:Lesson_O4SDLC_1_ProofNotReproducible a kb:LessonsLearned,
+        owl:NamedIndividual ;
+    rdfs:label "In-package consistency proof was not reproducible"@en ;
+    dcterms:source "O4SDLC R4_FINDINGS_v1_0_0.md (2026-06-05); defect_register_v2_3_0.json SD-14." ;
+    skos:definition "The SDLC parallel-session package shipped HermiT_consistency_proof_v1_0_0.txt claiming the merged ontology CONSISTENT, but the claim was not independently reproducible: O4SE_Core_Structure is inconsistent standalone, so any merge containing it must be too. A prior proof is a claim requiring re-verification, not evidence. This is a concrete O4SDLC instance of OE BP-D2 (never trust summaries) / L-65 (verify before publishing)."@en ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> .
+
+okb:Lesson_O4SDLC_2_HasDescriptionLangTagInconsistency a kb:LessonsLearned,
+        owl:NamedIndividual ;
+    rdfs:label "Language-tagged values on an xsd:string-range property broke DL consistency"@en ;
+    dcterms:source "O4SDLC defect_register_v2_3_0.json SD-14; O4SDLC_HermiT_consistency_proof_v2_0_0.txt." ;
+    skos:definition "O4SE_Core_Structure declared o4se:hasDescription with rdfs:range xsd:string while 17 individuals carried @en (rdf:langString) values; rdf:langString is disjoint from xsd:string, making the merged O4SDLC OWL2-DL inconsistent (defect SD-14). Fix: widen the range to rdfs:Literal (admits both). This is a concrete O4SDLC instance of OE BP-D18; a RegressionTest (okb:Regression_HasDescriptionNotXsdString) now guards against regression."@en ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> .
+
+okb:Lesson_O4SDLC_3_OwlreadyBridgeUnreliable a kb:LessonsLearned,
+        owl:NamedIndividual ;
+    rdfs:label "owlready2->HermiT bridge gave false verdicts and misled root-cause"@en ;
+    dcterms:source "O4SDLC R4_FINDINGS_v1_0_0.md; O4SDLC_HermiT_consistency_proof_v2_0_0.txt (2026-06-05)." ;
+    skos:definition "During SD-14 diagnosis the owlready2->HermiT bridge reported a graph CONSISTENT that the canonical OWLAPI/HermiT CLI reported INCONSISTENT, and sent the root-cause analysis down a false trail (implicating an owl:AllDisjointClasses that was actually innocent). Consistency certification and justification (deletion-based MUS) must use the canonical OWLAPI/HermiT path. This is a concrete O4SDLC vindication of OE BP-D3 (always use direct Java HermiT, never owlready2 wrappers)."@en ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> .
+
+okb:Lesson_O4SDLC_4_TwoTierSourcing a kb:LessonsLearned,
+        owl:NamedIndividual ;
+    rdfs:label "Two-tier sourcing reached 100% definition coverage honestly"@en ;
+    dcterms:source "O4SDLC O4SE_Tier2_Sourcing_Map_v1_0_0.md; defect_register_v2_3_0.json SD-8." ;
+    skos:definition "Authoring 245 class + 108 property skos:definitions used two tiers: Tier-1 grounded in each entity's existing rdfs:comment/structure, Tier-2 cited to verified seminal authorities (ISO/IEC/IEEE 24765/12207/25010/29119, SFIA, NIST SP 800-145, etc.). Terms with no governing standard were tagged convention-based rather than over-attributed. Coverage reached 100% (classes 507/507, properties 108/108) with REDO violations 0."@en ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> .
+
+okb:Lesson_O4SDLC_5_OwnershipRuling a kb:LessonsLearned,
+        owl:NamedIndividual ;
+    rdfs:label "Book-sourced, owner-owned: provenance is not authority"@en ;
+    dcterms:source "O4SDLC OWNERSHIP_RULING_v1_0_0.md (2026-06-05)." ;
+    skos:definition "O4SDLC's source ontologies are book-SOURCED but owner-OWNED (Yusuf Altunel). Establishing ownership cleared the SD-7 authority/maturity gate and converted source-repair 'proposals' into owner-authorized edits (with BP-D7 bumps + book retained as dcterms:source). Provenance-of-source must not be conflated with authority-to-edit."@en ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> .
+
+okb:Lesson_O4SDLC_6_CrossSessionProposalRefutedBlocker a kb:LessonsLearned,
+        owl:NamedIndividual ;
+    rdfs:label "A cross-session proposal reproduced a refuted, superseded BLOCKER"@en ;
+    dcterms:source "O4SDLC proposal-realization assessment, 2026-06-05."@en ;
+    skos:definition "The PAMG-session enhancement proposal (sdlc_enhancement_proposal v1.0.0) shipped a BLOCKER (E-1) asserting O4SDLC inconsistent due to owl:AllDisjointClasses{Stakeholder,Process,Artifact,Tool,QualityAttribute}, citing the superseded in-package proof v1.0.0 and admitting no justification reasoner was run. Canonical OWLAPI/HermiT on the shipped artifacts showed the disjointness satisfiable and both o4se_merged and the merged corpus CONSISTENT (0 unsatisfiable); the true SD-14 cause (hasDescription langtag) was already fixed. An incoming cross-session proposal is a CLAIM (BP-D2/B3) and must be re-proven against CURRENT artifacts with the canonical reasoner (BP-D3) before any item is actioned."@en ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/proposal-realization-2026-06-05> .
+
+okb:Regression_AllO4sdlcClassesHaveDefinition a kb:RegressionTest,
+        owl:NamedIndividual ;
+    rdfs:label "Every named O4SDLC owl:Class has skos:definition (100% coverage)"@en ;
+    kb:hasCheckSPARQL """PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+ASK { ?c a owl:Class . FILTER(isIRI(?c))
+      FILTER( STRSTARTS(STR(?c),"http://www.zt4swe.io") || CONTAINS(STR(?c),"/2025/O4SE") )
+      FILTER NOT EXISTS { ?c skos:definition ?d } }""" ;
+    kb:hasExpectedResult "false" ;
+    kb:hasTestType "sparql_ask" ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> .
+
+okb:Regression_AllO4sdlcClassesHaveLabel a kb:RegressionTest,
+        owl:NamedIndividual ;
+    rdfs:label "Every named O4SDLC owl:Class has rdfs:label"@en ;
+    kb:hasCheckSPARQL """PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+ASK { ?c a owl:Class . FILTER(isIRI(?c))
+      FILTER( STRSTARTS(STR(?c),"http://www.zt4swe.io") || CONTAINS(STR(?c),"/2025/O4SE") )
+      FILTER NOT EXISTS { ?c rdfs:label ?l } }""" ;
+    kb:hasExpectedResult "false" ;
+    kb:hasTestType "sparql_ask" ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> .
+
+okb:Regression_AllO4sdlcOntologiesHaveLicense a kb:RegressionTest,
+        owl:NamedIndividual ;
+    rdfs:label "Every O4SDLC owl:Ontology declares dcterms:license (BP-D24)"@en ;
+    kb:hasCheckSPARQL """PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+ASK { ?o a owl:Ontology .
+      FILTER( STRSTARTS(STR(?o),"http://www.zt4swe.io") || CONTAINS(STR(?o),"/2025/O4SE") )
+      FILTER NOT EXISTS { ?o dcterms:license ?l } }""" ;
+    kb:hasExpectedResult "false" ;
+    kb:hasTestType "sparql_ask" ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> .
+
+okb:Regression_AllO4sdlcOntologiesHaveVersionInfo a kb:RegressionTest,
+        owl:NamedIndividual ;
+    rdfs:label "Every O4SDLC owl:Ontology declares owl:versionInfo (BP-D7)"@en ;
+    kb:hasCheckSPARQL """PREFIX owl: <http://www.w3.org/2002/07/owl#>
+ASK { ?o a owl:Ontology .
+      FILTER( STRSTARTS(STR(?o),"http://www.zt4swe.io") || CONTAINS(STR(?o),"/2025/O4SE") )
+      FILTER NOT EXISTS { ?o owl:versionInfo ?v } }""" ;
+    kb:hasExpectedResult "false" ;
+    kb:hasTestType "sparql_ask" ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> .
+
+okb:Regression_AllO4sdlcPropertiesHaveDefinition a kb:RegressionTest,
+        owl:NamedIndividual ;
+    rdfs:label "Every O4SDLC object/datatype property has skos:definition"@en ;
+    kb:hasCheckSPARQL """PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+ASK { ?p a ?t . VALUES ?t { owl:ObjectProperty owl:DatatypeProperty }
+      FILTER( CONTAINS(STR(?p),"/2025/O4SE") )
+      FILTER NOT EXISTS { ?p skos:definition ?d } }""" ;
+    kb:hasExpectedResult "false" ;
+    kb:hasTestType "sparql_ask" ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> .
+
+okb:Regression_CrudOpsHaveCanonicalMatch a kb:RegressionTest,
+        owl:NamedIndividual ;
+    rdfs:label "Every O4UCM CRUD operation skos:exactMatch a canonical O4SE op (E-CRUD)"@en ;
+    kb:hasCheckSPARQL """PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+ASK { ?op rdfs:subClassOf <http://www.zt4swe.io/sad/ch5#CRUDOperation> . FILTER NOT EXISTS { ?op skos:exactMatch ?c } }""" ;
+    kb:hasExpectedResult "false" ;
+    kb:hasTestType "sparql_ask" ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/proposal-realization-2026-06-05> .
+
+okb:Regression_HasDescriptionNotXsdString a kb:RegressionTest,
+        owl:NamedIndividual ;
+    rdfs:label "BP-D18/SD-14 guard: o4se:hasDescription does not range over xsd:string"@en ;
+    kb:hasCheckSPARQL """PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+ASK { <http://www.semanticweb.org/ontologies/2025/O4SE#hasDescription> rdfs:range xsd:string }""" ;
+    kb:hasExpectedResult "false" ;
+    kb:hasTestType "sparql_ask" ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> .
+
+okb:Regression_MergedO4sdlcHermitConsistent a kb:RegressionTest,
+        owl:NamedIndividual ;
+    rdfs:label "Merged O4SDLC corpus is HermiT-consistent (canonical OWLAPI per BP-D3)"@en ;
+    kb:hasCheckSPARQL "EXTERNAL: java -cp HermiT.jar Check <merged-O4SDLC.owl> ; expect isConsistent()=true, 0 unsatisfiable classes. Per BP-D3 use direct Java HermiT/OWLAPI, never the owlready2 bridge (L(O4SDLC)-3)." ;
+    kb:hasExpectedResult "consistent" ;
+    kb:hasTestType "external_script" ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> .
+
+okb:Regression_NoSubClassOfSelfLoops a kb:RegressionTest,
+        owl:NamedIndividual ;
+    rdfs:label "No O4SDLC class is rdfs:subClassOf itself (L-52 guard)"@en ;
+    kb:hasCheckSPARQL """PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+ASK { ?c rdfs:subClassOf ?c }""" ;
+    kb:hasExpectedResult "false" ;
+    kb:hasTestType "sparql_ask" ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> .
+
+okb:Regression_RefinementAxisInstantiated a kb:RegressionTest,
+        owl:NamedIndividual ;
+    rdfs:label "o4sdlc:refinesInto axis is instantiated (E-3)"@en ;
+    kb:hasCheckSPARQL """PREFIX o4sdlc: <http://www.zt4swe.io/o4sdlc#>
+ASK { ?a o4sdlc:refinesInto ?b }""" ;
+    kb:hasExpectedResult "true" ;
+    kb:hasTestType "sparql_ask" ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ;
+    prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://www.zt4swe.io/activity/proposal-realization-2026-06-05> .
+
+<http://www.zt4swe.io/activity/proposal-realization-2026-06-05> a prov:Activity ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date .
+
+<http://www.zt4swe.io/activity/oe-compliance-remediation-2026-06-05> a prov:Activity ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date .
+
+<http://www.zt4swe.io/agent/YusufAltunel> a prov:Agent .
+

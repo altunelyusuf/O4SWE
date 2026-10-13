@@ -1,0 +1,573 @@
+@prefix o4se: <http://www.semanticweb.org/ontologies/2025/O4SE#> .
+@prefix org: <http://www.semanticweb.org/ontologies/2025/O4SE/Organizations#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+# ===========================
+# Organizations Module
+# ===========================
+
+<http://www.semanticweb.org/ontologies/2025/O4SE/Organizations> a owl:Ontology ;
+    owl:versionInfo "1.0.0"^^xsd:string ;
+    dcterms:title "O4SE Organizations and Teams Module"@en ;
+    dcterms:description "Software development organizations, teams, roles, and competencies"@en ;
+    owl:imports <http://www.semanticweb.org/ontologies/2025/O4SE> .
+
+# ===========================
+# Organization Types
+# ===========================
+
+org:Organization a owl:Class ;
+    rdfs:label "Organization"@en ;
+    rdfs:comment "Entity that develops or maintains software"@en ;
+    rdfs:subClassOf foaf:Organization .
+
+org:SoftwareCompany a owl:Class ;
+    rdfs:label "Software Company"@en ;
+    rdfs:subClassOf org:Organization ;
+    skos:definition "Company primarily developing software products"@en .
+
+org:ISV a owl:Class ;
+    rdfs:label "Independent Software Vendor"@en ;
+    rdfs:subClassOf org:SoftwareCompany .
+
+org:SaaSProvider a owl:Class ;
+    rdfs:label "SaaS Provider"@en ;
+    rdfs:subClassOf org:SoftwareCompany ;
+    skos:definition "Software as a Service provider"@en .
+
+org:ConsultingFirm a owl:Class ;
+    rdfs:label "Consulting Firm"@en ;
+    rdfs:subClassOf org:Organization ;
+    skos:definition "Provides software consulting services"@en .
+
+org:SystemIntegrator a owl:Class ;
+    rdfs:label "System Integrator"@en ;
+    rdfs:subClassOf org:Organization .
+
+org:ITDepartment a owl:Class ;
+    rdfs:label "IT Department"@en ;
+    rdfs:subClassOf org:Organization ;
+    skos:definition "Internal IT organization"@en .
+
+org:GovernmentAgency a owl:Class ;
+    rdfs:label "Government Agency"@en ;
+    rdfs:subClassOf org:Organization ;
+    skos:definition "Public sector organization"@en .
+
+org:AcademicInstitution a owl:Class ;
+    rdfs:label "Academic Institution"@en ;
+    rdfs:subClassOf org:Organization ;
+    skos:definition "University or research institution"@en .
+
+org:ResearchLab a owl:Class ;
+    rdfs:label "Research Laboratory"@en ;
+    rdfs:subClassOf org:Organization .
+
+org:StartUp a owl:Class ;
+    rdfs:label "Start-up"@en ;
+    rdfs:subClassOf org:SoftwareCompany ;
+    skos:definition "Early-stage software company"@en .
+
+org:Enterprise a owl:Class ;
+    rdfs:label "Enterprise"@en ;
+    rdfs:subClassOf org:Organization ;
+    skos:definition "Large business organization"@en .
+
+org:OpenSourceCommunity a owl:Class ;
+    rdfs:label "Open Source Community"@en ;
+    rdfs:subClassOf org:Organization ;
+    skos:definition "Collaborative open source developers"@en .
+
+# ===========================
+# Development Contexts
+# ===========================
+
+org:DevelopmentContext a owl:Class ;
+    rdfs:label "Development Context"@en ;
+    rdfs:comment "Context in which software is developed"@en .
+
+org:PersonalDevelopment a owl:Class ;
+    rdfs:label "Personal Development"@en ;
+    rdfs:subClassOf org:DevelopmentContext ;
+    skos:definition "Individual hobbyist or learning"@en .
+
+org:CorporateDevelopment a owl:Class ;
+    rdfs:label "Corporate Development"@en ;
+    rdfs:subClassOf org:DevelopmentContext ;
+    skos:definition "Commercial enterprise development"@en .
+
+org:AcademicDevelopment a owl:Class ;
+    rdfs:label "Academic Development"@en ;
+    rdfs:subClassOf org:DevelopmentContext ;
+    skos:definition "Educational or research development"@en .
+
+org:ScientificDevelopment a owl:Class ;
+    rdfs:label "Scientific Development"@en ;
+    rdfs:subClassOf org:DevelopmentContext ;
+    skos:definition "Scientific computing and research"@en .
+
+org:MilitaryDevelopment a owl:Class ;
+    rdfs:label "Military Development"@en ;
+    rdfs:subClassOf org:DevelopmentContext ;
+    skos:definition "Defense and military applications"@en .
+
+# ===========================
+# Geographic Scope
+# ===========================
+
+org:GeographicScope a owl:Class ;
+    rdfs:label "Geographic Scope"@en ;
+    rdfs:comment "Geographic extent of development"@en .
+
+org:LocalDevelopment a owl:Class ;
+    rdfs:label "Local Development"@en ;
+    rdfs:subClassOf org:GeographicScope .
+
+org:NationalDevelopment a owl:Class ;
+    rdfs:label "National Development"@en ;
+    rdfs:subClassOf org:GeographicScope ;
+    skos:definition "Within single country"@en .
+
+org:InternationalDevelopment a owl:Class ;
+    rdfs:label "International Development"@en ;
+    rdfs:subClassOf org:GeographicScope ;
+    skos:definition "Across multiple countries"@en .
+
+org:GlobalDevelopment a owl:Class ;
+    rdfs:label "Global Development"@en ;
+    rdfs:subClassOf org:InternationalDevelopment ;
+    skos:definition "Worldwide development"@en .
+
+org:OffshoreDevelopment a owl:Class ;
+    rdfs:label "Offshore Development"@en ;
+    rdfs:subClassOf org:GeographicScope ;
+    skos:definition "Development in different country"@en .
+
+org:NearshoreDevelopment a owl:Class ;
+    rdfs:label "Nearshore Development"@en ;
+    rdfs:subClassOf org:GeographicScope ;
+    skos:definition "Development in nearby country"@en .
+
+org:DistributedDevelopment a owl:Class ;
+    rdfs:label "Distributed Development"@en ;
+    rdfs:subClassOf org:GeographicScope ;
+    skos:definition "Geographically distributed teams"@en .
+
+org:RemoteDevelopment a owl:Class ;
+    rdfs:label "Remote Development"@en ;
+    rdfs:subClassOf org:DistributedDevelopment .
+
+# ===========================
+# Team Structures
+# ===========================
+
+org:Team a owl:Class ;
+    rdfs:label "Team"@en ;
+    rdfs:comment "Group of people working together"@en ;
+    rdfs:subClassOf foaf:Group .
+
+org:DevelopmentTeam a owl:Class ;
+    rdfs:label "Development Team"@en ;
+    rdfs:subClassOf org:Team ;
+    skos:definition "Team developing software"@en .
+
+org:CrossFunctionalTeam a owl:Class ;
+    rdfs:label "Cross-Functional Team"@en ;
+    rdfs:subClassOf org:Team ;
+    skos:definition "Team with diverse skills"@en .
+
+org:FeatureTeam a owl:Class ;
+    rdfs:label "Feature Team"@en ;
+    rdfs:subClassOf org:DevelopmentTeam .
+
+org:ComponentTeam a owl:Class ;
+    rdfs:label "Component Team"@en ;
+    rdfs:subClassOf org:DevelopmentTeam .
+
+org:PlatformTeam a owl:Class ;
+    rdfs:label "Platform Team"@en ;
+    rdfs:subClassOf org:DevelopmentTeam .
+
+org:DevOpsTeam a owl:Class ;
+    rdfs:label "DevOps Team"@en ;
+    rdfs:subClassOf org:Team .
+
+org:QATeam a owl:Class ;
+    rdfs:label "QA Team"@en ;
+    rdfs:subClassOf org:Team ;
+    skos:definition "Quality Assurance team"@en .
+
+org:SecurityTeam a owl:Class ;
+    rdfs:label "Security Team"@en ;
+    rdfs:subClassOf org:Team .
+
+org:DataTeam a owl:Class ;
+    rdfs:label "Data Team"@en ;
+    rdfs:subClassOf org:Team .
+
+org:InfrastructureTeam a owl:Class ;
+    rdfs:label "Infrastructure Team"@en ;
+    rdfs:subClassOf org:Team .
+
+# ===========================
+# Team Sizes
+# ===========================
+
+org:TeamSize a owl:Class ;
+    rdfs:label "Team Size"@en ;
+    rdfs:comment "Classification by team member count"@en .
+
+org:SmallTeam a owl:Class ;
+    rdfs:label "Small Team"@en ;
+    rdfs:subClassOf org:TeamSize ;
+    skos:definition "2-5 members"@en .
+
+org:MediumTeam a owl:Class ;
+    rdfs:label "Medium Team"@en ;
+    rdfs:subClassOf org:TeamSize ;
+    skos:definition "6-12 members"@en .
+
+org:LargeTeam a owl:Class ;
+    rdfs:label "Large Team"@en ;
+    rdfs:subClassOf org:TeamSize ;
+    skos:definition "13-30 members"@en .
+
+org:VeryLargeTeam a owl:Class ;
+    rdfs:label "Very Large Team"@en ;
+    rdfs:subClassOf org:TeamSize ;
+    skos:definition "30+ members"@en .
+
+# ===========================
+# Roles and Positions
+# ===========================
+
+org:Role a owl:Class ;
+    rdfs:label "Role"@en ;
+    rdfs:comment "Position or function in organization"@en ;
+    rdfs:subClassOf o4se:Stakeholder .
+
+org:TechnicalRole a owl:Class ;
+    rdfs:label "Technical Role"@en ;
+    rdfs:subClassOf org:Role .
+
+org:ManagementRole a owl:Class ;
+    rdfs:label "Management Role"@en ;
+    rdfs:subClassOf org:Role .
+
+org:SoftwareEngineer a owl:Class ;
+    rdfs:label "Software Engineer"@en ;
+    rdfs:subClassOf org:TechnicalRole .
+
+org:JuniorEngineer a owl:Class ;
+    rdfs:label "Junior Engineer"@en ;
+    rdfs:subClassOf org:SoftwareEngineer .
+
+org:MidLevelEngineer a owl:Class ;
+    rdfs:label "Mid-Level Engineer"@en ;
+    rdfs:subClassOf org:SoftwareEngineer .
+
+org:SeniorEngineer a owl:Class ;
+    rdfs:label "Senior Engineer"@en ;
+    rdfs:subClassOf org:SoftwareEngineer .
+
+org:StaffEngineer a owl:Class ;
+    rdfs:label "Staff Engineer"@en ;
+    rdfs:subClassOf org:SoftwareEngineer .
+
+org:PrincipalEngineer a owl:Class ;
+    rdfs:label "Principal Engineer"@en ;
+    rdfs:subClassOf org:SoftwareEngineer .
+
+org:DistinguishedEngineer a owl:Class ;
+    rdfs:label "Distinguished Engineer"@en ;
+    rdfs:subClassOf org:SoftwareEngineer .
+
+org:FrontendDeveloper a owl:Class ;
+    rdfs:label "Frontend Developer"@en ;
+    rdfs:subClassOf org:TechnicalRole .
+
+org:BackendDeveloper a owl:Class ;
+    rdfs:label "Backend Developer"@en ;
+    rdfs:subClassOf org:TechnicalRole .
+
+org:FullStackDeveloper a owl:Class ;
+    rdfs:label "Full Stack Developer"@en ;
+    rdfs:subClassOf org:TechnicalRole .
+
+org:MobileDeveloper a owl:Class ;
+    rdfs:label "Mobile Developer"@en ;
+    rdfs:subClassOf org:TechnicalRole .
+
+org:DataEngineer a owl:Class ;
+    rdfs:label "Data Engineer"@en ;
+    rdfs:subClassOf org:TechnicalRole .
+
+org:DataScientist a owl:Class ;
+    rdfs:label "Data Scientist"@en ;
+    rdfs:subClassOf org:TechnicalRole .
+
+org:MLEngineer a owl:Class ;
+    rdfs:label "Machine Learning Engineer"@en ;
+    rdfs:subClassOf org:TechnicalRole .
+
+org:DevOpsEngineer a owl:Class ;
+    rdfs:label "DevOps Engineer"@en ;
+    rdfs:subClassOf org:TechnicalRole .
+
+org:SREEngineer a owl:Class ;
+    rdfs:label "Site Reliability Engineer"@en ;
+    rdfs:subClassOf org:TechnicalRole .
+
+org:SecurityEngineer a owl:Class ;
+    rdfs:label "Security Engineer"@en ;
+    rdfs:subClassOf org:TechnicalRole .
+
+org:QAEngineer a owl:Class ;
+    rdfs:label "QA Engineer"@en ;
+    rdfs:subClassOf org:TechnicalRole .
+
+org:TechnicalLead a owl:Class ;
+    rdfs:label "Technical Lead"@en ;
+    rdfs:subClassOf org:ManagementRole .
+
+org:EngineeringManager a owl:Class ;
+    rdfs:label "Engineering Manager"@en ;
+    rdfs:subClassOf org:ManagementRole .
+
+org:DirectorOfEngineering a owl:Class ;
+    rdfs:label "Director of Engineering"@en ;
+    rdfs:subClassOf org:ManagementRole .
+
+org:VPEngineering a owl:Class ;
+    rdfs:label "VP of Engineering"@en ;
+    rdfs:subClassOf org:ManagementRole .
+
+org:CTO a owl:Class ;
+    rdfs:label "Chief Technology Officer"@en ;
+    rdfs:subClassOf org:ManagementRole .
+
+# ===========================
+# Competencies
+# ===========================
+
+org:Competency a owl:Class ;
+    rdfs:label "Competency"@en ;
+    rdfs:comment "Skill or capability"@en .
+
+org:TechnicalCompetency a owl:Class ;
+    rdfs:label "Technical Competency"@en ;
+    rdfs:subClassOf org:Competency .
+
+org:SoftSkill a owl:Class ;
+    rdfs:label "Soft Skill"@en ;
+    rdfs:subClassOf org:Competency .
+
+org:ProgrammingSkill a owl:Class ;
+    rdfs:label "Programming Skill"@en ;
+    rdfs:subClassOf org:TechnicalCompetency .
+
+org:SystemDesignSkill a owl:Class ;
+    rdfs:label "System Design Skill"@en ;
+    rdfs:subClassOf org:TechnicalCompetency .
+
+org:DatabaseSkill a owl:Class ;
+    rdfs:label "Database Skill"@en ;
+    rdfs:subClassOf org:TechnicalCompetency .
+
+org:CloudSkill a owl:Class ;
+    rdfs:label "Cloud Skill"@en ;
+    rdfs:subClassOf org:TechnicalCompetency .
+
+org:SecuritySkill a owl:Class ;
+    rdfs:label "Security Skill"@en ;
+    rdfs:subClassOf org:TechnicalCompetency .
+
+org:CommunicationSkill a owl:Class ;
+    rdfs:label "Communication Skill"@en ;
+    rdfs:subClassOf org:SoftSkill .
+
+org:LeadershipSkill a owl:Class ;
+    rdfs:label "Leadership Skill"@en ;
+    rdfs:subClassOf org:SoftSkill .
+
+org:ProblemSolvingSkill a owl:Class ;
+    rdfs:label "Problem Solving Skill"@en ;
+    rdfs:subClassOf org:SoftSkill .
+
+# ===========================
+# Competency Levels
+# ===========================
+
+org:CompetencyLevel a owl:Class ;
+    rdfs:label "Competency Level"@en ;
+    rdfs:comment "Proficiency level in competency"@en .
+
+org:NoviceLevel a owl:Class ;
+    rdfs:label "Novice Level"@en ;
+    rdfs:subClassOf org:CompetencyLevel .
+
+org:BeginnerLevel a owl:Class ;
+    rdfs:label "Beginner Level"@en ;
+    rdfs:subClassOf org:CompetencyLevel .
+
+org:IntermediateLevel a owl:Class ;
+    rdfs:label "Intermediate Level"@en ;
+    rdfs:subClassOf org:CompetencyLevel .
+
+org:AdvancedLevel a owl:Class ;
+    rdfs:label "Advanced Level"@en ;
+    rdfs:subClassOf org:CompetencyLevel .
+
+org:ExpertLevel a owl:Class ;
+    rdfs:label "Expert Level"@en ;
+    rdfs:subClassOf org:CompetencyLevel .
+
+# ===========================
+# Responsibilities
+# ===========================
+
+org:Responsibility a owl:Class ;
+    rdfs:label "Responsibility"@en ;
+    rdfs:comment "Duty or task assigned to role"@en .
+
+org:DevelopmentResponsibility a owl:Class ;
+    rdfs:label "Development Responsibility"@en ;
+    rdfs:subClassOf org:Responsibility .
+
+org:DesignResponsibility a owl:Class ;
+    rdfs:label "Design Responsibility"@en ;
+    rdfs:subClassOf org:Responsibility .
+
+org:TestingResponsibility a owl:Class ;
+    rdfs:label "Testing Responsibility"@en ;
+    rdfs:subClassOf org:Responsibility .
+
+org:DeploymentResponsibility a owl:Class ;
+    rdfs:label "Deployment Responsibility"@en ;
+    rdfs:subClassOf org:Responsibility .
+
+org:MaintenanceResponsibility a owl:Class ;
+    rdfs:label "Maintenance Responsibility"@en ;
+    rdfs:subClassOf org:Responsibility .
+
+org:ManagementResponsibility a owl:Class ;
+    rdfs:label "Management Responsibility"@en ;
+    rdfs:subClassOf org:Responsibility .
+
+# ===========================
+# Properties
+# ===========================
+
+org:employs a owl:ObjectProperty ;
+    rdfs:label "employs"@en ;
+    rdfs:domain org:Organization ;
+    rdfs:range org:Role .
+
+org:hasTeam a owl:ObjectProperty ;
+    rdfs:label "has team"@en ;
+    rdfs:domain org:Organization ;
+    rdfs:range org:Team .
+
+org:belongsToTeam a owl:ObjectProperty ;
+    rdfs:label "belongs to team"@en ;
+    rdfs:domain org:Role ;
+    rdfs:range org:Team .
+
+org:hasRole a owl:ObjectProperty ;
+    rdfs:label "has role"@en ;
+    rdfs:domain foaf:Person ;
+    rdfs:range org:Role .
+
+org:hasCompetency a owl:ObjectProperty ;
+    rdfs:label "has competency"@en ;
+    rdfs:domain org:Role ;
+    rdfs:range org:Competency .
+
+org:atLevel a owl:ObjectProperty ;
+    rdfs:label "at level"@en ;
+    rdfs:domain org:Competency ;
+    rdfs:range org:CompetencyLevel .
+
+org:hasResponsibility a owl:ObjectProperty ;
+    rdfs:label "has responsibility"@en ;
+    rdfs:domain org:Role ;
+    rdfs:range org:Responsibility .
+
+org:operatesIn a owl:ObjectProperty ;
+    rdfs:label "operates in"@en ;
+    rdfs:domain org:Organization ;
+    rdfs:range org:GeographicScope .
+
+org:developmentContext a owl:ObjectProperty ;
+    rdfs:label "development context"@en ;
+    rdfs:domain org:Organization ;
+    rdfs:range org:DevelopmentContext .
+
+org:hasTeamSize a owl:ObjectProperty ;
+    rdfs:label "has team size"@en ;
+    rdfs:domain org:Team ;
+    rdfs:range org:TeamSize .
+
+org:reportsTo a owl:ObjectProperty ;
+    rdfs:label "reports to"@en ;
+    rdfs:domain org:Role ;
+    rdfs:range org:Role .
+
+# ===========================
+# Data Properties
+# ===========================
+
+org:teamMemberCount a owl:DatatypeProperty ;
+    rdfs:label "team member count"@en ;
+    rdfs:domain org:Team ;
+    rdfs:range xsd:integer .
+
+org:yearsOfExperience a owl:DatatypeProperty ;
+    rdfs:label "years of experience"@en ;
+    rdfs:domain org:Role ;
+    rdfs:range xsd:integer .
+
+org:seniorityLevel a owl:DatatypeProperty ;
+    rdfs:label "seniority level"@en ;
+    rdfs:domain org:Role ;
+    rdfs:range xsd:string .
+
+org:organizationSize a owl:DatatypeProperty ;
+    rdfs:label "organization size"@en ;
+    rdfs:domain org:Organization ;
+    rdfs:range xsd:integer .
+
+org:foundedYear a owl:DatatypeProperty ;
+    rdfs:label "founded year"@en ;
+    rdfs:domain org:Organization ;
+    rdfs:range xsd:integer .
+
+# ===========================
+# RACI Matrix Support
+# ===========================
+
+org:RACIRole a owl:Class ;
+    rdfs:label "RACI Role"@en ;
+    rdfs:comment "Role in RACI matrix"@en .
+
+org:Responsible a org:RACIRole ;
+    rdfs:label "Responsible"@en ;
+    skos:definition "Does the work"@en .
+
+org:Accountable a org:RACIRole ;
+    rdfs:label "Accountable"@en ;
+    skos:definition "Ultimately answerable"@en .
+
+org:Consulted a org:RACIRole ;
+    rdfs:label "Consulted"@en ;
+    skos:definition "Provides input"@en .
+
+org:Informed a org:RACIRole ;
+    rdfs:label "Informed"@en ;
+    skos:definition "Kept up to date"@en .

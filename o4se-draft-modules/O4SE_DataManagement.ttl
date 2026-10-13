@@ -1,0 +1,588 @@
+@prefix o4se: <http://www.semanticweb.org/ontologies/2025/O4SE#> .
+@prefix data: <http://www.semanticweb.org/ontologies/2025/O4SE/DataManagement#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+# ===========================
+# Data Management Module
+# ===========================
+
+<http://www.semanticweb.org/ontologies/2025/O4SE/DataManagement> a owl:Ontology ;
+    owl:versionInfo "1.0.0"^^xsd:string ;
+    dcterms:title "O4SE Data Management Module"@en ;
+    dcterms:description "Database systems, data management, and persistence concepts for software engineering"@en ;
+    owl:imports <http://www.semanticweb.org/ontologies/2025/O4SE> .
+
+# ===========================
+# Database Core Concepts
+# ===========================
+
+data:Database a owl:Class ;
+    rdfs:label "Database"@en ;
+    rdfs:comment "Organized collection of structured data"@en ;
+    rdfs:subClassOf o4se:Software .
+
+data:DatabaseSystem a owl:Class ;
+    rdfs:label "Database System"@en ;
+    rdfs:comment "Software for managing databases"@en ;
+    rdfs:subClassOf o4se:SystemSoftware .
+
+data:DBMS a owl:Class ;
+    rdfs:label "Database Management System"@en ;
+    rdfs:subClassOf data:DatabaseSystem ;
+    skos:definition "Software for creating and managing databases"@en .
+
+data:DataModel a owl:Class ;
+    rdfs:label "Data Model"@en ;
+    rdfs:comment "Abstract model organizing data elements"@en .
+
+data:Schema a owl:Class ;
+    rdfs:label "Database Schema"@en ;
+    rdfs:comment "Structure and organization of database"@en ;
+    rdfs:subClassOf o4se:Artifact .
+
+# ===========================
+# Database Types
+# ===========================
+
+data:RelationalDatabase a owl:Class ;
+    rdfs:label "Relational Database"@en ;
+    rdfs:subClassOf data:Database ;
+    skos:definition "Data stored in tables with relationships"@en .
+
+data:SQLDatabase a owl:Class ;
+    rdfs:label "SQL Database"@en ;
+    rdfs:subClassOf data:RelationalDatabase ;
+    skos:definition "Database using SQL for queries"@en .
+
+data:NoSQLDatabase a owl:Class ;
+    rdfs:label "NoSQL Database"@en ;
+    rdfs:subClassOf data:Database ;
+    skos:definition "Non-relational database"@en .
+
+data:DocumentDatabase a owl:Class ;
+    rdfs:label "Document Database"@en ;
+    rdfs:subClassOf data:NoSQLDatabase ;
+    skos:definition "Stores data as documents"@en .
+
+data:KeyValueDatabase a owl:Class ;
+    rdfs:label "Key-Value Database"@en ;
+    rdfs:subClassOf data:NoSQLDatabase ;
+    skos:definition "Data stored as key-value pairs"@en .
+
+data:GraphDatabase a owl:Class ;
+    rdfs:label "Graph Database"@en ;
+    rdfs:subClassOf data:NoSQLDatabase ;
+    skos:definition "Data stored as nodes and edges"@en .
+
+data:ColumnFamilyDatabase a owl:Class ;
+    rdfs:label "Column-Family Database"@en ;
+    rdfs:subClassOf data:NoSQLDatabase ;
+    skos:definition "Data stored in column families"@en .
+
+data:TimeSeriesDatabase a owl:Class ;
+    rdfs:label "Time-Series Database"@en ;
+    rdfs:subClassOf data:Database ;
+    skos:definition "Optimized for time-stamped data"@en .
+
+data:ObjectDatabase a owl:Class ;
+    rdfs:label "Object Database"@en ;
+    rdfs:subClassOf data:Database ;
+    skos:definition "Stores data as objects"@en .
+
+data:InMemoryDatabase a owl:Class ;
+    rdfs:label "In-Memory Database"@en ;
+    rdfs:subClassOf data:Database ;
+    skos:definition "Data stored in main memory"@en .
+
+data:DistributedDatabase a owl:Class ;
+    rdfs:label "Distributed Database"@en ;
+    rdfs:subClassOf data:Database ;
+    skos:definition "Data distributed across multiple nodes"@en .
+
+data:NewSQLDatabase a owl:Class ;
+    rdfs:label "NewSQL Database"@en ;
+    rdfs:subClassOf data:Database ;
+    skos:definition "Modern relational with NoSQL scalability"@en .
+
+# ===========================
+# Data Operations (CRUD)
+# ===========================
+
+data:DataOperation a owl:Class ;
+    rdfs:label "Data Operation"@en ;
+    rdfs:comment "Operation performed on data"@en ;
+    rdfs:subClassOf o4se:Activity .
+
+data:CreateOperation a owl:Class ;
+    rdfs:label "Create Operation"@en ;
+    rdfs:subClassOf data:DataOperation ;
+    skos:definition "Insert new data"@en .
+
+data:ReadOperation a owl:Class ;
+    rdfs:label "Read Operation"@en ;
+    rdfs:subClassOf data:DataOperation ;
+    skos:definition "Retrieve existing data"@en .
+
+data:UpdateOperation a owl:Class ;
+    rdfs:label "Update Operation"@en ;
+    rdfs:subClassOf data:DataOperation ;
+    skos:definition "Modify existing data"@en .
+
+data:DeleteOperation a owl:Class ;
+    rdfs:label "Delete Operation"@en ;
+    rdfs:subClassOf data:DataOperation ;
+    skos:definition "Remove existing data"@en .
+
+# ===========================
+# Query Languages
+# ===========================
+
+data:QueryLanguage a owl:Class ;
+    rdfs:label "Query Language"@en ;
+    rdfs:comment "Language for database queries"@en .
+
+data:SQL a owl:Class ;
+    rdfs:label "Structured Query Language"@en ;
+    rdfs:subClassOf data:QueryLanguage ;
+    skos:definition "Standard language for relational databases"@en .
+
+data:NoSQLQuery a owl:Class ;
+    rdfs:label "NoSQL Query"@en ;
+    rdfs:subClassOf data:QueryLanguage .
+
+data:GraphQL a owl:Class ;
+    rdfs:label "GraphQL"@en ;
+    rdfs:subClassOf data:QueryLanguage ;
+    skos:definition "Query language for APIs"@en .
+
+data:SPARQL a owl:Class ;
+    rdfs:label "SPARQL"@en ;
+    rdfs:subClassOf data:QueryLanguage ;
+    skos:definition "Query language for RDF data"@en .
+
+data:CypherQuery a owl:Class ;
+    rdfs:label "Cypher Query"@en ;
+    rdfs:subClassOf data:QueryLanguage ;
+    skos:definition "Query language for graph databases"@en .
+
+# ===========================
+# Data Management Concepts
+# ===========================
+
+data:Transaction a owl:Class ;
+    rdfs:label "Transaction"@en ;
+    rdfs:comment "Unit of work in database"@en .
+
+data:ACID a owl:Class ;
+    rdfs:label "ACID Properties"@en ;
+    rdfs:comment "Atomicity, Consistency, Isolation, Durability"@en .
+
+data:Atomicity a owl:Class ;
+    rdfs:label "Atomicity"@en ;
+    rdfs:subClassOf data:ACID .
+
+data:Consistency a owl:Class ;
+    rdfs:label "Consistency"@en ;
+    rdfs:subClassOf data:ACID .
+
+data:Isolation a owl:Class ;
+    rdfs:label "Isolation"@en ;
+    rdfs:subClassOf data:ACID .
+
+data:Durability a owl:Class ;
+    rdfs:label "Durability"@en ;
+    rdfs:subClassOf data:ACID .
+
+data:BASE a owl:Class ;
+    rdfs:label "BASE Properties"@en ;
+    rdfs:comment "Basically Available, Soft state, Eventual consistency"@en .
+
+data:CAP a owl:Class ;
+    rdfs:label "CAP Theorem"@en ;
+    rdfs:comment "Consistency, Availability, Partition tolerance"@en .
+
+data:Index a owl:Class ;
+    rdfs:label "Database Index"@en ;
+    rdfs:comment "Data structure for faster retrieval"@en .
+
+data:PrimaryKey a owl:Class ;
+    rdfs:label "Primary Key"@en ;
+    rdfs:comment "Unique identifier for records"@en .
+
+data:ForeignKey a owl:Class ;
+    rdfs:label "Foreign Key"@en ;
+    rdfs:comment "Reference to another table"@en .
+
+data:Constraint a owl:Class ;
+    rdfs:label "Database Constraint"@en ;
+    rdfs:comment "Rule enforced on data"@en .
+
+data:Trigger a owl:Class ;
+    rdfs:label "Database Trigger"@en ;
+    rdfs:comment "Automatic action on data change"@en .
+
+data:StoredProcedure a owl:Class ;
+    rdfs:label "Stored Procedure"@en ;
+    rdfs:comment "Precompiled database program"@en .
+
+data:View a owl:Class ;
+    rdfs:label "Database View"@en ;
+    rdfs:comment "Virtual table from query"@en .
+
+# ===========================
+# Data Maintenance
+# ===========================
+
+data:DataMaintenance a owl:Class ;
+    rdfs:label "Data Maintenance"@en ;
+    rdfs:comment "Activities to maintain data quality"@en ;
+    rdfs:subClassOf o4se:Maintenance .
+
+data:Backup a owl:Class ;
+    rdfs:label "Database Backup"@en ;
+    rdfs:subClassOf data:DataMaintenance ;
+    skos:definition "Copy of database for recovery"@en .
+
+data:FullBackup a owl:Class ;
+    rdfs:label "Full Backup"@en ;
+    rdfs:subClassOf data:Backup .
+
+data:IncrementalBackup a owl:Class ;
+    rdfs:label "Incremental Backup"@en ;
+    rdfs:subClassOf data:Backup .
+
+data:DifferentialBackup a owl:Class ;
+    rdfs:label "Differential Backup"@en ;
+    rdfs:subClassOf data:Backup .
+
+data:Recovery a owl:Class ;
+    rdfs:label "Database Recovery"@en ;
+    rdfs:subClassOf data:DataMaintenance ;
+    skos:definition "Restoring database after failure"@en .
+
+data:Migration a owl:Class ;
+    rdfs:label "Data Migration"@en ;
+    rdfs:subClassOf data:DataMaintenance ;
+    skos:definition "Moving data between systems"@en .
+
+data:SchemaMigration a owl:Class ;
+    rdfs:label "Schema Migration"@en ;
+    rdfs:subClassOf data:Migration .
+
+data:DataMigration a owl:Class ;
+    rdfs:label "Data Migration"@en ;
+    rdfs:subClassOf data:Migration .
+
+data:Replication a owl:Class ;
+    rdfs:label "Database Replication"@en ;
+    rdfs:subClassOf data:DataMaintenance ;
+    skos:definition "Copying data to multiple locations"@en .
+
+data:MasterSlaveReplication a owl:Class ;
+    rdfs:label "Master-Slave Replication"@en ;
+    rdfs:subClassOf data:Replication .
+
+data:MasterMasterReplication a owl:Class ;
+    rdfs:label "Master-Master Replication"@en ;
+    rdfs:subClassOf data:Replication .
+
+data:Sharding a owl:Class ;
+    rdfs:label "Database Sharding"@en ;
+    rdfs:subClassOf data:DataMaintenance ;
+    skos:definition "Horizontal partitioning of data"@en .
+
+data:Partitioning a owl:Class ;
+    rdfs:label "Data Partitioning"@en ;
+    rdfs:subClassOf data:DataMaintenance .
+
+data:Archiving a owl:Class ;
+    rdfs:label "Data Archiving"@en ;
+    rdfs:subClassOf data:DataMaintenance ;
+    skos:definition "Long-term data storage"@en .
+
+# ===========================
+# ORM/ODM Concepts
+# ===========================
+
+data:ObjectMapping a owl:Class ;
+    rdfs:label "Object Mapping"@en ;
+    rdfs:comment "Mapping between objects and database"@en .
+
+data:ORM a owl:Class ;
+    rdfs:label "Object-Relational Mapping"@en ;
+    rdfs:subClassOf data:ObjectMapping ;
+    skos:definition "Maps objects to relational database"@en .
+
+data:ODM a owl:Class ;
+    rdfs:label "Object-Document Mapping"@en ;
+    rdfs:subClassOf data:ObjectMapping ;
+    skos:definition "Maps objects to document database"@en .
+
+data:ActiveRecord a owl:Class ;
+    rdfs:label "Active Record Pattern"@en ;
+    rdfs:subClassOf data:ORM .
+
+data:DataMapper a owl:Class ;
+    rdfs:label "Data Mapper Pattern"@en ;
+    rdfs:subClassOf data:ORM .
+
+data:Repository a owl:Class ;
+    rdfs:label "Repository Pattern"@en ;
+    rdfs:subClassOf data:ObjectMapping .
+
+# ===========================
+# Data Quality
+# ===========================
+
+data:DataQuality a owl:Class ;
+    rdfs:label "Data Quality"@en ;
+    rdfs:comment "Measure of data fitness for use"@en ;
+    rdfs:subClassOf o4se:QualityAttribute .
+
+data:DataAccuracy a owl:Class ;
+    rdfs:label "Data Accuracy"@en ;
+    rdfs:subClassOf data:DataQuality .
+
+data:DataCompleteness a owl:Class ;
+    rdfs:label "Data Completeness"@en ;
+    rdfs:subClassOf data:DataQuality .
+
+data:DataConsistency a owl:Class ;
+    rdfs:label "Data Consistency"@en ;
+    rdfs:subClassOf data:DataQuality .
+
+data:DataTimeliness a owl:Class ;
+    rdfs:label "Data Timeliness"@en ;
+    rdfs:subClassOf data:DataQuality .
+
+data:DataValidity a owl:Class ;
+    rdfs:label "Data Validity"@en ;
+    rdfs:subClassOf data:DataQuality .
+
+data:DataIntegrity a owl:Class ;
+    rdfs:label "Data Integrity"@en ;
+    rdfs:subClassOf data:DataQuality .
+
+# ===========================
+# Data Storage
+# ===========================
+
+data:DataStorage a owl:Class ;
+    rdfs:label "Data Storage"@en ;
+    rdfs:comment "Physical or logical data storage"@en .
+
+data:FileStorage a owl:Class ;
+    rdfs:label "File Storage"@en ;
+    rdfs:subClassOf data:DataStorage .
+
+data:BlockStorage a owl:Class ;
+    rdfs:label "Block Storage"@en ;
+    rdfs:subClassOf data:DataStorage .
+
+data:ObjectStorage a owl:Class ;
+    rdfs:label "Object Storage"@en ;
+    rdfs:subClassOf data:DataStorage .
+
+data:CloudStorage a owl:Class ;
+    rdfs:label "Cloud Storage"@en ;
+    rdfs:subClassOf data:DataStorage .
+
+data:DataWarehouse a owl:Class ;
+    rdfs:label "Data Warehouse"@en ;
+    rdfs:subClassOf data:DataStorage ;
+    skos:definition "Central repository for analytics"@en .
+
+data:DataLake a owl:Class ;
+    rdfs:label "Data Lake"@en ;
+    rdfs:subClassOf data:DataStorage ;
+    skos:definition "Repository for raw data"@en .
+
+data:DataMart a owl:Class ;
+    rdfs:label "Data Mart"@en ;
+    rdfs:subClassOf data:DataStorage ;
+    skos:definition "Subset of data warehouse"@en .
+
+# ===========================
+# Operating System Concepts
+# ===========================
+
+data:OperatingSystem a owl:Class ;
+    rdfs:label "Operating System"@en ;
+    rdfs:comment "Software managing computer resources"@en ;
+    rdfs:subClassOf o4se:SystemSoftware .
+
+data:WindowsOS a owl:Class ;
+    rdfs:label "Windows OS"@en ;
+    rdfs:subClassOf data:OperatingSystem .
+
+data:LinuxOS a owl:Class ;
+    rdfs:label "Linux OS"@en ;
+    rdfs:subClassOf data:OperatingSystem .
+
+data:MacOS a owl:Class ;
+    rdfs:label "macOS"@en ;
+    rdfs:subClassOf data:OperatingSystem .
+
+data:UnixOS a owl:Class ;
+    rdfs:label "Unix OS"@en ;
+    rdfs:subClassOf data:OperatingSystem .
+
+data:MobileOS a owl:Class ;
+    rdfs:label "Mobile OS"@en ;
+    rdfs:subClassOf data:OperatingSystem .
+
+data:AndroidOS a owl:Class ;
+    rdfs:label "Android OS"@en ;
+    rdfs:subClassOf data:MobileOS .
+
+data:iOS a owl:Class ;
+    rdfs:label "iOS"@en ;
+    rdfs:subClassOf data:MobileOS .
+
+data:RTOS a owl:Class ;
+    rdfs:label "Real-Time OS"@en ;
+    rdfs:subClassOf data:OperatingSystem .
+
+# OS Components
+data:Kernel a owl:Class ;
+    rdfs:label "OS Kernel"@en ;
+    rdfs:comment "Core of operating system"@en .
+
+data:FileSystem a owl:Class ;
+    rdfs:label "File System"@en ;
+    rdfs:comment "Method of storing files"@en .
+
+data:ProcessManagement a owl:Class ;
+    rdfs:label "Process Management"@en ;
+    rdfs:comment "Managing running processes"@en .
+
+data:MemoryManagement a owl:Class ;
+    rdfs:label "Memory Management"@en ;
+    rdfs:comment "Managing system memory"@en .
+
+data:SystemCall a owl:Class ;
+    rdfs:label "System Call"@en ;
+    rdfs:comment "Request to OS kernel"@en .
+
+# ===========================
+# Properties
+# ===========================
+
+data:usesDatabase a owl:ObjectProperty ;
+    rdfs:label "uses database"@en ;
+    rdfs:domain o4se:SoftwareSystem ;
+    rdfs:range data:Database .
+
+data:hasSchema a owl:ObjectProperty ;
+    rdfs:label "has schema"@en ;
+    rdfs:domain data:Database ;
+    rdfs:range data:Schema .
+
+data:performsOperation a owl:ObjectProperty ;
+    rdfs:label "performs operation"@en ;
+    rdfs:domain o4se:Software ;
+    rdfs:range data:DataOperation .
+
+data:usesQueryLanguage a owl:ObjectProperty ;
+    rdfs:label "uses query language"@en ;
+    rdfs:domain data:Database ;
+    rdfs:range data:QueryLanguage .
+
+data:hasTransaction a owl:ObjectProperty ;
+    rdfs:label "has transaction"@en ;
+    rdfs:domain data:Database ;
+    rdfs:range data:Transaction .
+
+data:supportsConcept a owl:ObjectProperty ;
+    rdfs:label "supports concept"@en ;
+    rdfs:domain data:Database ;
+    rdfs:range data:ACID .
+
+data:usesORM a owl:ObjectProperty ;
+    rdfs:label "uses ORM"@en ;
+    rdfs:domain o4se:Software ;
+    rdfs:range data:ORM .
+
+data:runsOnOS a owl:ObjectProperty ;
+    rdfs:label "runs on OS"@en ;
+    rdfs:domain o4se:Software ;
+    rdfs:range data:OperatingSystem .
+
+data:hasBackupStrategy a owl:ObjectProperty ;
+    rdfs:label "has backup strategy"@en ;
+    rdfs:domain data:Database ;
+    rdfs:range data:Backup .
+
+# ===========================
+# Data Properties
+# ===========================
+
+data:databaseSize a owl:DatatypeProperty ;
+    rdfs:label "database size"@en ;
+    rdfs:domain data:Database ;
+    rdfs:range xsd:string .
+
+data:recordCount a owl:DatatypeProperty ;
+    rdfs:label "record count"@en ;
+    rdfs:domain data:Database ;
+    rdfs:range xsd:integer .
+
+data:queryPerformance a owl:DatatypeProperty ;
+    rdfs:label "query performance"@en ;
+    rdfs:domain data:Database ;
+    rdfs:range xsd:duration .
+
+data:backupFrequency a owl:DatatypeProperty ;
+    rdfs:label "backup frequency"@en ;
+    rdfs:domain data:Backup ;
+    rdfs:range xsd:string .
+
+data:replicationFactor a owl:DatatypeProperty ;
+    rdfs:label "replication factor"@en ;
+    rdfs:domain data:Replication ;
+    rdfs:range xsd:integer .
+
+# ===========================
+# Database Individuals
+# ===========================
+
+data:MySQL a data:SQLDatabase ;
+    rdfs:label "MySQL"@en .
+
+data:PostgreSQL a data:SQLDatabase ;
+    rdfs:label "PostgreSQL"@en .
+
+data:Oracle a data:SQLDatabase ;
+    rdfs:label "Oracle Database"@en .
+
+data:SQLServer a data:SQLDatabase ;
+    rdfs:label "Microsoft SQL Server"@en .
+
+data:MongoDB a data:DocumentDatabase ;
+    rdfs:label "MongoDB"@en .
+
+data:CouchDB a data:DocumentDatabase ;
+    rdfs:label "CouchDB"@en .
+
+data:Redis a data:KeyValueDatabase ;
+    rdfs:label "Redis"@en .
+
+data:Cassandra a data:ColumnFamilyDatabase ;
+    rdfs:label "Apache Cassandra"@en .
+
+data:Neo4j a data:GraphDatabase ;
+    rdfs:label "Neo4j"@en .
+
+data:InfluxDB a data:TimeSeriesDatabase ;
+    rdfs:label "InfluxDB"@en .
+
+data:SQLite a data:SQLDatabase ;
+    rdfs:label "SQLite"@en .
+
+data:DynamoDB a data:NoSQLDatabase ;
+    rdfs:label "Amazon DynamoDB"@en .

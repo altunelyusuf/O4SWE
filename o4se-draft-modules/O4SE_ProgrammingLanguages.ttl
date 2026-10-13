@@ -1,0 +1,435 @@
+@prefix o4se: <http://www.semanticweb.org/ontologies/2025/O4SE#> .
+@prefix prog: <http://www.semanticweb.org/ontologies/2025/O4SE/ProgrammingLanguages#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+# ===========================
+# Programming Languages Module
+# ===========================
+
+<http://www.semanticweb.org/ontologies/2025/O4SE/ProgrammingLanguages> a owl:Ontology ;
+    owl:versionInfo "1.0.0"^^xsd:string ;
+    dcterms:title "O4SE Programming Languages Module"@en ;
+    dcterms:description "Comprehensive programming languages taxonomy and concepts for software engineering"@en ;
+    owl:imports <http://www.semanticweb.org/ontologies/2025/O4SE> .
+
+# ===========================
+# Core Programming Concepts
+# ===========================
+
+prog:ProgrammingLanguage a owl:Class ;
+    rdfs:label "Programming Language"@en ;
+    rdfs:comment "Formal language for instructing computers"@en .
+
+prog:ProgrammingParadigm a owl:Class ;
+    rdfs:label "Programming Paradigm"@en ;
+    rdfs:comment "Fundamental style of programming"@en .
+
+prog:LanguageGeneration a owl:Class ;
+    rdfs:label "Language Generation"@en ;
+    rdfs:comment "Classification by abstraction level"@en .
+
+prog:TypeSystem a owl:Class ;
+    rdfs:label "Type System"@en ;
+    rdfs:comment "Rules for type checking and enforcement"@en .
+
+prog:CompilationModel a owl:Class ;
+    rdfs:label "Compilation Model"@en ;
+    rdfs:comment "How source code is transformed to executable"@en .
+
+# ===========================
+# Programming Paradigms
+# ===========================
+
+prog:ImperativeParadigm a owl:Class ;
+    rdfs:label "Imperative Paradigm"@en ;
+    rdfs:subClassOf prog:ProgrammingParadigm ;
+    skos:definition "Programming with explicit commands that change state"@en .
+
+prog:ProceduralProgramming a owl:Class ;
+    rdfs:label "Procedural Programming"@en ;
+    rdfs:subClassOf prog:ImperativeParadigm .
+
+prog:ObjectOrientedProgramming a owl:Class ;
+    rdfs:label "Object-Oriented Programming"@en ;
+    rdfs:subClassOf prog:ImperativeParadigm ;
+    skos:definition "Programming based on objects containing data and methods"@en .
+
+prog:DeclarativeParadigm a owl:Class ;
+    rdfs:label "Declarative Paradigm"@en ;
+    rdfs:subClassOf prog:ProgrammingParadigm ;
+    skos:definition "Programming by describing what to compute"@en .
+
+prog:FunctionalProgramming a owl:Class ;
+    rdfs:label "Functional Programming"@en ;
+    rdfs:subClassOf prog:DeclarativeParadigm .
+
+prog:LogicProgramming a owl:Class ;
+    rdfs:label "Logic Programming"@en ;
+    rdfs:subClassOf prog:DeclarativeParadigm .
+
+prog:EventDrivenProgramming a owl:Class ;
+    rdfs:label "Event-Driven Programming"@en ;
+    rdfs:subClassOf prog:ProgrammingParadigm .
+
+prog:ConcurrentProgramming a owl:Class ;
+    rdfs:label "Concurrent Programming"@en ;
+    rdfs:subClassOf prog:ProgrammingParadigm .
+
+# ===========================
+# Language Generations
+# ===========================
+
+prog:FirstGeneration a owl:Class ;
+    rdfs:label "1GL - Machine Language"@en ;
+    rdfs:subClassOf prog:LanguageGeneration ;
+    skos:definition "Binary code directly executed by CPU"@en .
+
+prog:SecondGeneration a owl:Class ;
+    rdfs:label "2GL - Assembly Language"@en ;
+    rdfs:subClassOf prog:LanguageGeneration ;
+    skos:definition "Symbolic representation of machine code"@en .
+
+prog:ThirdGeneration a owl:Class ;
+    rdfs:label "3GL - High-Level Language"@en ;
+    rdfs:subClassOf prog:LanguageGeneration ;
+    skos:definition "Abstracted from hardware details"@en .
+
+prog:FourthGeneration a owl:Class ;
+    rdfs:label "4GL - Domain-Specific Language"@en ;
+    rdfs:subClassOf prog:LanguageGeneration ;
+    skos:definition "Languages for specific problem domains"@en .
+
+prog:FifthGeneration a owl:Class ;
+    rdfs:label "5GL - AI/Constraint-Based"@en ;
+    rdfs:subClassOf prog:LanguageGeneration ;
+    skos:definition "Problem-solving using constraints and logic"@en .
+
+# ===========================
+# Type Systems
+# ===========================
+
+prog:StaticallyTyped a owl:Class ;
+    rdfs:label "Statically Typed"@en ;
+    rdfs:subClassOf prog:TypeSystem ;
+    skos:definition "Types checked at compile time"@en .
+
+prog:DynamicallyTyped a owl:Class ;
+    rdfs:label "Dynamically Typed"@en ;
+    rdfs:subClassOf prog:TypeSystem ;
+    skos:definition "Types checked at runtime"@en .
+
+prog:StronglyTyped a owl:Class ;
+    rdfs:label "Strongly Typed"@en ;
+    rdfs:subClassOf prog:TypeSystem ;
+    skos:definition "Strict type rules enforcement"@en .
+
+prog:WeaklyTyped a owl:Class ;
+    rdfs:label "Weakly Typed"@en ;
+    rdfs:subClassOf prog:TypeSystem ;
+    skos:definition "Flexible type coercion allowed"@en .
+
+# ===========================
+# Compilation Models
+# ===========================
+
+prog:CompiledLanguage a owl:Class ;
+    rdfs:label "Compiled Language"@en ;
+    rdfs:subClassOf prog:CompilationModel ;
+    skos:definition "Source code compiled to machine code"@en .
+
+prog:InterpretedLanguage a owl:Class ;
+    rdfs:label "Interpreted Language"@en ;
+    rdfs:subClassOf prog:CompilationModel ;
+    skos:definition "Source code executed line by line"@en .
+
+prog:BytecodeCompiled a owl:Class ;
+    rdfs:label "Bytecode Compiled"@en ;
+    rdfs:subClassOf prog:CompilationModel ;
+    skos:definition "Compiled to intermediate bytecode"@en .
+
+prog:JITCompiled a owl:Class ;
+    rdfs:label "JIT Compiled"@en ;
+    rdfs:subClassOf prog:CompilationModel ;
+    skos:definition "Just-In-Time compilation during execution"@en .
+
+prog:Transpiled a owl:Class ;
+    rdfs:label "Transpiled"@en ;
+    rdfs:subClassOf prog:CompilationModel ;
+    skos:definition "Source-to-source compilation"@en .
+
+# ===========================
+# Development Tools
+# ===========================
+
+prog:Compiler a owl:Class ;
+    rdfs:label "Compiler"@en ;
+    rdfs:subClassOf o4se:DevelopmentTool ;
+    skos:definition "Translates source code to machine code"@en .
+
+prog:Interpreter a owl:Class ;
+    rdfs:label "Interpreter"@en ;
+    rdfs:subClassOf o4se:DevelopmentTool ;
+    skos:definition "Executes source code directly"@en .
+
+prog:Assembler a owl:Class ;
+    rdfs:label "Assembler"@en ;
+    rdfs:subClassOf o4se:DevelopmentTool ;
+    skos:definition "Converts assembly to machine code"@en .
+
+prog:Linker a owl:Class ;
+    rdfs:label "Linker"@en ;
+    rdfs:subClassOf o4se:DevelopmentTool ;
+    skos:definition "Combines object files into executable"@en .
+
+prog:Debugger a owl:Class ;
+    rdfs:label "Debugger"@en ;
+    rdfs:subClassOf o4se:DevelopmentTool ;
+    skos:definition "Tool for finding and fixing bugs"@en .
+
+prog:Profiler a owl:Class ;
+    rdfs:label "Profiler"@en ;
+    rdfs:subClassOf o4se:DevelopmentTool ;
+    skos:definition "Analyzes program performance"@en .
+
+prog:IDE a owl:Class ;
+    rdfs:label "Integrated Development Environment"@en ;
+    rdfs:subClassOf o4se:DevelopmentTool ;
+    skos:definition "Comprehensive development environment"@en .
+
+prog:BuildTool a owl:Class ;
+    rdfs:label "Build Tool"@en ;
+    rdfs:subClassOf o4se:DevelopmentTool ;
+    skos:definition "Automates building executables"@en .
+
+prog:PackageManager a owl:Class ;
+    rdfs:label "Package Manager"@en ;
+    rdfs:subClassOf o4se:DevelopmentTool ;
+    skos:definition "Manages external dependencies"@en .
+
+# ===========================
+# Code Types
+# ===========================
+
+prog:SourceCode a owl:Class ;
+    rdfs:label "Source Code"@en ;
+    rdfs:subClassOf o4se:SourceCode ;
+    skos:definition "Human-readable program instructions"@en .
+
+prog:ObjectCode a owl:Class ;
+    rdfs:label "Object Code"@en ;
+    rdfs:subClassOf o4se:Artifact ;
+    skos:definition "Compiled machine code modules"@en .
+
+prog:ByteCode a owl:Class ;
+    rdfs:label "Byte Code"@en ;
+    rdfs:subClassOf o4se:Artifact ;
+    skos:definition "Intermediate code for virtual machines"@en .
+
+prog:MachineCode a owl:Class ;
+    rdfs:label "Machine Code"@en ;
+    rdfs:subClassOf o4se:Artifact ;
+    skos:definition "Binary instructions for CPU"@en .
+
+prog:Library a owl:Class ;
+    rdfs:label "Library"@en ;
+    rdfs:subClassOf o4se:Artifact ;
+    skos:definition "Reusable code collection"@en .
+
+prog:Framework a owl:Class ;
+    rdfs:label "Framework"@en ;
+    rdfs:subClassOf prog:Library ;
+    skos:definition "Comprehensive reusable architecture"@en .
+
+# ===========================
+# Code Metrics
+# ===========================
+
+prog:CodeMetric a owl:Class ;
+    rdfs:label "Code Metric"@en ;
+    rdfs:subClassOf o4se:QualityAttribute ;
+    skos:definition "Quantitative measure of code"@en .
+
+prog:LinesOfCode a owl:Class ;
+    rdfs:label "Lines of Code (LOC)"@en ;
+    rdfs:subClassOf prog:CodeMetric .
+
+prog:CyclomaticComplexity a owl:Class ;
+    rdfs:label "Cyclomatic Complexity"@en ;
+    rdfs:subClassOf prog:CodeMetric ;
+    skos:definition "Number of linearly independent paths"@en .
+
+prog:CodeCoverage a owl:Class ;
+    rdfs:label "Code Coverage"@en ;
+    rdfs:subClassOf prog:CodeMetric ;
+    skos:definition "Percentage of code tested"@en .
+
+prog:TechnicalDebt a owl:Class ;
+    rdfs:label "Technical Debt"@en ;
+    rdfs:subClassOf prog:CodeMetric ;
+    skos:definition "Cost of additional rework"@en .
+
+prog:CodeDuplication a owl:Class ;
+    rdfs:label "Code Duplication"@en ;
+    rdfs:subClassOf prog:CodeMetric .
+
+prog:CouplingMetric a owl:Class ;
+    rdfs:label "Coupling Metric"@en ;
+    rdfs:subClassOf prog:CodeMetric .
+
+prog:CohesionMetric a owl:Class ;
+    rdfs:label "Cohesion Metric"@en ;
+    rdfs:subClassOf prog:CodeMetric .
+
+# ===========================
+# Properties
+# ===========================
+
+prog:writtenIn a owl:ObjectProperty ;
+    rdfs:label "written in"@en ;
+    rdfs:domain o4se:SourceCode ;
+    rdfs:range prog:ProgrammingLanguage .
+
+prog:followsParadigm a owl:ObjectProperty ;
+    rdfs:label "follows paradigm"@en ;
+    rdfs:domain prog:ProgrammingLanguage ;
+    rdfs:range prog:ProgrammingParadigm .
+
+prog:hasTypeSystem a owl:ObjectProperty ;
+    rdfs:label "has type system"@en ;
+    rdfs:domain prog:ProgrammingLanguage ;
+    rdfs:range prog:TypeSystem .
+
+prog:usesCompilationModel a owl:ObjectProperty ;
+    rdfs:label "uses compilation model"@en ;
+    rdfs:domain prog:ProgrammingLanguage ;
+    rdfs:range prog:CompilationModel .
+
+prog:belongsToGeneration a owl:ObjectProperty ;
+    rdfs:label "belongs to generation"@en ;
+    rdfs:domain prog:ProgrammingLanguage ;
+    rdfs:range prog:LanguageGeneration .
+
+prog:compiledBy a owl:ObjectProperty ;
+    rdfs:label "compiled by"@en ;
+    rdfs:domain prog:SourceCode ;
+    rdfs:range prog:Compiler .
+
+prog:hasMetric a owl:ObjectProperty ;
+    rdfs:label "has metric"@en ;
+    rdfs:domain prog:SourceCode ;
+    rdfs:range prog:CodeMetric .
+
+# ===========================
+# Data Properties
+# ===========================
+
+prog:locValue a owl:DatatypeProperty ;
+    rdfs:label "LOC value"@en ;
+    rdfs:domain prog:LinesOfCode ;
+    rdfs:range xsd:integer .
+
+prog:complexityValue a owl:DatatypeProperty ;
+    rdfs:label "complexity value"@en ;
+    rdfs:domain prog:CyclomaticComplexity ;
+    rdfs:range xsd:integer .
+
+prog:coveragePercentage a owl:DatatypeProperty ;
+    rdfs:label "coverage percentage"@en ;
+    rdfs:domain prog:CodeCoverage ;
+    rdfs:range xsd:decimal .
+
+prog:languageVersion a owl:DatatypeProperty ;
+    rdfs:label "language version"@en ;
+    rdfs:domain prog:ProgrammingLanguage ;
+    rdfs:range xsd:string .
+
+prog:releaseYear a owl:DatatypeProperty ;
+    rdfs:label "release year"@en ;
+    rdfs:domain prog:ProgrammingLanguage ;
+    rdfs:range xsd:integer .
+
+# ===========================
+# Individual Languages
+# ===========================
+
+prog:Java a prog:ProgrammingLanguage ;
+    rdfs:label "Java"@en ;
+    prog:followsParadigm prog:ObjectOrientedProgramming ;
+    prog:hasTypeSystem prog:StaticallyTyped ;
+    prog:usesCompilationModel prog:BytecodeCompiled ;
+    prog:belongsToGeneration prog:ThirdGeneration .
+
+prog:Python a prog:ProgrammingLanguage ;
+    rdfs:label "Python"@en ;
+    prog:followsParadigm prog:ObjectOrientedProgramming ;
+    prog:hasTypeSystem prog:DynamicallyTyped ;
+    prog:usesCompilationModel prog:InterpretedLanguage ;
+    prog:belongsToGeneration prog:ThirdGeneration .
+
+prog:JavaScript a prog:ProgrammingLanguage ;
+    rdfs:label "JavaScript"@en ;
+    prog:followsParadigm prog:EventDrivenProgramming ;
+    prog:hasTypeSystem prog:DynamicallyTyped ;
+    prog:usesCompilationModel prog:JITCompiled ;
+    prog:belongsToGeneration prog:ThirdGeneration .
+
+prog:CLanguage a prog:ProgrammingLanguage ;
+    rdfs:label "C"@en ;
+    prog:followsParadigm prog:ProceduralProgramming ;
+    prog:hasTypeSystem prog:StaticallyTyped ;
+    prog:usesCompilationModel prog:CompiledLanguage ;
+    prog:belongsToGeneration prog:ThirdGeneration .
+
+prog:CPlusPlus a prog:ProgrammingLanguage ;
+    rdfs:label "C++"@en ;
+    prog:followsParadigm prog:ObjectOrientedProgramming ;
+    prog:hasTypeSystem prog:StaticallyTyped ;
+    prog:usesCompilationModel prog:CompiledLanguage ;
+    prog:belongsToGeneration prog:ThirdGeneration .
+
+prog:CSharp a prog:ProgrammingLanguage ;
+    rdfs:label "C#"@en ;
+    prog:followsParadigm prog:ObjectOrientedProgramming ;
+    prog:hasTypeSystem prog:StaticallyTyped ;
+    prog:usesCompilationModel prog:BytecodeCompiled ;
+    prog:belongsToGeneration prog:ThirdGeneration .
+
+prog:Rust a prog:ProgrammingLanguage ;
+    rdfs:label "Rust"@en ;
+    prog:followsParadigm prog:FunctionalProgramming ;
+    prog:hasTypeSystem prog:StaticallyTyped ;
+    prog:usesCompilationModel prog:CompiledLanguage ;
+    prog:belongsToGeneration prog:ThirdGeneration .
+
+prog:Go a prog:ProgrammingLanguage ;
+    rdfs:label "Go"@en ;
+    prog:followsParadigm prog:ConcurrentProgramming ;
+    prog:hasTypeSystem prog:StaticallyTyped ;
+    prog:usesCompilationModel prog:CompiledLanguage ;
+    prog:belongsToGeneration prog:ThirdGeneration .
+
+prog:TypeScript a prog:ProgrammingLanguage ;
+    rdfs:label "TypeScript"@en ;
+    prog:followsParadigm prog:ObjectOrientedProgramming ;
+    prog:hasTypeSystem prog:StaticallyTyped ;
+    prog:usesCompilationModel prog:Transpiled ;
+    prog:belongsToGeneration prog:ThirdGeneration .
+
+prog:SQL a prog:ProgrammingLanguage ;
+    rdfs:label "SQL"@en ;
+    prog:followsParadigm prog:DeclarativeParadigm ;
+    prog:belongsToGeneration prog:FourthGeneration .
+
+prog:Assembly a prog:ProgrammingLanguage ;
+    rdfs:label "Assembly"@en ;
+    prog:belongsToGeneration prog:SecondGeneration .
+
+prog:COBOL a prog:ProgrammingLanguage ;
+    rdfs:label "COBOL"@en ;
+    prog:followsParadigm prog:ProceduralProgramming ;
+    prog:belongsToGeneration prog:ThirdGeneration .

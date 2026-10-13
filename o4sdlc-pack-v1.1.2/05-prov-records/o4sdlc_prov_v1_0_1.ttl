@@ -1,0 +1,31 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix o4p:  <http://www.zt4swe.io/o4sdlc/prov#> .
+
+<http://www.zt4swe.io/o4sdlc/prov> a owl:Ontology ;
+    rdfs:label "O4SDLC-Pack v1.1.0 PROV records"@en ; owl:versionInfo "1.0.1" ;
+    owl:versionIRI <http://www.zt4swe.io/o4sdlc/prov/1.0.1> ;
+    owl:priorVersion <http://www.zt4swe.io/o4sdlc/prov/1.0.0> ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:creator <http://www.zt4swe.io/agent/YusufAltunel> ;
+    dcterms:rightsHolder <http://www.zt4swe.io/agent/YusufAltunel> ;
+    dcterms:publisher <http://www.zt4swe.io/agent/YusufAltunel> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed under CC BY 4.0."@en .
+
+<http://www.zt4swe.io/agent/YusufAltunel> a prov:Agent, prov:Person ; rdfs:label "Yusuf Altunel"@en .
+
+o4p:Activity_Consolidation a prov:Activity ; rdfs:label "O4SDLC consolidation"@en ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ; prov:wasAssociatedWith <http://www.zt4swe.io/agent/YusufAltunel> .
+o4p:Activity_ComplianceClosure a prov:Activity ; rdfs:label "OE-compliance closure + packaging"@en ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ; prov:wasAssociatedWith <http://www.zt4swe.io/agent/YusufAltunel> .
+o4p:Activity_ProposalRealization a prov:Activity ; rdfs:label "Enhancement-proposal realization (E-CRUD, E-3, E-4)"@en ;
+    prov:generatedAtTime "2026-06-05"^^xsd:date ; prov:wasAssociatedWith <http://www.zt4swe.io/agent/YusufAltunel> .
+
+o4p:Entity_o4sdlc a prov:Entity ; rdfs:label "o4sdlc_v1_0_1.ttl"@en ; prov:wasGeneratedBy o4p:Activity_ProposalRealization ; prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> .
+o4p:Entity_o4ucm  a prov:Entity ; rdfs:label "o4ucm_v1_0_4.ttl"@en ; prov:wasGeneratedBy o4p:Activity_ProposalRealization ; prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> .
+o4p:Entity_o4df   a prov:Entity ; rdfs:label "o4df_v1_0_2.ttl"@en ; prov:wasGeneratedBy o4p:Activity_ComplianceClosure ; prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> .
+o4p:Entity_o4se   a prov:Entity ; rdfs:label "o4se_merged_v1_0_9.ttl"@en ; prov:wasGeneratedBy o4p:Activity_ComplianceClosure ; prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> .
+o4p:Entity_kb     a prov:Entity ; rdfs:label "o4sdlc_knowledge_base_abox_v1_0_1.ttl"@en ; prov:wasGeneratedBy o4p:Activity_ProposalRealization ; prov:wasAttributedTo <http://www.zt4swe.io/agent/YusufAltunel> .
