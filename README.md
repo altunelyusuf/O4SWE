@@ -20,3 +20,5 @@ file with its size, SHA-256 and a Turtle parse check; `MANIFEST_SHA256.txt` veri
   inside the files.
 - Definitions and sources are incomplete in the draft and v5.2 material; see `INVENTORY.tsv` and each
   folder's own documents before relying on any figure.
+
+- `standards-records/` — records (not the files) of the standards supplied on 2026-10-13: identifiers, editions, page counts, checksums, and what each bears on.
