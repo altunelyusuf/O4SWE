@@ -13,7 +13,7 @@ This folder records standards whose files the Owner supplied on 2026-10-13 for k
 | ISO/IEC/IEEE 24641:2023, methods and tools for model-based systems and software engineering | full text, 98 pages | planning, building, supporting and performing model-based engineering |
 | ISO/IEC 26550:2015, product line reference model | public preview, 13 pages | domain engineering and application engineering life cycles; the reference model itself is not in the preview |
 | ISO/IEC/IEEE 12207, 2017 edition | participants list, 2 pages | nothing (no process content) |
-| IIBA BABOK Guide v3 (member copy, not for distribution) | full text, 514 pages | business analysis: six knowledge areas (chapters 3 to 8) with 30 tasks, 50 techniques, underlying competencies, perspectives |
+| IIBA BABOK Guide v3 (member copy, not for distribution) | full text, 514 pages | business analysis (no structure of the Guide is recorded here) |
 
 ## How to process them
 
