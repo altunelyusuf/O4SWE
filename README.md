@@ -22,4 +22,4 @@ file with its size, SHA-256 and a Turtle parse check; `MANIFEST_SHA256.txt` veri
   folder's own documents before relying on any figure.
 
 - `standards-records/` — records (not the files) of the standards supplied on 2026-10-13: identifiers, editions, page counts, checksums, and what each bears on.
-- `practice-concept-corpus/` — an own vocabulary of 189 practice concepts for seven life cycle areas (SKOS, CC BY 4.0), a candidate label alignment with the stored ontologies, and notes on reusing it. New material beside the stored files.
+- `practice-concept-corpus/` — an own vocabulary of 207 practice concepts for seven life cycle areas (SKOS, CC BY 4.0), a candidate label alignment with the stored ontologies, and notes on reusing it. New material beside the stored files.

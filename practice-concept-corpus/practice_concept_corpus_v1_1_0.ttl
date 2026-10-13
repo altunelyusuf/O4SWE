@@ -972,6 +972,198 @@ tax:D25_T17_C7 a skos:Concept ;
     skos:related tax:Area_IntegrationAndBuild,
         tax:Area_TechnicalAnalysis .
 
+tax:D25_T18_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. Read for this concept: SEI presentation \"Introduction to Software Product Lines\" (2014, approved for public release, unlimited distribution), which names adoption approaches and the practice areas scoping, business case, organization and funding; wording is this package's own."@en ;
+    skos:broader tax:D25_T18 ;
+    skos:definition "The route by which an organization moves from building products one at a time to building them from shared assets: making the assets first, extracting them from products that already exist, or growing them in steps."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.18.1" ;
+    skos:prefLabel "Adoption path"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_DomainEngineering .
+
+tax:D25_T18_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. Read for this concept: SEI presentation \"Introduction to Software Product Lines\" (2014, approved for public release, unlimited distribution), which names adoption approaches and the practice areas scoping, business case, organization and funding; wording is this package's own."@en ;
+    skos:broader tax:D25_T18 ;
+    skos:definition "The deliberate widening or narrowing of what the family covers as markets and assets change; when assets are made first the scope is mostly fixed in advance, when they are extracted it grows with experience."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.18.2" ;
+    skos:prefLabel "Scope evolution"@en ;
+    skos:related tax:Area_DomainEngineering .
+
+tax:D25_T18_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. Read for this concept: SEI presentation \"Introduction to Software Product Lines\" (2014, approved for public release, unlimited distribution), which names adoption approaches and the practice areas scoping, business case, organization and funding; wording is this package's own."@en ;
+    skos:broader tax:D25_T18 ;
+    skos:definition "The argument, in cost and benefit over the life of the family, that shared assets will repay more than building each product alone, counting the making and keeping of the assets."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.18.3" ;
+    skos:prefLabel "Family business case"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_BusinessAnalysis,
+        tax:Area_DomainEngineering .
+
+tax:D25_T18_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. Read for this concept: SEI presentation \"Introduction to Software Product Lines\" (2014, approved for public release, unlimited distribution), which names adoption approaches and the practice areas scoping, business case, organization and funding; wording is this package's own."@en ;
+    skos:broader tax:D25_T18 ;
+    skos:definition "Who owns the shared assets, who builds products from them, and how the two groups are kept in step."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.18.4" ;
+    skos:prefLabel "Family organization"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_DomainEngineering .
+
+tax:D25_T18_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. Read for this concept: SEI presentation \"Introduction to Software Product Lines\" (2014, approved for public release, unlimited distribution), which names adoption approaches and the practice areas scoping, business case, organization and funding; wording is this package's own."@en ;
+    skos:broader tax:D25_T18 ;
+    skos:definition "How the cost of making and keeping shared assets is paid: from a central budget, by charges to the products that use them, or by contributions from product teams."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.18.5" ;
+    skos:prefLabel "Asset funding"@en ;
+    skos:related tax:Area_DomainEngineering .
+
+tax:D25_T18_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. This package's own judgement; no open work read states it (stated plainly), drawn from the product line material already in the corpus."@en ;
+    skos:broader tax:D25_T18 ;
+    skos:definition "The decisions about what enters, changes or leaves the shared assets, who takes them, and how conflicting demands from several products are settled."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.18.6" ;
+    skos:prefLabel "Asset governance"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_DomainEngineering .
+
+tax:D25_T18_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. This package's own judgement; no open work read states it (stated plainly), drawn from the product line material already in the corpus."@en ;
+    skos:broader tax:D25_T18 ;
+    skos:definition "A periodic look at the products and the planned products of the family against its scope, used to decide which to start, continue or withdraw."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.18.7" ;
+    skos:prefLabel "Family portfolio review"@en ;
+    skos:related tax:Area_ApplicationEngineering,
+        tax:Area_Disposal,
+        tax:Area_DomainEngineering .
+
+tax:D25_T19_C1 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. Read for this concept: DORA site, delivery performance measures (CC BY 4.0, Google LLC); wording is this package's own."@en ;
+    skos:broader tax:D25_T19 ;
+    skos:definition "How quickly changes reach production, read as the time from a committed change to its running in production and as how often releases happen."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.19.1" ;
+    skos:prefLabel "Throughput measure"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T19_C10 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. Read for this concept: Google SRE book and workbook, chapters on postmortem culture (CC BY-NC-ND 4.0); read only, nothing of the text or structure is taken, wording is this package's own."@en ;
+    skos:broader tax:D25_T19 ;
+    skos:definition "Pooling the reviews of many incidents to see recurring causes, detection and recovery times and extent of impact, so that reliability work goes where it matters."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.19.10" ;
+    skos:prefLabel "Incident trend analysis"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T19_C11 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. Read for this concept: Google SRE book and workbook, chapters on postmortem culture (CC BY-NC-ND 4.0); read only, nothing of the text or structure is taken, wording is this package's own."@en ;
+    skos:broader tax:D25_T19 ;
+    skos:definition "Practising recovery on purpose to check that the planned way back really works and that people know it."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.19.11" ;
+    skos:prefLabel "Recovery rehearsal"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T19_C2 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. Read for this concept: DORA site, delivery performance measures (CC BY 4.0, Google LLC); wording is this package's own."@en ;
+    skos:broader tax:D25_T19 ;
+    skos:definition "How often a release needs urgent repair afterwards and how long recovery takes; read together with throughput so that speed is not bought with breakage."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.19.2" ;
+    skos:prefLabel "Stability measure"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T19_C3 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. Read for this concept: OWASP DevSecOps Guideline, pipeline security activities (CC BY-SA 4.0); wording is this package's own."@en ;
+    skos:broader tax:D25_T19 ;
+    skos:definition "Describing machines, networks and settings in versioned files from which environments are created and changed, so that they can be reviewed, repeated and rebuilt like software."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.19.3" ;
+    skos:prefLabel "Environment as code"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T19_C4 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. Read for this concept: OWASP DevSecOps Guideline, pipeline security activities (CC BY-SA 4.0); wording is this package's own."@en ;
+    skos:broader tax:D25_T19 ;
+    skos:definition "Keeping credentials and keys out of source and artifacts, giving them to builds and runs only when needed, and detecting leaks."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.19.4" ;
+    skos:prefLabel "Secret handling"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T19_C5 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. Read for this concept: OWASP DevSecOps Guideline, pipeline security activities (CC BY-SA 4.0); wording is this package's own."@en ;
+    skos:broader tax:D25_T19 ;
+    skos:definition "Placing code analysis, dependency checks, configuration scanning and dynamic testing as stages of the delivery flow, each with a stated pass criterion."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.19.5" ;
+    skos:prefLabel "Security checks in the flow"@en ;
+    skos:related tax:Area_IntegrationAndBuild,
+        tax:Area_TransitionAndRelease .
+
+tax:D25_T19_C6 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. Read for this concept: NIST SP 800-218 Secure Software Development Framework v1.1 (not subject to copyright in the United States); wording is this package's own."@en ;
+    skos:broader tax:D25_T19 ;
+    skos:definition "Releasing software whose initial configuration is the safe one, so that loosening it is a deliberate act of the user."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.19.6" ;
+    skos:prefLabel "Secure default configuration"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T19_C7 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. Read for this concept: NIST SP 800-218 Secure Software Development Framework v1.1 (not subject to copyright in the United States); wording is this package's own."@en ;
+    skos:broader tax:D25_T19 ;
+    skos:definition "Finding, assessing, ranking and fixing weaknesses in released software on an ongoing basis, and analysing their causes so that the same kind does not return."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.19.7" ;
+    skos:prefLabel "Vulnerability response"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T19_C8 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. Read for this concept: Google SRE book and workbook, chapters on postmortem culture (CC BY-NC-ND 4.0); read only, nothing of the text or structure is taken, wording is this package's own."@en ;
+    skos:broader tax:D25_T19 ;
+    skos:definition "Examining an incident to learn what in the system and its information led to it, on the assumption that people acted in good faith; the aim is a better system, not a culprit."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.19.8" ;
+    skos:prefLabel "Blameless review"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
+tax:D25_T19_C9 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced. Read for this concept: Google SRE book and workbook, chapters on postmortem culture (CC BY-NC-ND 4.0); read only, nothing of the text or structure is taken, wording is this package's own."@en ;
+    skos:broader tax:D25_T19 ;
+    skos:definition "A change agreed after an incident, with an end state that can be tested and a purpose (prevent, detect, lessen or repair), preferring changes to systems over appeals to behaviour."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.19.9" ;
+    skos:prefLabel "Follow-up action"@en ;
+    skos:related tax:Area_TransitionAndRelease .
+
 tax:D25_T1_C1 a skos:Concept ;
     dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
     dcterms:source "Own formulation of this package (2026-10-13), informed by the works named at the domain; no text, title or structure of them is reproduced."@en ;
@@ -2064,12 +2256,12 @@ tax:D25_T9_C9 a skos:Concept ;
     dcterms:created "2026-10-13" ;
     dcterms:creator "Yusuf Altunel" ;
     dcterms:description "An own, original formulation of practice concepts for seven areas of the software life cycle (domain engineering, application engineering, business analysis, technical analysis, integration and build, transition and release, disposal), grouped by meaning into themes. Exported from the domain 25 of the agentic-sdlc ontology, release 0.99.0 (A-Box 2.11.0). It reproduces no text, title or structure of any copyrighted work."@en ;
-    dcterms:identifier "practice_concept_corpus_v1_0_0" ;
+    dcterms:identifier "practice_concept_corpus_v1_1_0" ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:rights "© 2026 Yusuf Altunel, CC BY 4.0"@en ;
     dcterms:title "Practice Concept Corpus"@en ;
-    owl:versionIRI <http://example.org/practice-concept-corpus/1.0.0> ;
-    owl:versionInfo "1.0.0" .
+    owl:versionIRI <http://example.org/practice-concept-corpus/1.1.0> ;
+    owl:versionInfo "1.1.0" .
 
 tax:D25_T16 a skos:Concept ;
     dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
@@ -2088,6 +2280,15 @@ tax:D25_T17 a skos:Concept ;
     skos:notation "25.17" ;
     skos:prefLabel "Shaping the solution: function and structure"@en ;
     skos:scopeNote "How a need becomes a described solution before it is built."@en .
+
+tax:D25_T18 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.18" ;
+    skos:prefLabel "Managing a family of products over time"@en ;
+    skos:scopeNote "How an organization takes up, funds, governs and reviews a family of products built from shared assets."@en .
 
 tax:D25_T5 a skos:Concept ;
     dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
@@ -2188,6 +2389,15 @@ tax:D25_T15 a skos:Concept ;
     skos:prefLabel "Requirements at every level and of every kind"@en ;
     skos:scopeNote "How requirements differ by level and kind, what makes a whole set of them sound, and how they are kept in step with each other."@en .
 
+tax:D25_T19 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
+    skos:broader tax:D25 ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25.19" ;
+    skos:prefLabel "Measuring, securing and learning from the delivery flow"@en ;
+    skos:scopeNote "What is measured about delivery, what is built into the flow to keep it safe, and how failures are turned into improvement."@en .
+
 tax:D25_T12 a skos:Concept ;
     dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
     dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
@@ -2206,15 +2416,6 @@ tax:D25_T9 a skos:Concept ;
     skos:prefLabel "Putting the parts together"@en ;
     skos:scopeNote "Concepts about assembling separately made parts into a working whole and making the result repeatable."@en .
 
-tax:D25 a skos:Concept ;
-    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
-    dcterms:source "Own formulation of this package, written on 2026-10-13 under the Owner's decision of the same day to build an own semantic corpus from the works read, copying neither their text nor their structure. Informed by: the Owner's own works (the O4SDLC pack, the domain engineering files, the AI4SE material, the 2013 thesis, the UAISE draft); ISO/IEC/IEEE 12207:2026, ISO/IEC/IEEE 29148:2018, ISO/IEC/IEEE 24641:2023 and a preview of ISO/IEC 26550:2015, as read by the Owner under a licence the Owner confirmed on 2026-10-13; the IIBA BABOK Guide v3 (a member copy); SWEBOK Guide v4.0; the SEBoK; the NASA Systems Engineering Handbook; the SEI Framework for Software Product Line Practice."@en ;
-    skos:inScheme tax:PracticeConceptCorpusScheme ;
-    skos:notation "25" ;
-    skos:prefLabel "Practice Concept Corpus (own formulation for the seven areas)"@en ;
-    skos:scopeNote "Concepts for the seven areas that lack a public standard text (domain engineering, application engineering, business analysis, technical analysis, integration and build, transition and release, disposal), stated in this package's own words and grouped by the question each group answers, not by the chapters or clauses of any source. Each concept links, by skos:related, to the areas it serves. No sentence, heading, ordering, numbering or count of the informing works is reproduced; where a concept has a familiar name, the definition is this package's own and may differ from any source's. The corpus is a statement of this package's understanding, written with AI assistance, and has not been reviewed by a domain specialist."@en ;
-    skos:topConceptOf tax:PracticeConceptCorpusScheme .
-
 tax:D25_T11 a skos:Concept ;
     dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
     dcterms:source "Own formulation of this package (2026-10-13); the grouping answers the question named in the title and follows no source."@en ;
@@ -2223,6 +2424,15 @@ tax:D25_T11 a skos:Concept ;
     skos:notation "25.11" ;
     skos:prefLabel "Getting into use"@en ;
     skos:scopeNote "Concepts for handing a result to the people and systems that will rely on it."@en .
+
+tax:D25 a skos:Concept ;
+    dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;
+    dcterms:source "Own formulation of this package, written on 2026-10-13 under the Owner's decision of the same day to build an own semantic corpus from the works read, copying neither their text nor their structure. Informed by: the Owner's own works (the O4SDLC pack, the domain engineering files, the AI4SE material, the 2013 thesis, the UAISE draft); ISO/IEC/IEEE 12207:2026, ISO/IEC/IEEE 29148:2018, ISO/IEC/IEEE 24641:2023 and a preview of ISO/IEC 26550:2015, as read by the Owner under a licence the Owner confirmed on 2026-10-13; the IIBA BABOK Guide v3 (a member copy); SWEBOK Guide v4.0; the SEBoK; the NASA Systems Engineering Handbook; the SEI Framework for Software Product Line Practice."@en ;
+    skos:inScheme tax:PracticeConceptCorpusScheme ;
+    skos:notation "25" ;
+    skos:prefLabel "Practice Concept Corpus (own formulation for the seven areas)"@en ;
+    skos:scopeNote "Concepts for the seven areas that lack a public standard text (domain engineering, application engineering, business analysis, technical analysis, integration and build, transition and release, disposal), stated in this package's own words and grouped by the question each group answers, not by the chapters or clauses of any source. Each concept links, by skos:related, to the areas it serves. No sentence, heading, ordering, numbering or count of the informing works is reproduced; where a concept has a familiar name, the definition is this package's own and may differ from any source's. The corpus is a statement of this package's understanding, written with AI assistance, and has not been reviewed by a domain specialist."@en ;
+    skos:topConceptOf tax:PracticeConceptCorpusScheme .
 
 tax:D25_T8 a skos:Concept ;
     dcterms:rights "Original formulation of this package, offered under the terms of the ontology (CC BY 4.0). It reproduces no text, title or structure of the works that informed it."@en ;

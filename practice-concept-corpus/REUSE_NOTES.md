@@ -2,9 +2,9 @@
 
 ## What the label alignment found
 
-The alignment compared the 189 concepts with the 1,357 classes in the stored ontologies (the O4SE merged ontology, the eight O4SE draft modules and the two domain engineering ontologies). A match is by words only, after normalisation.
+The alignment compared the 207 concepts with the 1,357 classes in the stored ontologies (the O4SE merged ontology, the eight O4SE draft modules and the two domain engineering ontologies). A match is by words only, after normalisation.
 
-- 18 of 189 concepts have a counterpart by label; 171 have none. 32 mappings are same-words (`skos:closeMatch`) and 6 share at least two words (`skos:relatedMatch`).
+- 18 of 207 concepts have a counterpart by label; 188 have none. 32 mappings are same-words (`skos:closeMatch`) and 8 share at least two words (`skos:relatedMatch`).
 - The merged O4SE ontology (507 classes, all defined) matches only a handful: Stakeholder, Requirement, Quality Attribute, Deployment and Data Migration. Searching its class labels directly finds none for release, retirement or disposal, decommissioning, variability, product line, simulation, operational concept or scenario. It has some for integration and build (Product Integration, CI Pipeline, CD Pipeline, Build Tool) and many for requirements and models, but those are mostly about tools and notations, not the practice concepts of the corpus.
 - The corpus therefore adds most where the stored material is thinnest: ending a product's life (15 of 15 concepts unmatched), getting into use (16 of 18), putting the parts together (15 of 17), models and modelling (24 of 25), and commonality and variability (8 of 10).
 
@@ -14,7 +14,7 @@ The alignment compared the 189 concepts with the 1,357 classes in the stored ont
 2. **As a donor of definitions.** The domain engineering ontology v5.2 has 206 classes, 29 with definitions. 15 label matches in the alignment point to classes without a definition (for example Business Rule, Domain Boundary, Variation Point, Product Configuration, Requirement Conflict, Requirement Priority, Use Case, Dependency). The corpus definitions can be adapted for them; each needs a review, because the corpus defines the concept for practice, not for the class's own structure.
 3. **As a bridge between ontologies.** The alignment file is ready to load beside the stored files; a reviewer can promote a `relatedMatch` to `closeMatch` or drop it, and the corpus then links the practice vocabulary to the classes without editing them.
 4. **As a basis for competency questions.** Each concept answers a question about practice ("what is a variation point, and when is it bound?"); the themes group them into question sets for the seven areas.
-5. **As a check on coverage.** The seven areas and 17 themes give a checklist against which a future O4SE module can be reviewed for gaps.
+5. **As a check on coverage.** The seven areas and 19 themes give a checklist against which a future O4SE module can be reviewed for gaps.
 
 ## Limits
 
